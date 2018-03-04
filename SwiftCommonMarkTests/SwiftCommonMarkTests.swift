@@ -10,10 +10,22 @@ import XCTest
 @testable import SwiftCommonMark
 
 class SwiftCommonMarkTests: XCTestCase {
+	let markdown = CommonMark()
+	var commonMarkTests: [CommonMarkTest] = []
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+		let path = Bundle(for: type(of: self)).path(forResource: "commonmark-tests-spec", ofType: "json")
+		XCTAssertNotNil(path)
+
+		do {
+			let jsonData = try String(contentsOfFile: path!, encoding: .utf8).data(using: .utf8)
+			XCTAssertNotNil(jsonData)
+			commonMarkTests = try JSONDecoder().decode([CommonMarkTest].self, from: jsonData!)
+		} catch {
+			XCTAssertNil(error, "error: \(error)")
+		}
     }
     
     override func tearDown() {
@@ -21,16 +33,12 @@ class SwiftCommonMarkTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+	func testCommonMarkParsing() {
+		XCTAssertFalse(commonMarkTests.isEmpty)
+
+		for test in commonMarkTests {
+			let actual: String = markdown.parse(test.markdown)
+			XCTAssertEqual(actual, test.html, "Failed Test \(test.example): \(test.section)")
+		}
+	}
 }

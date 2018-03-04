@@ -10,6 +10,9 @@
 		52328767204CA6100093C905 /* SwiftCommonMark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5232875D204CA6100093C905 /* SwiftCommonMark.framework */; };
 		5232876C204CA6100093C905 /* SwiftCommonMarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5232876B204CA6100093C905 /* SwiftCommonMarkTests.swift */; };
 		5232876E204CA6100093C905 /* SwiftCommonMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 52328760204CA6100093C905 /* SwiftCommonMark.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		52328778204CA8A50093C905 /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328777204CA8A50093C905 /* CommonMark.swift */; };
+		5232877B204CA96B0093C905 /* CommonMarkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328779204CA96B0093C905 /* CommonMarkTest.swift */; };
+		5232877C204CA96B0093C905 /* commonmark-tests-spec.json in Resources */ = {isa = PBXBuildFile; fileRef = 5232877A204CA96B0093C905 /* commonmark-tests-spec.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		52328766204CA6100093C905 /* SwiftCommonMarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCommonMarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5232876B204CA6100093C905 /* SwiftCommonMarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCommonMarkTests.swift; sourceTree = "<group>"; };
 		5232876D204CA6100093C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52328777204CA8A50093C905 /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
+		52328779204CA96B0093C905 /* CommonMarkTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkTest.swift; sourceTree = "<group>"; };
+		5232877A204CA96B0093C905 /* commonmark-tests-spec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "commonmark-tests-spec.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,7 @@
 			children = (
 				52328760204CA6100093C905 /* SwiftCommonMark.h */,
 				52328761204CA6100093C905 /* Info.plist */,
+				52328777204CA8A50093C905 /* CommonMark.swift */,
 			);
 			path = SwiftCommonMark;
 			sourceTree = "<group>";
@@ -80,6 +87,8 @@
 		5232876A204CA6100093C905 /* SwiftCommonMarkTests */ = {
 			isa = PBXGroup;
 			children = (
+				5232877A204CA96B0093C905 /* commonmark-tests-spec.json */,
+				52328779204CA96B0093C905 /* CommonMarkTest.swift */,
 				5232876B204CA6100093C905 /* SwiftCommonMarkTests.swift */,
 				5232876D204CA6100093C905 /* Info.plist */,
 			);
@@ -148,6 +157,7 @@
 				TargetAttributes = {
 					5232875C204CA6100093C905 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					52328765204CA6100093C905 = {
@@ -186,6 +196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5232877C204CA96B0093C905 /* commonmark-tests-spec.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52328778204CA8A50093C905 /* CommonMark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5232876C204CA6100093C905 /* SwiftCommonMarkTests.swift in Sources */,
+				5232877B204CA96B0093C905 /* CommonMarkTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +346,7 @@
 		52328772204CA6100093C905 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -348,6 +362,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMark;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -355,6 +370,7 @@
 		52328773204CA6100093C905 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -377,6 +393,7 @@
 		52328775204CA6100093C905 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FUC97LYJ62;
@@ -391,6 +408,7 @@
 		52328776204CA6100093C905 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FUC97LYJ62;
