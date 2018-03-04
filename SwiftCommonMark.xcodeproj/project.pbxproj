@@ -59,8 +59,8 @@
 		52328753204CA6100093C905 = {
 			isa = PBXGroup;
 			children = (
-				5232875F204CA6100093C905 /* SwiftCommonMark */,
-				5232876A204CA6100093C905 /* SwiftCommonMarkTests */,
+				5232875F204CA6100093C905 /* Sources */,
+				5232876A204CA6100093C905 /* Tests */,
 				5232875E204CA6100093C905 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,17 +74,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5232875F204CA6100093C905 /* SwiftCommonMark */ = {
+		5232875F204CA6100093C905 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				52328760204CA6100093C905 /* SwiftCommonMark.h */,
 				52328761204CA6100093C905 /* Info.plist */,
 				52328777204CA8A50093C905 /* CommonMark.swift */,
 			);
-			path = SwiftCommonMark;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		5232876A204CA6100093C905 /* SwiftCommonMarkTests */ = {
+		5232876A204CA6100093C905 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				5232877A204CA96B0093C905 /* commonmark-tests-spec.json */,
@@ -92,7 +92,7 @@
 				5232876B204CA6100093C905 /* SwiftCommonMarkTests.swift */,
 				5232876D204CA6100093C905 /* Info.plist */,
 			);
-			path = SwiftCommonMarkTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,7 +356,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = SwiftCommonMark/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMark;
@@ -380,7 +380,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = SwiftCommonMark/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMark;
@@ -397,7 +397,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FUC97LYJ62;
-				INFOPLIST_FILE = SwiftCommonMarkTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -412,7 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = FUC97LYJ62;
-				INFOPLIST_FILE = SwiftCommonMarkTests/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
