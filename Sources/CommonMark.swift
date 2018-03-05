@@ -8,8 +8,15 @@
 
 import Foundation
 
-class CommonMark {
-	func parse(_ markdown: String) -> String {
+enum CommonMarkOutput {
+	case html
+}
+
+struct CommonMarkParser {
+
+	let markdown: String
+
+	func render(to output: CommonMarkOutput = .html) -> String {
 		return markdown
 	}
 }

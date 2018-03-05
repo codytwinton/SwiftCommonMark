@@ -10,7 +10,6 @@ import XCTest
 @testable import SwiftCommonMark
 
 class SwiftCommonMarkTests: XCTestCase {
-	let markdown = CommonMark()
 	var commonMarkTests: [CommonMarkTest] = []
     
     override func setUp() {
@@ -37,7 +36,7 @@ class SwiftCommonMarkTests: XCTestCase {
 		XCTAssertFalse(commonMarkTests.isEmpty)
 
 		for test in commonMarkTests {
-			let actual: String = markdown.parse(test.markdown)
+			let actual: String = CommonMarkParser(markdown: test.markdown).render()
 			XCTAssertEqual(actual, test.html, "Failed Test \(test.example): \(test.section)")
 		}
 	}
