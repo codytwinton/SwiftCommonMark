@@ -7,35 +7,7 @@
 //
 
 import Foundation
-
-protocol EnumProtocol: Hashable {
-	/// Returns All Enum Values
-	static var all: [Self] { get }
-	/// Returns the description
-	var description: String { get }
-}
-
-extension EnumProtocol {
-
-	static var all: [Self] {
-		typealias Type = Self
-		let cases = AnySequence { () -> AnyIterator<Type> in
-			var raw = 0
-			return AnyIterator {
-				let current: Self = withUnsafePointer(to: &raw) { $0.withMemoryRebound(to: Type.self, capacity: 1) { $0.pointee } }
-				guard current.hashValue == raw else { return nil }
-				raw += 1
-				return current
-			}
-		}
-
-		return Array(cases)
-	}
-
-	var description: String {
-		return "\(self)"
-	}
-}
+@testable import SwiftCommonMark
 
 enum CommonMarkTestError: Error {
 	case noJSONData
