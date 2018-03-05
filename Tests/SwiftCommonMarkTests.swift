@@ -21,7 +21,7 @@ class SwiftCommonMarkTests: XCTestCase {
 			XCTAssertFalse(tests.isEmpty)
 			return tests
 		} catch {
-			XCTAssertNil(error, "CommonMark tests are nil")
+			XCTAssertNil(error, "CommonMark test error: \(error)")
 			return []
 		}
 	}()
