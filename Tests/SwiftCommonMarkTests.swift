@@ -40,10 +40,24 @@ class SwiftCommonMarkTests: XCTestCase {
         super.tearDown()
     }
 
-	func test(section: [CommonMarkTest]) {
-		for test in section {
+	func checkViolations(for section: CommonMarkTestSection) -> Int {
+		let tests = commonMarkTests.filter { $0.section == section.rawValue }
+		var violations = 0
+
+		for test in tests {
 			let actual: String = CommonMarkParser(markdown: test.markdown).render()
-			XCTAssertEqual(actual, test.html, "Failed Test \(test.example): \(test.section)")
+			guard test.html != actual else { continue }
+			print("Failed Test \(test.example): \(test.section)")
+			violations += 1
+		}
+
+		return violations
+	}
+
+	func testSectionViolations() {
+		for section in CommonMarkTestSection.all {
+			let violations = checkViolations(for: section)
+			XCTAssertEqual(violations, 0, "\(section.rawValue) has \(violations) violations")
 		}
 	}
 
