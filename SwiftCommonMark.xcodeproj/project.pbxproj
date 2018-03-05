@@ -10,7 +10,7 @@
 		52328767204CA6100093C905 /* SwiftCommonMark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5232875D204CA6100093C905 /* SwiftCommonMark.framework */; };
 		5232876C204CA6100093C905 /* SwiftCommonMarkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5232876B204CA6100093C905 /* SwiftCommonMarkTests.swift */; };
 		5232876E204CA6100093C905 /* SwiftCommonMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 52328760204CA6100093C905 /* SwiftCommonMark.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		52328778204CA8A50093C905 /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328777204CA8A50093C905 /* CommonMark.swift */; };
+		52328778204CA8A50093C905 /* CommonMarkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328777204CA8A50093C905 /* CommonMarkParser.swift */; };
 		5232877B204CA96B0093C905 /* CommonMarkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328779204CA96B0093C905 /* CommonMarkTest.swift */; };
 		5232877C204CA96B0093C905 /* commonmark-tests-spec.json in Resources */ = {isa = PBXBuildFile; fileRef = 5232877A204CA96B0093C905 /* commonmark-tests-spec.json */; };
 /* End PBXBuildFile section */
@@ -32,7 +32,7 @@
 		52328766204CA6100093C905 /* SwiftCommonMarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCommonMarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5232876B204CA6100093C905 /* SwiftCommonMarkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCommonMarkTests.swift; sourceTree = "<group>"; };
 		5232876D204CA6100093C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52328777204CA8A50093C905 /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
+		52328777204CA8A50093C905 /* CommonMarkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkParser.swift; sourceTree = "<group>"; };
 		52328779204CA96B0093C905 /* CommonMarkTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkTest.swift; sourceTree = "<group>"; };
 		5232877A204CA96B0093C905 /* commonmark-tests-spec.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "commonmark-tests-spec.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +79,7 @@
 			children = (
 				52328760204CA6100093C905 /* SwiftCommonMark.h */,
 				52328761204CA6100093C905 /* Info.plist */,
-				52328777204CA8A50093C905 /* CommonMark.swift */,
+				52328777204CA8A50093C905 /* CommonMarkParser.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -115,6 +115,7 @@
 			buildPhases = (
 				52328758204CA6100093C905 /* Sources */,
 				52328759204CA6100093C905 /* Frameworks */,
+				529EAA93204DA344001C9B72 /* Swiftlint */,
 				5232875A204CA6100093C905 /* Headers */,
 				5232875B204CA6100093C905 /* Resources */,
 			);
@@ -202,12 +203,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		529EAA93204DA344001C9B72 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52328758204CA6100093C905 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52328778204CA8A50093C905 /* CommonMark.swift in Sources */,
+				52328778204CA8A50093C905 /* CommonMarkParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

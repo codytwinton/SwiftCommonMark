@@ -1,5 +1,5 @@
 //
-//  CommonMark.swift
+//  CommonMarkParser.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 3/4/18.
