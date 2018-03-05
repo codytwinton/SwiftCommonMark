@@ -128,3 +128,12 @@ included:
 
 private_outlet:
   allow_private_set: true
+
+identifier_name:
+  excluded:
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6
