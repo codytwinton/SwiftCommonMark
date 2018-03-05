@@ -40,7 +40,7 @@ class SwiftCommonMarkTests: XCTestCase {
         super.tearDown()
     }
 
-	func checkViolations(for section: CommonMarkTestSection) -> Int {
+	func testViolations(for section: CommonMarkTestSection) {
 		let tests = commonMarkTests.filter { $0.section == section.rawValue }
 		var violations = 0
 
@@ -51,13 +51,12 @@ class SwiftCommonMarkTests: XCTestCase {
 			violations += 1
 		}
 
-		return violations
+		XCTAssertEqual(violations, 0, "\(section.rawValue) has \(violations) violations")
 	}
 
-	func testSectionViolations() {
+	func testAllSectionViolations() {
 		for section in CommonMarkTestSection.all {
-			let violations = checkViolations(for: section)
-			XCTAssertEqual(violations, 0, "\(section.rawValue) has \(violations) violations")
+			testViolations(for: section)
 		}
 	}
 
