@@ -45,13 +45,16 @@ class SwiftCommonMarkTests: XCTestCase {
 		let tests = commonMarkTests.filter { $0.section == section.rawValue }
 		var violations = 0
 
+		print("\n********\n\n")
+
 		for test in tests {
 			let actual: String = CommonMarkParser(markdown: test.markdown).render()
 			guard test.html != actual else { continue }
-			print("Failed \(test.section) example: \(test.example)." +
+			print("Failed \(test.section) example: \(test.example):" +
 				"\nMarkdown: \(test.markdown)" +
 				"\nExpected: \(test.html)" +
-				"\nActual: \(actual)\n")
+				"\nActual: \(actual)" +
+				"\n********\n\n")
 			violations += 1
 		}
 
@@ -66,8 +69,8 @@ class SwiftCommonMarkTests: XCTestCase {
 	*/
 
 	func testHeading() {
-		let parser = CommonMarkParser(markdown: "# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n")
-		let expected = "<h1>foo</h1>\n<h2>foo</h2>\n<h3>foo</h3>\n<h4>foo</h4>\n<h5>foo</h5>\n<h6>foo</h6>\n"
+		let parser = CommonMarkParser(markdown: "## \n#\n### ###\n")
+		let expected = "<h2></h2>\n<h1></h1>\n<h3></h3>\n"
 		XCTAssertEqual(parser.render(), expected)
 	}
 
