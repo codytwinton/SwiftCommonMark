@@ -40,6 +40,7 @@ class SwiftCommonMarkTests: XCTestCase {
         super.tearDown()
     }
 
+	@discardableResult
 	func testViolations(for section: CommonMarkTestSection) -> Int {
 		let tests = commonMarkTests.filter { $0.section == section.rawValue }
 		var violations = 0
