@@ -25,8 +25,8 @@ struct CommonMarkParser {
 	// MARK: - Constants
 
 	static let parsers: [NodeParser] = [
-		NodeParser(regex: "^(\\#{1,6}\\s?)([^#\n]+)\\s??\\#*", templates: ["$1", "$2"]) {
-			let level: HeadingLevel = HeadingLevel(rawValue: $0[0].count - 1) ?? .h1
+		NodeParser(regex: "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)", templates: ["$1", "$2"]) {
+			let level: HeadingLevel = HeadingLevel(rawValue: $0[0].count) ?? .h1
 			return .heading(level: level, nodes: parseNodes(markdown: $0[1]))
 		},
 		NodeParser(regex: "(\\_{2}|\\*{2})(.+)(\\_{2}|\\*{2})", templates: ["$2"]) {

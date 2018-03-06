@@ -52,14 +52,14 @@ public extension String {
 		let matchString = NSString(string: self).substring(with: matchRange)
 		let matchesRange = NSRange(location: 0, length: matchString.count)
 
-		var regexCaptures: [String] = []
+		var regexCaptures = Array(repeating: "", count: templates.count)
 		var fullMatch = ""
 
 		for match in expression.matches(in: matchString, options: .withoutAnchoringBounds, range: matchesRange) {
-			for template in templates {
+			for (index, template) in templates.enumerated() {
 				let text = expression.replacementString(for: match, in: matchString, offset: 0, template: template)
 				guard text != "" else { continue }
-				regexCaptures.append(text)
+				regexCaptures[index] = text
 			}
 
 			fullMatch = expression.replacementString(for: match, in: matchString, offset: 0, template: "$0")
