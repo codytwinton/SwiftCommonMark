@@ -39,29 +39,29 @@ struct CommonMarkParser {
 	}
 
 	static func parseNodes(markdown: String, block: (CommonMarkNode) -> Void) {
-		for value in markdown.components(separatedBy: .newlines) {
+		for input in markdown.components(separatedBy: .newlines) {
 			guard let regex = try? NSRegularExpression(pattern: "^\\#{1,6}\\s?([^#\n]+)\\s??\\#*", options: .anchorsMatchLines) else {
-				block(.text(value))
+				block(.text(input))
 				continue
 			}
 
-			guard let match = regex.firstMatch(in: value, options: .withoutAnchoringBounds, range: NSRange(location: 0, length: value.count)) else {
-				block(.text(value))
+			guard let match = regex.firstMatch(in: input, options: .withoutAnchoringBounds, range: NSRange(location: 0, length: input.count)) else {
+				block(.text(input))
 				continue
 			}
 
 			guard match.range.location != NSNotFound else {
-				block(.text(value))
+				block(.text(input))
 				continue
 			}
 
 			guard let level = HeadingLevel(rawValue: match.range(at: 1).location - 1) else {
-				block(.text(value))
+				block(.text(input))
 				continue
 			}
 
-			let start = value.index(value.startIndex, offsetBy: match.range(at: 1).location)
-			let remaining = String(value[start...])
+			let start = input.index(input.startIndex, offsetBy: match.range(at: 1).location)
+			let remaining = String(input[start...])
 
 			var headingNodes: [CommonMarkNode] = []
 
