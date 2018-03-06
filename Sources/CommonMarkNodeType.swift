@@ -51,9 +51,9 @@ enum CommonMarkNodeType {
 			return ["$1", "$2"]
 		case .strong, .emphasis:
 			return ["$2"]
-		case .blockQuote, .code, .codeBlock, .document, .emphasis, .htmlBlock,
+		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
 			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
-			 .strong, .text, .thematicBreak, .customInline, .customBlock:
+			 .text, .thematicBreak, .customInline, .customBlock:
 			return []
 		}
 	}

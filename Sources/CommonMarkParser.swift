@@ -29,10 +29,11 @@ struct CommonMarkParser {
 			let raw = $0[1]
 			var components = raw.components(separatedBy: " #")
 
-			if components.count > 1,
-				let last = components.last?.trimmingCharacters(in: .whitespaces),
-				Set(last).count == 1 {
-				components.removeLast()
+			if let last = components.last?.trimmingCharacters(in: .whitespaces) {
+				let set = Set(last)
+				if set.count == 1, set.first == "#" {
+					components.removeLast()
+				}
 			}
 
 			return .heading(level: level, nodes: parseNodes(markdown: components.joined()))
@@ -66,9 +67,15 @@ struct CommonMarkParser {
 
 		var nodes: [CommonMarkNode] = []
 
+		guard !markdown.isEmpty else {
+			nodes.append(.text(markdown))
+			return nodes
+		}
+
 		var input = markdown
 
 		while !input.isEmpty {
+
 			var isMatched = false
 
 			for parser in parsers {

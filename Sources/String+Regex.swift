@@ -38,7 +38,7 @@ public extension String {
 		case let regExp?:
 			expression = regExp
 		case nil:
-			guard let exp = try? NSRegularExpression(pattern: regex, options: []) else {
+			guard let exp = try? NSRegularExpression(pattern: regex, options: .anchorsMatchLines) else {
 				return nil
 			}
 
@@ -46,7 +46,9 @@ public extension String {
 			expressions[regex] = expression
 		}
 
-		let matchRange = expression.rangeOfFirstMatch(in: self, options: [], range: NSRange(location: 0, length: self.count))
+		let options: NSRegularExpression.MatchingOptions = .anchored
+		let range = NSRange(location: 0, length: self.count)
+		let matchRange = expression.rangeOfFirstMatch(in: self, options: options, range: range)
 		guard matchRange.location != NSNotFound else { return nil }
 
 		let matchString = NSString(string: self).substring(with: matchRange)
@@ -55,7 +57,7 @@ public extension String {
 		var regexCaptures = Array(repeating: "", count: templates.count)
 		var fullMatch = ""
 
-		for match in expression.matches(in: matchString, options: .withoutAnchoringBounds, range: matchesRange) {
+		for match in expression.matches(in: matchString, options: options, range: matchesRange) {
 			for (index, template) in templates.enumerated() {
 				let text = expression.replacementString(for: match, in: matchString, offset: 0, template: template)
 				guard text != "" else { continue }
