@@ -49,7 +49,9 @@ class SwiftCommonMarkTests: XCTestCase {
 			let actual: String = CommonMarkParser(markdown: test.markdown).render()
 			guard test.html != actual else { continue }
 			print("Failed \(test.section) example: \(test.example)." +
-				"\nExpected: \(test.html)\nActual: \(actual)\n")
+				"\nMarkdown: \(test.markdown)" +
+				"\nExpected: \(test.html)" +
+				"\nActual: \(actual)\n")
 			violations += 1
 		}
 
