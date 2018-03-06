@@ -25,7 +25,7 @@ enum CommonMarkNode {
 	case softBreak(String)
 	case text(String)
 	case thematicBreak(String)
-	case codeBlock(info: String, code: String)
+	case codeBlock(lang: String?, code: String)
 	indirect case heading(level: HeadingLevel, nodes: [CommonMarkNode])
 	indirect case image(url: String, nodes: [CommonMarkNode])
 	indirect case paragraph(nodes: [CommonMarkNode])
@@ -41,18 +41,40 @@ enum CommonMarkNode {
 
 	var html: String {
 		switch self {
+		case .document(let nodes):
+			return nodes.html
 		case .text(let str), .softBreak(let str), .lineBreak(let str), .htmlInline(let str), .htmlBlock(let str):
 			return str
 		case .code(let code):
-			return "<code>\(code)</code>"
-		case .paragraph(let nodes), .document(let nodes):
-			return nodes.map { $0.html }.joined()
+			return "<code>" + code + "</code>"
+		case .strong(let nodes):
+			return "<strong>" + nodes.html + "</strong>"
+		case .emphasis(let nodes):
+			return "<em>" + nodes.html + "</em>"
+		case .paragraph(let nodes):
+			return "<p>" + nodes.html + "</p>"
 		case let .heading(level, nodes):
-			return level.html(nodes.map { $0.html }.joined())
-		case .codeBlock, .thematicBreak,
-			 .blockQuote, .list, .item, .emphasis, .strong,
+			return level.html(nodes.html)
+		case .codeBlock(let lang, let code):
+			let prefix: String
+			switch lang {
+			case let lang?:
+				prefix = "<pre><code class=\"language-\(lang)\">"
+			case nil:
+				prefix = "<pre><code></pre>"
+			}
+			return prefix + code + "</code></pre>"
+
+		case .thematicBreak, .blockQuote, .list, .item,
 			 .link, .image, .customInline, .customBlock:
 			return ""
 		}
+	}
+}
+
+extension Array where Iterator.Element == CommonMarkNode {
+
+	var html: String {
+		return map { $0.html }.joined()
 	}
 }
