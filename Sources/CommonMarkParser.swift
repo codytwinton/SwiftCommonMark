@@ -14,7 +14,25 @@ enum CommonMarkOutput {
 
 // MARK: -
 
+struct NodeParser {
+	let regex: String
+	let templates: [String]
+	let generator: ([String]) -> CommonMarkNode
+}
+
 struct CommonMarkParser {
+
+	// MARK: - Constants
+
+	static let parsers: [NodeParser] = [
+		NodeParser(regex: "^(\\#{1,6}\\s?)([^#\n]+)\\s??\\#*", templates: ["$1", "$2"]) {
+			let level: HeadingLevel = HeadingLevel(rawValue: Int($0[0]) ?? 0) ?? .h1
+			return .heading(level: level, nodes: parseNodes(markdown: $0[1]))
+		}/*,
+		NodeParser(regex: "([^\\s]+)", templates: ["$1"]) {
+			return CommonMarkNode.text($0[0])
+		}*/
+	]
 
 	// MARK: Variables
 
@@ -30,6 +48,7 @@ struct CommonMarkParser {
 
 	static func parse(markdown: String) -> CommonMarkNode {
 		let nodes = parseNodes(markdown: markdown)
+		print("nodes \(nodes)")
 		return .document(nodes: nodes)
 	}
 
@@ -37,32 +56,33 @@ struct CommonMarkParser {
 
 		var nodes: [CommonMarkNode] = []
 
-		for input in markdown.components(separatedBy: .newlines) {
-			guard let regex = try? NSRegularExpression(pattern: "^(\\#{1,6}\\s?)([^#\n]+)\\s??\\#*", options: .anchorsMatchLines) else {
-				nodes.append(.text(input))
-				continue
+		var input = markdown
+
+		while !input.isEmpty {
+			print("input \(input)")
+
+			var isMatched = false
+
+			for parser in parsers {
+				guard let regexMatch = input.match(regex: parser.regex, with: parser.templates) else { continue }
+				let result = parser.generator(regexMatch.captures)
+				nodes.append(result)
+
+				let inputOffset = input.index(input.startIndex, offsetBy: regexMatch.fullMatch.count)
+				input = String(input[inputOffset...])
+				isMatched = true
+				break
 			}
 
-			guard let match = regex.firstMatch(in: input, options: .withoutAnchoringBounds, range: NSRange(location: 0, length: input.count)) else {
-				nodes.append(.text(input))
-				continue
-			}
-
-			guard match.range.location != NSNotFound else {
-				nodes.append(.text(input))
-				continue
-			}
-
-			guard let level = HeadingLevel(rawValue: match.range(at: 1).length - 1) else {
-				nodes.append(.text(input))
-				continue
-			}
-
-			let start = input.index(input.startIndex, offsetBy: match.range(at: 2).location)
-			let remaining = String(input[start...])
-
-			let headingNodes: [CommonMarkNode] = parseNodes(markdown: remaining)
-			nodes.append(.heading(level: level, nodes: headingNodes))
+			guard !isMatched else { continue }
+			nodes.append(.text(input))
+			input = ""
+			break
+			/*
+			let index = input.index(input.startIndex, offsetBy: 1)
+			nodes.append(.text(String(input[..<index])))
+			input = String(input[index...])
+			*/
 		}
 
 		return nodes

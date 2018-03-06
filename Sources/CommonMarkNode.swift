@@ -48,7 +48,7 @@ enum CommonMarkNode {
 		case let .heading(level, nodes):
 			return level.html(nodes.map { $0.html }.joined(separator: " "))
 		case .document(let nodes):
-			return nodes.map { $0.html }.joined(separator: "\n")
+			return nodes.map { $0.html }.filter { !$0.isEmpty && $0 != "\n" }.joined(separator: "\n") + "\n"
 		case .codeBlock, .thematicBreak,
 			 .blockQuote, .list, .item, .paragraph, .emphasis, .strong,
 			 .link, .image, .customInline, .customBlock:

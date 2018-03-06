@@ -40,14 +40,6 @@ class SwiftCommonMarkTests: XCTestCase {
         super.tearDown()
     }
 
-	func testStatic() {
-		let text = CommonMarkNode.text("This is my test")
-		let heading = CommonMarkNode.heading(level: .h1, nodes: [text])
-		let doc = CommonMarkNode.document(nodes: [heading])
-
-		XCTAssertEqual(doc.html, "<h1>This is my test</h1>")
-	}
-
 	func testViolations(for section: CommonMarkTestSection) {
 		let tests = commonMarkTests.filter { $0.section == section.rawValue }
 		var violations = 0
@@ -63,9 +55,11 @@ class SwiftCommonMarkTests: XCTestCase {
 		XCTAssertEqual(violations, 0, "\(section.rawValue) violations: \(violations) of \(tests.count)")
 	}
 
+	/*
 	func testHeadings() {
 		testViolations(for: .atxHeadings)
 	}
+	*/
 
 	func testRegex() {
 		let parser = CommonMarkParser(markdown: "# What is up\n")
