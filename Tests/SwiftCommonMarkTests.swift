@@ -68,10 +68,22 @@ class SwiftCommonMarkTests: XCTestCase {
 	}
 	*/
 
-	func testHeading() {
-		let parser = CommonMarkParser(markdown: "## \n#\n### ###\n")
-		let expected = "<h2></h2>\n<h1></h1>\n<h3></h3>\n"
-		XCTAssertEqual(parser.render(), expected)
+	func testStatic() {
+		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
+		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"
+		let parser = CommonMarkParser(markdown: input)
+
+		let actual = parser.render()
+
+		XCTAssertEqual(actual, expected)
+
+		guard actual != expected else { return }
+		print("\n********\n\n" +
+			"Failed:" +
+			"\nMarkdown: \(input)" +
+			"\nExpected: \(expected)" +
+			"\nActual: \(actual)" +
+			"\n********\n\n")
 	}
 
 	/*
