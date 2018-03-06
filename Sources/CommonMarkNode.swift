@@ -45,12 +45,12 @@ enum CommonMarkNode {
 			return str
 		case .code(let code):
 			return "<code>\(code)</code>"
+		case .paragraph(let nodes), .document(let nodes):
+			return nodes.map { $0.html }.joined()
 		case let .heading(level, nodes):
-			return level.html(nodes.map { $0.html }.joined(separator: " "))
-		case .document(let nodes):
-			return nodes.map { $0.html }.filter { !$0.isEmpty && $0 != "\n" }.joined(separator: "\n") + "\n"
+			return level.html(nodes.map { $0.html }.joined())
 		case .codeBlock, .thematicBreak,
-			 .blockQuote, .list, .item, .paragraph, .emphasis, .strong,
+			 .blockQuote, .list, .item, .emphasis, .strong,
 			 .link, .image, .customInline, .customBlock:
 			return ""
 		}

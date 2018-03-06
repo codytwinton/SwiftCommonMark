@@ -26,12 +26,15 @@ struct CommonMarkParser {
 
 	static let parsers: [NodeParser] = [
 		NodeParser(regex: "^(\\#{1,6}\\s?)([^#\n]+)\\s??\\#*", templates: ["$1", "$2"]) {
-			let level: HeadingLevel = HeadingLevel(rawValue: Int($0[0]) ?? 0) ?? .h1
+			let level: HeadingLevel = HeadingLevel(rawValue: $0[0].count - 1) ?? .h1
 			return .heading(level: level, nodes: parseNodes(markdown: $0[1]))
-		}/*,
-		NodeParser(regex: "([^\\s]+)", templates: ["$1"]) {
-			return CommonMarkNode.text($0[0])
-		}*/
+		},
+		NodeParser(regex: "(\\_{2}|\\*{2})(.+)(\\_{2}|\\*{2})", templates: ["$2"]) {
+			return .strong(nodes: parseNodes(markdown: $0[0]))
+		},
+		NodeParser(regex: "(\\_|\\*)([^\\_\\*]+)(\\_|\\*)", templates: ["$2"]) {
+			return .emphasis(nodes: parseNodes(markdown: $0[0]))
+		}
 	]
 
 	// MARK: Variables
@@ -48,7 +51,6 @@ struct CommonMarkParser {
 
 	static func parse(markdown: String) -> CommonMarkNode {
 		let nodes = parseNodes(markdown: markdown)
-		print("nodes \(nodes)")
 		return .document(nodes: nodes)
 	}
 
@@ -59,8 +61,6 @@ struct CommonMarkParser {
 		var input = markdown
 
 		while !input.isEmpty {
-			print("input \(input)")
-
 			var isMatched = false
 
 			for parser in parsers {
@@ -75,14 +75,16 @@ struct CommonMarkParser {
 			}
 
 			guard !isMatched else { continue }
-			nodes.append(.text(input))
-			input = ""
-			break
-			/*
-			let index = input.index(input.startIndex, offsetBy: 1)
-			nodes.append(.text(String(input[..<index])))
-			input = String(input[index...])
-			*/
+
+			switch input.first == "\n" {
+			case true:
+				let index = input.index(input.startIndex, offsetBy: 1)
+				nodes.append(.text(String(input[..<index])))
+				input = String(input[index...])
+			case false:
+				nodes.append(.text(input))
+				input = ""
+			}
 		}
 
 		return nodes

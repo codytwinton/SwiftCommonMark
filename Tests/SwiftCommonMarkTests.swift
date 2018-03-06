@@ -61,9 +61,10 @@ class SwiftCommonMarkTests: XCTestCase {
 	}
 	*/
 
-	func testRegex() {
-		let parser = CommonMarkParser(markdown: "# What is up\n")
-		XCTAssertEqual(parser.render(), "<h1>What is up</h1>\n")
+	func testHeading() {
+		let parser = CommonMarkParser(markdown: "# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n")
+		let expected = "<h1>foo</h1>\n<h2>foo</h2>\n<h3>foo</h3>\n<h4>foo</h4>\n<h5>foo</h5>\n<h6>foo</h6>\n"
+		XCTAssertEqual(parser.render(), expected)
 	}
 
 	/*

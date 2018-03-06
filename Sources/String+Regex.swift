@@ -64,7 +64,7 @@ public extension String {
 
 			fullMatch = expression.replacementString(for: match, in: matchString, offset: 0, template: "$0")
 		}
-		
+
 		return (regexCaptures, fullMatch)
 	}
 }
