@@ -38,7 +38,7 @@ struct CommonMarkParser {
 		var nodes: [CommonMarkNode] = []
 
 		for input in markdown.components(separatedBy: .newlines) {
-			guard let regex = try? NSRegularExpression(pattern: "^\\#{1,6}\\s?([^#\n]+)\\s??\\#*", options: .anchorsMatchLines) else {
+			guard let regex = try? NSRegularExpression(pattern: "^(\\#{1,6}\\s?)([^#\n]+)\\s??\\#*", options: .anchorsMatchLines) else {
 				nodes.append(.text(input))
 				continue
 			}
@@ -53,12 +53,12 @@ struct CommonMarkParser {
 				continue
 			}
 
-			guard let level = HeadingLevel(rawValue: match.range(at: 1).location - 1) else {
+			guard let level = HeadingLevel(rawValue: match.range(at: 1).length - 1) else {
 				nodes.append(.text(input))
 				continue
 			}
 
-			let start = input.index(input.startIndex, offsetBy: match.range(at: 1).location)
+			let start = input.index(input.startIndex, offsetBy: match.range(at: 2).location)
 			let remaining = String(input[start...])
 
 			let headingNodes: [CommonMarkNode] = parseNodes(markdown: remaining)
