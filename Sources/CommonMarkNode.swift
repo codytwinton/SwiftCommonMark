@@ -55,7 +55,7 @@ enum CommonMarkNode {
 			return "<p>" + nodes.html + "</p>"
 		case let .heading(level, nodes):
 			return level.html(nodes.html)
-		case .codeBlock(let lang, let code):
+		case let .codeBlock(lang, code):
 			let prefix: String
 			switch lang {
 			case let lang?:
