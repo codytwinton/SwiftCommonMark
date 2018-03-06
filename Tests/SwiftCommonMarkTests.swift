@@ -40,6 +40,14 @@ class SwiftCommonMarkTests: XCTestCase {
         super.tearDown()
     }
 
+	func testStatic() {
+		let text = CommonMarkNode.text("This is my test")
+		let heading = CommonMarkNode.heading(level: .h1, nodes: [text])
+		let doc = CommonMarkNode.document(nodes: [heading])
+
+		XCTAssertEqual(doc.html, "<h1>This is my test</h1>")
+	}
+
 	func testViolations(for section: CommonMarkTestSection) {
 		let tests = commonMarkTests.filter { $0.section == section.rawValue }
 		var violations = 0
@@ -47,18 +55,29 @@ class SwiftCommonMarkTests: XCTestCase {
 		for test in tests {
 			let actual: String = CommonMarkParser(markdown: test.markdown).render()
 			guard test.html != actual else { continue }
-			print("Failed Test \(test.example): \(test.section)")
+			print("Failed \(test.section) example: \(test.example)." +
+				"\nExpected: \(test.html)\nActual: \(actual)\n")
 			violations += 1
 		}
 
-		XCTAssertEqual(violations, 0, "\(section.rawValue) has \(violations) violations")
+		XCTAssertEqual(violations, 0, "\(section.rawValue) violations: \(violations) of \(tests.count)")
 	}
 
+	func testHeadings() {
+		testViolations(for: .atxHeadings)
+	}
+
+	func testRegex() {
+		let parser = CommonMarkParser(markdown: "# What is up\n")
+		XCTAssertEqual(parser.render(), "<h1>What is up</h1>\n")
+	}
+
+	/*
 	func testAllSectionViolations() {
 		for section in CommonMarkTestSection.all {
 			testViolations(for: section)
 		}
-	}
+	}*/
 
 	func testAllSectionsExist() {
 		let sections = CommonMarkTestSection.all

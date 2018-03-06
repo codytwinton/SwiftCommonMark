@@ -39,16 +39,6 @@ enum CommonMarkNode {
 	indirect case customInline(nodes: [CommonMarkNode])
 	indirect case customBlock(nodes: [CommonMarkNode])
 
-	var isContainer: Bool {
-		switch self {
-		case .code, .codeBlock, .htmlBlock, .htmlInline, .lineBreak, .softBreak, .text, .thematicBreak:
-			return false
-		case .document, .blockQuote, .list, .item, .paragraph, .heading, .emphasis, .strong,
-			 .link, .image, .customInline, .customBlock:
-			return true
-		}
-	}
-
 	var html: String {
 		switch self {
 		case .text(let str), .softBreak(let str), .lineBreak(let str), .htmlInline(let str), .htmlBlock(let str):
@@ -58,7 +48,7 @@ enum CommonMarkNode {
 		case let .heading(level, nodes):
 			return level.html(nodes.map { $0.html }.joined(separator: " "))
 		case .document(let nodes):
-			return nodes.map { $0.html }.joined(separator: " ")
+			return nodes.map { $0.html }.joined(separator: "\n")
 		case .codeBlock, .thematicBreak,
 			 .blockQuote, .list, .item, .paragraph, .emphasis, .strong,
 			 .link, .image, .customInline, .customBlock:
