@@ -29,47 +29,42 @@ struct CommonMarkParser {
 	}
 
 	static func parse(markdown: String) -> CommonMarkNode {
-		var nodes: [CommonMarkNode] = []
-
-		parseNodes(markdown: markdown) {
-			nodes.append($0)
-		}
-
+		let nodes = parseNodes(markdown: markdown)
 		return .document(nodes: nodes)
 	}
 
-	static func parseNodes(markdown: String, block: (CommonMarkNode) -> Void) {
+	static func parseNodes(markdown: String) -> [CommonMarkNode] {
+
+		var nodes: [CommonMarkNode] = []
+
 		for input in markdown.components(separatedBy: .newlines) {
 			guard let regex = try? NSRegularExpression(pattern: "^\\#{1,6}\\s?([^#\n]+)\\s??\\#*", options: .anchorsMatchLines) else {
-				block(.text(input))
+				nodes.append(.text(input))
 				continue
 			}
 
 			guard let match = regex.firstMatch(in: input, options: .withoutAnchoringBounds, range: NSRange(location: 0, length: input.count)) else {
-				block(.text(input))
+				nodes.append(.text(input))
 				continue
 			}
 
 			guard match.range.location != NSNotFound else {
-				block(.text(input))
+				nodes.append(.text(input))
 				continue
 			}
 
 			guard let level = HeadingLevel(rawValue: match.range(at: 1).location - 1) else {
-				block(.text(input))
+				nodes.append(.text(input))
 				continue
 			}
 
 			let start = input.index(input.startIndex, offsetBy: match.range(at: 1).location)
 			let remaining = String(input[start...])
 
-			var headingNodes: [CommonMarkNode] = []
-
-			parseNodes(markdown: remaining) {
-				headingNodes.append($0)
-			}
-
-			block(.heading(level: level, nodes: headingNodes))
+			let headingNodes: [CommonMarkNode] = parseNodes(markdown: remaining)
+			nodes.append(.heading(level: level, nodes: headingNodes))
 		}
+
+		return nodes
 	}
 }
