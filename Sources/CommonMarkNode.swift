@@ -54,13 +54,7 @@ enum CommonMarkNode {
 		case .paragraph(let nodes):
 			return "<p>" + nodes.html + "</p>"
 		case let .heading(level, nodes):
-			var htmlComponents = nodes.html.components(separatedBy: " #")
-
-			if htmlComponents.count > 1 {
-				htmlComponents.removeLast()
-			}
-
-			return level.html(htmlComponents.joined().trimmingCharacters(in: .whitespaces))
+			return level.html(nodes.html)
 		case let .codeBlock(lang, code):
 			let prefix: String
 			switch lang {

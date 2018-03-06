@@ -12,27 +12,35 @@ enum CommonMarkOutput {
 	case html
 }
 
-// MARK: -
-
 struct NodeParser {
-	let regex: String
-	let templates: [String]
+	let type: CommonMarkNodeType
 	let generator: ([String]) -> CommonMarkNode
 }
+
+// MARK: -
 
 struct CommonMarkParser {
 
 	// MARK: - Constants
 
 	static let parsers: [NodeParser] = [
-		NodeParser(regex: "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)", templates: ["$1", "$2"]) {
+		NodeParser(type: .heading) {
 			let level: HeadingLevel = HeadingLevel(rawValue: $0[0].count) ?? .h1
-			return .heading(level: level, nodes: parseNodes(markdown: $0[1]))
+			let raw = $0[1]
+			var components = raw.components(separatedBy: " #")
+
+			if components.count > 1,
+				let last = components.last?.trimmingCharacters(in: .whitespaces),
+				Set(last).count == 1 {
+				components.removeLast()
+			}
+
+			return .heading(level: level, nodes: parseNodes(markdown: components.joined()))
 		},
-		NodeParser(regex: "(\\_{2}|\\*{2})(.+)(\\_{2}|\\*{2})", templates: ["$2"]) {
+		NodeParser(type: .strong) {
 			return .strong(nodes: parseNodes(markdown: $0[0]))
 		},
-		NodeParser(regex: "(\\_|\\*)([^\\_\\*]+)(\\_|\\*)", templates: ["$2"]) {
+		NodeParser(type: .emphasis) {
 			return .emphasis(nodes: parseNodes(markdown: $0[0]))
 		}
 	]
@@ -64,7 +72,7 @@ struct CommonMarkParser {
 			var isMatched = false
 
 			for parser in parsers {
-				guard let regexMatch = input.match(regex: parser.regex, with: parser.templates) else { continue }
+				guard let regexMatch = input.match(regex: parser.type.regex, with: parser.type.regexTemplates) else { continue }
 				let result = parser.generator(regexMatch.captures)
 				nodes.append(result)
 
