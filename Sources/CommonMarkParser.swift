@@ -21,39 +21,45 @@ struct CommonMarkParser {
 	var node: CommonMarkNode
 
 	init(markdown: String) {
-		let nodes = CommonMarkNode.parseNodes(markdown: markdown)
-		self.node = .document(nodes: nodes)
+		node = CommonMarkParser.parse(markdown: markdown)
 	}
 
 	func render(to output: CommonMarkOutput = .html) -> String {
 		return node.html
 	}
-}
 
-extension CommonMarkNode {
+	static func parse(markdown: String) -> CommonMarkNode {
+		let nodes = parseNodes(markdown: markdown)
+		return .document(nodes: nodes)
+	}
 
 	static func parseNodes(markdown: String) -> [CommonMarkNode] {
 		var nodes: [CommonMarkNode] = []
 
 		for value in markdown.components(separatedBy: .newlines) {
-			guard let regex = try? NSRegularExpression(pattern: "^#{1,6}(?:[ \t]+|$)", options: []) else {
+			guard let regex = try? NSRegularExpression(pattern: "^\\#{1,6}\\s?([^#\n]+)\\s??\\#*", options: .anchorsMatchLines) else {
 				nodes.append(.text(value))
 				continue
 			}
 
-			let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
-
-			if range.location == NSNotFound {
+			guard let match = regex.firstMatch(in: value, options: .withoutAnchoringBounds, range: NSRange(location: 0, length: value.count)) else {
 				nodes.append(.text(value))
 				continue
 			}
 
-			guard let level = HeadingLevel(rawValue: range.length - 1) else {
+			guard match.range.location != NSNotFound else {
 				nodes.append(.text(value))
 				continue
 			}
 
-			let start = value.index(value.startIndex, offsetBy: range.location + range.length)
+			guard let level = HeadingLevel(rawValue: match.range(at: 1).location - 1) else {
+				nodes.append(.text(value))
+				continue
+			}
+
+			print("level \(level)")
+
+			let start = value.index(value.startIndex, offsetBy: match.range(at: 1).location)
 			let remaining = String(value[start...])
 
 			let headingNodes = parseNodes(markdown: remaining)
@@ -61,16 +67,5 @@ extension CommonMarkNode {
 		}
 
 		return nodes
-	}
-
-	var regex: String {
-		switch self {
-		case .heading:
-			return "^#{1,6}(?:[ \t]+|$)"
-		case .code, .codeBlock, .htmlBlock, .htmlInline, .lineBreak, .softBreak,
-			 .text, .thematicBreak, .document, .blockQuote, .list, .item, .paragraph,
-			 .emphasis, .strong, .link, .image, .customInline, .customBlock:
-			return ""
-		}
 	}
 }

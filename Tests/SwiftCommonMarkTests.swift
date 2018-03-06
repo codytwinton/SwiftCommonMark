@@ -67,17 +67,13 @@ class SwiftCommonMarkTests: XCTestCase {
 		testViolations(for: .atxHeadings)
 	}
 
-	func testRegex() {
-		let parser = CommonMarkParser(markdown: "# What is up\n")
-		XCTAssertEqual(parser.render(), "<h1>What is up</h1>\n")
-	}
-
 	/*
 	func testAllSectionViolations() {
 		for section in CommonMarkTestSection.all {
 			testViolations(for: section)
 		}
-	}*/
+	}
+	*/
 
 	func testAllSectionsExist() {
 		let sections = CommonMarkTestSection.all
