@@ -24,9 +24,9 @@ struct CommonMarkParser {
 	// MARK: - Constants
 
 	static let parsers: [NodeParser] = [
-		NodeParser(type: .heading) {
-			let level: HeadingLevel = HeadingLevel(rawValue: $0[0].count) ?? .h1
-			let raw = $0[1]
+		NodeParser(type: .heading) { matches in
+			let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
+			let raw = matches[1]
 			var components = raw.components(separatedBy: " #")
 
 			if let last = components.last?.trimmingCharacters(in: .whitespaces) {
@@ -39,11 +39,11 @@ struct CommonMarkParser {
 			let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
 			return .heading(level: level, nodes: parseNodes(markdown: markdown))
 		},
-		NodeParser(type: .strong) {
-			return .strong(nodes: parseNodes(markdown: $0[0]))
+		NodeParser(type: .strong) { matches in
+			return .strong(nodes: parseNodes(markdown: matches[0]))
 		},
-		NodeParser(type: .emphasis) {
-			return .emphasis(nodes: parseNodes(markdown: $0[0]))
+		NodeParser(type: .emphasis) { matches in
+			return .emphasis(nodes: parseNodes(markdown: matches[0]))
 		}
 	]
 
