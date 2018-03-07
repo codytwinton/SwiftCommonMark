@@ -12,7 +12,7 @@ import XCTest
 class SwiftCommonMarkTests: XCTestCase {
 
 	lazy var commonMarkTests: [CommonMarkTest] = {
-		guard let path = Bundle(for: type(of: self)).path(forResource: "commonmark-tests-spec", ofType: "json") else {
+		guard let path = Bundle(for: type(of: self)).path(forResource: "commonmark-tests-spec-0.28", ofType: "json") else {
 			XCTAssert(false, "CommonMark tests are nil")
 			return []
 		}
