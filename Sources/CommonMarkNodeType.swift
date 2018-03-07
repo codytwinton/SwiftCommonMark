@@ -34,6 +34,8 @@ enum CommonMarkNodeType {
 		switch self {
 		case .heading:
 			return "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
+		case .thematicBreak:
+			return "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
 		case .blockQuote, .code, .document, .emphasis, .htmlBlock,
 			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
 			 .strong, .text, .customInline, .customBlock:

@@ -51,7 +51,7 @@ class SwiftCommonMarkTests: XCTestCase {
 			let actual: String = CommonMarkParser(markdown: test.markdown).render()
 			guard test.html != actual else { continue }
 			print("Failed \(test.section) example: \(test.example):" +
-				"\nMarkdown: \(test.markdown)" +
+				"\nMarkdown: |\(test.markdown)|" +
 				"\nExpected: \(test.html)" +
 				"\nActual: \(actual)" +
 				"\n********\n\n")
@@ -62,11 +62,10 @@ class SwiftCommonMarkTests: XCTestCase {
 		return violations
 	}
 
-	/*
 	func testSection() {
-		testViolations(for: .fencedCodeBlocks)
+		testViolations(for: .thematicBreak)
 	}
-	*/
+
 	func testStatic() {
 		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
 		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"

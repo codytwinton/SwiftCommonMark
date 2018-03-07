@@ -18,13 +18,13 @@ enum HeadingLevel: Int, EnumProtocol {
 }
 
 enum CommonMarkNode {
+	case thematicBreak
 	case code(String)
 	case htmlBlock(String)
 	case htmlInline(String)
 	case lineBreak(String)
 	case softBreak(String)
 	case text(String)
-	case thematicBreak(String)
 	case codeBlock(lang: String?, code: String)
 	indirect case heading(level: HeadingLevel, nodes: [CommonMarkNode])
 	indirect case image(url: String, nodes: [CommonMarkNode])
@@ -41,6 +41,8 @@ enum CommonMarkNode {
 
 	var html: String {
 		switch self {
+		case .thematicBreak:
+			return "<hr />"
 		case .document(let nodes):
 			return nodes.html
 		case .text(let str), .softBreak(let str), .lineBreak(let str), .htmlInline(let str), .htmlBlock(let str):
@@ -65,7 +67,7 @@ enum CommonMarkNode {
 			}
 			return prefix + code + "</code></pre>"
 
-		case .thematicBreak, .blockQuote, .list, .item,
+		case .blockQuote, .list, .item,
 			 .link, .image, .customInline, .customBlock:
 			return ""
 		}

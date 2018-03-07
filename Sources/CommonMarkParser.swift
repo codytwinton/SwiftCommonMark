@@ -24,6 +24,9 @@ struct CommonMarkParser {
 	// MARK: - Constants
 
 	static let parsers: [NodeParser] = [
+		NodeParser(type: .thematicBreak) { _ in
+			return .thematicBreak
+		},
 		NodeParser(type: .heading) { matches in
 			let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
 			let raw = matches[1]
