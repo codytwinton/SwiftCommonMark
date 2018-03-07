@@ -44,7 +44,7 @@ enum CommonMarkNode {
 		case .document(let nodes):
 			return nodes.html
 		case .text(let str), .softBreak(let str), .lineBreak(let str), .htmlInline(let str), .htmlBlock(let str):
-			return str.trimmingCharacters(in: .whitespaces)
+			return str.trimmingCharacters(in: .whitespaces).sanatizeHTML()
 		case .code(let code):
 			return "<code>" + code + "</code>"
 		case .strong(let nodes):
@@ -75,20 +75,11 @@ enum CommonMarkNode {
 extension Array where Iterator.Element == CommonMarkNode {
 
 	var html: String {
-		return map { $0.html.sanatizeHTML() }.joined()
+		return map { $0.html }.joined()
 	}
 }
 
 extension Character {
-
-	var isDangerousASCII: Bool {
-		switch self {
-		case "<", ">", "/", "(", ")", "{", "}", "\"":
-			return true
-		default:
-			return false
-		}
-	}
 
 	var htmlSafe: String {
 		switch self {
