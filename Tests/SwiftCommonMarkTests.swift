@@ -63,11 +63,10 @@ class SwiftCommonMarkTests: XCTestCase {
 	}
 
 	/*
-	func testHeadings() {
-		testViolations(for: .atxHeadings)
+	func testSection() {
+		testViolations(for: .fencedCodeBlocks)
 	}
 	*/
-
 	func testStatic() {
 		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
 		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"
