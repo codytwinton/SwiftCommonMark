@@ -75,6 +75,39 @@ enum CommonMarkNode {
 extension Array where Iterator.Element == CommonMarkNode {
 
 	var html: String {
-		return map { $0.html }.joined()
+		return map { $0.html.sanatizeHTML() }.joined()
+	}
+}
+
+extension Character {
+
+	var isDangerousASCII: Bool {
+		switch self {
+		case "<", ">", "/", "(", ")", "{", "}", "\"":
+			return true
+		default:
+			return false
+		}
+	}
+
+	var htmlSafe: String {
+		switch self {
+		case "<": return "&lt;"
+		case ">": return "&gt;"
+		case "/": return "&#47;"
+		case "(": return "&#40;"
+		case ")": return "&#41;"
+		case "{": return "&#123;"
+		case "}": return "&#125;"
+		case "\"": return "&quot;"
+		default: return String(self)
+		}
+	}
+}
+
+public extension String {
+
+	func sanatizeHTML() -> String {
+		return self.map { $0.htmlSafe }.joined()
 	}
 }
