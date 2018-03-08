@@ -11,10 +11,6 @@ import Foundation
 enum HeadingLevel: Int, EnumProtocol {
 	case h1 = 1
 	case h2, h3, h4, h5, h6
-
-	func html(_ raw: String) -> String {
-		return "<\(self)>\(raw)</\(self)>"
-	}
 }
 
 enum Node {
@@ -38,4 +34,29 @@ enum Node {
 	indirect case list(isOrdered: Bool, nodes: [Node])
 	indirect case customInline(nodes: [Node])
 	indirect case customBlock(nodes: [Node])
+
+	var type: NodeType {
+		switch self {
+		case .blockQuote: return .blockQuote
+		case .code: return .code
+		case .codeBlock: return .codeBlock
+		case .document: return .document
+		case .emphasis: return .emphasis
+		case .heading: return .heading
+		case .htmlBlock: return .htmlBlock
+		case .htmlInline: return .htmlInline
+		case .image: return .image
+		case .item: return .item
+		case .lineBreak: return .lineBreak
+		case .link: return .link
+		case .list: return .list
+		case .paragraph: return .paragraph
+		case .softBreak: return .softBreak
+		case .strong: return .strong
+		case .text: return .text
+		case .thematicBreak: return .thematicBreak
+		case .customInline: return .customInline
+		case .customBlock: return .customBlock
+		}
+	}
 }

@@ -37,7 +37,7 @@ extension Node: HTMLOutputable {
 		case .paragraph(let nodes):
 			return "<p>" + nodes.html + "</p>"
 		case let .heading(level, nodes):
-			return level.html(nodes.html)
+			return "<\(level)>" + nodes.html + "</\(level)>"
 		case let .codeBlock(lang, code):
 			let prefix: String
 			switch lang {
