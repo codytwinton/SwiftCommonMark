@@ -8,13 +8,9 @@
 
 import Foundation
 
-enum CommonMarkOutput {
-	case html
-}
-
 struct NodeParser {
-	let type: CommonMarkNodeType
-	let generator: ([String]) -> CommonMarkNode
+	let type: NodeType
+	let generator: ([String]) -> Node
 }
 
 // MARK: -
@@ -52,24 +48,24 @@ struct CommonMarkParser {
 
 	// MARK: Variables
 
-	var node: CommonMarkNode
+	var node: Node
 
 	init(markdown: String) {
 		node = CommonMarkParser.parse(markdown: markdown)
 	}
 
-	func render(to output: CommonMarkOutput = .html) -> String {
+	func render() -> String {
 		return node.html
 	}
 
-	static func parse(markdown: String) -> CommonMarkNode {
+	static func parse(markdown: String) -> Node {
 		let nodes = parseNodes(markdown: markdown, in: .document)
 		return .document(nodes: nodes)
 	}
 
-	static func parseNodes(markdown: String, in type: CommonMarkNodeType) -> [CommonMarkNode] {
+	static func parseNodes(markdown: String, in type: NodeType) -> [Node] {
 
-		var nodes: [CommonMarkNode] = []
+		var nodes: [Node] = []
 
 		guard !markdown.isEmpty else {
 			nodes.append(.text(markdown))

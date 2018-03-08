@@ -1,5 +1,5 @@
 //
-//  CommonMarkNodeType.swift
+//  NodeType.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 3/6/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CommonMarkNodeType {
+enum NodeType {
 	case blockQuote
 	case code
 	case codeBlock
@@ -40,7 +40,7 @@ enum CommonMarkNodeType {
 			return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
 		case .emphasis:
 			return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
-		case .blockQuote, .code, .document, .htmlBlock,
+		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
 			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
 			 .text, .customInline, .customBlock:
 			return ""
@@ -55,7 +55,7 @@ enum CommonMarkNodeType {
 			return ["$2"]
 		case .emphasis:
 			return ["$2"]
-		case .blockQuote, .code, .document, .htmlBlock,
+		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
 			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
 			 .text, .thematicBreak, .customInline, .customBlock:
 			return []

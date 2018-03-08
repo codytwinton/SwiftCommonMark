@@ -18,7 +18,7 @@ protocol HTMLOutputable {
 
 // MARK: - Extensions
 
-extension CommonMarkNode: HTMLOutputable {
+extension Node: HTMLOutputable {
 
 	var html: String {
 		switch self {
@@ -55,7 +55,7 @@ extension CommonMarkNode: HTMLOutputable {
 	}
 }
 
-private extension Array where Iterator.Element == CommonMarkNode {
+private extension Array where Iterator.Element == Node {
 
 	var html: String {
 		return map { $0.html }.joined()
