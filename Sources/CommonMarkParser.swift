@@ -87,14 +87,18 @@ struct CommonMarkParser {
 				break
 			}
 
-			guard !isMatched else { continue }
+			guard !isMatched, let first = input.first else { continue }
 
-			switch input.first == "\n" {
-			case true:
+			if first == "\n" {
 				let index = input.index(input.startIndex, offsetBy: 1)
-				nodes.append(.text(String(input[..<index])))
+				nodes.append(.text(String(first)))
 				input = String(input[index...])
-			case false:
+			} else if type == .document, let paragraphIndex = input.index(of: "\n") {
+				let paragraph = String(input[..<paragraphIndex])
+				let paragraphNodes = parseNodes(markdown: paragraph, in: .paragraph)
+				nodes.append(.paragraph(nodes: paragraphNodes))
+				input = String(input[paragraphIndex...])
+			} else {
 				nodes.append(.text(input))
 				input = ""
 			}
