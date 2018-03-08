@@ -13,7 +13,12 @@ enum HeadingLevel: Int, EnumProtocol {
 	case h2, h3, h4, h5, h6
 }
 
+// MARK: -
+
 enum Node {
+
+	// MARK: Cases
+
 	case thematicBreak
 	case code(String)
 	case htmlBlock(String)
@@ -34,6 +39,8 @@ enum Node {
 	indirect case list(isOrdered: Bool, nodes: [Node])
 	indirect case customInline(nodes: [Node])
 	indirect case customBlock(nodes: [Node])
+
+	// MARK: Variables
 
 	var type: NodeType {
 		switch self {
