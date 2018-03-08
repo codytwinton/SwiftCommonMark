@@ -108,11 +108,7 @@ enum NodeType {
 	func parse(markdown: String) -> [Node] {
 
 		var nodes: [Node] = []
-
-		guard !markdown.isEmpty else {
-			nodes.append(.text(markdown))
-			return nodes
-		}
+		guard !markdown.isEmpty else { return nodes }
 
 		var input = markdown
 
