@@ -66,4 +66,11 @@ enum Node {
 		case .customBlock: return .customBlock
 		}
 	}
+
+	// MARK: - Functions
+
+	static func parseDocument(markdown: String) -> Node {
+		let nodes = NodeType.document.parse(markdown: markdown)
+		return .document(nodes: nodes)
+	}
 }

@@ -48,7 +48,7 @@ class SwiftCommonMarkTests: XCTestCase {
 		print("\n********\n\n")
 
 		for test in tests {
-			let actual: String = CommonMarkParser(markdown: test.markdown).render()
+			let actual: String = Node.parseDocument(markdown: test.markdown).html
 			guard test.html != actual else { continue }
 			print("Failed \(test.section) example: \(test.example):" +
 				"\nMarkdown: |\(test.markdown)|" +
@@ -69,9 +69,9 @@ class SwiftCommonMarkTests: XCTestCase {
 	func testStatic() {
 		let input = "**Testing *test* What**\n"
 		let expected = "<strong>Testing <em>test</em> What</strong>\n"
-		let parser = CommonMarkParser(markdown: input)
+		let node = Node.parseDocument(markdown: input)
 
-		let actual = parser.render()
+		let actual = node.html
 
 		XCTAssertEqual(actual, expected)
 
