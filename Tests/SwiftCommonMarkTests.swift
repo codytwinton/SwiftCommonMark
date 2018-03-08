@@ -67,8 +67,8 @@ class SwiftCommonMarkTests: XCTestCase {
 	}
 
 	func testStatic() {
-		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
-		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"
+		let input = "**Testing *test* What**\n"
+		let expected = "<strong>Testing <em>test</em> What</strong>\n"
 		let parser = CommonMarkParser(markdown: input)
 
 		let actual = parser.render()

@@ -41,6 +41,12 @@ struct CommonMarkParser {
 
 			let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
 			return .heading(level: level, nodes: parseNodes(markdown: markdown, in: .heading))
+		},
+		NodeParser(type: .strong) { matches in
+			return .strong(nodes: parseNodes(markdown: matches[0], in: .strong))
+		},
+		NodeParser(type: .emphasis) { matches in
+			return .emphasis(nodes: parseNodes(markdown: matches[0], in: .emphasis))
 		}
 	]
 

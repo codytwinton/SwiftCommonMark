@@ -36,9 +36,13 @@ enum CommonMarkNodeType {
 			return "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
 		case .thematicBreak:
 			return "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
-		case .blockQuote, .code, .document, .emphasis, .htmlBlock,
+		case .strong:
+			return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
+		case .emphasis:
+			return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
+		case .blockQuote, .code, .document, .htmlBlock,
 			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
-			 .strong, .text, .customInline, .customBlock:
+			 .text, .customInline, .customBlock:
 			return ""
 		}
 	}
@@ -47,7 +51,11 @@ enum CommonMarkNodeType {
 		switch self {
 		case .heading:
 			return ["$1", "$2"]
-		case .strong, .emphasis, .blockQuote, .code, .document, .htmlBlock,
+		case .strong:
+			return ["$2"]
+		case .emphasis:
+			return ["$2"]
+		case .blockQuote, .code, .document, .htmlBlock,
 			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
 			 .text, .thematicBreak, .customInline, .customBlock:
 			return []
