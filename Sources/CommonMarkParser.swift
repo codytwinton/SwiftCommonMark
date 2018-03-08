@@ -40,7 +40,7 @@ struct CommonMarkParser {
 			}
 
 			let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
-			return .heading(level: level, nodes: parseNodes(markdown: markdown))
+			return .heading(level: level, nodes: parseNodes(markdown: markdown, in: .heading))
 		}
 	]
 
@@ -57,11 +57,11 @@ struct CommonMarkParser {
 	}
 
 	static func parse(markdown: String) -> CommonMarkNode {
-		let nodes = parseNodes(markdown: markdown)
+		let nodes = parseNodes(markdown: markdown, in: .document)
 		return .document(nodes: nodes)
 	}
 
-	static func parseNodes(markdown: String) -> [CommonMarkNode] {
+	static func parseNodes(markdown: String, in type: CommonMarkNodeType) -> [CommonMarkNode] {
 
 		var nodes: [CommonMarkNode] = []
 
