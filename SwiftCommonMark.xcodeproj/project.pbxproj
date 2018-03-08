@@ -17,6 +17,7 @@
 		5234F8B1204F107900A0141E /* CommonMarkNodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234F8B0204F107900A0141E /* CommonMarkNodeType.swift */; };
 		52A32A06204DD850006EEF3F /* CommonMarkNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMarkNode.swift */; };
 		52A32A08204DD882006EEF3F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A07204DD882006EEF3F /* Extensions.swift */; };
+		52C3D1102051EF6F00283A59 /* HTMLOutputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C3D10F2051EF6F00283A59 /* HTMLOutputable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		5234F8B0204F107900A0141E /* CommonMarkNodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkNodeType.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* CommonMarkNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkNode.swift; sourceTree = "<group>"; };
 		52A32A07204DD882006EEF3F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		52C3D10F2051EF6F00283A59 /* HTMLOutputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLOutputable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				52328760204CA6100093C905 /* SwiftCommonMark.h */,
 				52328761204CA6100093C905 /* Info.plist */,
+				52C3D10E2051EF4700283A59 /* Output */,
 				5234F8B0204F107900A0141E /* CommonMarkNodeType.swift */,
 				52328777204CA8A50093C905 /* CommonMarkParser.swift */,
 				52A32A05204DD850006EEF3F /* CommonMarkNode.swift */,
@@ -105,6 +108,14 @@
 				5232876D204CA6100093C905 /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		52C3D10E2051EF4700283A59 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				52C3D10F2051EF6F00283A59 /* HTMLOutputable.swift */,
+			);
+			path = Output;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52328778204CA8A50093C905 /* CommonMarkParser.swift in Sources */,
+				52C3D1102051EF6F00283A59 /* HTMLOutputable.swift in Sources */,
 				52A32A06204DD850006EEF3F /* CommonMarkNode.swift in Sources */,
 				5234F8B1204F107900A0141E /* CommonMarkNodeType.swift in Sources */,
 				5234F8AF204E58A700A0141E /* String+Regex.swift in Sources */,
