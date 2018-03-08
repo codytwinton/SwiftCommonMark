@@ -88,10 +88,10 @@
 				52328760204CA6100093C905 /* SwiftCommonMark.h */,
 				52328761204CA6100093C905 /* Info.plist */,
 				52C3D10E2051EF4700283A59 /* Output */,
+				52C3D1112051F32000283A59 /* Extensions */,
 				5234F8B0204F107900A0141E /* CommonMarkNodeType.swift */,
 				52328777204CA8A50093C905 /* CommonMarkParser.swift */,
 				52A32A05204DD850006EEF3F /* CommonMarkNode.swift */,
-				52A32A07204DD882006EEF3F /* Extensions.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -113,6 +113,14 @@
 				52C3D10F2051EF6F00283A59 /* HTMLOutputable.swift */,
 			);
 			path = Output;
+			sourceTree = "<group>";
+		};
+		52C3D1112051F32000283A59 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52A32A07204DD882006EEF3F /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
