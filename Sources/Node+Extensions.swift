@@ -14,38 +14,18 @@ import Foundation
 
 extension NodeType {
 
-	// MARK: Constants
-
-	var nodeParsers: [NodeParser] {
-		return [
-			NodeParser(type: .thematicBreak) { _ in
-				return .thematicBreak
-			},
-			NodeParser(type: .heading) { matches in
-				let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
-				let raw = matches[1]
-				var components = raw.components(separatedBy: " #")
-
-				if let last = components.last?.trimmingCharacters(in: .whitespaces) {
-					let set = Set(last)
-					if set.count == 1, set.first == "#" {
-						components.removeLast()
-					}
-				}
-
-				let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
-				return .heading(level: level, nodes: NodeType.heading.parse(markdown: markdown))
-			},
-			NodeParser(type: .strong) { matches in
-				return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
-			},
-			NodeParser(type: .emphasis) { matches in
-				return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
-			}
-		]
-	}
-
 	// MARK: Variables
+
+	var subNodes: [NodeType] {
+		switch self {
+		case .document, .heading, .strong, .emphasis, .paragraph:
+			return [.thematicBreak, .heading, .strong, .emphasis]
+		case .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
+			 .image, .item, .lineBreak, .link, .list, .softBreak, .text,
+			 .thematicBreak, .customInline, .customBlock:
+			return []
+		}
+	}
 
 	var regex: String {
 		switch self {
@@ -80,6 +60,7 @@ extension NodeType {
 	}
 
 	// MARK: Functions
+
 	func parse(markdown: String) -> [Node] {
 
 		var nodes: [Node] = []
@@ -91,9 +72,9 @@ extension NodeType {
 
 			var isMatched = false
 
-			for parser in nodeParsers {
-				guard let regexMatch = input.match(regex: parser.type.regex, with: parser.type.regexTemplates) else { continue }
-				let result = parser.generator(regexMatch.captures)
+			for subNode in subNodes {
+				guard let regexMatch = input.match(regex: subNode.regex, with: subNode.regexTemplates) else { continue }
+				let result = subNode.node(from: regexMatch.captures)
 				nodes.append(result)
 
 				let inputOffset = input.index(input.startIndex, offsetBy: regexMatch.fullMatch.count)
@@ -121,11 +102,33 @@ extension NodeType {
 
 		return nodes
 	}
-}
 
-// MARK: -
+	func node(from matches: [String]) -> Node {
+		switch self {
+		case .thematicBreak:
+			return .thematicBreak
+		case .heading:
+			let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
+			let raw = matches[1]
+			var components = raw.components(separatedBy: " #")
 
-struct NodeParser {
-	let type: NodeType
-	let generator: ([String]) -> Node
+			if let last = components.last?.trimmingCharacters(in: .whitespaces) {
+				let set = Set(last)
+				if set.count == 1, set.first == "#" {
+					components.removeLast()
+				}
+			}
+
+			let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
+			return .heading(level: level, nodes: NodeType.heading.parse(markdown: markdown))
+		case .strong:
+			return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
+		case .emphasis:
+			return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
+		case .document, .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
+			 .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak, .text,
+			 .customInline, .customBlock:
+			return .text("")
+		}
+	}
 }
