@@ -6,11 +6,40 @@
 //  Copyright © 2018 Cody Winton. All rights reserved.
 //
 
+// MARK: Imports
+
 import Foundation
+
+// MARK: -
 
 enum HeadingLevel: Int, EnumProtocol {
 	case h1 = 1
 	case h2, h3, h4, h5, h6
+}
+
+// MARK: -
+
+enum NodeType {
+	case blockQuote
+	case code
+	case codeBlock
+	case document
+	case emphasis
+	case heading
+	case htmlBlock
+	case htmlInline
+	case image
+	case item
+	case lineBreak
+	case link
+	case list
+	case paragraph
+	case softBreak
+	case strong
+	case text
+	case thematicBreak
+	case customInline
+	case customBlock
 }
 
 // MARK: -

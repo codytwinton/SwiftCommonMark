@@ -1,5 +1,5 @@
 //
-//  NodeType.swift
+//  Node+Extensions.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 3/6/18.
@@ -10,32 +10,9 @@
 
 import Foundation
 
-// MARK: -
+// MARK: Parsing Markdown
 
-enum NodeType {
-
-	// MARK: Cases
-
-	case blockQuote
-	case code
-	case codeBlock
-	case document
-	case emphasis
-	case heading
-	case htmlBlock
-	case htmlInline
-	case image
-	case item
-	case lineBreak
-	case link
-	case list
-	case paragraph
-	case softBreak
-	case strong
-	case text
-	case thematicBreak
-	case customInline
-	case customBlock
+extension NodeType {
 
 	// MARK: Variables
 
@@ -72,7 +49,6 @@ enum NodeType {
 	}
 
 	// MARK: Functions
-
 	func parse(markdown: String) -> [Node] {
 
 		var nodes: [Node] = []
