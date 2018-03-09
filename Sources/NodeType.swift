@@ -12,40 +12,6 @@ import Foundation
 
 // MARK: -
 
-struct NodeParser {
-	let type: NodeType
-	let generator: ([String]) -> Node
-}
-
-let parsers: [NodeParser] = [
-	NodeParser(type: .thematicBreak) { _ in
-		return .thematicBreak
-	},
-	NodeParser(type: .heading) { matches in
-		let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
-		let raw = matches[1]
-		var components = raw.components(separatedBy: " #")
-
-		if let last = components.last?.trimmingCharacters(in: .whitespaces) {
-			let set = Set(last)
-			if set.count == 1, set.first == "#" {
-				components.removeLast()
-			}
-		}
-
-		let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
-		return .heading(level: level, nodes: NodeType.heading.parse(markdown: markdown))
-	},
-	NodeParser(type: .strong) { matches in
-		return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
-	},
-	NodeParser(type: .emphasis) { matches in
-		return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
-	}
-]
-
-// MARK: -
-
 enum NodeType {
 
 	// MARK: Cases
@@ -105,6 +71,8 @@ enum NodeType {
 		}
 	}
 
+	// MARK: Functions
+
 	func parse(markdown: String) -> [Node] {
 
 		var nodes: [Node] = []
@@ -147,3 +115,37 @@ enum NodeType {
 		return nodes
 	}
 }
+
+// MARK: -
+
+struct NodeParser {
+	let type: NodeType
+	let generator: ([String]) -> Node
+}
+
+let parsers: [NodeParser] = [
+	NodeParser(type: .thematicBreak) { _ in
+		return .thematicBreak
+	},
+	NodeParser(type: .heading) { matches in
+		let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
+		let raw = matches[1]
+		var components = raw.components(separatedBy: " #")
+
+		if let last = components.last?.trimmingCharacters(in: .whitespaces) {
+			let set = Set(last)
+			if set.count == 1, set.first == "#" {
+				components.removeLast()
+			}
+		}
+
+		let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
+		return .heading(level: level, nodes: NodeType.heading.parse(markdown: markdown))
+	},
+	NodeParser(type: .strong) { matches in
+		return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
+	},
+	NodeParser(type: .emphasis) { matches in
+		return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
+	}
+]

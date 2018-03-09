@@ -18,6 +18,8 @@ protocol HTMLOutputable {
 
 // MARK: - Extensions
 
+// MARK: - HTML Output Extensions
+
 extension Node: HTMLOutputable {
 
 	var html: String {
@@ -55,16 +57,18 @@ extension Node: HTMLOutputable {
 	}
 }
 
-private extension Array where Iterator.Element == Node {
+extension Array where Element: HTMLOutputable {
 
 	var html: String {
 		return map { $0.html }.joined()
 	}
 }
 
+// MARK: Sanitized HTML Extensions
+
 private extension Character {
 
-	var htmlSafe: String {
+	func sanatizeHTML() -> String {
 		switch self {
 		case "<": return "&lt;"
 		case ">": return "&gt;"
@@ -82,6 +86,6 @@ private extension Character {
 private extension String {
 
 	func sanatizeHTML() -> String {
-		return map { $0.htmlSafe }.joined()
+		return map { $0.sanatizeHTML() }.joined()
 	}
 }
