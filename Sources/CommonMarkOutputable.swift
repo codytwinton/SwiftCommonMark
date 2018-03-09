@@ -54,7 +54,7 @@ extension Node: CommonMarkOutputable {
 			}
 
 			return "![\(alt)](\(source)\(srcTitle))"
-		case .blockQuote, .list, .item,
+		case .blockQuote, .listItem, .item,
 			 .link, .customInline, .customBlock:
 			return ""
 		}

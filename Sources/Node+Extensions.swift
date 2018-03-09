@@ -18,16 +18,18 @@ extension NodeType {
 
 	var subNodes: [NodeType] {
 		switch self {
-		case .document, .heading, .strong, .emphasis, .paragraph:
+		case .document:
+			return [.thematicBreak, .codeBlock, .blockQuote, .heading, .list, .htmlBlock, .paragraph]
+		case .heading, .strong, .emphasis, .paragraph:
 			return [.thematicBreak, .heading, .strong, .emphasis]
 		case .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
-			 .image, .item, .lineBreak, .link, .list, .softBreak, .text,
+			 .image, .listItem, .lineBreak, .link, .list, .softBreak, .text,
 			 .thematicBreak, .customInline, .customBlock:
 			return []
 		}
 	}
 
-	var regex: String {
+	var regex: String? {
 		switch self {
 		case .heading:
 			return "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
@@ -38,9 +40,9 @@ extension NodeType {
 		case .emphasis:
 			return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
 		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
-			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
+			 .htmlInline, .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak,
 			 .text, .customInline, .customBlock:
-			return ""
+			return nil
 		}
 	}
 
@@ -53,7 +55,7 @@ extension NodeType {
 		case .emphasis:
 			return ["$2"]
 		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
-			 .htmlInline, .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak,
+			 .htmlInline, .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak,
 			 .text, .thematicBreak, .customInline, .customBlock:
 			return []
 		}
@@ -73,7 +75,8 @@ extension NodeType {
 			var isMatched = false
 
 			for subNode in subNodes {
-				guard let regexMatch = input.match(regex: subNode.regex, with: subNode.regexTemplates) else { continue }
+				guard let regex = subNode.regex else { continue }
+				guard let regexMatch = input.match(regex: regex, with: subNode.regexTemplates) else { continue }
 				let result = subNode.node(from: regexMatch.captures)
 				nodes.append(result)
 
@@ -126,7 +129,7 @@ extension NodeType {
 		case .emphasis:
 			return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
 		case .document, .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
-			 .image, .item, .lineBreak, .link, .list, .paragraph, .softBreak, .text,
+			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text,
 			 .customInline, .customBlock:
 			return .text("")
 		}

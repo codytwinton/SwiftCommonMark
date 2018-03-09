@@ -29,7 +29,7 @@ enum NodeType {
 	case htmlBlock
 	case htmlInline
 	case image
-	case item
+	case listItem
 	case lineBreak
 	case link
 	case list
@@ -65,7 +65,7 @@ enum Node {
 	indirect case document(nodes: [Node])
 	indirect case blockQuote(nodes: [Node])
 	indirect case item(nodes: [Node])
-	indirect case list(isOrdered: Bool, nodes: [Node])
+	indirect case listItem(isOrdered: Bool, nodes: [Node])
 	indirect case customInline(nodes: [Node])
 	indirect case customBlock(nodes: [Node])
 
@@ -82,10 +82,10 @@ enum Node {
 		case .htmlBlock: return .htmlBlock
 		case .htmlInline: return .htmlInline
 		case .image: return .image
-		case .item: return .item
+		case .item: return .listItem
 		case .lineBreak: return .lineBreak
 		case .link: return .link
-		case .list: return .list
+		case .listItem: return .list
 		case .paragraph: return .paragraph
 		case .softBreak: return .softBreak
 		case .strong: return .strong

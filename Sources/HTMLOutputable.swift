@@ -54,7 +54,7 @@ extension Node: HTMLOutputable {
 			}
 			return prefix + code + "</code></pre>"
 
-		case .blockQuote, .list, .item,
+		case .blockQuote, .listItem, .item,
 			 .link, .image, .customInline, .customBlock:
 			return ""
 		}
