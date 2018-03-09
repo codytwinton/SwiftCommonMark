@@ -14,6 +14,37 @@ import Foundation
 
 extension NodeType {
 
+	// MARK: Constants
+
+	var nodeParsers: [NodeParser] {
+		return [
+			NodeParser(type: .thematicBreak) { _ in
+				return .thematicBreak
+			},
+			NodeParser(type: .heading) { matches in
+				let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
+				let raw = matches[1]
+				var components = raw.components(separatedBy: " #")
+
+				if let last = components.last?.trimmingCharacters(in: .whitespaces) {
+					let set = Set(last)
+					if set.count == 1, set.first == "#" {
+						components.removeLast()
+					}
+				}
+
+				let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
+				return .heading(level: level, nodes: NodeType.heading.parse(markdown: markdown))
+			},
+			NodeParser(type: .strong) { matches in
+				return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
+			},
+			NodeParser(type: .emphasis) { matches in
+				return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
+			}
+		]
+	}
+
 	// MARK: Variables
 
 	var regex: String {
@@ -60,7 +91,7 @@ extension NodeType {
 
 			var isMatched = false
 
-			for parser in parsers {
+			for parser in nodeParsers {
 				guard let regexMatch = input.match(regex: parser.type.regex, with: parser.type.regexTemplates) else { continue }
 				let result = parser.generator(regexMatch.captures)
 				nodes.append(result)
@@ -98,30 +129,3 @@ struct NodeParser {
 	let type: NodeType
 	let generator: ([String]) -> Node
 }
-
-let parsers: [NodeParser] = [
-	NodeParser(type: .thematicBreak) { _ in
-		return .thematicBreak
-	},
-	NodeParser(type: .heading) { matches in
-		let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
-		let raw = matches[1]
-		var components = raw.components(separatedBy: " #")
-
-		if let last = components.last?.trimmingCharacters(in: .whitespaces) {
-			let set = Set(last)
-			if set.count == 1, set.first == "#" {
-				components.removeLast()
-			}
-		}
-
-		let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
-		return .heading(level: level, nodes: NodeType.heading.parse(markdown: markdown))
-	},
-	NodeParser(type: .strong) { matches in
-		return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
-	},
-	NodeParser(type: .emphasis) { matches in
-		return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
-	}
-]
