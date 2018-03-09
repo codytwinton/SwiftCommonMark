@@ -48,12 +48,12 @@ enum Node {
 
 	// MARK: Cases
 
+	case softBreak
+	case lineBreak
 	case thematicBreak
 	case code(String)
 	case htmlBlock(String)
 	case htmlInline(String)
-	case lineBreak(String)
-	case softBreak(String)
 	case text(String)
 	case codeBlock(info: String?, code: String)
 	case image(source: String, title: String?, alternate: String?)

@@ -24,11 +24,15 @@ extension Node: HTMLOutputable {
 
 	var html: String {
 		switch self {
+		case .softBreak:
+			return "\n"
+		case .lineBreak:
+			return "<br />"
 		case .thematicBreak:
 			return "<hr />"
 		case .document(let nodes):
 			return nodes.html
-		case .text(let str), .softBreak(let str), .lineBreak(let str), .htmlInline(let str), .htmlBlock(let str):
+		case .text(let str), .htmlInline(let str), .htmlBlock(let str):
 			return str.trimmingCharacters(in: .whitespaces).sanatizeHTML()
 		case .code(let code):
 			return "<code>" + code + "</code>"

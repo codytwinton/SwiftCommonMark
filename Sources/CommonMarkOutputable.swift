@@ -24,11 +24,15 @@ extension Node: CommonMarkOutputable {
 
 	var commonMark: String {
 		switch self {
+		case .softBreak:
+			return "\n"
+		case .lineBreak:
+			return "\\"
 		case .thematicBreak:
 			return "***"
 		case .document(let nodes), .paragraph(let nodes):
 			return nodes.commonMark
-		case .text(let str), .softBreak(let str), .lineBreak(let str), .htmlInline(let str), .htmlBlock(let str):
+		case .text(let str), .htmlInline(let str), .htmlBlock(let str):
 			return str
 		case .code(let code):
 			return "`" + code + "`"
