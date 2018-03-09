@@ -16,6 +16,7 @@
 		529E4D9620520541007B8143 /* CommonMarkParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D9520520541007B8143 /* CommonMarkParsable.swift */; };
 		529E4D9820520567007B8143 /* HTMLOutputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D9720520567007B8143 /* HTMLOutputable.swift */; };
 		529E4D9A205205AF007B8143 /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D99205205AF007B8143 /* CommonMark.swift */; };
+		529E4D9C20520F66007B8143 /* CommonMarkOutputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D9B20520F66007B8143 /* CommonMarkOutputable.swift */; };
 		52A32A06204DD850006EEF3F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* Node.swift */; };
 		52A32A08204DD882006EEF3F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A07204DD882006EEF3F /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		529E4D9520520541007B8143 /* CommonMarkParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkParsable.swift; sourceTree = "<group>"; };
 		529E4D9720520567007B8143 /* HTMLOutputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLOutputable.swift; sourceTree = "<group>"; };
 		529E4D99205205AF007B8143 /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
+		529E4D9B20520F66007B8143 /* CommonMarkOutputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkOutputable.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		52A32A07204DD882006EEF3F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +94,7 @@
 				52A32A07204DD882006EEF3F /* Extensions.swift */,
 				529E4D9720520567007B8143 /* HTMLOutputable.swift */,
 				529E4D9520520541007B8143 /* CommonMarkParsable.swift */,
+				529E4D9B20520F66007B8143 /* CommonMarkOutputable.swift */,
 				52A32A05204DD850006EEF3F /* Node.swift */,
 				5234F8B0204F107900A0141E /* Node+Extensions.swift */,
 			);
@@ -250,6 +253,7 @@
 			files = (
 				52A32A06204DD850006EEF3F /* Node.swift in Sources */,
 				5234F8B1204F107900A0141E /* Node+Extensions.swift in Sources */,
+				529E4D9C20520F66007B8143 /* CommonMarkOutputable.swift in Sources */,
 				529E4D9820520567007B8143 /* HTMLOutputable.swift in Sources */,
 				529E4D9620520541007B8143 /* CommonMarkParsable.swift in Sources */,
 				52A32A08204DD882006EEF3F /* Extensions.swift in Sources */,
