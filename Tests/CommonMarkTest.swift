@@ -6,8 +6,12 @@
 //  Copyright © 2018 Cody Winton. All rights reserved.
 //
 
+// MARK: Imports
+
 import Foundation
 @testable import SwiftCommonMark
+
+// MARK: - Enums
 
 enum CommonMarkTestError: Error {
 	case noJSONData
@@ -41,6 +45,8 @@ enum CommonMarkTestSection: String, EnumProtocol {
 	case paragraphs = "Paragraphs"
 	case backslashEscapes = "Backslash escapes"
 }
+
+// MARK: - Structs
 
 struct CommonMarkTest: Codable {
 	let section: String

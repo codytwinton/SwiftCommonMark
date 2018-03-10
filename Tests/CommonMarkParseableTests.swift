@@ -1,15 +1,21 @@
 //
-//  SwiftCommonMarkTests.swift
+//  CommonMarkParseableTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/4/18.
 //  Copyright © 2018 Cody Winton. All rights reserved.
 //
 
+// MARK: Imports
+
 @testable import SwiftCommonMark
 import XCTest
 
-class SwiftCommonMarkTests: XCTestCase {
+// MARK: -
+
+class CommonMarkParseableTests: XCTestCase {
+
+	// MARK: Variables
 
 	lazy var commonMarkTests: [CommonMarkTest] = {
 		guard let path = Bundle(for: type(of: self)).path(forResource: "commonmark-tests-spec-0.28", ofType: "json") else {
@@ -31,14 +37,7 @@ class SwiftCommonMarkTests: XCTestCase {
 		return self.commonMarkTests.filter { seen.update(with: $0.section) == nil }.map { $0.section }
 	}()
 
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+	// MARK: - Custom Functions
 
 	@discardableResult
 	func testViolations(for section: CommonMarkTestSection) -> Int {
@@ -62,6 +61,9 @@ class SwiftCommonMarkTests: XCTestCase {
 		return violations
 	}
 
+	// MARK: - Tests
+
+	/*
 	func testSection() {
 		testViolations(for: .thematicBreak)
 	}
@@ -84,7 +86,6 @@ class SwiftCommonMarkTests: XCTestCase {
 			"\n********\n\n")
 	}
 
-	/*
 	func testAllSectionViolations() {
 		print("All sections tests: \(commonMarkTests.count)")
 
@@ -96,14 +97,4 @@ class SwiftCommonMarkTests: XCTestCase {
 		print("Violations: \(violations)/\(commonMarkTests.count)")
 	}
 	*/
-
-	func testAllSectionsExist() {
-		let sections = CommonMarkTestSection.all
-
-		XCTAssertEqual(commonMarkTestSections.count, CommonMarkTestSection.all.count)
-
-		for section in sections {
-			XCTAssert(commonMarkTestSections.contains(section.rawValue))
-		}
-	}
 }
