@@ -1,5 +1,5 @@
 //
-//  HTMLOutputable.swift
+//  HTMLRenderable.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 3/8/18.
@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: - Protocols
 
-protocol HTMLOutputable {
+protocol HTMLRenderable {
 	var html: String { get }
 }
 
@@ -20,7 +20,7 @@ protocol HTMLOutputable {
 
 // MARK: - HTML Output Extensions
 
-extension Node: HTMLOutputable {
+extension Node: HTMLRenderable {
 
 	var html: String {
 		switch self {
@@ -61,7 +61,7 @@ extension Node: HTMLOutputable {
 	}
 }
 
-extension Array where Element: HTMLOutputable {
+extension Array where Element: HTMLRenderable {
 
 	var html: String {
 		return map { $0.html }.joined()

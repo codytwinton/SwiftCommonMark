@@ -1,5 +1,5 @@
 //
-//  CommonMarkOutputable.swift
+//  CommonMarkRenderable.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 3/8/18.
@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: - Protocols
 
-protocol CommonMarkOutputable {
+protocol CommonMarkRenderable {
 	var commonMark: String { get }
 }
 
@@ -20,7 +20,7 @@ protocol CommonMarkOutputable {
 
 // MARK: - CommonMark Output Extensions
 
-extension Node: CommonMarkOutputable {
+extension Node: CommonMarkRenderable {
 
 	var commonMark: String {
 		switch self {
@@ -61,7 +61,7 @@ extension Node: CommonMarkOutputable {
 	}
 }
 
-extension Array where Element: CommonMarkOutputable {
+extension Array where Element: CommonMarkRenderable {
 
 	var commonMark: String {
 		return map { $0.commonMark }.joined()

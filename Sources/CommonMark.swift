@@ -12,4 +12,4 @@ import Foundation
 
 // MARK: Type Aliases
 
-typealias CommonMark = CommonMarkParsable & HTMLOutputable
+typealias CommonMark = CommonMarkParsable & HTMLRenderable & CommonMarkRenderable
