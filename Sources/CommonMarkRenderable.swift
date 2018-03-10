@@ -53,7 +53,7 @@ extension Node: CommonMarkRenderable {
 			}
 
 			return "![\(alternate)](\(source)\(srcTitle))"
-		case .blockQuote, .listItem, .item, .link:
+		case .blockQuote, .listItem, .list, .link:
 			return ""
 		}
 	}

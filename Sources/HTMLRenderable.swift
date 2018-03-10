@@ -61,8 +61,18 @@ extension Node: HTMLRenderable {
 			}
 
 			return image + "/>"
-		case .listItem, .item, .link, .htmlInline, .htmlBlock:
+		case .listItem(let nodes):
+			return "<li>" + nodes.html + "</li>\n"
+		case let .list(isOrdered, nodes):
+			var list = isOrdered ? "<ol>" : "<ul>"
+			list += "\n" + nodes.html
+			list += isOrdered ? "</ol>" : "</ul>"
+			return list + "\n"
+		case .link:
 			return ""
+		case .htmlInline(let html),
+			 .htmlBlock(let html):
+			return html
 		}
 	}
 }

@@ -62,8 +62,8 @@ enum Node {
 	indirect case link(url: String, nodes: [Node])
 	indirect case document(nodes: [Node])
 	indirect case blockQuote(nodes: [Node])
-	indirect case item(nodes: [Node])
-	indirect case listItem(isOrdered: Bool, nodes: [Node])
+	indirect case list(isOrdered: Bool, nodes: [Node])
+	indirect case listItem(nodes: [Node])
 
 	// MARK: Variables
 
@@ -78,7 +78,7 @@ enum Node {
 		case .htmlBlock: return .htmlBlock
 		case .htmlInline: return .htmlInline
 		case .image: return .image
-		case .item: return .listItem
+		case .list: return .listItem
 		case .lineBreak: return .lineBreak
 		case .link: return .link
 		case .listItem: return .list
