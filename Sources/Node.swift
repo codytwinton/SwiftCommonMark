@@ -55,7 +55,7 @@ enum Node {
 	case htmlBlock(String)
 	case htmlInline(String)
 	case text(String)
-	case codeBlock(info: String?, code: String)
+	case codeBlock(language: String?, code: String)
 	case image(source: String, title: String?, alternate: String?)
 	indirect case heading(level: HeadingLevel, nodes: [Node])
 	indirect case paragraph(nodes: [Node])

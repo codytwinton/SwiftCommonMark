@@ -43,16 +43,16 @@ extension Node: HTMLRenderable {
 		case .paragraph(let nodes):
 			return "<p>" + nodes.html + "</p>\n"
 		case let .heading(level, nodes):
-			return "<\(level)>" + nodes.html + "</\(level)>"
+			return "<\(level)>" + nodes.html + "</\(level)>\n"
 		case let .codeBlock(lang, code):
 			let prefix: String
 			switch lang {
 			case let lang?:
 				prefix = "<pre><code class=\"language-\(lang)\">"
 			case nil:
-				prefix = "<pre><code></pre>"
+				prefix = "<pre><code>"
 			}
-			return prefix + code + "</code></pre>"
+			return prefix + code + "</code></pre>\n"
 		case .blockQuote, .listItem, .item,
 			 .link, .image, .customInline, .customBlock,
 			 .htmlInline, .htmlBlock:
