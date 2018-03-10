@@ -68,8 +68,14 @@ extension Node: HTMLRenderable {
 			list += "\n" + nodes.html
 			list += isOrdered ? "</ol>" : "</ul>"
 			return list + "\n"
-		case .link:
-			return ""
+		case let .link(url, title, nodes):
+			var link = "<a href=\"\(url)\""
+
+			if let title = title, !title.isEmpty {
+				link += " title=\"\(title)\""
+			}
+
+			return link + ">" + nodes.html + "</a>"
 		case .htmlInline(let html),
 			 .htmlBlock(let html):
 			return html

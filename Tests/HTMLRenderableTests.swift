@@ -41,6 +41,8 @@ class HTMLRenderableTests: XCTestCase {
 		<li>Ordered</li>
 		<li>List</li>
 		</ol>
+		<p><a href="/uri" title="title">link</a>
+		<a href="/uri"></a></p>
 
 		"""
 
@@ -70,6 +72,9 @@ class HTMLRenderableTests: XCTestCase {
 
 		1. Ordered
 		2. List
+
+		[link](/uri "title")
+		[](/uri)
 
 		"""
 
@@ -129,8 +134,14 @@ class HTMLRenderableTests: XCTestCase {
 			return Node.list(isOrdered: true, nodes: [item1, item2])
 		}()
 
+		let paragraph4: Node = {
+			let link1 = Node.link(url: "/uri", title: "title", nodes: [.text("link")])
+			let link2 = Node.link(url: "/uri", title: nil, nodes: [])
+			return Node.paragraph(nodes: [link1, .softBreak, link2])
+		}()
+
 		let nodes: [Node] = [heading, paragraph1, .thematicBreak, paragraph2,
-							 code1, code2, blockQuote, paragraph3, list1, list2]
+							 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4]
 		let doc: Node = .document(nodes: nodes)
 
 		// Act

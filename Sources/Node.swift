@@ -59,7 +59,7 @@ enum Node {
 	indirect case paragraph(nodes: [Node])
 	indirect case emphasis(nodes: [Node])
 	indirect case strong(nodes: [Node])
-	indirect case link(url: String, nodes: [Node])
+	indirect case link(url: String, title: String?, nodes: [Node])
 	indirect case document(nodes: [Node])
 	indirect case blockQuote(nodes: [Node])
 	indirect case list(isOrdered: Bool, nodes: [Node])
