@@ -61,7 +61,7 @@ extension Node: HTMLRenderable {
 			}
 
 			return image + "/>"
-		case .listItem, .item, .link, .customInline, .customBlock, .htmlInline, .htmlBlock:
+		case .listItem, .item, .link, .htmlInline, .htmlBlock:
 			return ""
 		}
 	}

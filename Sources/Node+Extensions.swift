@@ -22,9 +22,8 @@ extension NodeType {
 			return [.thematicBreak, .codeBlock, .blockQuote, .heading, .list, .htmlBlock, .paragraph]
 		case .heading, .strong, .emphasis, .paragraph:
 			return [.thematicBreak, .heading, .strong, .emphasis]
-		case .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
-			 .image, .listItem, .lineBreak, .link, .list, .softBreak, .text,
-			 .thematicBreak, .customInline, .customBlock:
+		case .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline, .image,
+			 .listItem, .lineBreak, .link, .list, .softBreak, .text, .thematicBreak:
 			return []
 		}
 	}
@@ -39,9 +38,8 @@ extension NodeType {
 			return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
 		case .emphasis:
 			return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
-		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
-			 .htmlInline, .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak,
-			 .text, .customInline, .customBlock:
+		case .blockQuote, .code, .codeBlock, .document, .htmlBlock, .htmlInline,
+			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text:
 			return nil
 		}
 	}
@@ -55,8 +53,8 @@ extension NodeType {
 		case .emphasis:
 			return ["$2"]
 		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
-			 .htmlInline, .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak,
-			 .text, .thematicBreak, .customInline, .customBlock:
+			 .htmlInline, .image, .listItem, .lineBreak, .link, .list,
+			 .paragraph, .softBreak, .text, .thematicBreak:
 			return []
 		}
 	}
@@ -129,8 +127,7 @@ extension NodeType {
 		case .emphasis:
 			return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
 		case .document, .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
-			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text,
-			 .customInline, .customBlock:
+			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text:
 			return .text("")
 		}
 	}

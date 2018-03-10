@@ -38,8 +38,6 @@ enum NodeType {
 	case strong
 	case text
 	case thematicBreak
-	case customInline
-	case customBlock
 }
 
 // MARK: -
@@ -66,8 +64,6 @@ enum Node {
 	indirect case blockQuote(nodes: [Node])
 	indirect case item(nodes: [Node])
 	indirect case listItem(isOrdered: Bool, nodes: [Node])
-	indirect case customInline(nodes: [Node])
-	indirect case customBlock(nodes: [Node])
 
 	// MARK: Variables
 
@@ -91,8 +87,6 @@ enum Node {
 		case .strong: return .strong
 		case .text: return .text
 		case .thematicBreak: return .thematicBreak
-		case .customInline: return .customInline
-		case .customBlock: return .customBlock
 		}
 	}
 }
