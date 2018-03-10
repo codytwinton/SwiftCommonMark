@@ -45,14 +45,12 @@ extension Node: HTMLRenderable {
 		case let .heading(level, nodes):
 			return "<\(level)>" + nodes.html + "</\(level)>\n"
 		case let .codeBlock(lang, code):
-			let prefix: String
 			switch lang {
 			case let lang?:
-				prefix = "<pre><code class=\"language-\(lang)\">"
+				return "<pre><code class=\"language-\(lang)\">\(code)</code></pre>\n"
 			case nil:
-				prefix = "<pre><code>"
+				return "<pre><code>\(code)</code></pre>\n"
 			}
-			return prefix + code + "</code></pre>\n"
 		case .blockQuote, .listItem, .item,
 			 .link, .image, .customInline, .customBlock,
 			 .htmlInline, .htmlBlock:

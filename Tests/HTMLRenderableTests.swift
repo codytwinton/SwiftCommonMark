@@ -17,7 +17,7 @@ class HTMLRenderableTests: XCTestCase {
 
 	// MARK: - Tests
 
-    func testExample() {
+    func testNodeHTMLRendering() {
 
 		// Arrange
 
