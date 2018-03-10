@@ -51,9 +51,9 @@ extension Node: HTMLRenderable {
 			case nil:
 				return "<pre><code>\(code)</code></pre>\n"
 			}
-		case .blockQuote, .listItem, .item,
-			 .link, .image, .customInline, .customBlock,
-			 .htmlInline, .htmlBlock:
+		case .blockQuote(let nodes):
+			return "<blockquote>\n\(nodes.html)</blockquote>\n"
+		case .listItem, .item, .link, .image, .customInline, .customBlock, .htmlInline, .htmlBlock:
 			return ""
 		}
 	}

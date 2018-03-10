@@ -15,13 +15,9 @@ import XCTest
 
 class HTMLRenderableTests: XCTestCase {
 
-	// MARK: - Tests
+	// MARK: Variables
 
-    func testNodeHTMLRendering() {
-
-		// Arrange
-
-		let expected = """
+	let expected: String = """
 		<h1>Hello World</h1>
 		<p>Testing
 		Testing now: <code>Testing Code</code></p>
@@ -32,8 +28,17 @@ class HTMLRenderableTests: XCTestCase {
 		</code></pre>
 		<pre><code class="language-swift">Testing 123
 		</code></pre>
+		<blockquote>
+		<p>Test Blockquote</p>
+		</blockquote>
 
 		"""
+
+	// MARK: - Tests
+
+    func testNodeHTMLRendering() {
+
+		// Arrange
 
 		let heading: Node = {
 			let text1 = Node.text("Hello World")
@@ -61,7 +66,13 @@ class HTMLRenderableTests: XCTestCase {
 		let code1 = Node.codeBlock(language: nil, code: "Testing\n")
 		let code2 = Node.codeBlock(language: "swift", code: "Testing 123\n")
 
-		let doc: Node = .document(nodes: [heading, paragraph1, .thematicBreak, paragraph2, code1, code2])
+		let blockQuote: Node = {
+			let text1 = Node.text("Test Blockquote")
+			let paragraph1 = Node.paragraph(nodes: [text1])
+			return .blockQuote(nodes: [paragraph1])
+		}()
+
+		let doc: Node = .document(nodes: [heading, paragraph1, .thematicBreak, paragraph2, code1, code2, blockQuote])
 
 		// Act
 
@@ -70,5 +81,12 @@ class HTMLRenderableTests: XCTestCase {
 		// Assert
 
 		XCTAssertEqual(actual, expected)
+
+		guard actual != expected else { return }
+		print("\n********\n\n" +
+			"Failed:" +
+			"\nExpected: |\(expected)|" +
+			"\nActual: |\(actual)|" +
+			"\n********\n\n")
     }
 }
