@@ -27,13 +27,13 @@ extension Node: HTMLRenderable {
 		case .softBreak:
 			return "\n"
 		case .lineBreak:
-			return "<br />"
+			return "<br />\n"
 		case .thematicBreak:
-			return "<hr />"
+			return "<hr />\n"
 		case .document(let nodes):
 			return nodes.html
-		case .text(let str), .htmlInline(let str), .htmlBlock(let str):
-			return str.trimmingCharacters(in: .whitespaces).sanatizeHTML()
+		case .text(let str):
+			return str.sanatizeHTML()
 		case .code(let code):
 			return "<code>" + code + "</code>"
 		case .strong(let nodes):
@@ -41,7 +41,7 @@ extension Node: HTMLRenderable {
 		case .emphasis(let nodes):
 			return "<em>" + nodes.html + "</em>"
 		case .paragraph(let nodes):
-			return "<p>" + nodes.html + "</p>"
+			return "<p>" + nodes.html + "</p>\n"
 		case let .heading(level, nodes):
 			return "<\(level)>" + nodes.html + "</\(level)>"
 		case let .codeBlock(lang, code):
@@ -53,9 +53,9 @@ extension Node: HTMLRenderable {
 				prefix = "<pre><code></pre>"
 			}
 			return prefix + code + "</code></pre>"
-
 		case .blockQuote, .listItem, .item,
-			 .link, .image, .customInline, .customBlock:
+			 .link, .image, .customInline, .customBlock,
+			 .htmlInline, .htmlBlock:
 			return ""
 		}
 	}

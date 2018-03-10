@@ -17,13 +17,13 @@ class CommonMarkParseableTests: XCTestCase {
 
 	// MARK: Variables
 
-	lazy var commonMarkTests: [CommonMarkTest] = {
+	lazy var commonMarkTests: [CommonMarkSpecTest] = {
 		guard let path = Bundle(for: type(of: self)).path(forResource: "commonmark-tests-spec-0.28", ofType: "json") else {
 			XCTAssert(false, "CommonMark tests are nil")
 			return []
 		}
 		do {
-			let tests = try CommonMarkTest.commonMarkTests(from: path)
+			let tests = try CommonMarkSpecTest.commonMarkTests(from: path)
 			XCTAssertFalse(tests.isEmpty)
 			return tests
 		} catch {

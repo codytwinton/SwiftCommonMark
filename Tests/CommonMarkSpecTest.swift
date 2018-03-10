@@ -1,5 +1,5 @@
 //
-//  CommonMarkTest.swift
+//  CommonMarkSpecTest.swift
 //  Examples
 //
 //  Created by Cody Winton on 3/4/18.
@@ -48,18 +48,18 @@ enum CommonMarkTestSection: String, EnumProtocol {
 
 // MARK: - Structs
 
-struct CommonMarkTest: Codable {
+struct CommonMarkSpecTest: Codable {
 	let section: String
 	let html: String
 	let markdown: String
 	let example: Int
 
-	static func commonMarkTests(from path: String) throws -> [CommonMarkTest] {
+	static func commonMarkTests(from path: String) throws -> [CommonMarkSpecTest] {
 		do {
 			guard let jsonData = try String(contentsOfFile: path, encoding: .utf8).data(using: .utf8) else {
 				throw CommonMarkTestError.noJSONData
 			}
-			return try JSONDecoder().decode([CommonMarkTest].self, from: jsonData)
+			return try JSONDecoder().decode([CommonMarkSpecTest].self, from: jsonData)
 		} catch {
 			throw error
 		}

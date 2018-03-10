@@ -8,38 +8,47 @@
 
 // MARK: Imports
 
+@testable import SwiftCommonMark
 import XCTest
 
 // MARK: -
 
 class HTMLRenderableTests: XCTestCase {
 
-	// MARK: Variables
-
-	lazy var commonMarkTests: [CommonMarkTest] = {
-		guard let path = Bundle(for: type(of: self)).path(forResource: "commonmark-tests-spec-0.28", ofType: "json") else {
-			XCTAssert(false, "CommonMark tests are nil")
-			return []
-		}
-		do {
-			let tests = try CommonMarkTest.commonMarkTests(from: path)
-			XCTAssertFalse(tests.isEmpty)
-			return tests
-		} catch {
-			XCTAssertNil(error, "CommonMark test error: \(error)")
-			return []
-		}
-	}()
-
-	lazy var commonMarkTestSections: [String] = {
-		var seen: Set<String> = []
-		return self.commonMarkTests.filter { seen.update(with: $0.section) == nil }.map { $0.section }
-	}()
-
 	// MARK: - Tests
 
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+		// Arrange
+
+		let expected = """
+		<p>Testing
+		Testing now: <code>Testing Code</code></p>
+		<hr />
+		<p>What is up?<br />
+		Testing</p>
+
+		"""
+
+		let text1 = Node.text("Testing")
+		let text2 = Node.text("Testing now: ")
+		let code1 = Node.code("Testing Code")
+
+		let paragraph1 = Node.paragraph(nodes: [text1, .softBreak, text2, code1])
+
+		let text3 = Node.text("What is up?")
+		let text4 = Node.text("Testing")
+
+		let paragraph2 = Node.paragraph(nodes: [text3, .lineBreak, text4])
+
+		let doc: Node = .document(nodes: [paragraph1, .thematicBreak, paragraph2])
+
+		// Act
+
+		let actual = doc.html
+
+		// Assert
+
+		XCTAssertEqual(actual, expected)
     }
 }
