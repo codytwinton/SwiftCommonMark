@@ -53,7 +53,15 @@ extension Node: HTMLRenderable {
 			}
 		case .blockQuote(let nodes):
 			return "<blockquote>\n\(nodes.html)</blockquote>\n"
-		case .listItem, .item, .link, .image, .customInline, .customBlock, .htmlInline, .htmlBlock:
+		case let .image(source, title, alternate):
+			var image = "<img src=\"\(source)\" alt=\"\(alternate)\" "
+
+			if let title = title, !title.isEmpty {
+				image += "title=\"\(title)\" "
+			}
+
+			return image + "/>"
+		case .listItem, .item, .link, .customInline, .customBlock, .htmlInline, .htmlBlock:
 			return ""
 		}
 	}

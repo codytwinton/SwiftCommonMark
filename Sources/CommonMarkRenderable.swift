@@ -46,14 +46,13 @@ extension Node: CommonMarkRenderable {
 			let lang = info ?? ""
 			return "```\(lang)" + code + "```"
 		case let .image(source, title, alternate):
-			let alt = alternate ?? ""
 			var srcTitle = ""
 
 			if let title = title {
 				srcTitle += " " + title
 			}
 
-			return "![\(alt)](\(source)\(srcTitle))"
+			return "![\(alternate)](\(source)\(srcTitle))"
 		case .blockQuote, .listItem, .item,
 			 .link, .customInline, .customBlock:
 			return ""

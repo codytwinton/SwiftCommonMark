@@ -31,6 +31,8 @@ class HTMLRenderableTests: XCTestCase {
 		<blockquote>
 		<p>Test Blockquote</p>
 		</blockquote>
+		<p><img src="/url" alt="foo" title="title" />
+		<img src="/url" alt="" /></p>
 
 		"""
 
@@ -72,7 +74,14 @@ class HTMLRenderableTests: XCTestCase {
 			return .blockQuote(nodes: [paragraph1])
 		}()
 
-		let doc: Node = .document(nodes: [heading, paragraph1, .thematicBreak, paragraph2, code1, code2, blockQuote])
+		let paragraph3: Node = {
+			let image1 = Node.image(source: "/url", title: "title", alternate: "foo")
+			let image2 = Node.image(source: "/url", title: nil, alternate: "")
+			return .paragraph(nodes: [image1, .softBreak, image2])
+		}()
+
+		let nodes: [Node] = [heading, paragraph1, .thematicBreak, paragraph2, code1, code2, blockQuote, paragraph3]
+		let doc: Node = .document(nodes: nodes)
 
 		// Act
 
