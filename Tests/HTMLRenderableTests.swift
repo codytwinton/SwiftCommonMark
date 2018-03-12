@@ -19,7 +19,7 @@ class HTMLRenderableTests: XCTestCase {
 
 	let expectedHTML: String = """
 		<h1>Hello World</h1>
-		<p>Testing
+		<p>Testing &lt;&gt;&quot;
 		Testing now: <code>Testing Code</code></p>
 		<hr />
 		<p>What <strong>is</strong> <em>up</em>?<br />
@@ -54,7 +54,7 @@ class HTMLRenderableTests: XCTestCase {
 
 	let expectedCommonMark: String = """
 		# Hello World
-		Testing
+		Testing <>"
 		Testing now: `Testing Code`
 		***
 		What **is** *up*?
@@ -99,7 +99,7 @@ class HTMLRenderableTests: XCTestCase {
 		}()
 
 		let paragraph1: Node = {
-			let text1 = Node.text("Testing")
+			let text1 = Node.text("Testing <>\"")
 			let text2 = Node.text("Testing now: ")
 			let code1 = Node.code("Testing Code")
 			return .paragraph(nodes: [text1, .softBreak, text2, code1])

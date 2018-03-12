@@ -99,11 +99,6 @@ private extension Character {
 		switch self {
 		case "<": return "&lt;"
 		case ">": return "&gt;"
-		case "/": return "&#47;"
-		case "(": return "&#40;"
-		case ")": return "&#41;"
-		case "{": return "&#123;"
-		case "}": return "&#125;"
 		case "\"": return "&quot;"
 		default: return String(self)
 		}
