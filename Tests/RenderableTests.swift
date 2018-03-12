@@ -54,10 +54,13 @@ class RenderableTests: XCTestCase {
 
 	let expectedCommonMark: String = """
 		# Hello World
+
 		Testing <>"
 		Testing now: `Testing Code`
+
 		***
-		What **is** *up*?
+
+		What **is** *up*?\
 		Testing
 
 		```
