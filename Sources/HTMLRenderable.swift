@@ -76,8 +76,9 @@ extension Node: HTMLRenderable {
 			}
 
 			return link + ">" + nodes.html + "</a>"
-		case .htmlInline(let html),
-			 .htmlBlock(let html):
+		case .htmlBlock(let html):
+			return html + "\n"
+		case .htmlInline(let html):
 			return html
 		}
 	}

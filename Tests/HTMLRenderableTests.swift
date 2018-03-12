@@ -43,6 +43,11 @@ class HTMLRenderableTests: XCTestCase {
 		</ol>
 		<p><a href="/uri" title="title">link</a>
 		<a href="/uri"></a></p>
+		<table>
+		<tr>
+		<td>hi</td>
+		</tr>
+		</table>
 
 		"""
 
@@ -75,6 +80,12 @@ class HTMLRenderableTests: XCTestCase {
 
 		[link](/uri "title")
 		[](/uri)
+
+		<table>
+		<tr>
+		<td>hi</td>
+		</tr>
+		</table>
 
 		"""
 
@@ -140,8 +151,16 @@ class HTMLRenderableTests: XCTestCase {
 			return Node.paragraph(nodes: [link1, .softBreak, link2])
 		}()
 
+		let html1 = Node.htmlBlock("""
+			<table>
+			<tr>
+			<td>hi</td>
+			</tr>
+			</table>
+			""")
+
 		let nodes: [Node] = [heading, paragraph1, .thematicBreak, paragraph2,
-							 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4]
+							 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4, html1]
 		let doc: Node = .document(nodes: nodes)
 
 		// Act
