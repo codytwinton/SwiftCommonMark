@@ -168,13 +168,14 @@ class HTMLRenderableTests: XCTestCase {
     func testNodeHTMLRendering() {
 
 		let actual = document.html
+		let expected = expectedHTML
 
-		XCTAssertEqual(actual, expectedHTML)
+		XCTAssertEqual(actual, expected)
 
-		guard actual != expectedHTML else { return }
+		guard actual != expected else { return }
 		print("\n********\n\n" +
 			"Failed:" +
-			"\nExpected: |\(expectedHTML)|" +
+			"\nExpected: |\(expected)|" +
 			"\nActual: |\(actual)|" +
 			"\n********\n\n")
     }
