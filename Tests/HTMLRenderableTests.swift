@@ -92,12 +92,7 @@ class HTMLRenderableTests: XCTestCase {
 
 		"""
 
-	// MARK: - Tests
-
-    func testNodeHTMLRendering() {
-
-		// Arrange
-
+	let document: Node = {
 		let heading: Node = {
 			let text1 = Node.text("Hello World")
 			return Node.heading(level: .h1, nodes: [text1])
@@ -164,15 +159,15 @@ class HTMLRenderableTests: XCTestCase {
 
 		let paragraph5 = Node.paragraph(nodes: [.htmlInline("<a>"), .htmlInline("<bab>"), .htmlInline("<c2c>")])
 
-		let nodes: [Node] = [heading, paragraph1, .thematicBreak, paragraph2,
-							 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4, html1, paragraph5]
-		let doc: Node = .document(nodes: nodes)
+		return .document(nodes: [heading, paragraph1, .thematicBreak, paragraph2,
+								 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4, html1, paragraph5])
+	}()
 
-		// Act
+	// MARK: - Tests
 
-		let actual = doc.html
+    func testNodeHTMLRendering() {
 
-		// Assert
+		let actual = document.html
 
 		XCTAssertEqual(actual, expectedHTML)
 
