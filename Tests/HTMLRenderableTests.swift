@@ -48,6 +48,7 @@ class HTMLRenderableTests: XCTestCase {
 		<td>hi</td>
 		</tr>
 		</table>
+		<p><a><bab><c2c></p>
 
 		"""
 
@@ -86,6 +87,8 @@ class HTMLRenderableTests: XCTestCase {
 		<td>hi</td>
 		</tr>
 		</table>
+
+		<a><bab><c2c>
 
 		"""
 
@@ -159,8 +162,10 @@ class HTMLRenderableTests: XCTestCase {
 			</table>
 			""")
 
+		let paragraph5 = Node.paragraph(nodes: [.htmlInline("<a>"), .htmlInline("<bab>"), .htmlInline("<c2c>")])
+
 		let nodes: [Node] = [heading, paragraph1, .thematicBreak, paragraph2,
-							 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4, html1]
+							 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4, html1, paragraph5]
 		let doc: Node = .document(nodes: nodes)
 
 		// Act
