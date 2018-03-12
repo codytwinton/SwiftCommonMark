@@ -1,5 +1,5 @@
 //
-//  HTMLRenderableTests.swift
+//  RenderableTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/10/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-class HTMLRenderableTests: XCTestCase {
+class RenderableTests: XCTestCase {
 
 	// MARK: Variables
 
@@ -92,7 +92,7 @@ class HTMLRenderableTests: XCTestCase {
 
 		"""
 
-	let document: Node = {
+	let nodeTree: Node = {
 		let heading: Node = {
 			let text1 = Node.text("Hello World")
 			return Node.heading(level: .h1, nodes: [text1])
@@ -167,7 +167,7 @@ class HTMLRenderableTests: XCTestCase {
 
     func testNodeHTMLRendering() {
 
-		let actual = document.html
+		let actual = nodeTree.html
 		let expected = expectedHTML
 
 		XCTAssertEqual(actual, expected)
