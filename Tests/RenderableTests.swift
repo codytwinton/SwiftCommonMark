@@ -30,6 +30,7 @@ class RenderableTests: XCTestCase {
 		</code></pre>
 		<blockquote>
 		<p>Test Blockquote</p>
+		<p>Testing Blockquote</p>
 		</blockquote>
 		<p><img src="/url" alt="foo" title="title" />
 		<img src="/url" alt="" /></p>
@@ -60,7 +61,7 @@ class RenderableTests: XCTestCase {
 
 		***
 
-		What **is** *up*?\
+		What **is** *up*?\\
 		Testing
 
 		```
@@ -72,6 +73,8 @@ class RenderableTests: XCTestCase {
 		```
 
 		> Test Blockquote
+		>
+		> Testing Blockquote
 
 		![foo](/url "title")
 		![](/url)
@@ -80,7 +83,7 @@ class RenderableTests: XCTestCase {
 		* List
 
 		1. Ordered
-		2. List
+		1. List
 
 		[link](/uri "title")
 		[](/uri)
@@ -124,8 +127,8 @@ class RenderableTests: XCTestCase {
 
 		let blockQuote: Node = {
 			let text1 = Node.text("Test Blockquote")
-			let paragraph1 = Node.paragraph(nodes: [text1])
-			return .blockQuote(nodes: [paragraph1])
+			let text2 = Node.text("Testing Blockquote")
+			return .blockQuote(nodes: [.paragraph(nodes: [text1]), .paragraph(nodes: [text2])])
 		}()
 
 		let paragraph3: Node = {
@@ -176,10 +179,25 @@ class RenderableTests: XCTestCase {
 		XCTAssertEqual(actual, expected)
 
 		guard actual != expected else { return }
-		print("\n********\n\n" +
+		print("\n\n\n\n\n\n\n********\n\n" +
 			"Failed:" +
-			"\nExpected: |\(expected)|" +
-			"\nActual: |\(actual)|" +
-			"\n********\n\n")
+			"\n\nExpected: |\(expected)|" +
+			"\n\nActual: |\(actual)|" +
+			"\n********\n\n\n\n\n\n")
     }
+
+	func testNodeCommonMarkRendering() {
+
+		let actual = nodeTree.commonMark
+		let expected = expectedCommonMark
+
+		XCTAssertEqual(actual, expected)
+
+		guard actual != expected else { return }
+		print("\n\n\n\n\n\n\n********\n\n" +
+			"Failed:" +
+			"\n\nExpected: |\(expected)|" +
+			"\n\nActual: |\(actual)|" +
+			"\n********\n\n\n\n\n\n")
+	}
 }

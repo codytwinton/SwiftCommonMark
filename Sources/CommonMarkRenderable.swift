@@ -27,13 +27,17 @@ extension Node: CommonMarkRenderable {
 		case .softBreak:
 			return "\n"
 		case .lineBreak:
-			return "\\"
+			return "\\\n"
 		case .thematicBreak:
-			return "***"
-		case .document(let nodes), .paragraph(let nodes):
-			return nodes.commonMark
-		case .text(let str), .htmlInline(let str), .htmlBlock(let str):
+			return "***\n\n"
+		case .document(let nodes):
+			return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
+		case .paragraph(let nodes):
+			return nodes.commonMark + "\n\n"
+		case .text(let str), .htmlInline(let str):
 			return str
+		case .htmlBlock(let str):
+			return str + "\n\n"
 		case .code(let code):
 			return "`" + code + "`"
 		case .strong(let nodes):
@@ -41,20 +45,33 @@ extension Node: CommonMarkRenderable {
 		case .emphasis(let nodes):
 			return "*" + nodes.commonMark + "*"
 		case let .heading(level, nodes):
-			return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark
+			return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
 		case let .codeBlock(info, code):
 			let lang = info ?? ""
-			return "```\(lang)" + code + "```"
+			return "```\(lang)\n" + code + "```\n\n"
 		case let .image(source, title, alternate):
 			var srcTitle = ""
 
 			if let title = title {
-				srcTitle += " " + title
+				srcTitle += " \"" + title + "\""
 			}
 
 			return "![\(alternate)](\(source)\(srcTitle))"
-		case .blockQuote, .listItem, .list, .link:
-			return ""
+		case .blockQuote(let nodes):
+			return nodes.map { "> " + $0.commonMark }.joined().replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
+		case let .link(url, title, nodes):
+			var srcTitle = ""
+
+			if let title = title {
+				srcTitle += " \"" + title + "\""
+			}
+
+			return "[\(nodes.commonMark)](\(url)\(srcTitle))"
+		case .listItem(let nodes):
+			return nodes.commonMark + "\n"
+		case let .list(isOrdered, nodes):
+			let prefix: String = isOrdered ? "1. " : "* "
+			return nodes.map { prefix + $0.commonMark }.joined() + "\n"
 		}
 	}
 }
