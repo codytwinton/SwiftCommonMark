@@ -93,12 +93,11 @@
 		5232875F204CA6100093C905 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5248117120581BAC00F181A3 /* Renderable */,
 				529E4D922051F4FC007B8143 /* Supporting Files */,
 				529E4D99205205AF007B8143 /* CommonMark.swift */,
 				52A32A07204DD882006EEF3F /* Extensions.swift */,
-				529E4D9720520567007B8143 /* HTMLRenderable.swift */,
 				529E4D9520520541007B8143 /* CommonMarkParsable.swift */,
-				527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */,
 				52A32A05204DD850006EEF3F /* Node.swift */,
 				5234F8B0204F107900A0141E /* Node+Extensions.swift */,
 			);
@@ -114,6 +113,15 @@
 				5232876D204CA6100093C905 /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		5248117120581BAC00F181A3 /* Renderable */ = {
+			isa = PBXGroup;
+			children = (
+				529E4D9720520567007B8143 /* HTMLRenderable.swift */,
+				527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */,
+			);
+			name = Renderable;
 			sourceTree = "<group>";
 		};
 		527FB76E20544664000ADD7D /* CommonMark Spec */ = {
