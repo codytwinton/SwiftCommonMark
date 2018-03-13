@@ -87,7 +87,6 @@ opt_in_rules:
 - sorted_imports
 - statement_position
 - strict_fileprivate
-- switch_case_on_newline
 - syntactic_sugar
 - todo
 - trailing_closure
@@ -121,6 +120,7 @@ disabled_rules:
 - no_extension_access_modifier
 - number_separator
 - prefixed_toplevel_constant
+- switch_case_on_newline
 
 included:
 - Sources
@@ -128,3 +128,12 @@ included:
 
 private_outlet:
   allow_private_set: true
+
+identifier_name:
+  excluded:
+    - h1
+    - h2
+    - h3
+    - h4
+    - h5
+    - h6

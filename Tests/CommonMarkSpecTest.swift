@@ -1,41 +1,17 @@
 //
-//  CommonMarkTest.swift
+//  CommonMarkSpecTest.swift
 //  Examples
 //
 //  Created by Cody Winton on 3/4/18.
 //  Copyright © 2018 Cody Winton. All rights reserved.
 //
 
+// MARK: Imports
+
 import Foundation
+@testable import SwiftCommonMark
 
-protocol EnumProtocol: Hashable {
-	/// Returns All Enum Values
-	static var all: [Self] { get }
-	/// Returns the description
-	var description: String { get }
-}
-
-extension EnumProtocol {
-
-	static var all: [Self] {
-		typealias Type = Self
-		let cases = AnySequence { () -> AnyIterator<Type> in
-			var raw = 0
-			return AnyIterator {
-				let current: Self = withUnsafePointer(to: &raw) { $0.withMemoryRebound(to: Type.self, capacity: 1) { $0.pointee } }
-				guard current.hashValue == raw else { return nil }
-				raw += 1
-				return current
-			}
-		}
-
-		return Array(cases)
-	}
-
-	var description: String {
-		return "\(self)"
-	}
-}
+// MARK: - Enums
 
 enum CommonMarkTestError: Error {
 	case noJSONData
@@ -70,18 +46,20 @@ enum CommonMarkTestSection: String, EnumProtocol {
 	case backslashEscapes = "Backslash escapes"
 }
 
-struct CommonMarkTest: Codable {
+// MARK: - Structs
+
+struct CommonMarkSpecTest: Codable {
 	let section: String
 	let html: String
 	let markdown: String
 	let example: Int
 
-	static func commonMarkTests(from path: String) throws -> [CommonMarkTest] {
+	static func commonMarkTests(from path: String) throws -> [CommonMarkSpecTest] {
 		do {
 			guard let jsonData = try String(contentsOfFile: path, encoding: .utf8).data(using: .utf8) else {
 				throw CommonMarkTestError.noJSONData
 			}
-			return try JSONDecoder().decode([CommonMarkTest].self, from: jsonData)
+			return try JSONDecoder().decode([CommonMarkSpecTest].self, from: jsonData)
 		} catch {
 			throw error
 		}
