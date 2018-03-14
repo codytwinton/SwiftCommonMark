@@ -32,15 +32,10 @@ class CommonMarkParseableTests: XCTestCase {
 		}
 	}()
 
-	lazy var commonMarkTestSections: [String] = {
-		var seen: Set<String> = []
-		return self.commonMarkTests.filter { seen.update(with: $0.section) == nil }.map { $0.section }
-	}()
-
 	// MARK: - Custom Functions
 
 	@discardableResult
-	func testViolations(for section: CommonMarkTestSection) -> Int {
+	func testPasses(for section: CommonMarkTestSection) -> Int {
 		let tests = commonMarkTests.filter { $0.section == section.rawValue }
 		var violations = 0
 
@@ -57,20 +52,21 @@ class CommonMarkParseableTests: XCTestCase {
 			violations += 1
 		}
 
-		XCTAssertEqual(violations, 0, "\(section.rawValue) violations: \(violations) of \(tests.count)")
-		return violations
+		let passes = tests.count - violations
+		XCTAssertEqual(passes, tests.count, "\(section.rawValue) passes: \(passes) of \(tests.count)")
+		return passes
 	}
 
 	// MARK: - Tests
 
 	/*
 	func testSection() {
-		testViolations(for: .thematicBreak)
+		testPasses(for: .thematicBreak)
 	}
 
 	func testStatic() {
-		let input = "**Testing *test* What**\n"
-		let expected = "<strong>Testing <em>test</em> What</strong>\n"
+		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
+		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"
 		let node = Node.parseDocument(markdown: input)
 
 		let actual = node.html
@@ -87,14 +83,12 @@ class CommonMarkParseableTests: XCTestCase {
 	}
 
 	func testAllSectionViolations() {
-		print("All sections tests: \(commonMarkTests.count)")
-
-		var violations = 0
+		var passes = 0
 		for section in CommonMarkTestSection.all {
-			violations += testViolations(for: section)
+			passes += testPasses(for: section)
 		}
 
-		print("Violations: \(violations)/\(commonMarkTests.count)")
+		XCTAssertEqual(passes, commonMarkTests.count, "CommonMark Tests passes: \(passes) of \(commonMarkTests.count)")
 	}
 	*/
 }
