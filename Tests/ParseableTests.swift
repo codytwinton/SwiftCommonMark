@@ -61,6 +61,7 @@ class CommonMarkParseableTests: XCTestCase {
 
 	func testSection() {
 		testPasses(for: .inlines)
+		testPasses(for: .codeSpans)
 		//testPasses(for: .softLineBreaks)
 		//testPasses(for: .precedence)
 		//testPasses(for: .blankLines)

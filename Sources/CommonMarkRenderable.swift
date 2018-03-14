@@ -39,7 +39,7 @@ extension Node: CommonMarkRenderable {
 		case .htmlBlock(let str):
 			return str + "\n\n"
 		case .code(let code):
-			return "`" + code + "`"
+			return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
 		case .strong(let nodes):
 			return "**" + nodes.commonMark + "**"
 		case .emphasis(let nodes):

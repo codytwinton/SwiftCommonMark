@@ -35,7 +35,7 @@ extension Node: HTMLRenderable {
 		case .text(let str):
 			return str.sanatizeHTML()
 		case .code(let code):
-			return "<code>" + code + "</code>"
+			return "<code>" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "</code>"
 		case .strong(let nodes):
 			return "<strong>" + nodes.html + "</strong>"
 		case .emphasis(let nodes):

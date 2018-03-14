@@ -19,33 +19,36 @@ extension NodeType {
 	var subNodes: [NodeType] {
 		switch self {
 		case .document:
-			return [.thematicBreak, .codeBlock, .blockQuote, .heading, .list, .htmlBlock, .paragraph]
-		case .heading, .strong, .emphasis, .paragraph:
-			return [.thematicBreak, .heading, .strong, .emphasis]
-		case .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline, .image,
-			 .listItem, .lineBreak, .link, .list, .softBreak, .text, .thematicBreak:
+			return [.codeBlock, .thematicBreak, .blockQuote, .heading, .list, .htmlBlock, .paragraph]
+		case .heading, .paragraph:
+			return [.code, .strong, .emphasis]
+		case .strong, .emphasis, .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
+			 .image, .listItem, .lineBreak, .link, .list, .softBreak, .text, .thematicBreak:
 			return []
 		}
 	}
 
 	var regex: NSRegularExpression? {
 		let pattern: String
+		let options: NSRegularExpression.Options = .anchorsMatchLines
 
 		switch self {
-		case .heading:
-			pattern = "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
-		case .thematicBreak:
-			pattern = "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
-		case .strong:
-			pattern = "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
+		case .code:
+			pattern = "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?)\\1"
 		case .emphasis:
 			pattern = "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
-		case .blockQuote, .code, .codeBlock, .document, .htmlBlock, .htmlInline,
+		case .heading:
+			pattern = "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
+		case .strong:
+			pattern = "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
+		case .thematicBreak:
+			pattern = "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
+		case .blockQuote, .codeBlock, .document, .htmlBlock, .htmlInline,
 			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text:
 			return nil
 		}
 
-		return try? NSRegularExpression(pattern: pattern, options: .anchorsMatchLines)
+		return try? NSRegularExpression(pattern: pattern, options: options)
 	}
 
 	var regexTemplates: [String] {
@@ -56,7 +59,9 @@ extension NodeType {
 			return ["$2"]
 		case .emphasis:
 			return ["$2"]
-		case .blockQuote, .code, .codeBlock, .document, .htmlBlock,
+		case .code:
+			return ["$2"]
+		case .blockQuote, .codeBlock, .document, .htmlBlock,
 			 .htmlInline, .image, .listItem, .lineBreak, .link, .list,
 			 .paragraph, .softBreak, .text, .thematicBreak:
 			return []
@@ -108,6 +113,8 @@ extension NodeType {
 
 	func node(from matches: [String]) -> Node {
 		switch self {
+		case .code:
+			return .code(matches[0])
 		case .thematicBreak:
 			return .thematicBreak
 		case .heading:
@@ -128,7 +135,7 @@ extension NodeType {
 			return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
 		case .emphasis:
 			return .emphasis(nodes: NodeType.emphasis.parse(markdown: matches[0]))
-		case .document, .blockQuote, .code, .codeBlock, .htmlBlock, .htmlInline,
+		case .document, .blockQuote, .codeBlock, .htmlBlock, .htmlInline,
 			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text:
 			return .text("")
 		}
