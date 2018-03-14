@@ -77,7 +77,7 @@ extension NodeType {
 			var isMatched = false
 
 			for subNode in subNodes {
-				guard let regexMatch = subNode.regex?.match(in: input, with: subNode.regexTemplates) else { continue }
+				guard let regexMatch = subNode.regex?.match(in: input, templates: subNode.regexTemplates) else { continue }
 				let result = subNode.node(from: regexMatch.captures)
 				nodes.append(result)
 
