@@ -34,7 +34,7 @@ extension NodeType {
 
 		switch self {
 		case .code:
-			pattern = "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?)\\1"
+			pattern = "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?[^\\`]*)\\1"
 		case .emphasis:
 			pattern = "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
 		case .heading:
