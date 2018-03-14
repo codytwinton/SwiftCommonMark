@@ -28,20 +28,24 @@ extension NodeType {
 		}
 	}
 
-	var regex: String? {
+	var regex: NSRegularExpression? {
+		let pattern: String
+
 		switch self {
 		case .heading:
-			return "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
+			pattern = "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
 		case .thematicBreak:
-			return "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
+			pattern = "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
 		case .strong:
-			return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
+			pattern = "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
 		case .emphasis:
-			return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
+			pattern = "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
 		case .blockQuote, .code, .codeBlock, .document, .htmlBlock, .htmlInline,
 			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text:
 			return nil
 		}
+
+		return try? NSRegularExpression(pattern: pattern, options: .anchorsMatchLines)
 	}
 
 	var regexTemplates: [String] {
@@ -73,8 +77,7 @@ extension NodeType {
 			var isMatched = false
 
 			for subNode in subNodes {
-				guard let regex = subNode.regex else { continue }
-				guard let regexMatch = input.match(regex: regex, with: subNode.regexTemplates) else { continue }
+				guard let regexMatch = subNode.regex?.match(in: input, with: subNode.regexTemplates) else { continue }
 				let result = subNode.node(from: regexMatch.captures)
 				nodes.append(result)
 

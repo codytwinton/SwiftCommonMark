@@ -31,33 +31,29 @@ public extension EnumProtocol {
 	}
 }
 
-public extension String {
+public extension NSRegularExpression {
 
-	func match(regex: String, with templates: [String]) -> (captures: [String], fullMatch: String)? {
-
-		guard let expression = try? NSRegularExpression(pattern: regex, options: .anchorsMatchLines) else {
-			return nil
-		}
+	func match(in str: String, with templates: [String]) -> (captures: [String], fullMatch: String)? {
 
 		let options: NSRegularExpression.MatchingOptions = .anchored
-		let range = NSRange(location: 0, length: self.count)
-		let matchRange = expression.rangeOfFirstMatch(in: self, options: options, range: range)
+		let range = NSRange(location: 0, length: str.count)
+		let matchRange = self.rangeOfFirstMatch(in: str, options: options, range: range)
 		guard matchRange.location != NSNotFound else { return nil }
 
-		let matchString = NSString(string: self).substring(with: matchRange)
+		let matchString = NSString(string: str).substring(with: matchRange)
 		let matchesRange = NSRange(location: 0, length: matchString.count)
 
 		var regexCaptures = Array(repeating: "", count: templates.count)
 		var fullMatch = ""
 
-		for match in expression.matches(in: matchString, options: options, range: matchesRange) {
+		for match in self.matches(in: matchString, options: options, range: matchesRange) {
 			for (index, template) in templates.enumerated() {
-				let text = expression.replacementString(for: match, in: matchString, offset: 0, template: template)
+				let text = self.replacementString(for: match, in: matchString, offset: 0, template: template)
 				guard text != "" else { continue }
 				regexCaptures[index] = text
 			}
 
-			fullMatch = expression.replacementString(for: match, in: matchString, offset: 0, template: "$0")
+			fullMatch = self.replacementString(for: match, in: matchString, offset: 0, template: "$0")
 		}
 
 		return (regexCaptures, fullMatch)
