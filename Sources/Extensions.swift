@@ -11,8 +11,6 @@ import Foundation
 public protocol EnumProtocol: Hashable {
 	/// Returns All Enum Values
 	static var all: [Self] { get }
-	/// Returns the description
-	var description: String { get }
 }
 
 public extension EnumProtocol {
@@ -31,8 +29,6 @@ public extension EnumProtocol {
 
 		return Array(cases)
 	}
-
-	var description: String { return "\(self)" }
 }
 
 // MARK: -
