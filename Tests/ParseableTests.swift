@@ -60,7 +60,10 @@ class CommonMarkParseableTests: XCTestCase {
 	// MARK: - Tests
 
 	func testSection() {
-		testPasses(for: .softLineBreaks)
+		testPasses(for: .inlines)
+		//testPasses(for: .softLineBreaks)
+		//testPasses(for: .precedence)
+		//testPasses(for: .blankLines)
 	}
 
 	/*
