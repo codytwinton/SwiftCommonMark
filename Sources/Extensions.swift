@@ -33,7 +33,9 @@ public extension EnumProtocol {
 
 public extension NSRegularExpression {
 
-	func match(in str: String, templates: [String], options: NSRegularExpression.MatchingOptions = .anchored) -> (captures: [String], fullMatch: String)? {
+	func match(in str: String,
+	    	      templates: [String],
+	    	      options: NSRegularExpression.MatchingOptions = .anchored) -> (captures: [String], fullMatch: String)? {
 
 		let range = NSRange(location: 0, length: str.count)
 		let matchRange = self.rangeOfFirstMatch(in: str, options: options, range: range)
