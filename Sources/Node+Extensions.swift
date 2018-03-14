@@ -90,9 +90,8 @@ extension NodeType {
 			guard !isMatched, let first = input.first else { continue }
 
 			if first == "\n" {
-				let index = input.index(input.startIndex, offsetBy: 1)
-				nodes.append(.text(String(first)))
-				input = String(input[index...])
+				// Ignore Newlines Characters
+				input.removeFirst()
 			} else if self == .document, let paragraphIndex = input.index(of: "\n") {
 				let paragraph = String(input[..<paragraphIndex])
 				let paragraphNodes = NodeType.paragraph.parse(markdown: paragraph)
