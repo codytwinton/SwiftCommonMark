@@ -59,11 +59,11 @@ class CommonMarkParseableTests: XCTestCase {
 
 	// MARK: - Tests
 
-	/*
 	func testSection() {
-		testPasses(for: .thematicBreak)
+		testPasses(for: .softLineBreaks)
 	}
 
+	/*
 	func testStatic() {
 		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
 		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"
@@ -81,7 +81,9 @@ class CommonMarkParseableTests: XCTestCase {
 			"\nActual: \(actual)" +
 			"\n********\n\n")
 	}
+	*/
 
+	/*
 	func testAllSectionViolations() {
 		var passes = 0
 		for section in CommonMarkTestSection.all {
