@@ -37,24 +37,23 @@ public extension NSRegularExpression {
 	    	      templates: [String],
 	    	      options: NSRegularExpression.MatchingOptions = .anchored) -> (captures: [String], fullMatch: String)? {
 
-		let range = NSRange(location: 0, length: str.count)
-		let matchRange = self.rangeOfFirstMatch(in: str, options: options, range: range)
+		let matchRange: NSRange = rangeOfFirstMatch(in: str, options: options, range: NSRange(location: 0, length: str.count))
 		guard matchRange.location != NSNotFound else { return nil }
 
 		let matchString = NSString(string: str).substring(with: matchRange)
 		let matchesRange = NSRange(location: 0, length: matchString.count)
 
 		var regexCaptures = Array(repeating: "", count: templates.count)
-		var fullMatch = ""
+		var fullMatch: String = ""
 
 		for match in self.matches(in: matchString, options: options, range: matchesRange) {
 			for (index, template) in templates.enumerated() {
-				let text = self.replacementString(for: match, in: matchString, offset: 0, template: template)
+				let text: String = replacementString(for: match, in: matchString, offset: 0, template: template)
 				guard text != "" else { continue }
 				regexCaptures[index] = text
 			}
 
-			fullMatch = self.replacementString(for: match, in: matchString, offset: 0, template: "$0")
+			fullMatch = replacementString(for: match, in: matchString, offset: 0, template: "$0")
 		}
 
 		return (regexCaptures, fullMatch)
