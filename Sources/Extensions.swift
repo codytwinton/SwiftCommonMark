@@ -46,7 +46,7 @@ public extension NSRegularExpression {
 		var regexCaptures = Array(repeating: "", count: templates.count)
 		var fullMatch: String = ""
 
-		for match in self.matches(in: matchString, options: options, range: matchesRange) {
+		for match in matches(in: matchString, options: options, range: matchesRange) {
 			for (index, template) in templates.enumerated() {
 				let text: String = replacementString(for: match, in: matchString, offset: 0, template: template)
 				guard text != "" else { continue }
