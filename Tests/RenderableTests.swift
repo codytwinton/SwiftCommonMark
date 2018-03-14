@@ -171,7 +171,7 @@ class RenderableTests: XCTestCase {
 
 	// MARK: - Tests
 
-    func testNodeHTMLRendering() {
+	func testNodeHTMLRendering() {
 
 		let actual = nodeTree.html
 		let expected = expectedHTML
@@ -184,7 +184,7 @@ class RenderableTests: XCTestCase {
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
 			"\n********\n\n\n\n\n\n")
-    }
+	}
 
 	func testNodeCommonMarkRendering() {
 
