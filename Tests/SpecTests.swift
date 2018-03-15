@@ -39,9 +39,9 @@ class SpecTests: XCTestCase {
 	// MARK: - Tests
 
 	func testAllSectionsExist() {
-		let sections = CommonMarkTestSection.all
+		let sections = CommonMarkTestSection.allCases
 
-		XCTAssertEqual(commonMarkTestSections.count, CommonMarkTestSection.all.count)
+		XCTAssertEqual(commonMarkTestSections.count, CommonMarkTestSection.allCases.count)
 
 		for section in sections {
 			XCTAssert(commonMarkTestSections.contains(section.rawValue))

@@ -10,12 +10,12 @@ import Foundation
 
 public protocol EnumProtocol: Hashable {
 	/// Returns All Enum Values
-	static var all: [Self] { get }
+	static var allCases: [Self] { get }
 }
 
 public extension EnumProtocol {
 
-	static var all: [Self] {
+	static var allCases: [Self] {
 		typealias Type = Self
 		let cases = AnySequence { () -> AnyIterator<Type> in
 			var raw = 0
