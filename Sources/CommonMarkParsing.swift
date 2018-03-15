@@ -88,9 +88,9 @@ extension NodeType {
 				break
 			}
 
-			guard !isMatched, let first = input.first else { continue }
+			guard !isMatched else { continue }
 
-			if first == "\n" {
+			if input.first == "\n" {
 				// Ignore Newlines Characters
 				input.removeFirst()
 			} else if self == .document, let paragraphIndex = input.index(of: "\n") {
