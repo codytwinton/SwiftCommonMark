@@ -16,7 +16,7 @@ extension NodeType {
 
 	// MARK: Variables
 
-	var subNodes: [NodeType] {
+	var childNodes: [NodeType] {
 		switch self {
 		case .document:
 			return [.codeBlock, .thematicBreak, .blockQuote, .heading, .list, .htmlBlock, .paragraph]
@@ -77,9 +77,9 @@ extension NodeType {
 
 			var isMatched = false
 
-			for subNode in subNodes {
-				guard let regexMatch = subNode.regex?.match(in: input, templates: subNode.regexTemplates) else { continue }
-				let result = subNode.node(from: regexMatch.captures)
+			for child in childNodes {
+				guard let regexMatch = child.regex?.match(in: input, templates: child.regexTemplates) else { continue }
+				let result = child.node(from: regexMatch.captures)
 				nodes.append(result)
 
 				let inputOffset = input.index(input.startIndex, offsetBy: regexMatch.fullMatch.count)
