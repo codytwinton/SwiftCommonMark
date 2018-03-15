@@ -55,11 +55,7 @@ extension NodeType {
 		switch self {
 		case .heading:
 			return ["$1", "$2"]
-		case .strong:
-			return ["$2"]
-		case .emphasis:
-			return ["$2"]
-		case .code:
+		case .strong, .emphasis, .code:
 			return ["$2"]
 		case .blockQuote, .codeBlock, .document, .htmlBlock,
 			 .htmlInline, .image, .listItem, .lineBreak, .link, .list,
