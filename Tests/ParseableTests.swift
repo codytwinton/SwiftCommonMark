@@ -91,7 +91,7 @@ class CommonMarkParseableTests: XCTestCase {
 	/*
 	func testAllSectionViolations() {
 		var passes = 0
-		for section in CommonMarkTestSection.all {
+		for section in CommonMarkTestSection.allCases {
 			passes += testPasses(for: section)
 		}
 
