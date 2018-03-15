@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		52328767204CA6100093C905 /* SwiftCommonMark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5232875D204CA6100093C905 /* SwiftCommonMark.framework */; };
-		5232876C204CA6100093C905 /* ParseableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5232876B204CA6100093C905 /* ParseableTests.swift */; };
+		5232876C204CA6100093C905 /* CommonMarkParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5232876B204CA6100093C905 /* CommonMarkParseTests.swift */; };
 		5232876E204CA6100093C905 /* SwiftCommonMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 52328760204CA6100093C905 /* SwiftCommonMark.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328779204CA96B0093C905 /* CommonMarkSpecTest.swift */; };
 		5232877C204CA96B0093C905 /* commonmark-tests-spec-0.28.json in Resources */ = {isa = PBXBuildFile; fileRef = 5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */; };
-		5234F8B1204F107900A0141E /* Node+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234F8B0204F107900A0141E /* Node+Extensions.swift */; };
+		5234F8B1204F107900A0141E /* CommonMarkParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234F8B0204F107900A0141E /* CommonMarkParsing.swift */; };
 		527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */; };
-		527FB76B205440A1000ADD7D /* RenderableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* RenderableTests.swift */; };
+		527FB76B205440A1000ADD7D /* ParseRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* ParseRenderTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
 		529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D9720520567007B8143 /* HTMLRenderable.swift */; };
 		52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMark.swift */; };
@@ -38,13 +38,13 @@
 		52328760204CA6100093C905 /* SwiftCommonMark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftCommonMark.h; sourceTree = "<group>"; };
 		52328761204CA6100093C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52328766204CA6100093C905 /* SwiftCommonMarkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCommonMarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5232876B204CA6100093C905 /* ParseableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseableTests.swift; sourceTree = "<group>"; };
+		5232876B204CA6100093C905 /* CommonMarkParseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkParseTests.swift; sourceTree = "<group>"; };
 		5232876D204CA6100093C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52328779204CA96B0093C905 /* CommonMarkSpecTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkSpecTest.swift; sourceTree = "<group>"; };
 		5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "commonmark-tests-spec-0.28.json"; sourceTree = "<group>"; };
-		5234F8B0204F107900A0141E /* Node+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Node+Extensions.swift"; sourceTree = "<group>"; };
+		5234F8B0204F107900A0141E /* CommonMarkParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkParsing.swift; sourceTree = "<group>"; };
 		527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderable.swift; sourceTree = "<group>"; };
-		527FB76A205440A1000ADD7D /* RenderableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableTests.swift; sourceTree = "<group>"; };
+		527FB76A205440A1000ADD7D /* ParseRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseRenderTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
 		529E4D9720520567007B8143 /* HTMLRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLRenderable.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
@@ -96,6 +96,7 @@
 				52C5A890205A209300F18CCA /* Extensions */,
 				5248117120581BAC00F181A3 /* Renderable */,
 				529E4D922051F4FC007B8143 /* Supporting Files */,
+				5234F8B0204F107900A0141E /* CommonMarkParsing.swift */,
 				52A32A05204DD850006EEF3F /* CommonMark.swift */,
 			);
 			path = Sources;
@@ -104,11 +105,11 @@
 		5232876A204CA6100093C905 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				527FB770205446C6000ADD7D /* CommonMark Parseable */,
 				527FB76E20544664000ADD7D /* CommonMark Spec */,
-				527FB771205446DD000ADD7D /* Renderable */,
-				5232876D204CA6100093C905 /* Info.plist */,
+				5232876B204CA6100093C905 /* CommonMarkParseTests.swift */,
+				527FB76A205440A1000ADD7D /* ParseRenderTests.swift */,
 				52C5A893205A252A00F18CCA /* NodeTypeTests.swift */,
+				5232876D204CA6100093C905 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -132,22 +133,6 @@
 			name = "CommonMark Spec";
 			sourceTree = "<group>";
 		};
-		527FB770205446C6000ADD7D /* CommonMark Parseable */ = {
-			isa = PBXGroup;
-			children = (
-				5232876B204CA6100093C905 /* ParseableTests.swift */,
-			);
-			name = "CommonMark Parseable";
-			sourceTree = "<group>";
-		};
-		527FB771205446DD000ADD7D /* Renderable */ = {
-			isa = PBXGroup;
-			children = (
-				527FB76A205440A1000ADD7D /* RenderableTests.swift */,
-			);
-			name = Renderable;
-			sourceTree = "<group>";
-		};
 		529E4D922051F4FC007B8143 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				52A32A07204DD882006EEF3F /* Enum+Extensions.swift */,
-				5234F8B0204F107900A0141E /* Node+Extensions.swift */,
 				52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */,
 			);
 			name = Extensions;
@@ -298,7 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */,
-				5234F8B1204F107900A0141E /* Node+Extensions.swift in Sources */,
+				5234F8B1204F107900A0141E /* CommonMarkParsing.swift in Sources */,
 				527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */,
 				52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */,
 				529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */,
@@ -310,9 +294,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5232876C204CA6100093C905 /* ParseableTests.swift in Sources */,
+				5232876C204CA6100093C905 /* CommonMarkParseTests.swift in Sources */,
 				52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */,
-				527FB76B205440A1000ADD7D /* RenderableTests.swift in Sources */,
+				527FB76B205440A1000ADD7D /* ParseRenderTests.swift in Sources */,
 				527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */,
 				5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */,
 			);

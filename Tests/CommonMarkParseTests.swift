@@ -1,5 +1,5 @@
 //
-//  CommonMarkParseableTests.swift
+//  CommonMarkParseTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/4/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-class CommonMarkParseableTests: XCTestCase {
+class CommonMarkParseTests: XCTestCase {
 
 	// MARK: Variables
 
@@ -59,26 +59,6 @@ class CommonMarkParseableTests: XCTestCase {
 	}
 
 	// MARK: - Tests
-
-	func testStatic() {
-		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"
-
-		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
-		let nodes = NodeType.document.parse(markdown: input)
-		let node = Node.document(nodes: nodes)
-
-		let actual = node.html
-
-		XCTAssertEqual(actual, expected)
-
-		guard actual != expected else { return }
-		print("\n********\n\n" +
-			"Failed:" +
-			"\nMarkdown: \(input)" +
-			"\nExpected: \(expected)" +
-			"\nActual: \(actual)" +
-			"\n********\n\n")
-	}
 
 	/*
 	func testAllSectionViolations() {
