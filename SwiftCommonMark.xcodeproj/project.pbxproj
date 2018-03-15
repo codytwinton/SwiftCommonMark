@@ -16,7 +16,6 @@
 		527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */; };
 		527FB76B205440A1000ADD7D /* RenderableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* RenderableTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
-		529E4D9620520541007B8143 /* CommonMarkParsable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D9520520541007B8143 /* CommonMarkParsable.swift */; };
 		529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D9720520567007B8143 /* HTMLRenderable.swift */; };
 		529E4D9A205205AF007B8143 /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D99205205AF007B8143 /* CommonMark.swift */; };
 		52A32A06204DD850006EEF3F /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* Node.swift */; };
@@ -46,7 +45,6 @@
 		527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderable.swift; sourceTree = "<group>"; };
 		527FB76A205440A1000ADD7D /* RenderableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderableTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
-		529E4D9520520541007B8143 /* CommonMarkParsable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkParsable.swift; sourceTree = "<group>"; };
 		529E4D9720520567007B8143 /* HTMLRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLRenderable.swift; sourceTree = "<group>"; };
 		529E4D99205205AF007B8143 /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 				529E4D922051F4FC007B8143 /* Supporting Files */,
 				529E4D99205205AF007B8143 /* CommonMark.swift */,
 				52A32A07204DD882006EEF3F /* Extensions.swift */,
-				529E4D9520520541007B8143 /* CommonMarkParsable.swift */,
 				52A32A05204DD850006EEF3F /* Node.swift */,
 				5234F8B0204F107900A0141E /* Node+Extensions.swift */,
 			);
@@ -293,7 +290,6 @@
 				5234F8B1204F107900A0141E /* Node+Extensions.swift in Sources */,
 				527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */,
 				529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */,
-				529E4D9620520541007B8143 /* CommonMarkParsable.swift in Sources */,
 				52A32A08204DD882006EEF3F /* Extensions.swift in Sources */,
 				529E4D9A205205AF007B8143 /* CommonMark.swift in Sources */,
 			);

@@ -42,7 +42,8 @@ class CommonMarkParseableTests: XCTestCase {
 		print("\n********\n\n")
 
 		for test in tests {
-			let actual: String = Node.parseDocument(markdown: test.markdown).html
+			let nodes = NodeType.document.parse(markdown: test.markdown)
+			let actual: String = Node.document(nodes: nodes).html
 			guard test.html != actual else { continue }
 			print("Failed \(test.section) example: \(test.example):" +
 				"\nMarkdown: |\(test.markdown)|" +
