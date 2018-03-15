@@ -17,31 +17,14 @@ typealias CommonMark = HTMLRenderable & CommonMarkRenderable
 // MARK: -
 
 enum HeadingLevel: Int, EnumProtocol {
-	case h1 = 1
-	case h2, h3, h4, h5, h6
+	case h1 = 1, h2, h3, h4, h5, h6
 }
 
 // MARK: -
 
-enum NodeType {
-	case blockQuote
-	case code
-	case codeBlock
-	case document
-	case emphasis
-	case heading
-	case htmlBlock
-	case htmlInline
-	case image
-	case listItem
-	case lineBreak
-	case link
-	case list
-	case paragraph
-	case softBreak
-	case strong
-	case text
-	case thematicBreak
+enum NodeType: Int, EnumProtocol {
+	case blockQuote, code, codeBlock, document, emphasis, heading, htmlBlock, htmlInline, image
+	case lineBreak, link, list, listItem, paragraph, softBreak, strong, text, thematicBreak
 }
 
 // MARK: -
@@ -50,24 +33,24 @@ enum Node {
 
 	// MARK: Cases
 
-	case softBreak
-	case lineBreak
-	case thematicBreak
+	case blockQuote(nodes: [Node])
 	case code(String)
+	case codeBlock(language: String?, code: String)
+	case document(nodes: [Node])
+	case emphasis(nodes: [Node])
+	case heading(level: HeadingLevel, nodes: [Node])
 	case htmlBlock(String)
 	case htmlInline(String)
-	case text(String)
-	case codeBlock(language: String?, code: String)
 	case image(source: String, title: String?, alternate: String)
-	indirect case heading(level: HeadingLevel, nodes: [Node])
-	indirect case paragraph(nodes: [Node])
-	indirect case emphasis(nodes: [Node])
-	indirect case strong(nodes: [Node])
-	indirect case link(url: String, title: String?, nodes: [Node])
-	indirect case document(nodes: [Node])
-	indirect case blockQuote(nodes: [Node])
-	indirect case list(isOrdered: Bool, nodes: [Node])
-	indirect case listItem(nodes: [Node])
+	case lineBreak
+	case link(url: String, title: String?, nodes: [Node])
+	case list(isOrdered: Bool, nodes: [Node])
+	case listItem(nodes: [Node])
+	case paragraph(nodes: [Node])
+	case softBreak
+	case strong(nodes: [Node])
+	case text(String)
+	case thematicBreak
 
 	// MARK: Variables
 
@@ -82,10 +65,10 @@ enum Node {
 		case .htmlBlock: return .htmlBlock
 		case .htmlInline: return .htmlInline
 		case .image: return .image
-		case .list: return .listItem
+		case .list: return .list
 		case .lineBreak: return .lineBreak
 		case .link: return .link
-		case .listItem: return .list
+		case .listItem: return .listItem
 		case .paragraph: return .paragraph
 		case .softBreak: return .softBreak
 		case .strong: return .strong

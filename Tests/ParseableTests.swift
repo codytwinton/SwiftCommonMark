@@ -60,19 +60,12 @@ class CommonMarkParseableTests: XCTestCase {
 
 	// MARK: - Tests
 
-	func testSection() {
-		testPasses(for: .inlines)
-		testPasses(for: .codeSpans)
-		//testPasses(for: .softLineBreaks)
-		//testPasses(for: .precedence)
-		//testPasses(for: .blankLines)
-	}
-
-	/*
 	func testStatic() {
-		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
 		let expected = "<h3>foo ###</h3>\n<h2>foo ###</h2>\n<h1>foo #</h1>\n"
-		let node = Node.parseDocument(markdown: input)
+
+		let input = "### foo \\###\n## foo #\\##\n# foo \\#\n"
+		let nodes = NodeType.document.parse(markdown: input)
+		let node = Node.document(nodes: nodes)
 
 		let actual = node.html
 
@@ -86,7 +79,6 @@ class CommonMarkParseableTests: XCTestCase {
 			"\nActual: \(actual)" +
 			"\n********\n\n")
 	}
-	*/
 
 	/*
 	func testAllSectionViolations() {

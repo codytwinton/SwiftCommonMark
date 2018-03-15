@@ -20,6 +20,7 @@
 		52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMark.swift */; };
 		52A32A08204DD882006EEF3F /* Enum+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A07204DD882006EEF3F /* Enum+Extensions.swift */; };
 		52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */; };
+		52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A893205A252A00F18CCA /* NodeTypeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		52A32A05204DD850006EEF3F /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
 		52A32A07204DD882006EEF3F /* Enum+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Extensions.swift"; sourceTree = "<group>"; };
 		52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Regex+Extensions.swift"; sourceTree = "<group>"; };
+		52C5A893205A252A00F18CCA /* NodeTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				527FB76E20544664000ADD7D /* CommonMark Spec */,
 				527FB771205446DD000ADD7D /* Renderable */,
 				5232876D204CA6100093C905 /* Info.plist */,
+				52C5A893205A252A00F18CCA /* NodeTypeTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5232876C204CA6100093C905 /* ParseableTests.swift in Sources */,
+				52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */,
 				527FB76B205440A1000ADD7D /* RenderableTests.swift in Sources */,
 				527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */,
 				5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */,

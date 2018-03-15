@@ -14,9 +14,9 @@ import Foundation
 
 public extension NSRegularExpression {
 
-	func match(in str: String,
-			   templates: [String],
-			   options: NSRegularExpression.MatchingOptions = .anchored) -> (captures: [String], fullMatch: String)? {
+	func match(in str: String, templates: [String]) -> (captures: [String], fullMatch: String)? {
+
+		let options: NSRegularExpression.MatchingOptions = .anchored
 
 		guard let firstMatch = self.firstMatch(in: str, options: options, range: NSRange(location: 0, length: str.count)),
 			firstMatch.range.location != NSNotFound else {
