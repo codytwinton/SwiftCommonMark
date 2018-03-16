@@ -83,7 +83,7 @@ class CommonMarkRenderTests: XCTestCase {
 		* List
 
 		1. Ordered
-		1. List
+		2. List
 
 		[link](/uri "title")
 		[](/uri)
@@ -140,13 +140,13 @@ class CommonMarkRenderTests: XCTestCase {
 		let list1: Node = {
 			let item1 = Node.listItem(nodes: [.text("Unordered")])
 			let item2 = Node.listItem(nodes: [.text("List")])
-			return Node.list(isOrdered: false, nodes: [item1, item2])
+			return Node.list(type: .asterisk, isTight: true, nodes: [item1, item2])
 		}()
 
 		let list2: Node = {
 			let item1 = Node.listItem(nodes: [.text("Ordered")])
 			let item2 = Node.listItem(nodes: [.text("List")])
-			return Node.list(isOrdered: true, nodes: [item1, item2])
+			return Node.list(type: .period(start: 1), isTight: true, nodes: [item1, item2])
 		}()
 
 		let paragraph4: Node = {

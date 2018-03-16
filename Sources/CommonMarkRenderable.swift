@@ -69,9 +69,15 @@ extension Node: CommonMarkRenderable {
 			return "[\(nodes.commonMark)](\(url)\(srcTitle))"
 		case .listItem(let nodes):
 			return nodes.commonMark + "\n"
-		case let .list(isOrdered, nodes):
-			let prefix: String = isOrdered ? "1. " : "* "
-			return nodes.map { prefix + $0.commonMark }.joined() + "\n"
+		case let .list(type, isTight, nodes):
+			let delimiter = type.commonMarkDelimiter + " "
+
+			switch type {
+			case .dash, .asterisk, .plus:
+				return nodes.map { delimiter + $0.commonMark }.joined() + "\n"
+			case .period(let start), .paren(let start):
+				return nodes.enumerated().map { "\(start + $0.offset)" + delimiter + $0.element.commonMark }.joined() + "\n"
+			}
 		}
 	}
 }

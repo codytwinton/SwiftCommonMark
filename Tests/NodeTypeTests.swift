@@ -39,7 +39,7 @@ class NodeTypeTests: XCTestCase {
 			.image(source: "", title: nil, alternate: ""),
 			.lineBreak,
 			.link(url: "", title: nil, nodes: []),
-			.list(isOrdered: false, nodes: []),
+			.list(type: .asterisk, isTight: true, nodes: []),
 			.listItem(nodes: []),
 			.paragraph(nodes: []),
 			.softBreak,

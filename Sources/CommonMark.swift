@@ -20,6 +20,43 @@ enum HeadingLevel: Int, EnumProtocol {
 	case h1 = 1, h2, h3, h4, h5, h6
 }
 
+enum ListType: Equatable {
+	case dash, asterisk, plus
+	case period(start: Int), paren(start: Int)
+
+	var htmlPrefix: String {
+		switch self {
+		case .dash, .asterisk, .plus:
+			return "<ul>"
+		case .period(let start), .paren(let start):
+			var prefix = "<ol"
+
+			if start != 1 {
+				prefix += " start=\"\(start)\""
+			}
+
+			return prefix + ">"
+		}
+	}
+
+	var htmlPostfix: String {
+		switch self {
+		case .dash, .asterisk, .plus: return "</ul>"
+		case .period, .paren: return "</ol>"
+		}
+	}
+
+	var commonMarkDelimiter: String {
+		switch self {
+		case .dash: return "-"
+		case .asterisk: return "*"
+		case .plus: return "+"
+		case .period: return "."
+		case .paren: return ")"
+		}
+	}
+}
+
 // MARK: -
 
 enum NodeType: String, EnumProtocol {
@@ -44,7 +81,7 @@ enum Node: Equatable {
 	case image(source: String, title: String?, alternate: String)
 	case lineBreak
 	case link(url: String, title: String?, nodes: [Node])
-	case list(isOrdered: Bool, nodes: [Node])
+	case list(type: ListType, isTight: Bool, nodes: [Node])
 	case listItem(nodes: [Node])
 	case paragraph(nodes: [Node])
 	case softBreak
@@ -78,6 +115,8 @@ enum Node: Equatable {
 	}
 }
 
+// MARK: - Equatable Functions
+
 func == (lhs: Node, rhs: Node) -> Bool {
 	switch (lhs, rhs) {
 	case let (.image(lSource, lTitle, lAlternate), .image(rSource, rTitle, rAlternate)):
@@ -86,8 +125,8 @@ func == (lhs: Node, rhs: Node) -> Bool {
 		return lURL == rURL && lTitle == rTitle && lNodes == rNodes
 	case let (.codeBlock(lInfo, lCode), .codeBlock(rInfo, rCode)):
 		return lInfo == rInfo && lCode == rCode
-	case let (.list(lIsOrdered, lNodes), .list(rIsOrdered, rNodes)):
-		return lIsOrdered == rIsOrdered && lNodes == rNodes
+	case let (.list(lType, lIsTight, lNodes), .list(rType, rIsTight, rNodes)):
+		return lType == rType && lIsTight == rIsTight && lNodes == rNodes
 	case let (.heading(lLevel, lNodes), .heading(rLevel, rNodes)):
 		return lLevel == rLevel && lNodes == rNodes
 	case let (.code(left), .code(right)),
@@ -119,4 +158,18 @@ func == (lhs: [Node], rhs: [Node]) -> Bool {
 	}
 
 	return true
+}
+
+func == (lhs: ListType, rhs: ListType) -> Bool {
+	switch (lhs, rhs) {
+	case (.dash, .dash),
+		 (.asterisk, .asterisk),
+		 (.plus, .plus):
+		return true
+	case let (.period(lStart), .period(rStart)),
+		 let (.paren(lStart), .paren(rStart)):
+		return lStart == rStart
+	default:
+		return false
+	}
 }

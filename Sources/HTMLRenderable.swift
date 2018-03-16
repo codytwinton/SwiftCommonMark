@@ -63,10 +63,10 @@ extension Node: HTMLRenderable {
 			return image + "/>"
 		case .listItem(let nodes):
 			return "<li>" + nodes.html + "</li>\n"
-		case let .list(isOrdered, nodes):
-			var list = isOrdered ? "<ol>" : "<ul>"
+		case let .list(type, isTight, nodes):
+			var list = type.htmlPrefix
 			list += "\n" + nodes.html
-			list += isOrdered ? "</ol>" : "</ul>"
+			list += type.htmlPostfix
 			return list + "\n"
 		case let .link(url, title, nodes):
 			var link = "<a href=\"\(url)\""
