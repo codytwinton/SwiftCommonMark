@@ -93,10 +93,10 @@
 		5232875F204CA6100093C905 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				52389145205C269900EAD1F3 /* Old */,
 				52C5A890205A209300F18CCA /* Extensions */,
 				5248117120581BAC00F181A3 /* Renderable */,
 				529E4D922051F4FC007B8143 /* Supporting Files */,
-				5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */,
 				52A32A05204DD850006EEF3F /* CommonMark.swift */,
 			);
 			path = Sources;
@@ -112,6 +112,14 @@
 				5232876D204CA6100093C905 /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		52389145205C269900EAD1F3 /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */,
+			);
+			name = Old;
 			sourceTree = "<group>";
 		};
 		5248117120581BAC00F181A3 /* Renderable */ = {
