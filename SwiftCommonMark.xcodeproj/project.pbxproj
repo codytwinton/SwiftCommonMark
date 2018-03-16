@@ -117,6 +117,7 @@
 		52389145205C269900EAD1F3 /* Old */ = {
 			isa = PBXGroup;
 			children = (
+				52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */,
 				5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */,
 			);
 			name = Old;
@@ -154,7 +155,6 @@
 			isa = PBXGroup;
 			children = (
 				52A32A07204DD882006EEF3F /* Enum+Extensions.swift */,
-				52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
