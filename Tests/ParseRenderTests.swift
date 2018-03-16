@@ -171,6 +171,22 @@ class ParseRenderTests: XCTestCase {
 
 	// MARK: - Tests
 
+	func testNodeEquality() {
+
+		let expected = nodeTree
+		let actual = nodeTree
+
+		XCTAssertEqual(actual, expected)
+
+		let aNodeArrays: [[Node]] = [[.text("abc")], [.thematicBreak], [.thematicBreak, .softBreak]]
+		let bNodesArrays: [[Node]] = [[.text("def")], [.softBreak], [.thematicBreak]]
+
+		for (i, aNodeArray) in aNodeArrays.enumerated() {
+			XCTAssertFalse(aNodeArray == bNodesArrays[i])
+			XCTAssertNotEqual(aNodeArray, bNodesArrays[i])
+		}
+	}
+
 	func testNodeHTMLRendering() {
 
 		let actual = nodeTree.html

@@ -29,7 +29,7 @@ enum NodeType: String, EnumProtocol {
 
 // MARK: -
 
-enum Node {
+enum Node: Equatable {
 
 	// MARK: Cases
 
@@ -76,4 +76,47 @@ enum Node {
 		case .thematicBreak: return .thematicBreak
 		}
 	}
+}
+
+func == (lhs: Node, rhs: Node) -> Bool {
+	switch (lhs, rhs) {
+	case let (.image(lSource, lTitle, lAlternate), .image(rSource, rTitle, rAlternate)):
+		return lSource == rSource && lTitle == rTitle && lAlternate == rAlternate
+	case let (.link(lURL, lTitle, lNodes), .link(rURL, rTitle, rNodes)):
+		return lURL == rURL && lTitle == rTitle && lNodes == rNodes
+	case let (.codeBlock(lInfo, lCode), .codeBlock(rInfo, rCode)):
+		return lInfo == rInfo && lCode == rCode
+	case let (.list(lIsOrdered, lNodes), .list(rIsOrdered, rNodes)):
+		return lIsOrdered == rIsOrdered && lNodes == rNodes
+	case let (.heading(lLevel, lNodes), .heading(rLevel, rNodes)):
+		return lLevel == rLevel && lNodes == rNodes
+	case let (.code(left), .code(right)),
+		 let (.htmlBlock(left), .htmlBlock(right)),
+		 let (.htmlInline(left), .htmlInline(right)),
+		 let (.text(left), .text(right)):
+		return left == right
+	case let (.blockQuote(lNodes), .blockQuote(rNodes)),
+		 let (.emphasis(lNodes), .emphasis(rNodes)),
+		 let (.listItem(lNodes), .listItem(rNodes)),
+		 let (.paragraph(lNodes), .paragraph(rNodes)),
+		 let (.strong(lNodes), .strong(rNodes)),
+		 let (.document(lNodes), .document(rNodes)):
+		return lNodes == rNodes
+	case (.thematicBreak, .thematicBreak),
+		 (.softBreak, .softBreak),
+		 (.lineBreak, .lineBreak):
+		return true
+	default:
+		return false
+	}
+}
+
+func == (lhs: [Node], rhs: [Node]) -> Bool {
+	guard lhs.count == rhs.count else { return false }
+
+	for (i, node) in lhs.enumerated() {
+		guard node == rhs[i] else { return false }
+	}
+
+	return true
 }
