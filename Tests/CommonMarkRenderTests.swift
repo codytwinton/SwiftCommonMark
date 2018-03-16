@@ -1,5 +1,5 @@
 //
-//  ParseRenderTests.swift
+//  CommonMarkRenderTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/10/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-class ParseRenderTests: XCTestCase {
+class CommonMarkRenderTests: XCTestCase {
 
 	// MARK: Variables
 
@@ -216,33 +216,4 @@ class ParseRenderTests: XCTestCase {
 			"\n\nActual: |\(actual)|" +
 			"\n********\n\n\n\n\n\n")
 	}
-
-	let partHTML: String = """
-		<h1>Hello World</h1>
-
-		"""
-
-	let partCommonMark: String = """
-		# Hello World
-
-		"""
-
-	/*
-	func testNodeCommonMarkParsing() {
-		let nodes = NodeType.document.parse(markdown: partCommonMark)
-		let node = Node.document(nodes: nodes)
-
-		let expected = partHTML
-		let actual = node.html
-
-		XCTAssertEqual(actual, expected)
-
-		guard actual != expected else { return }
-		print("\n********\n\n" +
-			"Failed:" +
-			"\nExpected: \(expected)" +
-			"\nActual: \(actual)" +
-			"\n********\n\n")
-	}
-	*/
 }
