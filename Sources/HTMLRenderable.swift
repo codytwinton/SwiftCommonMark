@@ -44,10 +44,10 @@ extension Node: HTMLRenderable {
 			return "<p>" + nodes.html + "</p>\n"
 		case let .heading(level, nodes):
 			return "<\(level)>" + nodes.html + "</\(level)>\n"
-		case let .codeBlock(lang, code):
-			switch lang {
-			case let lang?:
-				return "<pre><code class=\"language-\(lang)\">\(code)</code></pre>\n"
+		case let .codeBlock(info, code):
+			switch info {
+			case let info?:
+				return "<pre><code class=\"language-\(info)\">\(code)</code></pre>\n"
 			case nil:
 				return "<pre><code>\(code)</code></pre>\n"
 			}

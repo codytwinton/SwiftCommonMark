@@ -30,7 +30,7 @@ class NodeTypeTests: XCTestCase {
 		let nodes: [Node] = [
 			.blockQuote(nodes: []),
 			.code(""),
-			.codeBlock(language: nil, code: ""),
+			.codeBlock(info: nil, code: ""),
 			.document(nodes: []),
 			.emphasis(nodes: []),
 			.heading(level: .h1, nodes: []),

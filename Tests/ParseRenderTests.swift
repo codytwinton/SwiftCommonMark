@@ -122,8 +122,8 @@ class ParseRenderTests: XCTestCase {
 			return .paragraph(nodes: [text1, strong1, text2, emphasis1, text3, .lineBreak, text4])
 		}()
 
-		let code1 = Node.codeBlock(language: nil, code: "Testing\n")
-		let code2 = Node.codeBlock(language: "swift", code: "Testing 123\n")
+		let code1 = Node.codeBlock(info: nil, code: "Testing\n")
+		let code2 = Node.codeBlock(info: "swift", code: "Testing 123\n")
 
 		let blockQuote: Node = {
 			let text1 = Node.text("Test Blockquote")

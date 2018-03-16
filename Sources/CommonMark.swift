@@ -35,7 +35,7 @@ enum Node {
 
 	case blockQuote(nodes: [Node])
 	case code(String)
-	case codeBlock(language: String?, code: String)
+	case codeBlock(info: String?, code: String)
 	case document(nodes: [Node])
 	case emphasis(nodes: [Node])
 	case heading(level: HeadingLevel, nodes: [Node])

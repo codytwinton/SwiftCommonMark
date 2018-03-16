@@ -47,8 +47,8 @@ extension Node: CommonMarkRenderable {
 		case let .heading(level, nodes):
 			return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
 		case let .codeBlock(info, code):
-			let lang = info ?? ""
-			return "```\(lang)\n" + code + "```\n\n"
+			let info = info ?? ""
+			return "```\(info)\n" + code + "```\n\n"
 		case let .image(source, title, alternate):
 			var srcTitle = ""
 
