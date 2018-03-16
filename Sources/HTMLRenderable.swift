@@ -64,10 +64,16 @@ extension Node: HTMLRenderable {
 		case .listItem(let nodes):
 			return "<li>" + nodes.html + "</li>\n"
 		case let .list(type, isTight, nodes):
-			var list = type.htmlPrefix
-			list += "\n" + nodes.html
-			list += type.htmlPostfix
-			return list + "\n"
+			var list = type.htmlPrefix + "\n"
+
+			switch isTight {
+			case true:
+				list += nodes.html.tightenedList()
+			case false:
+				list += nodes.html.loosenedList()
+			}
+
+			return list + type.htmlPostfix + "\n"
 		case let .link(url, title, nodes):
 			var link = "<a href=\"\(url)\""
 
@@ -106,6 +112,26 @@ private extension Character {
 }
 
 private extension String {
+
+	func tightenedList() -> String {
+		return replacingOccurrences(of: "<li><p>", with: "<li>")
+			.replacingOccurrences(of: "</p>\n</li>", with: "</li>")
+	}
+
+	func loosenedList() -> String {
+		return replacingOccurrences(of: "<li><p>", with: "<li>\n<p>")
+	}
+
+	func trimmingParagraph() -> String {
+		let pStart = "<p>"
+		let pEnd = "</p>"
+
+		let sIndex = index(startIndex, offsetBy: pStart.count)
+		let eIndex = index(endIndex, offsetBy: -pEnd.count)
+
+		guard self[..<sIndex] == pStart, self[eIndex...] == pEnd else { return self }
+		return String(self[sIndex..<eIndex])
+	}
 
 	func sanatizeHTML() -> String {
 		return map { $0.sanatizeHTML() }.joined()

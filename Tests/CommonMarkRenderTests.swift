@@ -38,9 +38,28 @@ class CommonMarkRenderTests: XCTestCase {
 		<li>Unordered</li>
 		<li>List</li>
 		</ul>
-		<ol>
+		<ul>
+		<li>Second</li>
+		</ul>
+		<ul>
+		<li>
+		<p>Unordered</p>
+		</li>
+		<li>
+		<p>Loose</p>
+		</li>
+		</ul>
+		<ol start="2">
 		<li>Ordered</li>
 		<li>List</li>
+		</ol>
+		<ol>
+		<li>
+		<p>Ordered</p>
+		</li>
+		<li>
+		<p>Loose</p>
+		</li>
 		</ol>
 		<p><a href="/uri" title="title">link</a>
 		<a href="/uri"></a></p>
@@ -137,16 +156,33 @@ class CommonMarkRenderTests: XCTestCase {
 			return .paragraph(nodes: [image1, .softBreak, image2])
 		}()
 
-		let list1: Node = {
-			let item1 = Node.listItem(nodes: [.text("Unordered")])
-			let item2 = Node.listItem(nodes: [.text("List")])
+		let uList1: Node = {
+			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Unordered")])])
+			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("List")])])
 			return Node.list(type: .asterisk, isTight: true, nodes: [item1, item2])
 		}()
 
-		let list2: Node = {
-			let item1 = Node.listItem(nodes: [.text("Ordered")])
-			let item2 = Node.listItem(nodes: [.text("List")])
-			return Node.list(type: .period(start: 1), isTight: true, nodes: [item1, item2])
+		let uList2: Node = {
+			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Second")])])
+			return Node.list(type: .plus, isTight: true, nodes: [item1])
+		}()
+
+		let uList3: Node = {
+			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Unordered")])])
+			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("Loose")])])
+			return Node.list(type: .dash, isTight: false, nodes: [item1, item2])
+		}()
+
+		let oList1: Node = {
+			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Ordered")])])
+			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("List")])])
+			return Node.list(type: .period(start: 2), isTight: true, nodes: [item1, item2])
+		}()
+
+		let oList2: Node = {
+			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Ordered")])])
+			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("Loose")])])
+			return Node.list(type: .paren(start: 1), isTight: false, nodes: [item1, item2])
 		}()
 
 		let paragraph4: Node = {
@@ -166,7 +202,7 @@ class CommonMarkRenderTests: XCTestCase {
 		let paragraph5 = Node.paragraph(nodes: [.htmlInline("<a>"), .htmlInline("<bab>"), .htmlInline("<c2c>")])
 
 		return .document(nodes: [heading, paragraph1, .thematicBreak, paragraph2,
-								 code1, code2, blockQuote, paragraph3, list1, list2, paragraph4, html1, paragraph5])
+								 code1, code2, blockQuote, paragraph3, uList1, uList2, uList3, oList1, oList2, paragraph4, html1, paragraph5])
 	}()
 
 	// MARK: - Tests
