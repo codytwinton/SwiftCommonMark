@@ -203,16 +203,11 @@ class ParseRenderTests: XCTestCase {
 
 	let partHTML: String = """
 		<h1>Hello World</h1>
-		<p>Testing &lt;&gt;&quot;
-		Testing now: <code>Testing Code</code></p>
 
 		"""
 
 	let partCommonMark: String = """
 		# Hello World
-
-		Testing <>"
-		Testing now: `Testing Code`
 
 		"""
 
