@@ -101,8 +101,18 @@ class CommonMarkRenderTests: XCTestCase {
 		* Unordered
 		* List
 
-		1. Ordered
-		2. List
+		+ Second
+
+		- Unordered
+
+		- Loose
+
+		2. Ordered
+		3. List
+
+		1) Ordered
+
+		2) Loose
 
 		[link](/uri "title")
 		[](/uri)
@@ -242,6 +252,16 @@ class CommonMarkRenderTests: XCTestCase {
 
 		let actual = nodeTree.commonMark
 		let expected = expectedCommonMark
+
+		let actualLines = actual.components(separatedBy: .newlines)
+
+		for (i, line) in expected.components(separatedBy: .newlines).enumerated() {
+			guard line != actualLines[i] else { continue }
+
+			print("\n\n\n\n\n\n\n********\n\n" +
+				"line \(i + 1): |\(actualLines[i])|" +
+				"\n********\n")
+		}
 
 		XCTAssertEqual(actual, expected)
 

@@ -74,9 +74,15 @@ extension Node: CommonMarkRenderable {
 
 			switch type {
 			case .dash, .asterisk, .plus:
-				return nodes.map { delimiter + $0.commonMark }.joined() + "\n"
+				return nodes.map { node -> String in
+					let listItem = node.commonMark.trimmingCharacters(in: .newlines)
+					return delimiter + listItem + (isTight ? "\n" : "\n\n")
+				}.joined() + (isTight ? "\n" : "")
 			case .period(let start), .paren(let start):
-				return nodes.enumerated().map { "\(start + $0.offset)" + delimiter + $0.element.commonMark }.joined() + "\n"
+				return nodes.enumerated().map { offset, node -> String in
+					let listItem = node.commonMark.trimmingCharacters(in: .newlines)
+					return "\(start + offset)" + delimiter + listItem + (isTight ? "\n" : "\n\n")
+				}.joined() + (isTight ? "\n" : "")
 			}
 		}
 	}
