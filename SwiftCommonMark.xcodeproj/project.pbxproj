@@ -13,6 +13,7 @@
 		5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328779204CA96B0093C905 /* CommonMarkSpecTest.swift */; };
 		5232877C204CA96B0093C905 /* commonmark-tests-spec-0.28.json in Resources */ = {isa = PBXBuildFile; fileRef = 5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */; };
 		5234F8B1204F107900A0141E /* CommonMarkOldParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */; };
+		5238914B205C393000EAD1F3 /* CommonMarkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5238914A205C393000EAD1F3 /* CommonMarkParser.swift */; };
 		527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */; };
 		527FB76B205440A1000ADD7D /* CommonMarkRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
@@ -43,6 +44,7 @@
 		52328779204CA96B0093C905 /* CommonMarkSpecTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkSpecTest.swift; sourceTree = "<group>"; };
 		5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "commonmark-tests-spec-0.28.json"; sourceTree = "<group>"; };
 		5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkOldParsing.swift; sourceTree = "<group>"; };
+		5238914A205C393000EAD1F3 /* CommonMarkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkParser.swift; sourceTree = "<group>"; };
 		527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderable.swift; sourceTree = "<group>"; };
 		527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				52389145205C269900EAD1F3 /* Old */,
 				52C5A890205A209300F18CCA /* Extensions */,
+				52389149205C38ED00EAD1F3 /* Parsing */,
 				5248117120581BAC00F181A3 /* Renderable */,
 				529E4D922051F4FC007B8143 /* Supporting Files */,
 				52A32A05204DD850006EEF3F /* CommonMark.swift */,
@@ -121,6 +124,14 @@
 				5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */,
 			);
 			name = Old;
+			sourceTree = "<group>";
+		};
+		52389149205C38ED00EAD1F3 /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				5238914A205C393000EAD1F3 /* CommonMarkParser.swift */,
+			);
+			name = Parsing;
 			sourceTree = "<group>";
 		};
 		5248117120581BAC00F181A3 /* Renderable */ = {
@@ -290,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */,
+				5238914B205C393000EAD1F3 /* CommonMarkParser.swift in Sources */,
 				5234F8B1204F107900A0141E /* CommonMarkOldParsing.swift in Sources */,
 				527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */,
 				52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */,

@@ -12,6 +12,7 @@ import Foundation
 
 // MARK: -
 
+/*
 public extension NSRegularExpression {
 
 	func match(in str: String, templates: [String]) -> (captures: [String], fullMatch: String)? {
@@ -39,3 +40,4 @@ public extension NSRegularExpression {
 		return (regexCaptures, fullMatch)
 	}
 }
+*/

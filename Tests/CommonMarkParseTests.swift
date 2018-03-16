@@ -72,4 +72,15 @@ class CommonMarkParseTests: XCTestCase {
 		XCTAssertEqual(passes, commonMarkTests.count, "CommonMark Tests passes: \(passes) of \(commonMarkTests.count)")
 	}
 	*/
+
+	func testParsing() {
+
+		let markdown = """
+		# Testing
+		***
+
+		"""
+
+		let document = NodeType.parse(markdown: markdown)
+	}
 }
