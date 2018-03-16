@@ -1,5 +1,5 @@
 //
-//  CommonMarkParsing.swift
+//  CommonMarkOldParsing.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 3/6/18.
@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: Parsing Markdown
-
+/*
 extension NodeType {
 
 	// MARK: Variables
@@ -137,3 +137,4 @@ extension NodeType {
 		}
 	}
 }
+*/

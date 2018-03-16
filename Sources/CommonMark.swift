@@ -22,7 +22,7 @@ enum HeadingLevel: Int, EnumProtocol {
 
 // MARK: -
 
-enum NodeType: Int, EnumProtocol {
+enum NodeType: String, EnumProtocol {
 	case blockQuote, code, codeBlock, document, emphasis, heading, htmlBlock, htmlInline, image
 	case lineBreak, link, list, listItem, paragraph, softBreak, strong, text, thematicBreak
 }

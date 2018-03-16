@@ -211,6 +211,7 @@ class ParseRenderTests: XCTestCase {
 
 		"""
 
+	/*
 	func testNodeCommonMarkParsing() {
 		let nodes = NodeType.document.parse(markdown: partCommonMark)
 		let node = Node.document(nodes: nodes)
@@ -227,4 +228,5 @@ class ParseRenderTests: XCTestCase {
 			"\nActual: \(actual)" +
 			"\n********\n\n")
 	}
+	*/
 }

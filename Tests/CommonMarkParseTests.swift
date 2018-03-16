@@ -34,6 +34,7 @@ class CommonMarkParseTests: XCTestCase {
 
 	// MARK: - Custom Functions
 
+	/*
 	@discardableResult
 	func testPasses(for section: CommonMarkTestSection) -> Int {
 		let tests = commonMarkTests.filter { $0.section == section.rawValue }
@@ -57,6 +58,7 @@ class CommonMarkParseTests: XCTestCase {
 		XCTAssertEqual(passes, tests.count, "\(section.rawValue) passes: \(passes) of \(tests.count)")
 		return passes
 	}
+	*/
 
 	// MARK: - Tests
 
