@@ -201,11 +201,26 @@ class ParseRenderTests: XCTestCase {
 			"\n********\n\n\n\n\n\n")
 	}
 
+	let partHTML: String = """
+		<h1>Hello World</h1>
+		<p>Testing &lt;&gt;&quot;
+		Testing now: <code>Testing Code</code></p>
+
+		"""
+
+	let partCommonMark: String = """
+		# Hello World
+
+		Testing <>"
+		Testing now: `Testing Code`
+
+		"""
+
 	func testNodeCommonMarkParsing() {
-		let nodes = NodeType.document.parse(markdown: expectedCommonMark)
+		let nodes = NodeType.document.parse(markdown: partCommonMark)
 		let node = Node.document(nodes: nodes)
 
-		let expected = expectedHTML
+		let expected = partHTML
 		let actual = node.html
 
 		XCTAssertEqual(actual, expected)
