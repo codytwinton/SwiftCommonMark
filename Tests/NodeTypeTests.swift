@@ -54,4 +54,15 @@ class NodeTypeTests: XCTestCase {
 			XCTAssertEqual(node.type, nodeTypes[i])
 		}
     }
+
+	func testNodeInEquality() {
+
+		let aNodeArrays: [[Node]] = [[.text("abc")], [.thematicBreak], [.thematicBreak, .softBreak]]
+		let bNodesArrays: [[Node]] = [[.text("def")], [.softBreak], [.thematicBreak]]
+
+		for (i, aNodeArray) in aNodeArrays.enumerated() {
+			XCTAssertFalse(aNodeArray == bNodesArrays[i])
+			XCTAssertNotEqual(aNodeArray, bNodesArrays[i])
+		}
+	}
 }
