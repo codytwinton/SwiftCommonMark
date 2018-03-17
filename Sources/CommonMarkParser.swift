@@ -153,9 +153,15 @@ private extension Node {
 	mutating func parseBlockInlines() {
 		switch self {
 		case .paragraph(let nodes):
-			parseParagraphInlines(nodes: nodes)
+			self = .paragraph(nodes: nodes.flatMap { node -> [Node] in
+				guard case .text(let text) = node else { return [] }
+				return text.parseParagraphInlines()
+			})
 		case let .heading(level, nodes):
-			parseHeadingInlines(level: level, nodes: nodes)
+			self = .heading(level: level, nodes: nodes.flatMap { node -> [Node] in
+				guard case .text(let text) = node else { return [] }
+				return text.parseHeadingInlines()
+			})
 		case .document(var nodes):
 			nodes.parseBlockInlines()
 			self = .document(nodes: nodes)
@@ -172,28 +178,6 @@ private extension Node {
 			 .lineBreak, .link, .softBreak, .strong, .text, .thematicBreak:
 			break
 		}
-	}
-
-	mutating func parseParagraphInlines(nodes: [Node]) {
-		var updatedNodes: [Node] = []
-
-		for node in nodes {
-			guard case .text(let text) = node else { continue }
-			updatedNodes += text.parseParagraphInlines()
-		}
-
-		self = .paragraph(nodes: updatedNodes)
-	}
-
-	mutating func parseHeadingInlines(level: HeadingLevel, nodes: [Node]) {
-		var updatedNodes: [Node] = []
-
-		for node in nodes {
-			guard case .text(let text) = node else { continue }
-			updatedNodes += text.parseHeadingInlines()
-		}
-
-		self = .heading(level: level, nodes: updatedNodes)
 	}
 }
 
