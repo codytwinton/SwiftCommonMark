@@ -82,10 +82,6 @@ extension NodeType {
 	// MARK: -
 
 	static func parse(markdown: String) -> Node {
-		return parseBlocks(markdown: markdown)
-	}
-
-	static func parseBlocks(markdown: String) -> Node {
 
 		var blocks: [Node] = []
 		var openBlocks: [NodeType] = [.document]
@@ -120,7 +116,9 @@ extension NodeType {
 			parseParagraph(line: line, &blocks, &openBlocks)
 		}
 
-		return .document(nodes: blocks)
+		var document = Node.document(nodes: blocks)
+		document.parseBlockInlines()
+		return document
 	}
 
 	// MARK: Specific Parsing
@@ -145,5 +143,91 @@ extension NodeType {
 				openBlocks.append(.paragraph)
 			}
 		}
+	}
+}
+
+// MARK: -
+
+private extension Node {
+
+	mutating func parseBlockInlines() {
+		switch self {
+		case .paragraph(let nodes):
+			parseParagraphInlines(nodes: nodes)
+		case let .heading(level, nodes):
+			parseHeadingInlines(level: level, nodes: nodes)
+		case .document(var nodes):
+			nodes.parseBlockInlines()
+			self = .document(nodes: nodes)
+		case .blockQuote(var nodes):
+			nodes.parseBlockInlines()
+			self = .blockQuote(nodes: nodes)
+		case .list(let type, let isTight, var nodes):
+			nodes.parseBlockInlines()
+			self = .list(type: type, isTight: isTight, nodes: nodes)
+		case .listItem(var nodes):
+			nodes.parseBlockInlines()
+			self = .listItem(nodes: nodes)
+		case .code, .codeBlock, .emphasis, .image, .htmlBlock, .htmlInline,
+			 .lineBreak, .link, .softBreak, .strong, .text, .thematicBreak:
+			break
+		}
+	}
+
+	mutating func parseParagraphInlines(nodes: [Node]) {
+		var updatedNodes: [Node] = []
+
+		for node in nodes {
+			guard case .text(let text) = node else { continue }
+			updatedNodes += text.parseParagraphInlines()
+		}
+
+		self = .paragraph(nodes: updatedNodes)
+	}
+
+	mutating func parseHeadingInlines(level: HeadingLevel, nodes: [Node]) {
+		var updatedNodes: [Node] = []
+
+		for node in nodes {
+			guard case .text(let text) = node else { continue }
+			updatedNodes += text.parseHeadingInlines()
+		}
+
+		self = .heading(level: level, nodes: updatedNodes)
+	}
+}
+
+// MARK: -
+
+private extension Array where Element == Node {
+
+	mutating func parseBlockInlines() {
+		for i in 0..<count {
+			self[i].parseBlockInlines()
+		}
+	}
+}
+
+// MARK: -
+
+private extension String {
+
+	func parseParagraphInlines() -> [Node] {
+		var nodes: [Node] = []
+
+		let lines = trimmingCharacters(in: .newlines).components(separatedBy: .newlines)
+
+		for (i, line) in lines.enumerated() {
+			guard !line.isEmpty else { continue }
+			nodes.append(.text(line))
+			guard i < lines.count - 1 else { continue }
+			nodes.append(.softBreak)
+		}
+
+		return nodes
+	}
+
+	func parseHeadingInlines() -> [Node] {
+		return [.text(self)]
 	}
 }
