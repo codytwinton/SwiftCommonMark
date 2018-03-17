@@ -75,12 +75,28 @@ class CommonMarkParseTests: XCTestCase {
 
 	func testParsing() {
 
+		let html = """
+		<h1>Testing</h1>
+		<hr />
+		<p>Lorem ipsum dolor
+		sit amet.</p>
+		<p>Lorem ipsum dolor sit amet.</p>
+
+		"""
+
 		let markdown = """
 		# Testing
+
 		***
+
+		Lorem ipsum dolor
+		sit amet.
+
+		Lorem ipsum dolor sit amet.
 
 		"""
 
 		let document = NodeType.parse(markdown: markdown)
+		XCTAssertEqual(document.html, html)
 	}
 }

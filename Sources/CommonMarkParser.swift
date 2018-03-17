@@ -90,7 +90,10 @@ extension NodeType {
 		var blocks: [Node] = []
 		var openBlocks: [NodeType] = [.document]
 
-		for line in markdown.components(separatedBy: "\n") {
+		for line in markdown.components(separatedBy: .newlines) {
+
+			var foundMatch = false
+
 			for type in blockTypes {
 				guard let regex = type.blockRegex else { continue }
 
@@ -109,9 +112,38 @@ extension NodeType {
 				}
 
 				blocks.append(type.block(from: line, captures: captures))
+				foundMatch = true
+				break
 			}
+
+			guard !foundMatch else { continue }
+			parseParagraph(line: line, &blocks, &openBlocks)
 		}
 
 		return .document(nodes: blocks)
+	}
+
+	// MARK: Specific Parsing
+
+	private static func parseParagraph(line: String, _ blocks: inout [Node], _ openBlocks: inout [NodeType]) {
+
+		switch blocks.last {
+		case .paragraph(var nodes)? where openBlocks.last == .paragraph:
+			if let node = nodes.last, case .text(let text) = node, text.last != "\n" {
+				blocks.removeLast()
+				nodes.removeLast()
+
+				nodes.append(.text(text + "\n" + line))
+				blocks.append(.paragraph(nodes: nodes))
+			} else if !line.isEmpty {
+				blocks.append(.paragraph(nodes: [.text(line)]))
+			}
+
+		default:
+			if !line.isEmpty {
+				blocks.append(.paragraph(nodes: [.text(line)]))
+				openBlocks.append(.paragraph)
+			}
+		}
 	}
 }
