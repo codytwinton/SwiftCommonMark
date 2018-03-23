@@ -24,8 +24,8 @@ extension Node: CommonMarkRenderable {
 
 	var commonMark: String {
 		switch self {
-		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock,
-			 .htmlInline, .image, .lineBreak, .paragraph, .softBreak, .strong, .text, .thematicBreak:
+		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock, .htmlInline,
+			 .image, .lineBreak, .listItem, .paragraph, .softBreak, .strong, .text, .thematicBreak:
 			return ""
 		case let .link(url, title, nodes):
 			var srcTitle = ""
@@ -35,8 +35,6 @@ extension Node: CommonMarkRenderable {
 			}
 
 			return "[\(nodes.commonMark)](\(url)\(srcTitle))"
-		case .listItem(let nodes):
-			return nodes.commonMark + "\n"
 		case let .list(type, isTight, nodes):
 			let delimiter = type.commonMarkDelimiter + " "
 
