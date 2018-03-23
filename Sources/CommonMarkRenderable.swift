@@ -24,7 +24,7 @@ extension Node: CommonMarkRenderable {
 
 	var commonMark: String {
 		switch self {
-		case .blockQuote, .code, .codeBlock:
+		case .blockQuote, .code, .codeBlock, .emphasis:
 			return ""
 		case .softBreak:
 			return "\n"
@@ -42,8 +42,6 @@ extension Node: CommonMarkRenderable {
 			return str + "\n\n"
 		case .strong(let nodes):
 			return "**" + nodes.commonMark + "**"
-		case .emphasis(let nodes):
-			return "*" + nodes.commonMark + "*"
 		case let .heading(level, nodes):
 			return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
 		case let .image(source, title, alternate):
