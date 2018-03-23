@@ -19,6 +19,7 @@
 		525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52620656B0400E2B9D1 /* EmphasisNode.swift */; };
 		525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52820656C6D00E2B9D1 /* StrongNode.swift */; };
 		525CA52B20656E6400E2B9D1 /* HeadingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52A20656E6400E2B9D1 /* HeadingNode.swift */; };
+		525CA52D206571BA00E2B9D1 /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52C206571BA00E2B9D1 /* HTMLNode.swift */; };
 		527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */; };
 		527FB76B205440A1000ADD7D /* CommonMarkRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
@@ -56,6 +57,7 @@
 		525CA52620656B0400E2B9D1 /* EmphasisNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmphasisNode.swift; sourceTree = "<group>"; };
 		525CA52820656C6D00E2B9D1 /* StrongNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongNode.swift; sourceTree = "<group>"; };
 		525CA52A20656E6400E2B9D1 /* HeadingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingNode.swift; sourceTree = "<group>"; };
+		525CA52C206571BA00E2B9D1 /* HTMLNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderable.swift; sourceTree = "<group>"; };
 		527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				525CA5242065693400E2B9D1 /* CodeBlockNode.swift */,
 				525CA52620656B0400E2B9D1 /* EmphasisNode.swift */,
 				525CA52A20656E6400E2B9D1 /* HeadingNode.swift */,
+				525CA52C206571BA00E2B9D1 /* HTMLNode.swift */,
 				525CA52820656C6D00E2B9D1 /* StrongNode.swift */,
 			);
 			name = Nodes;
@@ -338,6 +341,7 @@
 				529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */,
 				525CA52B20656E6400E2B9D1 /* HeadingNode.swift in Sources */,
 				525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */,
+				525CA52D206571BA00E2B9D1 /* HTMLNode.swift in Sources */,
 				52A32A08204DD882006EEF3F /* Enum+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

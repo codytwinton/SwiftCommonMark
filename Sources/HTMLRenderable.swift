@@ -24,7 +24,7 @@ extension Node: HTMLRenderable {
 
 	var html: String {
 		switch self {
-		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .strong:
+		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .htmlBlock, .htmlInline, .strong:
 			return ""
 		case .softBreak:
 			return "\n"
@@ -67,10 +67,6 @@ extension Node: HTMLRenderable {
 			}
 
 			return link + ">" + nodes.html + "</a>"
-		case .htmlBlock(let html):
-			return html + "\n"
-		case .htmlInline(let html):
-			return html
 		}
 	}
 }

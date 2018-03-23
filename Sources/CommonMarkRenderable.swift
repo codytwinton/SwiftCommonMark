@@ -24,7 +24,7 @@ extension Node: CommonMarkRenderable {
 
 	var commonMark: String {
 		switch self {
-		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .strong:
+		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .htmlBlock, .htmlInline, .strong:
 			return ""
 		case .softBreak:
 			return "\n"
@@ -36,10 +36,8 @@ extension Node: CommonMarkRenderable {
 			return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
 		case .paragraph(let nodes):
 			return nodes.commonMark + "\n\n"
-		case .text(let str), .htmlInline(let str):
+		case .text(let str):
 			return str
-		case .htmlBlock(let str):
-			return str + "\n\n"
 		case let .image(source, title, alternate):
 			var srcTitle = ""
 
