@@ -24,16 +24,9 @@ extension Node: CommonMarkRenderable {
 
 	var commonMark: String {
 		switch self {
-		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .htmlBlock, .htmlInline, .image, .strong:
+		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock,
+			 .htmlInline, .image, .lineBreak, .softBreak, .strong, .thematicBreak:
 			return ""
-		case .softBreak:
-			return "\n"
-		case .lineBreak:
-			return "\\\n"
-		case .thematicBreak:
-			return "***\n\n"
-		case .document(let nodes):
-			return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
 		case .paragraph(let nodes):
 			return nodes.commonMark + "\n\n"
 		case .text(let str):

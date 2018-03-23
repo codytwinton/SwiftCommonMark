@@ -24,16 +24,9 @@ extension Node: HTMLRenderable {
 
 	var html: String {
 		switch self {
-		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .htmlBlock, .htmlInline, .image, .strong:
+		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock,
+			 .htmlInline, .image, .lineBreak, .softBreak, .strong, .thematicBreak:
 			return ""
-		case .softBreak:
-			return "\n"
-		case .lineBreak:
-			return "<br />\n"
-		case .thematicBreak:
-			return "<hr />\n"
-		case .document(let nodes):
-			return nodes.html
 		case .text(let str):
 			return str.sanatizeHTML()
 		case .paragraph(let nodes):

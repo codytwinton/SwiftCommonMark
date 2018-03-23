@@ -21,6 +21,8 @@
 		525CA52B20656E6400E2B9D1 /* HeadingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52A20656E6400E2B9D1 /* HeadingNode.swift */; };
 		525CA52D206571BA00E2B9D1 /* HTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52C206571BA00E2B9D1 /* HTMLNode.swift */; };
 		525CA52F2065753A00E2B9D1 /* ImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52E2065753A00E2B9D1 /* ImageNode.swift */; };
+		525CA53120659B5F00E2B9D1 /* BreakNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA53020659B5F00E2B9D1 /* BreakNode.swift */; };
+		525CA5332065A0FA00E2B9D1 /* DocumentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5322065A0FA00E2B9D1 /* DocumentNode.swift */; };
 		527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */; };
 		527FB76B205440A1000ADD7D /* CommonMarkRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
@@ -60,6 +62,8 @@
 		525CA52A20656E6400E2B9D1 /* HeadingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingNode.swift; sourceTree = "<group>"; };
 		525CA52C206571BA00E2B9D1 /* HTMLNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLNode.swift; sourceTree = "<group>"; };
 		525CA52E2065753A00E2B9D1 /* ImageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNode.swift; sourceTree = "<group>"; };
+		525CA53020659B5F00E2B9D1 /* BreakNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakNode.swift; sourceTree = "<group>"; };
+		525CA5322065A0FA00E2B9D1 /* DocumentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentNode.swift; sourceTree = "<group>"; };
 		527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderable.swift; sourceTree = "<group>"; };
 		527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
@@ -182,9 +186,11 @@
 			isa = PBXGroup;
 			children = (
 				52A32A05204DD850006EEF3F /* CommonMark.swift */,
+				525CA53020659B5F00E2B9D1 /* BreakNode.swift */,
 				52B2674D20655BC000888E6A /* BlockQuoteNode.swift */,
 				525CA5222065652500E2B9D1 /* CodeNode.swift */,
 				525CA5242065693400E2B9D1 /* CodeBlockNode.swift */,
+				525CA5322065A0FA00E2B9D1 /* DocumentNode.swift */,
 				525CA52620656B0400E2B9D1 /* EmphasisNode.swift */,
 				525CA52A20656E6400E2B9D1 /* HeadingNode.swift */,
 				525CA52C206571BA00E2B9D1 /* HTMLNode.swift */,
@@ -337,11 +343,13 @@
 				5238914B205C393000EAD1F3 /* CommonMarkParser.swift in Sources */,
 				525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */,
 				5234F8B1204F107900A0141E /* CommonMarkOldParsing.swift in Sources */,
+				525CA53120659B5F00E2B9D1 /* BreakNode.swift in Sources */,
 				527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */,
 				525CA52F2065753A00E2B9D1 /* ImageNode.swift in Sources */,
 				52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */,
 				525CA5232065652500E2B9D1 /* CodeNode.swift in Sources */,
 				52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */,
+				525CA5332065A0FA00E2B9D1 /* DocumentNode.swift in Sources */,
 				529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */,
 				525CA52B20656E6400E2B9D1 /* HeadingNode.swift in Sources */,
 				525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */,
