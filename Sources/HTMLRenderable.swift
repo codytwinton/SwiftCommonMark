@@ -24,7 +24,7 @@ extension Node: HTMLRenderable {
 
 	var html: String {
 		switch self {
-		case .blockQuote:
+		case .blockQuote, .code:
 			return ""
 		case .softBreak:
 			return "\n"
@@ -36,8 +36,6 @@ extension Node: HTMLRenderable {
 			return nodes.html
 		case .text(let str):
 			return str.sanatizeHTML()
-		case .code(let code):
-			return "<code>" + code + "</code>"
 		case .strong(let nodes):
 			return "<strong>" + nodes.html + "</strong>"
 		case .emphasis(let nodes):
