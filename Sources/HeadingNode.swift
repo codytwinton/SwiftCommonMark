@@ -10,6 +10,12 @@
 
 import Foundation
 
+// MARK: Enums
+
+enum HeadingLevel: Int, EnumProtocol {
+	case h1 = 1, h2, h3, h4, h5, h6
+}
+
 // MARK: -
 
 struct HeadingNode: HTMLRenderable, CommonMarkRenderable {

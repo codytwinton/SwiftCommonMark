@@ -16,10 +16,6 @@ typealias CommonMark = HTMLRenderable & CommonMarkRenderable
 
 // MARK: -
 
-enum HeadingLevel: Int, EnumProtocol {
-	case h1 = 1, h2, h3, h4, h5, h6
-}
-
 enum ListType: Equatable {
 	case dash, asterisk, plus
 	case period(start: Int), paren(start: Int)
