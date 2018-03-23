@@ -14,6 +14,10 @@ import Foundation
 
 struct CodeNode: HTMLRenderable, CommonMarkRenderable {
 
+	// MARK: Constants
+
+	let type: NodeType = .code
+
 	// MARK: Variables
 
 	private var code: String

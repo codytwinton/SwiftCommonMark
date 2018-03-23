@@ -14,6 +14,10 @@ import Foundation
 
 struct BlockQuoteNode: HTMLRenderable, CommonMarkRenderable {
 
+	// MARK: Constants
+
+	let type: NodeType = .blockQuote
+
 	// MARK: Variables
 
 	private var nodes: [CommonMark]

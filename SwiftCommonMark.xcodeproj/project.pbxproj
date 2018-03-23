@@ -105,7 +105,6 @@
 				52389149205C38ED00EAD1F3 /* Parsing */,
 				5248117120581BAC00F181A3 /* Renderable */,
 				529E4D922051F4FC007B8143 /* Supporting Files */,
-				52A32A05204DD850006EEF3F /* CommonMark.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -170,6 +169,7 @@
 		52B2674C20655B2800888E6A /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				52A32A05204DD850006EEF3F /* CommonMark.swift */,
 				52B2674D20655BC000888E6A /* BlockQuoteNode.swift */,
 				525CA5222065652500E2B9D1 /* CodeNode.swift */,
 			);
