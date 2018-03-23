@@ -24,7 +24,7 @@ extension Node: HTMLRenderable {
 
 	var html: String {
 		switch self {
-		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .htmlBlock, .htmlInline, .strong:
+		case .blockQuote, .code, .codeBlock, .emphasis, .heading, .htmlBlock, .htmlInline, .image, .strong:
 			return ""
 		case .softBreak:
 			return "\n"
@@ -38,14 +38,6 @@ extension Node: HTMLRenderable {
 			return str.sanatizeHTML()
 		case .paragraph(let nodes):
 			return "<p>" + nodes.html + "</p>\n"
-		case let .image(source, title, alternate):
-			var image = "<img src=\"\(source)\" alt=\"\(alternate)\" "
-
-			if let title = title, !title.isEmpty {
-				image += "title=\"\(title)\" "
-			}
-
-			return image + "/>"
 		case .listItem(let nodes):
 			return "<li>" + nodes.html + "</li>\n"
 		case let .list(type, isTight, nodes):
