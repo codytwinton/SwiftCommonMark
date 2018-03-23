@@ -20,6 +20,7 @@
 		529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529E4D9720520567007B8143 /* HTMLRenderable.swift */; };
 		52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMark.swift */; };
 		52A32A08204DD882006EEF3F /* Enum+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A07204DD882006EEF3F /* Enum+Extensions.swift */; };
+		52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2674D20655BC000888E6A /* BlockQuoteNode.swift */; };
 		52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */; };
 		52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A893205A252A00F18CCA /* NodeTypeTests.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		529E4D9720520567007B8143 /* HTMLRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLRenderable.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
 		52A32A07204DD882006EEF3F /* Enum+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Extensions.swift"; sourceTree = "<group>"; };
+		52B2674D20655BC000888E6A /* BlockQuoteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNode.swift; sourceTree = "<group>"; };
 		52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Regex+Extensions.swift"; sourceTree = "<group>"; };
 		52C5A893205A252A00F18CCA /* NodeTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 		5232875F204CA6100093C905 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				52B2674C20655B2800888E6A /* Nodes */,
 				52389145205C269900EAD1F3 /* Old */,
 				52C5A890205A209300F18CCA /* Extensions */,
 				52389149205C38ED00EAD1F3 /* Parsing */,
@@ -160,6 +163,14 @@
 				52328761204CA6100093C905 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52B2674C20655B2800888E6A /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				52B2674D20655BC000888E6A /* BlockQuoteNode.swift */,
+			);
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 		52C5A890205A209300F18CCA /* Extensions */ = {
@@ -304,6 +315,7 @@
 				5238914B205C393000EAD1F3 /* CommonMarkParser.swift in Sources */,
 				5234F8B1204F107900A0141E /* CommonMarkOldParsing.swift in Sources */,
 				527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */,
+				52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */,
 				52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */,
 				529E4D9820520567007B8143 /* HTMLRenderable.swift in Sources */,
 				52A32A08204DD882006EEF3F /* Enum+Extensions.swift in Sources */,

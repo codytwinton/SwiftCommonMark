@@ -24,6 +24,8 @@ extension Node: CommonMarkRenderable {
 
 	var commonMark: String {
 		switch self {
+		case .blockQuote:
+			return ""
 		case .softBreak:
 			return "\n"
 		case .lineBreak:
@@ -57,8 +59,6 @@ extension Node: CommonMarkRenderable {
 			}
 
 			return "![\(alternate)](\(source)\(srcTitle))"
-		case .blockQuote(let nodes):
-			return nodes.map { "> " + $0.commonMark }.joined().replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
 		case let .link(url, title, nodes):
 			var srcTitle = ""
 

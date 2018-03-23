@@ -24,6 +24,8 @@ extension Node: HTMLRenderable {
 
 	var html: String {
 		switch self {
+		case .blockQuote:
+			return ""
 		case .softBreak:
 			return "\n"
 		case .lineBreak:
@@ -51,8 +53,6 @@ extension Node: HTMLRenderable {
 			case nil:
 				return "<pre><code>\(code)</code></pre>\n"
 			}
-		case .blockQuote(let nodes):
-			return "<blockquote>\n\(nodes.html)</blockquote>\n"
 		case let .image(source, title, alternate):
 			var image = "<img src=\"\(source)\" alt=\"\(alternate)\" "
 
