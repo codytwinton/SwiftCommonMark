@@ -10,6 +10,19 @@
 
 import Foundation
 
+// MARK: Enums
+
+enum HTMLType {
+	case block, inline
+
+	var type: NodeType {
+		switch self {
+		case .block: return .htmlBlock
+		case .inline: return .htmlInline
+		}
+	}
+}
+
 // MARK: -
 
 struct HTMLNode: HTMLRenderable, CommonMarkRenderable {
@@ -17,21 +30,27 @@ struct HTMLNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: Variables
 
 	private var content: String
-	private var isInline: Bool
+	private var htmlType: HTMLType
 
 	private var type: NodeType {
-		return isInline ? .htmlInline : .htmlBlock
+		return htmlType.type
 	}
 
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		return content + ( isInline ? "" : "\n" )
+		switch htmlType {
+		case .block: return content + "\n"
+		case .inline: return content
+		}
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return content + ( isInline ? "" : "\n\n" )
+		switch htmlType {
+		case .block: return content + "\n\n"
+		case .inline: return content
+		}
 	}
 }

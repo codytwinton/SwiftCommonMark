@@ -16,7 +16,7 @@ struct ListItemNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Constants
 
-	let type: NodeType = .paragraph
+	let type: NodeType = .listItem
 
 	// MARK: Variables
 
