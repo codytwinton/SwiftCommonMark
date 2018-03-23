@@ -25,10 +25,8 @@ extension Node: HTMLRenderable {
 	var html: String {
 		switch self {
 		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock,
-			 .htmlInline, .image, .lineBreak, .softBreak, .strong, .text, .thematicBreak:
+			 .htmlInline, .image, .lineBreak, .paragraph, .softBreak, .strong, .text, .thematicBreak:
 			return ""
-		case .paragraph(let nodes):
-			return "<p>" + nodes.html + "</p>\n"
 		case .listItem(let nodes):
 			return "<li>" + nodes.html + "</li>\n"
 		case let .list(type, isTight, nodes):
