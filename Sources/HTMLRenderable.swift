@@ -25,7 +25,7 @@ extension Node: HTMLRenderable {
 	var html: String {
 		switch self {
 		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock, .htmlInline,
-			 .image, .lineBreak, .listItem, .paragraph, .softBreak, .strong, .text, .thematicBreak:
+			 .image, .lineBreak, .link, .listItem, .paragraph, .softBreak, .strong, .text, .thematicBreak:
 			return ""
 		case let .list(type, isTight, nodes):
 			var list = type.htmlPrefix + "\n"
@@ -38,14 +38,6 @@ extension Node: HTMLRenderable {
 			}
 
 			return list + type.htmlPostfix + "\n"
-		case let .link(url, title, nodes):
-			var link = "<a href=\"\(url)\""
-
-			if let title = title, !title.isEmpty {
-				link += " title=\"\(title)\""
-			}
-
-			return link + ">" + nodes.html + "</a>"
 		}
 	}
 }
