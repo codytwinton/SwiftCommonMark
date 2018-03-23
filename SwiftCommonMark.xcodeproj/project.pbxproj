@@ -23,6 +23,8 @@
 		525CA52F2065753A00E2B9D1 /* ImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52E2065753A00E2B9D1 /* ImageNode.swift */; };
 		525CA53120659B5F00E2B9D1 /* BreakNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA53020659B5F00E2B9D1 /* BreakNode.swift */; };
 		525CA5332065A0FA00E2B9D1 /* DocumentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5322065A0FA00E2B9D1 /* DocumentNode.swift */; };
+		525CA5352065A25000E2B9D1 /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5342065A25000E2B9D1 /* TextNode.swift */; };
+		525CA5372065A59200E2B9D1 /* ParagraphNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5362065A59200E2B9D1 /* ParagraphNode.swift */; };
 		527FB76920543E82000ADD7D /* CommonMarkRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */; };
 		527FB76B205440A1000ADD7D /* CommonMarkRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
@@ -64,6 +66,8 @@
 		525CA52E2065753A00E2B9D1 /* ImageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNode.swift; sourceTree = "<group>"; };
 		525CA53020659B5F00E2B9D1 /* BreakNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakNode.swift; sourceTree = "<group>"; };
 		525CA5322065A0FA00E2B9D1 /* DocumentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentNode.swift; sourceTree = "<group>"; };
+		525CA5342065A25000E2B9D1 /* TextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNode.swift; sourceTree = "<group>"; };
+		525CA5362065A59200E2B9D1 /* ParagraphNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphNode.swift; sourceTree = "<group>"; };
 		527FB76820543E82000ADD7D /* CommonMarkRenderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderable.swift; sourceTree = "<group>"; };
 		527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
@@ -195,7 +199,9 @@
 				525CA52A20656E6400E2B9D1 /* HeadingNode.swift */,
 				525CA52C206571BA00E2B9D1 /* HTMLNode.swift */,
 				525CA52E2065753A00E2B9D1 /* ImageNode.swift */,
+				525CA5362065A59200E2B9D1 /* ParagraphNode.swift */,
 				525CA52820656C6D00E2B9D1 /* StrongNode.swift */,
+				525CA5342065A25000E2B9D1 /* TextNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				525CA5352065A25000E2B9D1 /* TextNode.swift in Sources */,
 				525CA5252065693400E2B9D1 /* CodeBlockNode.swift in Sources */,
 				52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */,
 				5238914B205C393000EAD1F3 /* CommonMarkParser.swift in Sources */,
@@ -355,6 +362,7 @@
 				525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */,
 				525CA52D206571BA00E2B9D1 /* HTMLNode.swift in Sources */,
 				52A32A08204DD882006EEF3F /* Enum+Extensions.swift in Sources */,
+				525CA5372065A59200E2B9D1 /* ParagraphNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

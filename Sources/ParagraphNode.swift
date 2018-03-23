@@ -1,5 +1,5 @@
 //
-//  BlockQuoteNode.swift
+//  ParagraphNode.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 3/23/18.
@@ -12,11 +12,11 @@ import Foundation
 
 // MARK: -
 
-struct BlockQuoteNode: HTMLRenderable, CommonMarkRenderable {
+struct ParagraphNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Constants
 
-	let type: NodeType = .blockQuote
+	let type: NodeType = .paragraph
 
 	// MARK: Variables
 
@@ -26,13 +26,12 @@ struct BlockQuoteNode: HTMLRenderable, CommonMarkRenderable {
 
 	var html: String {
 		let content = nodes.map { $0.html }.joined()
-		return "<blockquote>\n" + content + "</blockquote>\n"
+		return "<p>" + content + "</p>\n"
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return nodes.map { "> " + $0.commonMark }.joined()
-			.replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
+		return nodes.map { $0.commonMark }.joined() + "\n\n"
 	}
 }

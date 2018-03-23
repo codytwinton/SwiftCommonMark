@@ -25,10 +25,8 @@ extension Node: HTMLRenderable {
 	var html: String {
 		switch self {
 		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock,
-			 .htmlInline, .image, .lineBreak, .softBreak, .strong, .thematicBreak:
+			 .htmlInline, .image, .lineBreak, .softBreak, .strong, .text, .thematicBreak:
 			return ""
-		case .text(let str):
-			return str.sanatizeHTML()
 		case .paragraph(let nodes):
 			return "<p>" + nodes.html + "</p>\n"
 		case .listItem(let nodes):
@@ -63,20 +61,6 @@ extension Array where Element: HTMLRenderable {
 	}
 }
 
-// MARK: Sanitized HTML Extensions
-
-private extension Character {
-
-	func sanatizeHTML() -> String {
-		switch self {
-		case "<": return "&lt;"
-		case ">": return "&gt;"
-		case "\"": return "&quot;"
-		default: return String(self)
-		}
-	}
-}
-
 private extension String {
 
 	func tightenedList() -> String {
@@ -97,9 +81,5 @@ private extension String {
 
 		guard self[..<sIndex] == pStart, self[eIndex...] == pEnd else { return self }
 		return String(self[sIndex..<eIndex])
-	}
-
-	func sanatizeHTML() -> String {
-		return map { $0.sanatizeHTML() }.joined()
 	}
 }
