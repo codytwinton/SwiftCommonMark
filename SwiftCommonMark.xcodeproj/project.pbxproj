@@ -41,6 +41,7 @@
 		52CAEE922066FF80007024B3 /* LinkNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE912066FF80007024B3 /* LinkNodeTests.swift */; };
 		52CAEE942067003E007024B3 /* ListItemNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE932067003E007024B3 /* ListItemNodeTests.swift */; };
 		52CAEE96206701B4007024B3 /* ListNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE95206701B4007024B3 /* ListNodeTests.swift */; };
+		52CAEE9A20670806007024B3 /* TextNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE9920670806007024B3 /* TextNodeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		52CAEE912066FF80007024B3 /* LinkNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE932067003E007024B3 /* ListItemNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE95206701B4007024B3 /* ListNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNodeTests.swift; sourceTree = "<group>"; };
+		52CAEE9920670806007024B3 /* TextNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNodeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				52CAEE912066FF80007024B3 /* LinkNodeTests.swift */,
 				52CAEE932067003E007024B3 /* ListItemNodeTests.swift */,
 				52CAEE95206701B4007024B3 /* ListNodeTests.swift */,
+				52CAEE9920670806007024B3 /* TextNodeTests.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				527FB76B205440A1000ADD7D /* DocumentTests.swift in Sources */,
 				527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */,
 				5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */,
+				52CAEE9A20670806007024B3 /* TextNodeTests.swift in Sources */,
 				52CAEE862066EF94007024B3 /* BlockQuoteNodeTests.swift in Sources */,
 				52CAEE942067003E007024B3 /* ListItemNodeTests.swift in Sources */,
 				52CAEE842066EDCB007024B3 /* BreakNodeTests.swift in Sources */,
