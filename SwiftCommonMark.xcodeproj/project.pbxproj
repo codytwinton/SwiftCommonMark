@@ -12,8 +12,6 @@
 		5232876E204CA6100093C905 /* SwiftCommonMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 52328760204CA6100093C905 /* SwiftCommonMark.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328779204CA96B0093C905 /* CommonMarkSpecTest.swift */; };
 		5232877C204CA96B0093C905 /* commonmark-tests-spec-0.28.json in Resources */ = {isa = PBXBuildFile; fileRef = 5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */; };
-		5234F8B1204F107900A0141E /* CommonMarkOldParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */; };
-		5238914B205C393000EAD1F3 /* CommonMarkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5238914A205C393000EAD1F3 /* CommonMarkParser.swift */; };
 		525CA5232065652500E2B9D1 /* CodeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5222065652500E2B9D1 /* CodeNode.swift */; };
 		525CA5252065693400E2B9D1 /* CodeBlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5242065693400E2B9D1 /* CodeBlockNode.swift */; };
 		525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52620656B0400E2B9D1 /* EmphasisNode.swift */; };
@@ -31,9 +29,8 @@
 		527FB76B205440A1000ADD7D /* CommonMarkRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
 		52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMark.swift */; };
-		52A32A08204DD882006EEF3F /* Enum+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A07204DD882006EEF3F /* Enum+Extensions.swift */; };
+		52A32A08204DD882006EEF3F /* General+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A07204DD882006EEF3F /* General+Extensions.swift */; };
 		52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2674D20655BC000888E6A /* BlockQuoteNode.swift */; };
-		52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */; };
 		52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A893205A252A00F18CCA /* NodeTypeTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +72,7 @@
 		527FB76A205440A1000ADD7D /* CommonMarkRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
-		52A32A07204DD882006EEF3F /* Enum+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Extensions.swift"; sourceTree = "<group>"; };
+		52A32A07204DD882006EEF3F /* General+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "General+Extensions.swift"; sourceTree = "<group>"; };
 		52B2674D20655BC000888E6A /* BlockQuoteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNode.swift; sourceTree = "<group>"; };
 		52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Regex+Extensions.swift"; sourceTree = "<group>"; };
 		52C5A893205A252A00F18CCA /* NodeTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
@@ -122,10 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				52A32A05204DD850006EEF3F /* CommonMark.swift */,
+				52A32A07204DD882006EEF3F /* General+Extensions.swift */,
 				52B2674C20655B2800888E6A /* Nodes */,
 				52389145205C269900EAD1F3 /* Old */,
-				52C5A890205A209300F18CCA /* Extensions */,
-				52389149205C38ED00EAD1F3 /* Parsing */,
 				529E4D922051F4FC007B8143 /* Supporting Files */,
 			);
 			path = Sources;
@@ -147,17 +143,10 @@
 			isa = PBXGroup;
 			children = (
 				52C5A891205A20CE00F18CCA /* Regex+Extensions.swift */,
+				5238914A205C393000EAD1F3 /* CommonMarkParser.swift */,
 				5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */,
 			);
 			name = Old;
-			sourceTree = "<group>";
-		};
-		52389149205C38ED00EAD1F3 /* Parsing */ = {
-			isa = PBXGroup;
-			children = (
-				5238914A205C393000EAD1F3 /* CommonMarkParser.swift */,
-			);
-			name = Parsing;
 			sourceTree = "<group>";
 		};
 		527FB76E20544664000ADD7D /* CommonMark Spec */ = {
@@ -199,14 +188,6 @@
 				525CA5342065A25000E2B9D1 /* TextNode.swift */,
 			);
 			name = Nodes;
-			sourceTree = "<group>";
-		};
-		52C5A890205A209300F18CCA /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				52A32A07204DD882006EEF3F /* Enum+Extensions.swift */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,14 +323,11 @@
 				525CA5352065A25000E2B9D1 /* TextNode.swift in Sources */,
 				525CA5252065693400E2B9D1 /* CodeBlockNode.swift in Sources */,
 				52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */,
-				5238914B205C393000EAD1F3 /* CommonMarkParser.swift in Sources */,
 				525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */,
-				5234F8B1204F107900A0141E /* CommonMarkOldParsing.swift in Sources */,
 				525CA53120659B5F00E2B9D1 /* BreakNode.swift in Sources */,
 				525CA52F2065753A00E2B9D1 /* ImageNode.swift in Sources */,
 				52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */,
 				525CA5232065652500E2B9D1 /* CodeNode.swift in Sources */,
-				52C5A892205A20CE00F18CCA /* Regex+Extensions.swift in Sources */,
 				525CA5332065A0FA00E2B9D1 /* DocumentNode.swift in Sources */,
 				525CA5392065C6C000E2B9D1 /* ListItemNode.swift in Sources */,
 				525CA52B20656E6400E2B9D1 /* HeadingNode.swift in Sources */,
@@ -357,7 +335,7 @@
 				525CA53D2065CC9400E2B9D1 /* ListNode.swift in Sources */,
 				525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */,
 				525CA52D206571BA00E2B9D1 /* HTMLNode.swift in Sources */,
-				52A32A08204DD882006EEF3F /* Enum+Extensions.swift in Sources */,
+				52A32A08204DD882006EEF3F /* General+Extensions.swift in Sources */,
 				525CA5372065A59200E2B9D1 /* ParagraphNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

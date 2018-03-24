@@ -11,7 +11,7 @@
 import Foundation
 
 // MARK: Parsing Markdown
-/*
+
 extension NodeType {
 
 	// MARK: Variables
@@ -137,4 +137,3 @@ extension NodeType {
 		}
 	}
 }
-*/
