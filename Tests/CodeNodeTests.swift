@@ -6,8 +6,12 @@
 //  Copyright © 2018 Cody Winton. All rights reserved.
 //
 
+// MARK: Imports
+
 @testable import SwiftCommonMark
 import XCTest
+
+// MARK: -
 
 class CodeNodeTests: XCTestCase {
 
