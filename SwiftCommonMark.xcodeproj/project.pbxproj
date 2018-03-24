@@ -39,6 +39,7 @@
 		52CAEE8E2066FC40007024B3 /* HTMLNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE8D2066FC40007024B3 /* HTMLNodeTests.swift */; };
 		52CAEE902066FD8E007024B3 /* ImageNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */; };
 		52CAEE922066FF80007024B3 /* LinkNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE912066FF80007024B3 /* LinkNodeTests.swift */; };
+		52CAEE942067003E007024B3 /* ListItemNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE932067003E007024B3 /* ListItemNodeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		52CAEE8D2066FC40007024B3 /* HTMLNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE912066FF80007024B3 /* LinkNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkNodeTests.swift; sourceTree = "<group>"; };
+		52CAEE932067003E007024B3 /* ListItemNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemNodeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 				52CAEE8D2066FC40007024B3 /* HTMLNodeTests.swift */,
 				52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */,
 				52CAEE912066FF80007024B3 /* LinkNodeTests.swift */,
+				52CAEE932067003E007024B3 /* ListItemNodeTests.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */,
 				5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */,
 				52CAEE862066EF94007024B3 /* BlockQuoteNodeTests.swift in Sources */,
+				52CAEE942067003E007024B3 /* ListItemNodeTests.swift in Sources */,
 				52CAEE842066EDCB007024B3 /* BreakNodeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
