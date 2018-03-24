@@ -13,12 +13,12 @@ import Foundation
 // MARK: -
 
 enum BreakNode: CommonMarkNode {
-	case softBreak, lineBreak, thematicBreak
+	case lineBreak, softBreak, thematicBreak
 
 	var type: NodeType {
 		switch self {
-		case .softBreak: return .softBreak
 		case .lineBreak: return .lineBreak
+		case .softBreak: return .softBreak
 		case .thematicBreak: return .thematicBreak
 		}
 	}
@@ -27,10 +27,10 @@ enum BreakNode: CommonMarkNode {
 
 	var html: String {
 		switch self {
-		case .softBreak:
-			return "\n"
 		case .lineBreak:
 			return "<br />\n"
+		case .softBreak:
+			return "\n"
 		case .thematicBreak:
 			return "<hr />\n"
 		}
@@ -40,10 +40,10 @@ enum BreakNode: CommonMarkNode {
 
 	var commonMark: String {
 		switch self {
-		case .softBreak:
-			return "\n"
 		case .lineBreak:
 			return "\\\n"
+		case .softBreak:
+			return "\n"
 		case .thematicBreak:
 			return "***\n\n"
 		}
