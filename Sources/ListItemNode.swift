@@ -25,13 +25,12 @@ struct ListItemNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		let content = nodes.map { $0.html }.joined()
-		return "<li>" + content + "</li>\n"
+		return "<li>" + nodes.html + "</li>\n"
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return nodes.map { $0.commonMark }.joined() + "\n"
+		return nodes.commonMark + "\n"
 	}
 }

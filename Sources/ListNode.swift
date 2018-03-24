@@ -66,14 +66,13 @@ struct ListNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		let content = nodes.map { $0.html }.joined()
 		var list = listType.htmlPrefix + "\n"
 
 		switch isTight {
 		case true:
-			list += content.tightenedList()
+			list += nodes.html.tightenedList()
 		case false:
-			list += content.loosenedList()
+			list += nodes.html.loosenedList()
 		}
 
 		return list + listType.htmlPostfix + "\n"

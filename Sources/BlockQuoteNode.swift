@@ -25,8 +25,7 @@ struct BlockQuoteNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		let content = nodes.map { $0.html }.joined()
-		return "<blockquote>\n" + content + "</blockquote>\n"
+		return "<blockquote>\n" + nodes.html + "</blockquote>\n"
 	}
 
 	// MARK: - CommonMarkRenderable

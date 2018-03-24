@@ -10,12 +10,6 @@
 
 import Foundation
 
-// MARK: - Protocols
-
-protocol HTMLRenderable {
-	var html: String { get }
-}
-
 // MARK: - Extensions
 
 // MARK: - HTML Output Extensions
@@ -32,6 +26,20 @@ extension Node: HTMLRenderable {
 }
 
 extension Array where Element: HTMLRenderable {
+
+	var html: String {
+		return map { $0.html }.joined()
+	}
+}
+
+extension Array where Element == HTMLRenderable {
+
+	var html: String {
+		return map { $0.html }.joined()
+	}
+}
+
+extension Array where Element == CommonMark {
 
 	var html: String {
 		return map { $0.html }.joined()

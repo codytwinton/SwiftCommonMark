@@ -25,13 +25,12 @@ struct ParagraphNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		let content = nodes.map { $0.html }.joined()
-		return "<p>" + content + "</p>\n"
+		return "<p>" + nodes.html + "</p>\n"
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return nodes.map { $0.commonMark }.joined() + "\n\n"
+		return nodes.commonMark + "\n\n"
 	}
 }

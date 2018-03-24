@@ -33,21 +33,18 @@ struct LinkNode: HTMLRenderable, CommonMarkRenderable {
 			link += " title=\"\(title)\""
 		}
 
-		let content = nodes.map { $0.html }.joined()
-		return link + ">" + content + "</a>"
+		return link + ">" + nodes.html + "</a>"
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		let content = nodes.map { $0.html }.joined()
-
 		var srcTitle = ""
 
 		if let title = title {
 			srcTitle += " \"" + title + "\""
 		}
 
-		return "[\(content)](\(url)\(srcTitle))"
+		return "[\(nodes.commonMark)](\(url)\(srcTitle))"
 	}
 }

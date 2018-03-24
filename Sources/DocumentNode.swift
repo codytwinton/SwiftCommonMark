@@ -25,13 +25,12 @@ struct DocumentNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		return nodes.map { $0.html }.joined()
+		return nodes.html
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return nodes.map { "> " + $0.commonMark }.joined()
-			.trimmingCharacters(in: .newlines) + "\n"
+		return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
 	}
 }

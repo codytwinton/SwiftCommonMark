@@ -14,6 +14,16 @@ import Foundation
 
 typealias CommonMark = HTMLRenderable & CommonMarkRenderable
 
+// MARK: Protocols
+
+protocol CommonMarkRenderable {
+	var commonMark: String { get }
+}
+
+protocol HTMLRenderable {
+	var html: String { get }
+}
+
 // MARK: -
 
 enum NodeType: String, EnumProtocol {

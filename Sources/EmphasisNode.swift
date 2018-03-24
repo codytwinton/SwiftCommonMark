@@ -25,12 +25,12 @@ struct EmphasisNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		return "<em>" + nodes.map { $0.html }.joined() + "</em>"
+		return "<em>" + nodes.html + "</em>"
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return "*" + nodes.map { $0.commonMark }.joined() + "*"
+		return "*" + nodes.commonMark + "*"
 	}
 }

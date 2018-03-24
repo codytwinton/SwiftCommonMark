@@ -32,14 +32,12 @@ struct HeadingNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		let content = nodes.map { $0.html }.joined()
-		return "<\(level)>" + content + "</\(level)>\n"
+		return "<\(level)>" + nodes.html + "</\(level)>\n"
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		let content = nodes.map { $0.commonMark }.joined()
-		return String(repeating: "#", count: level.rawValue) + " " + content + "\n\n"
+		return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
 	}
 }

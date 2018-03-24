@@ -25,12 +25,12 @@ struct StrongNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		return "<strong>" + nodes.map { $0.html }.joined() + "</strong>"
+		return "<strong>" + nodes.html + "</strong>"
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return "**" + nodes.map { $0.commonMark }.joined() + "**"
+		return "**" + nodes.commonMark + "**"
 	}
 }

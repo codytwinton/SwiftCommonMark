@@ -10,12 +10,6 @@
 
 import Foundation
 
-// MARK: - Protocols
-
-protocol CommonMarkRenderable {
-	var commonMark: String { get }
-}
-
 // MARK: - Extensions
 
 // MARK: - CommonMark Output Extensions
@@ -32,6 +26,20 @@ extension Node: CommonMarkRenderable {
 }
 
 extension Array where Element: CommonMarkRenderable {
+
+	var commonMark: String {
+		return map { $0.commonMark }.joined()
+	}
+}
+
+extension Array where Element == CommonMarkRenderable {
+
+	var commonMark: String {
+		return map { $0.commonMark }.joined()
+	}
+}
+
+extension Array where Element == CommonMark {
 
 	var commonMark: String {
 		return map { $0.commonMark }.joined()
