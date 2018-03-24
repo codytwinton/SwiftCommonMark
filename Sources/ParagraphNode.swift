@@ -33,4 +33,10 @@ struct ParagraphNode: CommonMarkNode {
 	var commonMark: String {
 		return nodes.commonMark + "\n\n"
 	}
+
+	// MARK: - Inits
+
+	init(nodes: [CommonMarkNode]) {
+		self.nodes = nodes
+	}
 }

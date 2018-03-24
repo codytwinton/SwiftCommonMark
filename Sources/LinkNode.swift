@@ -47,4 +47,12 @@ struct LinkNode: CommonMarkNode {
 
 		return "[\(nodes.commonMark)](\(url)\(srcTitle))"
 	}
+
+	// MARK: - Inits
+
+	init(url: String, title: String? = nil, nodes: [CommonMarkNode] = []) {
+		self.url = url
+		self.title = title
+		self.nodes = nodes
+	}
 }

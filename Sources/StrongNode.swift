@@ -33,4 +33,10 @@ struct StrongNode: CommonMarkNode {
 	var commonMark: String {
 		return "**" + nodes.commonMark + "**"
 	}
+
+	// MARK: - Inits
+
+	init(nodes: [CommonMarkNode]) {
+		self.nodes = nodes
+	}
 }

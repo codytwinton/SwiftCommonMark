@@ -34,4 +34,10 @@ struct BlockQuoteNode: CommonMarkNode {
 		return nodes.map { "> " + $0.commonMark }.joined()
 			.replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
 	}
+
+	// MARK: - Inits
+
+	init(nodes: [CommonMarkNode]) {
+		self.nodes = nodes
+	}
 }

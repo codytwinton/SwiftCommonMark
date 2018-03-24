@@ -47,4 +47,12 @@ struct ImageNode: CommonMarkNode {
 
 		return "![\(alternate)](\(source)\(srcTitle))"
 	}
+
+	// MARK: - Inits
+
+	init(source: String, title: String? = nil, alternate: String = "") {
+		self.source = source
+		self.title = title
+		self.alternate = alternate
+	}
 }

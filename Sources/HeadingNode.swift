@@ -40,4 +40,11 @@ struct HeadingNode: CommonMarkNode {
 	var commonMark: String {
 		return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
 	}
+
+	// MARK: - Inits
+
+	init(level: HeadingLevel, nodes: [CommonMarkNode]) {
+		self.level = level
+		self.nodes = nodes
+	}
 }

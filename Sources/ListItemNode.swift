@@ -33,4 +33,10 @@ struct ListItemNode: CommonMarkNode {
 	var commonMark: String {
 		return nodes.commonMark + "\n"
 	}
+
+	// MARK: - Inits
+
+	init(nodes: [CommonMarkNode]) {
+		self.nodes = nodes
+	}
 }

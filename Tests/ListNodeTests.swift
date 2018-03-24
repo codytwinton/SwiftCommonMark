@@ -20,12 +20,12 @@ class ListNodeTests: XCTestCase {
 	let uList1: ListNode = {
 		let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Unordered")])])
 		let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
-		return ListNode(listType: .asterisk, isTight: true, nodes: [item1, item2])
+		return ListNode(listType: .asterisk, nodes: [item1, item2])
 	}()
 
 	let uList2: ListNode = {
 		let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Second")])])
-		return ListNode(listType: .plus, isTight: true, nodes: [item1])
+		return ListNode(listType: .plus, nodes: [item1])
 	}()
 
 	let uList3: ListNode = {
@@ -37,7 +37,7 @@ class ListNodeTests: XCTestCase {
 	let oList1: ListNode = {
 		let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Ordered")])])
 		let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
-		return ListNode(listType: .period(start: 2), isTight: true, nodes: [item1, item2])
+		return ListNode(listType: .period(start: 2), nodes: [item1, item2])
 	}()
 
 	let oList2: ListNode = {

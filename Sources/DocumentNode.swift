@@ -33,4 +33,10 @@ struct DocumentNode: CommonMarkNode {
 	var commonMark: String {
 		return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
 	}
+
+	// MARK: - Inits
+
+	init(nodes: [CommonMarkNode]) {
+		self.nodes = nodes
+	}
 }

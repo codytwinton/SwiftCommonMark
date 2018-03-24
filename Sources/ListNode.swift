@@ -92,4 +92,12 @@ struct ListNode: CommonMarkNode {
 
 		return items.map { $0 + (isTight ? "\n" : "\n\n") }.joined() + (isTight ? "\n" : "")
 	}
+
+	// MARK: - Inits
+
+	init(listType: ListType, isTight: Bool = true, nodes: [CommonMarkNode]) {
+		self.listType = listType
+		self.isTight = isTight
+		self.nodes = nodes
+	}
 }
