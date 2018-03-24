@@ -24,6 +24,29 @@ protocol HTMLRenderable {
 	var html: String { get }
 }
 
+// MARK: Extensions
+
+extension Array where Element == CommonMark {
+	var html: String { return map { $0.html }.joined() }
+	var commonMark: String { return map { $0.commonMark }.joined() }
+}
+
+extension Array where Element: CommonMarkRenderable {
+	var commonMark: String { return map { $0.commonMark }.joined() }
+}
+
+extension Array where Element == CommonMarkRenderable {
+	var commonMark: String { return map { $0.commonMark }.joined() }
+}
+
+extension Array where Element: HTMLRenderable {
+	var html: String { return map { $0.html }.joined() }
+}
+
+extension Array where Element == HTMLRenderable {
+	var html: String { return map { $0.html }.joined() }
+}
+
 // MARK: -
 
 enum NodeType: String, EnumProtocol {
@@ -33,7 +56,7 @@ enum NodeType: String, EnumProtocol {
 
 // MARK: -
 
-enum Node: Equatable {
+enum Node: Equatable, HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Cases
 
@@ -78,6 +101,22 @@ enum Node: Equatable {
 		case .strong: return .strong
 		case .text: return .text
 		case .thematicBreak: return .thematicBreak
+		}
+	}
+
+	var html: String {
+		switch self {
+		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock, .htmlInline, .image,
+			 .lineBreak, .link, .list, .listItem, .paragraph, .softBreak, .strong, .text, .thematicBreak:
+			return ""
+		}
+	}
+
+	var commonMark: String {
+		switch self {
+		case .blockQuote, .code, .codeBlock, .document, .emphasis, .heading, .htmlBlock, .htmlInline, .image,
+			 .lineBreak, .link, .list, .listItem, .paragraph, .softBreak, .strong, .text, .thematicBreak:
+			return ""
 		}
 	}
 }
