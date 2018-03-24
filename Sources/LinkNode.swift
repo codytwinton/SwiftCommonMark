@@ -51,4 +51,3 @@ struct LinkNode: HTMLRenderable, CommonMarkRenderable {
 		return "[\(content)](\(url)\(srcTitle))"
 	}
 }
-

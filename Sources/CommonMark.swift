@@ -16,45 +16,6 @@ typealias CommonMark = HTMLRenderable & CommonMarkRenderable
 
 // MARK: -
 
-enum ListType: Equatable {
-	case dash, asterisk, plus
-	case period(start: Int), paren(start: Int)
-
-	var htmlPrefix: String {
-		switch self {
-		case .dash, .asterisk, .plus:
-			return "<ul>"
-		case .period(let start), .paren(let start):
-			var prefix = "<ol"
-
-			if start != 1 {
-				prefix += " start=\"\(start)\""
-			}
-
-			return prefix + ">"
-		}
-	}
-
-	var htmlPostfix: String {
-		switch self {
-		case .dash, .asterisk, .plus: return "</ul>"
-		case .period, .paren: return "</ol>"
-		}
-	}
-
-	var commonMarkDelimiter: String {
-		switch self {
-		case .dash: return "-"
-		case .asterisk: return "*"
-		case .plus: return "+"
-		case .period: return "."
-		case .paren: return ")"
-		}
-	}
-}
-
-// MARK: -
-
 enum NodeType: String, EnumProtocol {
 	case blockQuote, code, codeBlock, document, emphasis, heading, htmlBlock, htmlInline, image
 	case lineBreak, link, list, listItem, paragraph, softBreak, strong, text, thematicBreak
