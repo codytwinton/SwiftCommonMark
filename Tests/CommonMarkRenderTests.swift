@@ -230,10 +230,7 @@ class CommonMarkRenderTests: XCTestCase {
 		let actual = nodeTree.html
 		let expected = expectedHTML
 
-		XCTAssertEqual(actual, expected)
-
-		guard actual != expected else { return }
-		print("\n\n\n\n\n\n\n********\n\n" +
+		XCTAssertEqual(actual, expected, "\n\n\n\n\n\n\n********\n\n" +
 			"Failed:" +
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
@@ -256,7 +253,6 @@ class CommonMarkRenderTests: XCTestCase {
 			}
 
 			guard expected != actual else { continue }
-
 			print("\n\n\n\n\n\n\n********\n\n" +
 				"line \(i + 1)" +
 				"\n\nExpected: |\(expected)|" +
@@ -264,10 +260,7 @@ class CommonMarkRenderTests: XCTestCase {
 				"\n********\n")
 		}
 
-		XCTAssertEqual(actual, expected)
-
-		guard actual != expected else { return }
-		print("\n\n\n\n\n\n\n********\n\n" +
+		XCTAssertEqual(actual, expected, "\n\n\n\n\n\n\n********\n\n" +
 			"Failed:" +
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
