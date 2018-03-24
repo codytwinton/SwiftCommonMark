@@ -1,5 +1,5 @@
 //
-//  CommonMarkRenderTests.swift
+//  DocumentTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/10/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-class CommonMarkRenderTests: XCTestCase {
+class DocumentTests: XCTestCase {
 
 	// MARK: Variables
 
@@ -127,7 +127,7 @@ class CommonMarkRenderTests: XCTestCase {
 
 		"""
 
-	let nodeTree: DocumentNode = {
+	let node: DocumentNode = {
 		let heading: HeadingNode = {
 			let text1 = TextNode("Hello World")
 			return HeadingNode(level: .h1, nodes: [text1])
@@ -217,21 +217,19 @@ class CommonMarkRenderTests: XCTestCase {
 
 	// MARK: - Tests
 
-	func testNodeHTMLRendering() {
-
-		let actual = nodeTree.html
+	func testHTML() {
+		let actual = node.html
 		let expected = expectedHTML
 
 		XCTAssertEqual(actual, expected, "\n\n\n\n\n\n\n********\n\n" +
-			"Failed:" +
+			"Failed HTML:" +
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
 			"\n********\n\n\n\n\n\n")
 	}
 
-	func testNodeCommonMarkRendering() {
-
-		let actual = nodeTree.commonMark
+	func testCommonMark() {
+		let actual = node.commonMark
 		let expected = expectedCommonMark
 
 		let actualLines = actual.components(separatedBy: .newlines)
@@ -253,7 +251,7 @@ class CommonMarkRenderTests: XCTestCase {
 		}
 
 		XCTAssertEqual(actual, expected, "\n\n\n\n\n\n\n********\n\n" +
-			"Failed:" +
+			"Failed CommonMark:" +
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
 			"\n********\n\n\n\n\n\n")

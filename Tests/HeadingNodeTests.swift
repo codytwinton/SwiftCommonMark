@@ -36,7 +36,7 @@ class HeadingNodeTests: XCTestCase {
 			"""
 
 		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-			"Failed:" +
+			"Failed HTML:" +
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
 			"\n********\n\n\n\n\n\n")
@@ -51,7 +51,7 @@ class HeadingNodeTests: XCTestCase {
 			"""
 
 		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-			"Failed:" +
+			"Failed CommonMark:" +
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
 			"\n********\n\n\n\n\n\n")
