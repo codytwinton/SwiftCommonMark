@@ -10,11 +10,11 @@
 
 import Foundation
 
-// MARK: Type Aliases
-
-typealias CommonMarkNode = HTMLRenderable & CommonMarkRenderable
-
 // MARK: Protocols
+
+protocol CommonMarkNode: CommonMarkRenderable, HTMLRenderable {
+	var type: NodeType { get }
+}
 
 protocol CommonMarkRenderable {
 	var commonMark: String { get }
