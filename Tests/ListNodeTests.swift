@@ -56,6 +56,45 @@ class ListNodeTests: XCTestCase {
 		XCTAssertEqual(oList2.type, .list)
 	}
 
+	func testHTML() {
+		let expecteds = ["<ul>\n<li>Unordered</li>\n<li>List</li>\n</ul>\n",
+						 "<ul>\n<li>Second</li>\n</ul>\n",
+						 "<ul>\n<li>\n<p>Unordered</p>\n</li>\n<li>\n<p>Loose</p>\n</li>\n</ul>\n",
+						 "<ol start=\"2\">\n<li>Ordered</li>\n<li>List</li>\n</ol>\n",
+						 "<ol>\n<li>\n<p>Ordered</p>\n</li>\n<li>\n<p>Loose</p>\n</li>\n</ol>\n"]
+
+		for (i, node) in [uList1, uList2, uList3, oList1, oList2].enumerated() {
+			let actual = node.html
+			let expected = expecteds[i]
+
+			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+				"Failed HTML:" +
+				"\n\nExpected: |\(expected)|" +
+				"\n\nActual: |\(actual)|" +
+				"\n********\n\n\n\n\n\n")
+		}
+	}
+
+	func testCommonMark() {
+
+		let expecteds = ["* Unordered\n* List\n\n",
+						 "+ Second\n\n",
+						 "- Unordered\n\n- Loose\n\n",
+						 "2. Ordered\n3. List\n\n",
+						 "1) Ordered\n\n2) Loose\n\n"]
+
+		for (i, node) in [uList1, uList2, uList3, oList1, oList2].enumerated() {
+			let actual = node.commonMark
+			let expected = expecteds[i]
+
+			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+				"Failed CommonMark:" +
+				"\n\nExpected: |\(expected)|" +
+				"\n\nActual: |\(actual)|" +
+				"\n********\n\n\n\n\n\n")
+		}
+	}
+
 	// MARK: ListType Tests
 
 	func testListTypes() {

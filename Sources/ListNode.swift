@@ -69,8 +69,9 @@ struct ListNode: CommonMarkNode {
 		var list = listType.htmlPrefix + "\n"
 
 		switch isTight {
-		case true: list += nodes.html.tightenedList()
-		case false: list += nodes.html.loosenedList()
+		case true: list += nodes.html.replacingOccurrences(of: "<li><p>", with: "<li>")
+			.replacingOccurrences(of: "</p>\n</li>", with: "</li>")
+		case false: list += nodes.html.replacingOccurrences(of: "<li><p>", with: "<li>\n<p>")
 		}
 
 		return list + listType.htmlPostfix + "\n"
@@ -90,30 +91,5 @@ struct ListNode: CommonMarkNode {
 		}
 
 		return items.map { $0 + (isTight ? "\n" : "\n\n") }.joined() + (isTight ? "\n" : "")
-	}
-}
-
-// MARK: -
-
-private extension String {
-
-	func tightenedList() -> String {
-		return replacingOccurrences(of: "<li><p>", with: "<li>")
-			.replacingOccurrences(of: "</p>\n</li>", with: "</li>")
-	}
-
-	func loosenedList() -> String {
-		return replacingOccurrences(of: "<li><p>", with: "<li>\n<p>")
-	}
-
-	func trimmingParagraph() -> String {
-		let pStart = "<p>"
-		let pEnd = "</p>"
-
-		let sIndex = index(startIndex, offsetBy: pStart.count)
-		let eIndex = index(endIndex, offsetBy: -pEnd.count)
-
-		guard self[..<sIndex] == pStart, self[eIndex...] == pEnd else { return self }
-		return String(self[sIndex..<eIndex])
 	}
 }
