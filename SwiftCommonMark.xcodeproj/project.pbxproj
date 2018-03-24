@@ -37,6 +37,7 @@
 		52CAEE8A2066F7A2007024B3 /* HeadingNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE892066F7A2007024B3 /* HeadingNodeTests.swift */; };
 		52CAEE8C2066FB38007024B3 /* EmphasisNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE8B2066FB38007024B3 /* EmphasisNodeTests.swift */; };
 		52CAEE8E2066FC40007024B3 /* HTMLNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE8D2066FC40007024B3 /* HTMLNodeTests.swift */; };
+		52CAEE902066FD8E007024B3 /* ImageNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		52CAEE892066F7A2007024B3 /* HeadingNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE8B2066FB38007024B3 /* EmphasisNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmphasisNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE8D2066FC40007024B3 /* HTMLNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLNodeTests.swift; sourceTree = "<group>"; };
+		52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNodeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +211,7 @@
 				52CAEE8B2066FB38007024B3 /* EmphasisNodeTests.swift */,
 				52CAEE892066F7A2007024B3 /* HeadingNodeTests.swift */,
 				52CAEE8D2066FC40007024B3 /* HTMLNodeTests.swift */,
+				52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				5232876C204CA6100093C905 /* CommonMarkParseTests.swift in Sources */,
 				52CAEE8C2066FB38007024B3 /* EmphasisNodeTests.swift in Sources */,
 				52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */,
+				52CAEE902066FD8E007024B3 /* ImageNodeTests.swift in Sources */,
 				52CAEE8A2066F7A2007024B3 /* HeadingNodeTests.swift in Sources */,
 				52CAEE8E2066FC40007024B3 /* HTMLNodeTests.swift in Sources */,
 				52CAEE882066F3A4007024B3 /* CodeNodeTests.swift in Sources */,
