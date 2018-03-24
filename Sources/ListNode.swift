@@ -80,19 +80,13 @@ struct ListNode: HTMLRenderable, CommonMarkRenderable {
 
 	var commonMark: String {
 		let delimiter = listType.commonMarkDelimiter + " "
-		let items: [String]
+		var items = nodes.map { $0.commonMark.trimmingCharacters(in: .newlines) }
 
 		switch listType {
 		case .dash, .asterisk, .plus:
-			items = nodes.map { node -> String in
-				let listItem = node.commonMark.trimmingCharacters(in: .newlines)
-				return delimiter + listItem
-			}
+			items = items.map { delimiter + $0 }
 		case .period(let start), .paren(let start):
-			items = nodes.enumerated().map { offset, node -> String in
-				let listItem = node.commonMark.trimmingCharacters(in: .newlines)
-				return "\(start + offset)" + delimiter + listItem
-			}
+			items = items.enumerated().map { "\(start + $0.offset)" + delimiter + $0.element }
 		}
 
 		return items.map { $0 + (isTight ? "\n" : "\n\n") }.joined() + (isTight ? "\n" : "")
