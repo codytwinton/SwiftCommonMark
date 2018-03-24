@@ -31,22 +31,6 @@ extension Array where Element == CommonMarkNode {
 	var commonMark: String { return map { $0.commonMark }.joined() }
 }
 
-extension Array where Element: CommonMarkRenderable {
-	var commonMark: String { return map { $0.commonMark }.joined() }
-}
-
-extension Array where Element == CommonMarkRenderable {
-	var commonMark: String { return map { $0.commonMark }.joined() }
-}
-
-extension Array where Element: HTMLRenderable {
-	var html: String { return map { $0.html }.joined() }
-}
-
-extension Array where Element == HTMLRenderable {
-	var html: String { return map { $0.html }.joined() }
-}
-
 // MARK: -
 
 enum NodeType: String, EnumProtocol {
