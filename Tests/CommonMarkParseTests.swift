@@ -73,6 +73,7 @@ class CommonMarkParseTests: XCTestCase {
 	}
 	*/
 
+	/*
 	func testParsing() {
 
 		let html = """
@@ -97,6 +98,6 @@ class CommonMarkParseTests: XCTestCase {
 		"""
 
 		let document = NodeType.parse(markdown: markdown)
-		XCTAssertEqual(document.html, html)
 	}
+	*/
 }

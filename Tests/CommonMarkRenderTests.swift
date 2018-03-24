@@ -217,14 +217,6 @@ class CommonMarkRenderTests: XCTestCase {
 
 	// MARK: - Tests
 
-	func testNodeEquality() {
-
-		let expected = nodeTree
-		let actual = nodeTree
-
-		XCTAssertEqual(actual, expected)
-	}
-
 	func testNodeHTMLRendering() {
 
 		let actual = nodeTree.html
