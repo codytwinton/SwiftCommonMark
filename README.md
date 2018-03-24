@@ -1,6 +1,6 @@
 # SwiftCommonMark
 
-[![Language](https://img.shields.io/badge/swift-4.0-orange.svg)](https://swift.org/)
+[![Language](https://img.shields.io/badge/swift-4.1-orange.svg)](https://swift.org/)
 [![License](https://img.shields.io/github/license/codytwinton/SwiftCommonMark.svg)](LICENSE)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftCommonMark.svg)](http://cocoapods.org/pods/SwiftCommonMark)
 
