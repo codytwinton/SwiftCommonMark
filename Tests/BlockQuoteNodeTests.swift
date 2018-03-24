@@ -11,18 +11,18 @@ import XCTest
 
 class BlockQuoteNodeTests: XCTestCase {
 
-	let blockQuote: BlockQuoteNode = {
+	let node: BlockQuoteNode = {
 		let text1 = TextNode("Test Blockquote")
 		let text2 = TextNode("Testing Blockquote")
 		return BlockQuoteNode(nodes: [ParagraphNode(nodes: [text1]), ParagraphNode(nodes: [text2])])
 	}()
 
 	func testTypes() {
-		XCTAssertEqual(blockQuote.type, .blockQuote)
+		XCTAssertEqual(node.type, .blockQuote)
 	}
 
 	func testHTML() {
-		let actual = blockQuote.html
+		let actual = node.html
 		let expected = """
 			<blockquote>
 			<p>Test Blockquote</p>
@@ -39,7 +39,7 @@ class BlockQuoteNodeTests: XCTestCase {
 	}
 
 	func testCommonMark() {
-		let actual = blockQuote.commonMark
+		let actual = node.commonMark
 		let expected = """
 			> Test Blockquote
 			>

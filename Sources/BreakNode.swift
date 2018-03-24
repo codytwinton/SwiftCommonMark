@@ -27,12 +27,9 @@ enum BreakNode: CommonMarkNode {
 
 	var html: String {
 		switch self {
-		case .lineBreak:
-			return "<br />\n"
-		case .softBreak:
-			return "\n"
-		case .thematicBreak:
-			return "<hr />\n"
+		case .lineBreak: return "<br />\n"
+		case .softBreak: return "\n"
+		case .thematicBreak: return "<hr />\n"
 		}
 	}
 
@@ -40,12 +37,9 @@ enum BreakNode: CommonMarkNode {
 
 	var commonMark: String {
 		switch self {
-		case .lineBreak:
-			return "\\\n"
-		case .softBreak:
-			return "\n"
-		case .thematicBreak:
-			return "***\n\n"
+		case .lineBreak: return "\\\n"
+		case .softBreak: return "\n"
+		case .thematicBreak: return "***\n\n"
 		}
 	}
 }
