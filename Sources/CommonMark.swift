@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: Type Aliases
 
-typealias CommonMark = HTMLRenderable & CommonMarkRenderable
+typealias CommonMarkNode = HTMLRenderable & CommonMarkRenderable
 
 // MARK: Protocols
 
@@ -26,7 +26,7 @@ protocol HTMLRenderable {
 
 // MARK: Extensions
 
-extension Array where Element == CommonMark {
+extension Array where Element == CommonMarkNode {
 	var html: String { return map { $0.html }.joined() }
 	var commonMark: String { return map { $0.commonMark }.joined() }
 }

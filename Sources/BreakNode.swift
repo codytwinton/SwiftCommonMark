@@ -10,9 +10,9 @@
 
 import Foundation
 
-// MARK: Protocols
+// MARK: -
 
-enum BreakType {
+enum BreakNode: CommonMarkNode {
 	case softBreak, lineBreak, thematicBreak
 
 	var type: NodeType {
@@ -22,24 +22,11 @@ enum BreakType {
 		case .thematicBreak: return .thematicBreak
 		}
 	}
-}
-
-// MARK: -
-
-struct BreakNode: HTMLRenderable, CommonMarkRenderable {
-
-	// MARK: Variables
-
-	private var breakType: BreakType
-
-	var type: NodeType {
-		return breakType.type
-	}
 
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		switch breakType {
+		switch self {
 		case .softBreak:
 			return "\n"
 		case .lineBreak:
@@ -52,7 +39,7 @@ struct BreakNode: HTMLRenderable, CommonMarkRenderable {
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		switch breakType {
+		switch self {
 		case .softBreak:
 			return "\n"
 		case .lineBreak:

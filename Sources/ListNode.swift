@@ -47,11 +47,25 @@ enum ListType: Equatable {
 		case .paren: return ")"
 		}
 	}
+
+	static func == (lhs: ListType, rhs: ListType) -> Bool {
+		switch (lhs, rhs) {
+		case (.dash, .dash),
+			 (.asterisk, .asterisk),
+			 (.plus, .plus):
+			return true
+		case let (.period(lStart), .period(rStart)),
+			 let (.paren(lStart), .paren(rStart)):
+			return lStart == rStart
+		default:
+			return false
+		}
+	}
 }
 
 // MARK: -
 
-struct ListNode: HTMLRenderable, CommonMarkRenderable {
+struct ListNode: CommonMarkNode {
 
 	// MARK: Constants
 
@@ -59,9 +73,9 @@ struct ListNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Variables
 
-	private var listType: ListType
-	private var isTight: Bool
-	private var nodes: [CommonMark]
+	private(set) var listType: ListType
+	private(set) var isTight: Bool
+	private(set) var nodes: [CommonMarkNode]
 
 	// MARK: - HTMLRenderable
 

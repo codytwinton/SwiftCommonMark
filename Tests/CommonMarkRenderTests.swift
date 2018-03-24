@@ -127,81 +127,81 @@ class CommonMarkRenderTests: XCTestCase {
 
 		"""
 
-	let nodeTree: Node = {
-		let heading: Node = {
-			let text1 = Node.text("Hello World")
-			return Node.heading(level: .h1, nodes: [text1])
+	let nodeTree: DocumentNode = {
+		let heading: HeadingNode = {
+			let text1 = TextNode(text: "Hello World")
+			return HeadingNode(level: .h1, nodes: [text1])
 		}()
 
-		let paragraph1: Node = {
-			let text1 = Node.text("Testing <>\"")
-			let text2 = Node.text("Testing now: ")
-			let code1 = Node.code("Testing Code")
-			return .paragraph(nodes: [text1, .softBreak, text2, code1])
+		let paragraph1: ParagraphNode = {
+			let text1 = TextNode(text: "Testing <>\"")
+			let text2 = TextNode(text: "Testing now: ")
+			let code1 = CodeNode(code: "Testing Code")
+			return ParagraphNode(nodes: [text1, BreakNode.softBreak, text2, code1])
 		}()
 
-		let paragraph2: Node = {
-			let text1 = Node.text("What ")
-			let strong1 = Node.strong(nodes: [.text("is")])
-			let text2 = Node.text(" ")
-			let emphasis1 = Node.emphasis(nodes: [.text("up")])
-			let text3 = Node.text("?")
-			let text4 = Node.text("Testing")
+		let paragraph2: ParagraphNode = {
+			let text1 = TextNode(text: "What ")
+			let strong1 = StrongNode(nodes: [TextNode(text: "is")])
+			let text2 = TextNode(text: " ")
+			let emphasis1 = EmphasisNode(nodes: [TextNode(text: "up")])
+			let text3 = TextNode(text: "?")
+			let text4 = TextNode(text: "Testing")
 
-			return .paragraph(nodes: [text1, strong1, text2, emphasis1, text3, .lineBreak, text4])
+			return ParagraphNode(nodes: [text1, strong1, text2, emphasis1, text3, BreakNode.lineBreak, text4])
 		}()
 
-		let code1 = Node.codeBlock(info: nil, code: "Testing\n")
-		let code2 = Node.codeBlock(info: "swift", code: "Testing 123\n")
+		let code1 = CodeBlockNode(info: nil, code: "Testing\n")
+		let code2 = CodeBlockNode(info: "swift", code: "Testing 123\n")
 
-		let blockQuote: Node = {
-			let text1 = Node.text("Test Blockquote")
-			let text2 = Node.text("Testing Blockquote")
-			return .blockQuote(nodes: [.paragraph(nodes: [text1]), .paragraph(nodes: [text2])])
+		let blockQuote: BlockQuoteNode = {
+			let text1 = TextNode(text: "Test Blockquote")
+			let text2 = TextNode(text: "Testing Blockquote")
+			return BlockQuoteNode(nodes: [ParagraphNode(nodes: [text1]), ParagraphNode(nodes: [text2])])
 		}()
 
-		let paragraph3: Node = {
-			let image1 = Node.image(source: "/url", title: "title", alternate: "foo")
-			let image2 = Node.image(source: "/url", title: nil, alternate: "")
-			return .paragraph(nodes: [image1, .softBreak, image2])
+		let paragraph3: ParagraphNode = {
+			let image1 = ImageNode(source: "/url", title: "title", alternate: "foo")
+			let image2 = ImageNode(source: "/url", title: nil, alternate: "")
+			return ParagraphNode(nodes: [image1, BreakNode.softBreak, image2])
 		}()
 
-		let uList1: Node = {
-			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Unordered")])])
-			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("List")])])
-			return Node.list(type: .asterisk, isTight: true, nodes: [item1, item2])
+		let uList1: ListNode = {
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Unordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "List")])])
+			return ListNode(listType: .asterisk, isTight: true, nodes: [item1, item2])
 		}()
 
-		let uList2: Node = {
-			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Second")])])
-			return Node.list(type: .plus, isTight: true, nodes: [item1])
+		let uList2: ListNode = {
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Second")])])
+			return ListNode(listType: .plus, isTight: true, nodes: [item1])
 		}()
 
-		let uList3: Node = {
-			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Unordered")])])
-			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("Loose")])])
-			return Node.list(type: .dash, isTight: false, nodes: [item1, item2])
+		let uList3: ListNode = {
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Unordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Loose")])])
+			return ListNode(listType: .dash, isTight: false, nodes: [item1, item2])
 		}()
 
-		let oList1: Node = {
-			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Ordered")])])
-			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("List")])])
-			return Node.list(type: .period(start: 2), isTight: true, nodes: [item1, item2])
+		let oList1: ListNode = {
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Ordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "List")])])
+			return ListNode(listType: .period(start: 2), isTight: true, nodes: [item1, item2])
 		}()
 
-		let oList2: Node = {
-			let item1 = Node.listItem(nodes: [.paragraph(nodes: [.text("Ordered")])])
-			let item2 = Node.listItem(nodes: [.paragraph(nodes: [.text("Loose")])])
-			return Node.list(type: .paren(start: 1), isTight: false, nodes: [item1, item2])
+		let oList2: ListNode = {
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Ordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Loose")])])
+			return ListNode(listType: .paren(start: 1), isTight: false, nodes: [item1, item2])
 		}()
 
-		let paragraph4: Node = {
-			let link1 = Node.link(url: "/uri", title: "title", nodes: [.text("link")])
-			let link2 = Node.link(url: "/uri", title: nil, nodes: [])
-			return Node.paragraph(nodes: [link1, .softBreak, link2])
+		let paragraph4: ParagraphNode = {
+			let link1 = LinkNode(url: "/uri", title: "title", nodes: [TextNode(text: "link")])
+			let link2 = LinkNode(url: "/uri", title: nil, nodes: [])
+			return ParagraphNode(nodes: [link1, BreakNode.softBreak, link2])
 		}()
 
-		let html1 = Node.htmlBlock("""
+		let html1 = HTMLNode.block("""
 			<table>
 			<tr>
 			<td>hi</td>
@@ -209,9 +209,9 @@ class CommonMarkRenderTests: XCTestCase {
 			</table>
 			""")
 
-		let paragraph5 = Node.paragraph(nodes: [.htmlInline("<a>"), .htmlInline("<bab>"), .htmlInline("<c2c>")])
+		let paragraph5 = ParagraphNode(nodes: [HTMLNode.inline("<a>"), HTMLNode.inline("<bab>"), HTMLNode.inline("<c2c>")])
 
-		return .document(nodes: [heading, paragraph1, .thematicBreak, paragraph2,
+		return DocumentNode(nodes: [heading, paragraph1, BreakNode.thematicBreak, paragraph2,
 								 code1, code2, blockQuote, paragraph3, uList1, uList2, uList3, oList1, oList2, paragraph4, html1, paragraph5])
 	}()
 
@@ -247,11 +247,20 @@ class CommonMarkRenderTests: XCTestCase {
 
 		let actualLines = actual.components(separatedBy: .newlines)
 
-		for (i, line) in expected.components(separatedBy: .newlines).enumerated() {
-			guard line != actualLines[i] else { continue }
+		for (i, expected) in expected.components(separatedBy: .newlines).enumerated() {
+			let actual: String?
+
+			switch i < actualLines.count {
+			case true: actual = actualLines[i]
+			case false: actual = nil
+			}
+
+			guard expected != actual else { continue }
 
 			print("\n\n\n\n\n\n\n********\n\n" +
-				"line \(i + 1): |\(actualLines[i])|" +
+				"line \(i + 1)" +
+				"\n\nExpected: |\(expected)|" +
+				"\n\nActual: |\(actual ?? "nil")|" +
 				"\n********\n")
 		}
 

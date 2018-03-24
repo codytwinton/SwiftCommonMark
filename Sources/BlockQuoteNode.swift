@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: -
 
-struct BlockQuoteNode: HTMLRenderable, CommonMarkRenderable {
+struct BlockQuoteNode: CommonMarkNode {
 
 	// MARK: Constants
 
@@ -20,7 +20,7 @@ struct BlockQuoteNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Variables
 
-	private var nodes: [CommonMark]
+	private(set) var nodes: [CommonMarkNode]
 
 	// MARK: - HTMLRenderable
 

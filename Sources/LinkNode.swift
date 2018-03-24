@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: -
 
-struct LinkNode: HTMLRenderable, CommonMarkRenderable {
+struct LinkNode: CommonMarkNode {
 
 	// MARK: Constants
 
@@ -20,9 +20,9 @@ struct LinkNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Variables
 
-	private var url: String
-	private var title: String?
-	private var nodes: [CommonMark]
+	private(set) var url: String
+	private(set) var title: String?
+	private(set) var nodes: [CommonMarkNode]
 
 	// MARK: - HTMLRenderable
 

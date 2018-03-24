@@ -18,7 +18,7 @@ enum HeadingLevel: Int, EnumProtocol {
 
 // MARK: -
 
-struct HeadingNode: HTMLRenderable, CommonMarkRenderable {
+struct HeadingNode: CommonMarkNode {
 
 	// MARK: Constants
 
@@ -26,8 +26,8 @@ struct HeadingNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Variables
 
-	private var level: HeadingLevel
-	private var nodes: [CommonMark]
+	private(set) var level: HeadingLevel
+	private(set) var nodes: [CommonMarkNode]
 
 	// MARK: - HTMLRenderable
 

@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: -
 
-struct CodeNode: HTMLRenderable, CommonMarkRenderable {
+struct CodeNode: CommonMarkNode {
 
 	// MARK: Constants
 
@@ -20,7 +20,7 @@ struct CodeNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Variables
 
-	private var code: String
+	private(set) var code: String
 
 	// MARK: - HTMLRenderable
 

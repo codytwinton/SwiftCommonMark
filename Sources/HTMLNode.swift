@@ -12,8 +12,9 @@ import Foundation
 
 // MARK: Enums
 
-enum HTMLType {
-	case block, inline
+enum HTMLNode: CommonMarkNode {
+	case block(String)
+	case inline(String)
 
 	var type: NodeType {
 		switch self {
@@ -21,36 +22,22 @@ enum HTMLType {
 		case .inline: return .htmlInline
 		}
 	}
-}
-
-// MARK: -
-
-struct HTMLNode: HTMLRenderable, CommonMarkRenderable {
-
-	// MARK: Variables
-
-	private var content: String
-	private var htmlType: HTMLType
-
-	private var type: NodeType {
-		return htmlType.type
-	}
 
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		switch htmlType {
-		case .block: return content + "\n"
-		case .inline: return content
+		switch self {
+		case .block(let content): return content + "\n"
+		case .inline(let content): return content
 		}
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		switch htmlType {
-		case .block: return content + "\n\n"
-		case .inline: return content
+		switch self {
+		case .block(let content): return content + "\n\n"
+		case .inline(let content): return content
 		}
 	}
 }

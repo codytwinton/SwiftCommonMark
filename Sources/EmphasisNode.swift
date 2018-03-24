@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: -
 
-struct EmphasisNode: HTMLRenderable, CommonMarkRenderable {
+struct EmphasisNode: CommonMarkNode {
 
 	// MARK: Constants
 
@@ -20,7 +20,7 @@ struct EmphasisNode: HTMLRenderable, CommonMarkRenderable {
 
 	// MARK: Variables
 
-	private var nodes: [CommonMark]
+	private(set) var nodes: [CommonMarkNode]
 
 	// MARK: - HTMLRenderable
 
