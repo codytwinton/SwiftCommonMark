@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: Enums
 
-enum ListType: Equatable {
+enum ListType {
 	case dash, asterisk, plus
 	case period(start: Int), paren(start: Int)
 
@@ -45,20 +45,6 @@ enum ListType: Equatable {
 		case .plus: return "+"
 		case .period: return "."
 		case .paren: return ")"
-		}
-	}
-
-	static func == (lhs: ListType, rhs: ListType) -> Bool {
-		switch (lhs, rhs) {
-		case (.dash, .dash),
-			 (.asterisk, .asterisk),
-			 (.plus, .plus):
-			return true
-		case let (.period(lStart), .period(rStart)),
-			 let (.paren(lStart), .paren(rStart)):
-			return lStart == rStart
-		default:
-			return false
 		}
 	}
 }

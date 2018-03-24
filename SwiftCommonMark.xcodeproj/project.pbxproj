@@ -40,6 +40,7 @@
 		52CAEE902066FD8E007024B3 /* ImageNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */; };
 		52CAEE922066FF80007024B3 /* LinkNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE912066FF80007024B3 /* LinkNodeTests.swift */; };
 		52CAEE942067003E007024B3 /* ListItemNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE932067003E007024B3 /* ListItemNodeTests.swift */; };
+		52CAEE96206701B4007024B3 /* ListNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE95206701B4007024B3 /* ListNodeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE912066FF80007024B3 /* LinkNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE932067003E007024B3 /* ListItemNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemNodeTests.swift; sourceTree = "<group>"; };
+		52CAEE95206701B4007024B3 /* ListNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNodeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 				52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */,
 				52CAEE912066FF80007024B3 /* LinkNodeTests.swift */,
 				52CAEE932067003E007024B3 /* ListItemNodeTests.swift */,
+				52CAEE95206701B4007024B3 /* ListNodeTests.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52CAEE96206701B4007024B3 /* ListNodeTests.swift in Sources */,
 				5232876C204CA6100093C905 /* CommonMarkParseTests.swift in Sources */,
 				52CAEE8C2066FB38007024B3 /* EmphasisNodeTests.swift in Sources */,
 				52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */,
