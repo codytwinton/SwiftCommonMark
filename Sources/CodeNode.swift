@@ -12,25 +12,42 @@ import Foundation
 
 // MARK: -
 
-struct CodeNode: CommonMarkNode {
+enum CodeNode: CommonMarkNode {
+	case inline(String)
+	case block(info: String?, code: String)
 
-	// MARK: Constants
-
-	let type: NodeType = .code
-
-	// MARK: Variables
-
-	private(set) var code: String
+	var type: NodeType {
+		switch self {
+		case .inline: return .code
+		case .block: return .codeBlock
+		}
+	}
 
 	// MARK: - HTMLRenderable
 
 	var html: String {
-		return "<code>" + code + "</code>"
+		switch self {
+		case let .inline(code):
+			return "<code>" + code + "</code>"
+		case let .block(info, code):
+			switch info {
+			case let info?:
+				return "<pre><code class=\"language-\(info)\">\(code)</code></pre>\n"
+			case nil:
+				return "<pre><code>\(code)</code></pre>\n"
+			}
+		}
 	}
 
 	// MARK: - CommonMarkRenderable
 
 	var commonMark: String {
-		return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
+		switch self {
+		case let .inline(code):
+			return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
+		case let .block(info, code):
+			let info = info ?? ""
+			return "```\(info)\n" + code + "```\n\n"
+		}
 	}
 }

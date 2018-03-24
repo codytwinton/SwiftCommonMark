@@ -13,7 +13,6 @@
 		5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52328779204CA96B0093C905 /* CommonMarkSpecTest.swift */; };
 		5232877C204CA96B0093C905 /* commonmark-tests-spec-0.28.json in Resources */ = {isa = PBXBuildFile; fileRef = 5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */; };
 		525CA5232065652500E2B9D1 /* CodeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5222065652500E2B9D1 /* CodeNode.swift */; };
-		525CA5252065693400E2B9D1 /* CodeBlockNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA5242065693400E2B9D1 /* CodeBlockNode.swift */; };
 		525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52620656B0400E2B9D1 /* EmphasisNode.swift */; };
 		525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52820656C6D00E2B9D1 /* StrongNode.swift */; };
 		525CA52B20656E6400E2B9D1 /* HeadingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA52A20656E6400E2B9D1 /* HeadingNode.swift */; };
@@ -56,7 +55,6 @@
 		5234F8B0204F107900A0141E /* CommonMarkOldParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkOldParsing.swift; sourceTree = "<group>"; };
 		5238914A205C393000EAD1F3 /* CommonMarkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkParser.swift; sourceTree = "<group>"; };
 		525CA5222065652500E2B9D1 /* CodeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNode.swift; sourceTree = "<group>"; };
-		525CA5242065693400E2B9D1 /* CodeBlockNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeBlockNode.swift; sourceTree = "<group>"; };
 		525CA52620656B0400E2B9D1 /* EmphasisNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmphasisNode.swift; sourceTree = "<group>"; };
 		525CA52820656C6D00E2B9D1 /* StrongNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongNode.swift; sourceTree = "<group>"; };
 		525CA52A20656E6400E2B9D1 /* HeadingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingNode.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 				525CA53020659B5F00E2B9D1 /* BreakNode.swift */,
 				52B2674D20655BC000888E6A /* BlockQuoteNode.swift */,
 				525CA5222065652500E2B9D1 /* CodeNode.swift */,
-				525CA5242065693400E2B9D1 /* CodeBlockNode.swift */,
 				525CA5322065A0FA00E2B9D1 /* DocumentNode.swift */,
 				525CA52620656B0400E2B9D1 /* EmphasisNode.swift */,
 				525CA52A20656E6400E2B9D1 /* HeadingNode.swift */,
@@ -321,7 +318,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				525CA5352065A25000E2B9D1 /* TextNode.swift in Sources */,
-				525CA5252065693400E2B9D1 /* CodeBlockNode.swift in Sources */,
 				52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */,
 				525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */,
 				525CA53120659B5F00E2B9D1 /* BreakNode.swift in Sources */,

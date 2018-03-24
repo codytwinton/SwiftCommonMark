@@ -33,6 +33,12 @@ struct TextNode: CommonMarkNode {
 	var commonMark: String {
 		return text
 	}
+
+	// MARK: - Inits
+
+	init(_ text: String) {
+		self.text = text
+	}
 }
 
 // MARK: - Extensions

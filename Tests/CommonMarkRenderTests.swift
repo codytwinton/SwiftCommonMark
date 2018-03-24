@@ -129,34 +129,34 @@ class CommonMarkRenderTests: XCTestCase {
 
 	let nodeTree: DocumentNode = {
 		let heading: HeadingNode = {
-			let text1 = TextNode(text: "Hello World")
+			let text1 = TextNode("Hello World")
 			return HeadingNode(level: .h1, nodes: [text1])
 		}()
 
 		let paragraph1: ParagraphNode = {
-			let text1 = TextNode(text: "Testing <>\"")
-			let text2 = TextNode(text: "Testing now: ")
-			let code1 = CodeNode(code: "Testing Code")
+			let text1 = TextNode("Testing <>\"")
+			let text2 = TextNode("Testing now: ")
+			let code1 = CodeNode.inline("Testing Code")
 			return ParagraphNode(nodes: [text1, BreakNode.softBreak, text2, code1])
 		}()
 
 		let paragraph2: ParagraphNode = {
-			let text1 = TextNode(text: "What ")
-			let strong1 = StrongNode(nodes: [TextNode(text: "is")])
-			let text2 = TextNode(text: " ")
-			let emphasis1 = EmphasisNode(nodes: [TextNode(text: "up")])
-			let text3 = TextNode(text: "?")
-			let text4 = TextNode(text: "Testing")
+			let text1 = TextNode("What ")
+			let strong1 = StrongNode(nodes: [TextNode("is")])
+			let text2 = TextNode(" ")
+			let emphasis1 = EmphasisNode(nodes: [TextNode("up")])
+			let text3 = TextNode("?")
+			let text4 = TextNode("Testing")
 
 			return ParagraphNode(nodes: [text1, strong1, text2, emphasis1, text3, BreakNode.lineBreak, text4])
 		}()
 
-		let code1 = CodeBlockNode(info: nil, code: "Testing\n")
-		let code2 = CodeBlockNode(info: "swift", code: "Testing 123\n")
+		let code1 = CodeNode.block(info: nil, code: "Testing\n")
+		let code2 = CodeNode.block(info: "swift", code: "Testing 123\n")
 
 		let blockQuote: BlockQuoteNode = {
-			let text1 = TextNode(text: "Test Blockquote")
-			let text2 = TextNode(text: "Testing Blockquote")
+			let text1 = TextNode("Test Blockquote")
+			let text2 = TextNode("Testing Blockquote")
 			return BlockQuoteNode(nodes: [ParagraphNode(nodes: [text1]), ParagraphNode(nodes: [text2])])
 		}()
 
@@ -167,36 +167,36 @@ class CommonMarkRenderTests: XCTestCase {
 		}()
 
 		let uList1: ListNode = {
-			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Unordered")])])
-			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "List")])])
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Unordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
 			return ListNode(listType: .asterisk, isTight: true, nodes: [item1, item2])
 		}()
 
 		let uList2: ListNode = {
-			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Second")])])
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Second")])])
 			return ListNode(listType: .plus, isTight: true, nodes: [item1])
 		}()
 
 		let uList3: ListNode = {
-			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Unordered")])])
-			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Loose")])])
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Unordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Loose")])])
 			return ListNode(listType: .dash, isTight: false, nodes: [item1, item2])
 		}()
 
 		let oList1: ListNode = {
-			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Ordered")])])
-			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "List")])])
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Ordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
 			return ListNode(listType: .period(start: 2), isTight: true, nodes: [item1, item2])
 		}()
 
 		let oList2: ListNode = {
-			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Ordered")])])
-			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode(text: "Loose")])])
+			let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Ordered")])])
+			let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Loose")])])
 			return ListNode(listType: .paren(start: 1), isTight: false, nodes: [item1, item2])
 		}()
 
 		let paragraph4: ParagraphNode = {
-			let link1 = LinkNode(url: "/uri", title: "title", nodes: [TextNode(text: "link")])
+			let link1 = LinkNode(url: "/uri", title: "title", nodes: [TextNode("link")])
 			let link2 = LinkNode(url: "/uri", title: nil, nodes: [])
 			return ParagraphNode(nodes: [link1, BreakNode.softBreak, link2])
 		}()
