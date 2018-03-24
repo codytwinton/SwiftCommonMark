@@ -69,10 +69,8 @@ struct ListNode: HTMLRenderable, CommonMarkRenderable {
 		var list = listType.htmlPrefix + "\n"
 
 		switch isTight {
-		case true:
-			list += nodes.html.tightenedList()
-		case false:
-			list += nodes.html.loosenedList()
+		case true: list += nodes.html.tightenedList()
+		case false: list += nodes.html.loosenedList()
 		}
 
 		return list + listType.htmlPostfix + "\n"
@@ -82,19 +80,22 @@ struct ListNode: HTMLRenderable, CommonMarkRenderable {
 
 	var commonMark: String {
 		let delimiter = listType.commonMarkDelimiter + " "
+		let items: [String]
 
 		switch listType {
 		case .dash, .asterisk, .plus:
-			return nodes.map { node -> String in
+			items = nodes.map { node -> String in
 				let listItem = node.commonMark.trimmingCharacters(in: .newlines)
-				return delimiter + listItem + (isTight ? "\n" : "\n\n")
-			}.joined() + (isTight ? "\n" : "")
+				return delimiter + listItem
+			}
 		case .period(let start), .paren(let start):
-			return nodes.enumerated().map { offset, node -> String in
+			items = nodes.enumerated().map { offset, node -> String in
 				let listItem = node.commonMark.trimmingCharacters(in: .newlines)
-				return "\(start + offset)" + delimiter + listItem + (isTight ? "\n" : "\n\n")
-			}.joined() + (isTight ? "\n" : "")
+				return "\(start + offset)" + delimiter + listItem
+			}
 		}
+
+		return items.map { $0 + (isTight ? "\n" : "\n\n") }.joined() + (isTight ? "\n" : "")
 	}
 }
 
