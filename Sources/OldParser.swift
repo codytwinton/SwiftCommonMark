@@ -114,7 +114,7 @@ extension NodeType {
 			}
 
 			let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
-			return .heading(level: level, nodes: NodeType.heading.parse(markdown: markdown))
+			return .heading(level: level, nodes: [.text(markdown)])
 		case .strong:
 			return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
 		case .emphasis:
@@ -122,30 +122,6 @@ extension NodeType {
 		case .document, .blockQuote, .codeBlock, .htmlBlock, .htmlInline,
 			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text:
 			return .text("")
-		}
-	}
-
-	func block(from line: String, captures: [String]) -> Node {
-		switch self {
-		case .thematicBreak:
-			return .thematicBreak
-		case .heading:
-			let level: HeadingLevel = HeadingLevel(rawValue: captures[0].count) ?? .h1
-			let raw = captures[1]
-			var components = raw.components(separatedBy: " #")
-
-			if let last = components.last?.trimmingCharacters(in: .whitespaces) {
-				let set = Set(last)
-				if set.count == 1, set.first == "#" {
-					components.removeLast()
-				}
-			}
-
-			let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
-			return .heading(level: level, nodes: [.text(markdown)])
-		case .code, .document, .blockQuote, .codeBlock, .emphasis, .htmlBlock, .htmlInline,
-			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .strong, .text:
-			return .paragraph(nodes: [.text(line)])
 		}
 	}
 
