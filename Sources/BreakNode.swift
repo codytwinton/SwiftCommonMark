@@ -46,6 +46,8 @@ enum BreakNode: CommonMarkBlockNode {
 	// MARK: - Inits
 
 	init?(blockLine line: String) {
+		guard !line.isEmpty else { return nil }
+
 		let pattern = "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
 		guard let regex = try? NSRegularExpression(pattern: pattern, options: .anchorsMatchLines) else { return nil }
 
