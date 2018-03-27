@@ -22,11 +22,13 @@ class HeadingNodeTests: XCTestCase {
 		return HeadingNode(level: .h1, nodes: [text1])
 	}()
 
-	// MARK: HeadingNode Tests
+	// MARK: Type Tests
 
 	func testTypes() {
 		XCTAssertEqual(node.type, .heading)
 	}
+
+	// MARK: Render Tests
 
 	func testHTML() {
 		let actual = node.html
@@ -54,6 +56,68 @@ class HeadingNodeTests: XCTestCase {
 			"Failed CommonMark:" +
 			"\n\nExpected: |\(expected)|" +
 			"\n\nActual: |\(actual)|" +
+			"\n********\n\n\n\n\n\n")
+	}
+
+	// MARK: - Parsing Tests
+
+	func testBlockParse() {
+		let shouldNotParse: [String] = [
+			"####### foo",
+			"#5 bolt",
+			"#hashtag",
+			"\\## foo",
+			"    # foo"
+		]
+
+		for line in shouldNotParse {
+			testBlockParse(for: line, expected: nil)
+		}
+
+		let shouldParse: [String] = [
+			"# foo",
+			"## foo",
+			"### foo",
+			"#### foo",
+			"##### foo",
+			"###### foo",
+			"# foo *bar* \\*baz\\*",
+			"#                  foo                     ",
+			" ### foo",
+			"  ## foo",
+			"   # foo",
+			"## foo ##",
+			"  ###   bar    ###"
+		]
+
+		let parseHeadings: [HeadingNode] = [
+			HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h4, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h5, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h6, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h1, nodes: [TextNode("foo *bar* \\*baz\\*")]),
+			HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+			HeadingNode(level: .h3, nodes: [TextNode("bar")])
+		]
+
+		for (i, line) in shouldParse.enumerated() {
+			let node = parseHeadings[i]
+			testBlockParse(for: line, expected: node)
+		}
+	}
+
+	func testBlockParse(for line: String, expected: HeadingNode?) {
+		let actual = HeadingNode(blockLine: line)
+		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+			"Failed Thematic Break Parse for |\(line)|:" +
+			"\n\nExpected: |\(String(describing: expected))|" +
+			"\n\nActual: |\(String(describing: actual))|" +
 			"\n********\n\n\n\n\n\n")
 	}
 
