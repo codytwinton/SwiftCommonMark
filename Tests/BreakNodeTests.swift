@@ -6,20 +6,30 @@
 //  Copyright © 2018 Cody Winton. All rights reserved.
 //
 
+// MARK: Imports
+
 @testable import SwiftCommonMark
 import XCTest
 
+// MARK: -
+
 class BreakNodeTests: XCTestCase {
+
+	// MARK: Constants
 
 	let lineBreak: BreakNode = .lineBreak
 	let softBreak: BreakNode = .softBreak
 	let thematicBreak: BreakNode = .thematicBreak
+
+	// MARK: - Type Tests
 
     func testTypes() {
 		XCTAssertEqual(lineBreak.type, .lineBreak)
 		XCTAssertEqual(softBreak.type, .softBreak)
 		XCTAssertEqual(thematicBreak.type, .thematicBreak)
     }
+
+	// MARK: Render Tests
 
 	func testHTML() {
 		XCTAssertEqual(lineBreak.html, "<br />\n")
@@ -31,5 +41,53 @@ class BreakNodeTests: XCTestCase {
 		XCTAssertEqual(lineBreak.commonMark, "\\\n")
 		XCTAssertEqual(softBreak.commonMark, "\n")
 		XCTAssertEqual(thematicBreak.commonMark, "***\n\n")
+	}
+
+	// MARK: - Parsing Tests
+
+	func testThematicBreakParse() {
+		let shouldParse = [
+			"***",
+			"---",
+			"___",
+			" ***",
+			"  ***",
+			"   ***",
+			"_____________________________________",
+			" - - -",
+			" **  * ** * ** * **",
+			"-     -      -      -",
+			"- - - -    "
+		]
+
+		for line in shouldParse {
+			testThematicBreakParse(for: line, expected: .thematicBreak)
+		}
+
+		let shouldNotParse = [
+			"+++",
+			"===",
+			"--",
+			"**",
+			"__",
+			"    ***",
+			"_ _ _ _ a",
+			"a------",
+			"---a---",
+			" *-*"
+		]
+
+		for line in shouldNotParse {
+			testThematicBreakParse(for: line, expected: nil)
+		}
+	}
+
+	func testThematicBreakParse(for line: String, expected: BreakNode?) {
+		let actual = BreakNode(blockLine: line)
+		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+			"Failed Thematic Break Parse for |\(line)|:" +
+			"\n\nExpected: |\(String(describing: expected))|" +
+			"\n\nActual: |\(String(describing: actual))|" +
+			"\n********\n\n\n\n\n\n")
 	}
 }

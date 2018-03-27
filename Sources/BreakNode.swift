@@ -42,4 +42,15 @@ enum BreakNode: CommonMarkNode {
 		case .thematicBreak: return "***\n\n"
 		}
 	}
+
+	// MARK: - Inits
+
+	init?(blockLine line: String) {
+		let pattern = "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
+		guard let regex = try? NSRegularExpression(pattern: pattern, options: .anchorsMatchLines) else { return nil }
+
+		let range = NSRange(location: 0, length: line.count)
+		guard regex.firstMatch(in: line, options: .anchored, range: range) != nil else { return nil }
+		self = .thematicBreak
+	}
 }
