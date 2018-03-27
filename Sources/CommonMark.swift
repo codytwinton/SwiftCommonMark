@@ -12,16 +12,20 @@ import Foundation
 
 // MARK: Protocols
 
-protocol CommonMarkNode: CommonMarkRenderable, HTMLRenderable {
-	var type: NodeType { get }
-}
-
 protocol CommonMarkRenderable {
 	var commonMark: String { get }
 }
 
 protocol HTMLRenderable {
 	var html: String { get }
+}
+
+protocol CommonMarkNode: CommonMarkRenderable, HTMLRenderable {
+	var type: NodeType { get }
+}
+
+protocol CommonMarkBlockNode: CommonMarkNode {
+	init?(blockLine line: String)
 }
 
 // MARK: Extensions

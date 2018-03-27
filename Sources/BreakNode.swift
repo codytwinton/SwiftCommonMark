@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: -
 
-enum BreakNode: CommonMarkNode {
+enum BreakNode: CommonMarkBlockNode {
 	case lineBreak, softBreak, thematicBreak
 
 	var type: NodeType {

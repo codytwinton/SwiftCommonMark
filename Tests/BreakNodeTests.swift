@@ -45,7 +45,7 @@ class BreakNodeTests: XCTestCase {
 
 	// MARK: - Parsing Tests
 
-	func testThematicBreakParse() {
+	func testBlockParse() {
 		let shouldParse = [
 			"***",
 			"---",
@@ -61,7 +61,7 @@ class BreakNodeTests: XCTestCase {
 		]
 
 		for line in shouldParse {
-			testThematicBreakParse(for: line, expected: .thematicBreak)
+			testBlockParse(for: line, expected: .thematicBreak)
 		}
 
 		let shouldNotParse = [
@@ -78,11 +78,11 @@ class BreakNodeTests: XCTestCase {
 		]
 
 		for line in shouldNotParse {
-			testThematicBreakParse(for: line, expected: nil)
+			testBlockParse(for: line, expected: nil)
 		}
 	}
 
-	func testThematicBreakParse(for line: String, expected: BreakNode?) {
+	func testBlockParse(for line: String, expected: BreakNode?) {
 		let actual = BreakNode(blockLine: line)
 		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 			"Failed Thematic Break Parse for |\(line)|:" +
