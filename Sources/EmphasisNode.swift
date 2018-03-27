@@ -22,6 +22,14 @@ struct EmphasisNode: CommonMarkNode {
 
 	private(set) var nodes: [CommonMarkNode]
 
+	private var regexPattern: String {
+		return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
+	}
+
+	private var regexTemplates: [String] {
+		return ["$2"]
+	}
+
 	// MARK: - HTMLRenderable
 
 	var html: String {

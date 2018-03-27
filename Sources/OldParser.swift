@@ -14,44 +14,6 @@ import Foundation
 
 extension NodeType {
 
-	// MARK: Variables
-
-	var regex: NSRegularExpression? {
-		let pattern: String
-		let options: NSRegularExpression.Options = .anchorsMatchLines
-
-		switch self {
-		case .code:
-			pattern = "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?[^\\`]*)\\1"
-		case .emphasis:
-			pattern = "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
-		case .heading:
-			pattern = "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
-		case .strong:
-			pattern = "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
-		case .thematicBreak:
-			pattern = "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
-		case .blockQuote, .codeBlock, .document, .htmlBlock, .htmlInline,
-			 .image, .listItem, .lineBreak, .link, .list, .paragraph, .softBreak, .text:
-			return nil
-		}
-
-		return try? NSRegularExpression(pattern: pattern, options: options)
-	}
-
-	var regexTemplates: [String] {
-		switch self {
-		case .heading:
-			return ["$1", "$2"]
-		case .strong, .emphasis, .code:
-			return ["$2"]
-		case .blockQuote, .codeBlock, .document, .htmlBlock,
-			 .htmlInline, .image, .listItem, .lineBreak, .link, .list,
-			 .paragraph, .softBreak, .text, .thematicBreak:
-			return []
-		}
-	}
-
 	// MARK: Functions
 
 	func parse(markdown: String) -> [Node] {
@@ -99,22 +61,6 @@ extension NodeType {
 		switch self {
 		case .code:
 			return .code(matches[0])
-		case .thematicBreak:
-			return .thematicBreak
-		case .heading:
-			let level: HeadingLevel = HeadingLevel(rawValue: matches[0].count) ?? .h1
-			let raw = matches[1]
-			var components = raw.components(separatedBy: " #")
-
-			if let last = components.last?.trimmingCharacters(in: .whitespaces) {
-				let set = Set(last)
-				if set.count == 1, set.first == "#" {
-					components.removeLast()
-				}
-			}
-
-			let markdown = components.joined(separator: " #").replacingOccurrences(of: "\\#", with: "#")
-			return .heading(level: level, nodes: [.text(markdown)])
 		case .strong:
 			return .strong(nodes: NodeType.strong.parse(markdown: matches[0]))
 		case .emphasis:
