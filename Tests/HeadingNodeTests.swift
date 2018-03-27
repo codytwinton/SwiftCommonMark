@@ -74,40 +74,34 @@ class HeadingNodeTests: XCTestCase {
 			testBlockParse(for: line, expected: nil)
 		}
 
-		let shouldParse: [String] = [
-			"# foo",
-			"## foo",
-			"### foo",
-			"#### foo",
-			"##### foo",
-			"###### foo",
-			"# foo *bar* \\*baz\\*",
-			"#                  foo                     ",
-			" ### foo",
-			"  ## foo",
-			"   # foo",
-			"## foo ##",
-			"  ###   bar    ###"
+		let shouldParse: [String: HeadingNode] = [
+			"# foo": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+			"## foo": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+			"### foo": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+			"#### foo": HeadingNode(level: .h4, nodes: [TextNode("foo")]),
+			"##### foo": HeadingNode(level: .h5, nodes: [TextNode("foo")]),
+			"###### foo": HeadingNode(level: .h6, nodes: [TextNode("foo")]),
+			"# foo *bar* \\*baz\\*": HeadingNode(level: .h1, nodes: [TextNode("foo *bar* \\*baz\\*")]),
+			"#                  foo             ": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+			" ### foo": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+			"  ## foo": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+			"   # foo": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+			"## foo ##": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+			"  ###   bar    ###": HeadingNode(level: .h3, nodes: [TextNode("bar")]),
+			"# foo ##################": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+			"##### foo ##": HeadingNode(level: .h5, nodes: [TextNode("foo")]),
+			"### foo ###     ": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+			"### foo ### b": HeadingNode(level: .h3, nodes: [TextNode("foo ### b")]),
+			"# foo#": HeadingNode(level: .h1, nodes: [TextNode("foo#")]),
+			"### foo \\###": HeadingNode(level: .h3, nodes: [TextNode("foo ###")]),
+			"## foo #\\##": HeadingNode(level: .h2, nodes: [TextNode("foo ###")]),
+			"# foo \\#": HeadingNode(level: .h1, nodes: [TextNode("foo #")]),
+			"## ": HeadingNode(level: .h2, nodes: []),
+			"#": HeadingNode(level: .h1, nodes: []),
+			"### ###": HeadingNode(level: .h3, nodes: [])
 		]
 
-		let parseHeadings: [HeadingNode] = [
-			HeadingNode(level: .h1, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h2, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h3, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h4, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h5, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h6, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h1, nodes: [TextNode("foo *bar* \\*baz\\*")]),
-			HeadingNode(level: .h1, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h3, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h2, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h1, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h2, nodes: [TextNode("foo")]),
-			HeadingNode(level: .h3, nodes: [TextNode("bar")])
-		]
-
-		for (i, line) in shouldParse.enumerated() {
-			let node = parseHeadings[i]
+		for (line, node) in shouldParse {
 			testBlockParse(for: line, expected: node)
 		}
 	}
