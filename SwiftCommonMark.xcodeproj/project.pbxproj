@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		520D6A212069C7FB006C1382 /* OldParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5238914A205C393000EAD1F3 /* OldParser.swift */; };
 		52328767204CA6100093C905 /* SwiftCommonMark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5232875D204CA6100093C905 /* SwiftCommonMark.framework */; };
 		5232876C204CA6100093C905 /* CommonMarkParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5232876B204CA6100093C905 /* CommonMarkParseTests.swift */; };
 		5232876E204CA6100093C905 /* SwiftCommonMark.h in Headers */ = {isa = PBXBuildFile; fileRef = 52328760204CA6100093C905 /* SwiftCommonMark.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -356,7 +355,6 @@
 				525CA5352065A25000E2B9D1 /* TextNode.swift in Sources */,
 				52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */,
 				525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */,
-				520D6A212069C7FB006C1382 /* OldParser.swift in Sources */,
 				525CA53120659B5F00E2B9D1 /* BreakNode.swift in Sources */,
 				525CA52F2065753A00E2B9D1 /* ImageNode.swift in Sources */,
 				52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */,
