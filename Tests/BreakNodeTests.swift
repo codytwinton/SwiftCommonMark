@@ -23,11 +23,11 @@ class BreakNodeTests: XCTestCase {
 
 	// MARK: - Type Tests
 
-    func testTypes() {
+	func testTypes() {
 		XCTAssertEqual(lineBreak.type, .lineBreak)
 		XCTAssertEqual(softBreak.type, .softBreak)
 		XCTAssertEqual(thematicBreak.type, .thematicBreak)
-    }
+	}
 
 	// MARK: Render Tests
 

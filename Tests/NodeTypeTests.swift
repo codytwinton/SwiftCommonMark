@@ -17,5 +17,5 @@ class NodeTypeTests: XCTestCase {
 									 .htmlBlock, .htmlInline, .image, .lineBreak, .link, .list,
 									 .listItem, .paragraph, .softBreak, .strong, .text, .thematicBreak]
 		XCTAssertEqual(NodeType.allCases, nodeTypes)
-    }
+	}
 }

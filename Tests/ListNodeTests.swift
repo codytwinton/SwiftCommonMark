@@ -63,9 +63,9 @@ class ListNodeTests: XCTestCase {
 						 "<ol start=\"2\">\n<li>Ordered</li>\n<li>List</li>\n</ol>\n",
 						 "<ol>\n<li>\n<p>Ordered</p>\n</li>\n<li>\n<p>Loose</p>\n</li>\n</ol>\n"]
 
-		for (i, node) in [uList1, uList2, uList3, oList1, oList2].enumerated() {
+		for (index, node) in [uList1, uList2, uList3, oList1, oList2].enumerated() {
 			let actual = node.html
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed HTML:" +
@@ -83,9 +83,9 @@ class ListNodeTests: XCTestCase {
 						 "2. Ordered\n3. List\n\n",
 						 "1) Ordered\n\n2) Loose\n\n"]
 
-		for (i, node) in [uList1, uList2, uList3, oList1, oList2].enumerated() {
+		for (index, node) in [uList1, uList2, uList3, oList1, oList2].enumerated() {
 			let actual = node.commonMark
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed CommonMark:" +
@@ -105,10 +105,10 @@ class ListNodeTests: XCTestCase {
 		let htmlPostfixs: [String] = ["</ul>", "</ul>", "</ul>", "</ol>", "</ol>"]
 		let commonMarkDelimiters: [String] = ["-", "*", "+", ".", ")"]
 
-		for (i, type) in types.enumerated() {
-			XCTAssertEqual(type.htmlPrefix, htmlPrefixs[i])
-			XCTAssertEqual(type.htmlPostfix, htmlPostfixs[i])
-			XCTAssertEqual(type.commonMarkDelimiter, commonMarkDelimiters[i])
+		for (index, type) in types.enumerated() {
+			XCTAssertEqual(type.htmlPrefix, htmlPrefixs[index])
+			XCTAssertEqual(type.htmlPostfix, htmlPostfixs[index])
+			XCTAssertEqual(type.commonMarkDelimiter, commonMarkDelimiters[index])
 		}
 	}
 }

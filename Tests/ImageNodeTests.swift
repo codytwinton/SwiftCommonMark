@@ -27,9 +27,9 @@ class ImageNodeTests: XCTestCase {
 		let expecteds = ["<img src=\"/url\" alt=\"foo\" title=\"title\" />",
 						 "<img src=\"/url\" alt=\"\" />"]
 
-		for (i, node) in [node1, node2].enumerated() {
+		for (index, node) in [node1, node2].enumerated() {
 			let actual = node.html
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed HTML:" +
@@ -43,9 +43,9 @@ class ImageNodeTests: XCTestCase {
 
 		let expecteds = ["![foo](/url \"title\")", "![](/url)"]
 
-		for (i, node) in [node1, node2].enumerated() {
+		for (index, node) in [node1, node2].enumerated() {
 			let actual = node.commonMark
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed CommonMark:" +

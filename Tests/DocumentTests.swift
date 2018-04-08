@@ -212,7 +212,7 @@ class DocumentTests: XCTestCase {
 		let paragraph5 = ParagraphNode(nodes: [HTMLNode.inline("<a>"), HTMLNode.inline("<bab>"), HTMLNode.inline("<c2c>")])
 
 		return DocumentNode(nodes: [heading, paragraph1, BreakNode.thematicBreak, paragraph2,
-								 code1, code2, blockQuote, paragraph3, uList1, uList2, uList3, oList1, oList2, paragraph4, html1, paragraph5])
+									code1, code2, blockQuote, paragraph3, uList1, uList2, uList3, oList1, oList2, paragraph4, html1, paragraph5])
 	}()
 
 	// MARK: - Tests
@@ -234,17 +234,17 @@ class DocumentTests: XCTestCase {
 
 		let actualLines = actual.components(separatedBy: .newlines)
 
-		for (i, expected) in expected.components(separatedBy: .newlines).enumerated() {
+		for (index, expected) in expected.components(separatedBy: .newlines).enumerated() {
 			let actual: String?
 
-			switch i < actualLines.count {
-			case true: actual = actualLines[i]
+			switch index < actualLines.count {
+			case true: actual = actualLines[index]
 			case false: actual = nil
 			}
 
 			guard expected != actual else { continue }
 			print("\n\n\n\n\n\n\n********\n\n" +
-				"line \(i + 1)" +
+				"line \(index + 1)" +
 				"\n\nExpected: |\(expected)|" +
 				"\n\nActual: |\(actual ?? "nil")|" +
 				"\n********\n")

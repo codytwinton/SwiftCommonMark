@@ -121,8 +121,8 @@ private extension Node {
 private extension Array where Element == Node {
 
 	mutating func parseBlockInlines() {
-		for i in 0..<count {
-			self[i].parseBlockInlines()
+		for index in 0..<count {
+			self[index].parseBlockInlines()
 		}
 	}
 }
@@ -136,10 +136,10 @@ private extension String {
 
 		let lines = trimmingCharacters(in: .newlines).components(separatedBy: .newlines)
 
-		for (i, line) in lines.enumerated() {
+		for (index, line) in lines.enumerated() {
 			guard !line.isEmpty else { continue }
 			nodes.append(.text(line))
-			guard i < lines.count - 1 else { continue }
+			guard index < lines.count - 1 else { continue }
 			nodes.append(.softBreak)
 		}
 

@@ -71,7 +71,7 @@ struct HeadingNode: CommonMarkBlockNode, Equatable {
 
 		guard let match = regex.firstMatch(in: line, options: options, range: range),
 			match.range.location != NSNotFound else {
-			return nil
+				return nil
 		}
 
 		let matchString = NSString(string: line).substring(with: match.range)

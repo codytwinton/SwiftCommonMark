@@ -121,8 +121,8 @@ class HeadingNodeTests: XCTestCase {
 		let levels: [HeadingLevel] = [.h1, .h2, .h3, .h4, .h5, .h6]
 		XCTAssertEqual(HeadingLevel.allCases, levels)
 
-		for (i, level) in levels.enumerated() {
-			XCTAssertEqual(level.rawValue, i + 1)
+		for (index, level) in levels.enumerated() {
+			XCTAssertEqual(level.rawValue, index + 1)
 		}
 	}
 }

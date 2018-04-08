@@ -30,9 +30,9 @@ class CodeNodeTests: XCTestCase {
 						 "<pre><code>Testing Code\n</code></pre>\n",
 						 "<pre><code class=\"language-info\">Testing Code\n</code></pre>\n"]
 
-		for (i, node) in [inline, blockNoInfo, blockInfo].enumerated() {
+		for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
 			let actual = node.html
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed HTML:" +
@@ -48,9 +48,9 @@ class CodeNodeTests: XCTestCase {
 						 "```\nTesting Code\n```\n\n",
 						 "```info\nTesting Code\n```\n\n"]
 
-		for (i, node) in [inline, blockNoInfo, blockInfo].enumerated() {
+		for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
 			let actual = node.commonMark
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed CommonMark:" +

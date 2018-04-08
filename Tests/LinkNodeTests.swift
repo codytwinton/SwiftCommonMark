@@ -27,9 +27,9 @@ class LinkNodeTests: XCTestCase {
 		let expecteds = ["<a href=\"/uri\" title=\"title\">link</a>",
 						 "<a href=\"/uri\"></a>"]
 
-		for (i, node) in [node1, node2].enumerated() {
+		for (index, node) in [node1, node2].enumerated() {
 			let actual = node.html
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed HTML:" +
@@ -43,9 +43,9 @@ class LinkNodeTests: XCTestCase {
 
 		let expecteds = ["[link](/uri \"title\")", "[](/uri)"]
 
-		for (i, node) in [node1, node2].enumerated() {
+		for (index, node) in [node1, node2].enumerated() {
 			let actual = node.commonMark
-			let expected = expecteds[i]
+			let expected = expecteds[index]
 
 			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
 				"Failed CommonMark:" +
