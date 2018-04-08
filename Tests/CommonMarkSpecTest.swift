@@ -17,7 +17,7 @@ enum CommonMarkTestError: Error {
 	case noJSONData
 }
 
-enum CommonMarkTestSection: String, EnumProtocol {
+enum CommonMarkTestSection: String, CaseIterable {
 	case thematicBreak = "Thematic breaks"
 	case emphasisAndStrongEmphasis = "Emphasis and strong emphasis"
 	case textualContent = "Textual content"

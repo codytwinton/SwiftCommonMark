@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: Enums
 
-enum HeadingLevel: Int, EnumProtocol {
+enum HeadingLevel: Int, CaseIterable {
 	case h1 = 1, h2, h3, h4, h5, h6
 }
 

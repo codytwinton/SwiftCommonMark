@@ -42,7 +42,7 @@ extension Array where Element == CommonMarkNode {
 
 // MARK: -
 
-enum NodeType: String, EnumProtocol {
+enum NodeType: String, CaseIterable {
 	case blockQuote, code, codeBlock, document, emphasis, heading, htmlBlock, htmlInline, image
 	case lineBreak, link, list, listItem, paragraph, softBreak, strong, text, thematicBreak
 
@@ -58,6 +58,6 @@ enum NodeType: String, EnumProtocol {
 
 // MARK: -
 
-enum NodeStructure: String, EnumProtocol {
+enum NodeStructure: String, CaseIterable {
 	case block, inline
 }
