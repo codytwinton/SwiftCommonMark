@@ -1,4 +1,9 @@
-swiftlint_version: 0.25.0
+swiftlint_version: 0.25.1
+indentation: tabs
+
+included:
+- Sources
+- Tests
 
 opt_in_rules:
 - array_init
@@ -123,12 +128,12 @@ disabled_rules:
 - prefixed_toplevel_constant
 - switch_case_on_newline
 
-included:
-- Sources
-- Tests
-
 private_outlet:
   allow_private_set: true
+
+explicit_type_interface:
+  excluded:
+  - local
 
 identifier_name:
   excluded:
