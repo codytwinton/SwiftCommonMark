@@ -10,7 +10,7 @@ env:
   - LANG=en_US.UTF-8
 
 install:
-- brew install swiftlint
+- brew upgrade swiftlint
 
 notifications:
   email: false
