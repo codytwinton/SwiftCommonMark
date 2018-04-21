@@ -9,6 +9,7 @@
 [![Code Coverage](https://codecov.io/gh/codytwinton/SwiftCommonMark/branch/master/graph/badge.svg)](https://codecov.io/gh/codytwinton/SwiftCommonMark)
 [![Code Beat](https://codebeat.co/badges/661e29b9-8711-4203-ab52-ccf06695277e)](https://codebeat.co/projects/github-com-codytwinton-swiftcommonmark-master)
 
+[![GitHub Release](https://img.shields.io/github/release/codytwinton/SwiftCommonMark.svg)](https://GitHub.com/codytwinton/SwiftCommonMark/releases/)
 [![Pod Version](https://img.shields.io/cocoapods/v/SwiftCommonMark.svg)](http://cocoapods.org/pods/SwiftCommonMark)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
 
