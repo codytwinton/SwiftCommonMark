@@ -1,4 +1,5 @@
-language: swift
+os: osx
+language: objective-c
 osx_image: xcode9.3
 xcode_project: SwiftCommonMark.xcodeproj
 xcode_scheme: SwiftCommonMark
