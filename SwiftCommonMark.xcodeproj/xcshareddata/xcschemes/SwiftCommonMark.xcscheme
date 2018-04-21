@@ -20,6 +20,20 @@
                ReferencedContainer = "container:SwiftCommonMark.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "52328765204CA6100093C905"
+               BuildableName = "SwiftCommonMarkTests.xctest"
+               BlueprintName = "SwiftCommonMarkTests"
+               ReferencedContainer = "container:SwiftCommonMark.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
