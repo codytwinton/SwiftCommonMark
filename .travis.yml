@@ -13,7 +13,7 @@ install:
 - brew upgrade swiftlint
 
 script:
-  - xcodebuild build test -project SwiftCommonMark.xcodeproj -scheme SwiftCommonMark CODE_SIGNING_REQUIRED=NO
+  - xcodebuild build test -project SwiftCommonMark.xcodeproj -scheme SwiftCommonMark CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY=""
 
 notifications:
   email: false
