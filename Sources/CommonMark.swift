@@ -54,6 +54,17 @@ enum NodeType: String, CaseIterable {
 			return .block
 		}
 	}
+
+    var childBlocks: [NodeType] {
+        switch self {
+        case .document, .blockQuote:
+            return [.blockQuote, .codeBlock, .heading, .thematicBreak, .list, .htmlBlock, .paragraph]
+        case .code, .codeBlock, .htmlBlock, .htmlInline, .image, .lineBreak, .softBreak, .text, .thematicBreak:
+            return []
+        case .emphasis, .heading, .link, .list, .listItem, .paragraph, .strong:
+            return []
+        }
+    }
 }
 
 // MARK: -
