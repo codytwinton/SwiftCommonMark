@@ -17,4 +17,5 @@ CommonMark implementation in pure Swift
 
 ## Contribute
 
-We would love for you to contribute to **SwiftCommonMark**, check the [LICENSE](LICENSE) file for more info. Pull Requests welcome!
+We would love for you to contribute to **SwiftCommonMark**, check the [LICENSE](LICENSE) file for more info. Pull
+Requests welcome!

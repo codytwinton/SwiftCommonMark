@@ -1,13 +1,15 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
-`SwiftCommonMark` adheres to [Semantic Versioning](http://semver.org/).
-All changes are ordered: Added, Updated, Removed, Fixed
 
----
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.0](https://github.com/codytwinton/SwiftCommonMark/releases/tag/0.1.0)
+## Unreleased
 
-### Initial Development Started
+[Full Changelog](https://github.com/codytwinton/SwiftCommonMark/compare/v0.1.0...HEAD)
 
-Released on 2018-03-04
+## 0.1.0
+
+[2018-03-04](https://github.com/codytwinton/SwiftCommonMark/releases/tag/0.1.0) |
+[Full Changelog](https://github.com/codytwinton/SwiftCommonMark/compare/v0.0.0...v0.1.0)

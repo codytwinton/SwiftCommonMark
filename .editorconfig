@@ -1,15 +1,11 @@
 root = true
 
 [*]
-end_of_line = lf
 charset = utf-8
-insert_final_newline = true
-
-[*.{yml,md}]
-trim_trailing_whitespace = false
+end_of_line = lf
 indent_style = space
-indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
 
 [*.swift]
-indent_style = tab
 indent_size = 4
