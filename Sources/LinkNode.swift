@@ -12,47 +12,46 @@ import Foundation
 
 // MARK: -
 
-struct LinkNode: CommonMarkNode {
+internal struct LinkNode: CommonMarkNode {
+  // MARK: Constants
 
-	// MARK: Constants
+  let type: NodeType = .link
 
-	let type: NodeType = .link
+  // MARK: Variables
 
-	// MARK: Variables
+  private(set) var url: String
+  private(set) var title: String?
+  private(set) var nodes: [CommonMarkNode]
 
-	private(set) var url: String
-	private(set) var title: String?
-	private(set) var nodes: [CommonMarkNode]
+  // MARK: - HTMLRenderable
 
-	// MARK: - HTMLRenderable
+  var html: String {
+    var link = "<a href=\"\(url)\""
 
-	var html: String {
-		var link = "<a href=\"\(url)\""
+    if let title = title, !title.isEmpty {
+      link += " title=\"\(title)\""
+    }
 
-		if let title = title, !title.isEmpty {
-			link += " title=\"\(title)\""
-		}
+    return link + ">" + nodes.html + "</a>"
+  }
 
-		return link + ">" + nodes.html + "</a>"
-	}
+  // MARK: - CommonMarkRenderable
 
-	// MARK: - CommonMarkRenderable
+  var commonMark: String {
+    var srcTitle = ""
 
-	var commonMark: String {
-		var srcTitle = ""
+    if let title = title {
+      srcTitle += " \"" + title + "\""
+    }
 
-		if let title = title {
-			srcTitle += " \"" + title + "\""
-		}
+    return "[\(nodes.commonMark)](\(url)\(srcTitle))"
+  }
 
-		return "[\(nodes.commonMark)](\(url)\(srcTitle))"
-	}
+  // MARK: - Inits
 
-	// MARK: - Inits
-
-	init(url: String, title: String? = nil, nodes: [CommonMarkNode] = []) {
-		self.url = url
-		self.title = title
-		self.nodes = nodes
-	}
+  init(url: String, title: String? = nil, nodes: [CommonMarkNode] = []) {
+    self.url = url
+    self.title = title
+    self.nodes = nodes
+  }
 }

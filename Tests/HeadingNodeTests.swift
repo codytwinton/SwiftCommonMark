@@ -13,116 +13,127 @@ import XCTest
 
 // MARK: -
 
-class HeadingNodeTests: XCTestCase {
+internal class HeadingNodeTests: XCTestCase {
+  // MARK: Constants
 
-	// MARK: Constants
+  let node: HeadingNode = {
+    let text1 = TextNode("Hello World")
+    return HeadingNode(level: .h1, nodes: [text1])
+  }()
 
-	let node: HeadingNode = {
-		let text1 = TextNode("Hello World")
-		return HeadingNode(level: .h1, nodes: [text1])
-	}()
+  // MARK: Type Tests
 
-	// MARK: Type Tests
+  func testTypes() {
+    XCTAssertEqual(node.type, .heading)
+  }
 
-	func testTypes() {
-		XCTAssertEqual(node.type, .heading)
-	}
+  // MARK: Render Tests
 
-	// MARK: Render Tests
-
-	func testHTML() {
-		let actual = node.html
-		let expected = """
+  func testHTML() {
+    let actual = node.html
+    let expected = """
 			<h1>Hello World</h1>
 
 			"""
 
-		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-			"Failed HTML:" +
-			"\n\nExpected: |\(expected)|" +
-			"\n\nActual: |\(actual)|" +
-			"\n********\n\n\n\n\n\n")
-	}
+    XCTAssertEqual(
+      expected,
+      actual,
+      "\n\n\n\n********\n\n" +
+        "Failed HTML:" +
+        "\n\nExpected: |\(expected)|" +
+        "\n\nActual: |\(actual)|" +
+      "\n********\n\n\n\n\n\n"
+    )
+  }
 
-	func testCommonMark() {
-		let actual = node.commonMark
-		let expected = """
+  func testCommonMark() {
+    let actual = node.commonMark
+    let expected = """
 			# Hello World
 
 
 			"""
 
-		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-			"Failed CommonMark:" +
-			"\n\nExpected: |\(expected)|" +
-			"\n\nActual: |\(actual)|" +
-			"\n********\n\n\n\n\n\n")
-	}
+    XCTAssertEqual(
+      expected,
+      actual,
+      "\n\n\n\n********\n\n" +
+        "Failed CommonMark:" +
+        "\n\nExpected: |\(expected)|" +
+        "\n\nActual: |\(actual)|" +
+      "\n********\n\n\n\n\n\n"
+    )
+  }
 
-	// MARK: - Parsing Tests
+  // MARK: - Parsing Tests
 
-	func testBlockParse() {
-		let shouldNotParse: [String] = [
-			"####### foo",
-			"#5 bolt",
-			"#hashtag",
-			"\\## foo",
-			"    # foo"
-		]
+  func testBlockParse() {
+    let shouldNotParse: [String] = [
+      "####### foo",
+      "#5 bolt",
+      "#hashtag",
+      "\\## foo",
+      "    # foo"
+    ]
 
-		for line in shouldNotParse {
-			testBlockParse(for: line, expected: nil)
-		}
+    for line in shouldNotParse {
+      testBlockParse(for: line, expected: nil)
+    }
 
-		let shouldParse: [String: HeadingNode] = [
-			"# foo": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
-			"## foo": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
-			"### foo": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
-			"#### foo": HeadingNode(level: .h4, nodes: [TextNode("foo")]),
-			"##### foo": HeadingNode(level: .h5, nodes: [TextNode("foo")]),
-			"###### foo": HeadingNode(level: .h6, nodes: [TextNode("foo")]),
-			"# foo *bar* \\*baz\\*": HeadingNode(level: .h1, nodes: [TextNode("foo *bar* \\*baz\\*")]),
-			"#                  foo             ": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
-			" ### foo": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
-			"  ## foo": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
-			"   # foo": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
-			"## foo ##": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
-			"  ###   bar    ###": HeadingNode(level: .h3, nodes: [TextNode("bar")]),
-			"# foo ##################": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
-			"##### foo ##": HeadingNode(level: .h5, nodes: [TextNode("foo")]),
-			"### foo ###     ": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
-			"### foo ### b": HeadingNode(level: .h3, nodes: [TextNode("foo ### b")]),
-			"# foo#": HeadingNode(level: .h1, nodes: [TextNode("foo#")]),
-			"### foo \\###": HeadingNode(level: .h3, nodes: [TextNode("foo ###")]),
-			"## foo #\\##": HeadingNode(level: .h2, nodes: [TextNode("foo ###")]),
-			"# foo \\#": HeadingNode(level: .h1, nodes: [TextNode("foo #")]),
-			"## ": HeadingNode(level: .h2, nodes: []),
-			"#": HeadingNode(level: .h1, nodes: []),
-			"### ###": HeadingNode(level: .h3, nodes: [])
-		]
+    let shouldParse: [String: HeadingNode] = [
+      "# foo": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+      "## foo": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+      "### foo": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+      "#### foo": HeadingNode(level: .h4, nodes: [TextNode("foo")]),
+      "##### foo": HeadingNode(level: .h5, nodes: [TextNode("foo")]),
+      "###### foo": HeadingNode(level: .h6, nodes: [TextNode("foo")]),
+      "# foo *bar* \\*baz\\*": HeadingNode(level: .h1, nodes: [TextNode("foo *bar* \\*baz\\*")]),
+      "#                  foo             ": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+      " ### foo": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+      "  ## foo": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+      "   # foo": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+      "## foo ##": HeadingNode(level: .h2, nodes: [TextNode("foo")]),
+      "  ###   bar    ###": HeadingNode(level: .h3, nodes: [TextNode("bar")]),
+      "# foo ##################": HeadingNode(level: .h1, nodes: [TextNode("foo")]),
+      "##### foo ##": HeadingNode(level: .h5, nodes: [TextNode("foo")]),
+      "### foo ###     ": HeadingNode(level: .h3, nodes: [TextNode("foo")]),
+      "### foo ### b": HeadingNode(level: .h3, nodes: [TextNode("foo ### b")]),
+      "# foo#": HeadingNode(level: .h1, nodes: [TextNode("foo#")]),
+      "### foo \\###": HeadingNode(level: .h3, nodes: [TextNode("foo ###")]),
+      "## foo #\\##": HeadingNode(level: .h2, nodes: [TextNode("foo ###")]),
+      "# foo \\#": HeadingNode(level: .h1, nodes: [TextNode("foo #")]),
+      "## ": HeadingNode(level: .h2, nodes: []),
+      "#": HeadingNode(level: .h1, nodes: []),
+      "### ###": HeadingNode(level: .h3, nodes: [])
+    ]
 
-		for (line, node) in shouldParse {
-			testBlockParse(for: line, expected: node)
-		}
-	}
+    for (line, node) in shouldParse {
+      testBlockParse(for: line, expected: node)
+    }
+  }
 
-	func testBlockParse(for line: String, expected: HeadingNode?) {
-		let actual = HeadingNode(blockLine: line)
-		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-			"Failed Thematic Break Parse for |\(line)|:" +
-			"\n\nExpected: |\(String(describing: expected))|" +
-			"\n\nActual: |\(String(describing: actual))|" +
-			"\n********\n\n\n\n\n\n")
-	}
+  func testBlockParse(for line: String, expected: HeadingNode?) {
+    let actual = HeadingNode(blockLine: line)
+    XCTAssertEqual(
+      expected,
+      actual,
+      "\n\n\n\n********\n\n" +
+        "Failed Thematic Break Parse for |\(line)|:" +
+        "\n\nExpected: |\(String(describing: expected))|" +
+        "\n\nActual: |\(String(describing: actual))|" +
+      "\n********\n\n\n\n\n\n"
+    )
+  }
 
-	// MARK: HeadingLevel Tests
+  // MARK: HeadingLevel Tests
 
-	func testHeadingLevels() {
-		let levels: [HeadingLevel] = [.h1, .h2, .h3, .h4, .h5, .h6]
-		XCTAssertEqual(HeadingLevel.allCases, levels)
+  func testHeadingLevels() {
+    let levels: [HeadingLevel] = [.h1, .h2, .h3, .h4, .h5, .h6]
+    XCTAssertEqual(HeadingLevel.allCases, levels)
 
-		for (index, level) in levels.enumerated() {
-			XCTAssertEqual(level.rawValue, index + 1)
-		}
-	}
+    for (index, level) in levels.enumerated() {
+      XCTAssertEqual(level.rawValue, index + 1)
+    }
+  }
 }

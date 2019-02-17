@@ -9,13 +9,30 @@
 @testable import SwiftCommonMark
 import XCTest
 
-class NodeTypeTests: XCTestCase {
-
-	func testNodeTypes() {
-
-		let nodeTypes: [NodeType] = [.blockQuote, .code, .codeBlock, .document, .emphasis, .heading,
-									 .htmlBlock, .htmlInline, .image, .lineBreak, .link, .list,
-									 .listItem, .paragraph, .softBreak, .strong, .text, .thematicBreak]
-		XCTAssertEqual(NodeType.allCases, nodeTypes)
-	}
+internal class NodeTypeTests: XCTestCase {
+  func testNodeTypes() {
+    XCTAssertEqual(
+      NodeType.allCases,
+      [
+        .blockQuote,
+        .code,
+        .codeBlock,
+        .document,
+        .emphasis,
+        .heading,
+        .htmlBlock,
+        .htmlInline,
+        .image,
+        .lineBreak,
+        .link,
+        .list,
+        .listItem,
+        .paragraph,
+        .softBreak,
+        .strong,
+        .text,
+        .thematicBreak
+      ]
+    )
+  }
 }

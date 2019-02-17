@@ -12,32 +12,32 @@ import Foundation
 
 // MARK: Enums
 
-enum HTMLNode: CommonMarkNode {
-	case block(String)
-	case inline(String)
+internal enum HTMLNode: CommonMarkNode {
+  case block(String)
+  case inline(String)
 
-	var type: NodeType {
-		switch self {
-		case .block: return .htmlBlock
-		case .inline: return .htmlInline
-		}
-	}
+  var type: NodeType {
+    switch self {
+    case .block: return .htmlBlock
+    case .inline: return .htmlInline
+    }
+  }
 
-	// MARK: - HTMLRenderable
+  // MARK: - HTMLRenderable
 
-	var html: String {
-		switch self {
-		case .block(let content): return content + "\n"
-		case .inline(let content): return content
-		}
-	}
+  var html: String {
+    switch self {
+    case .block(let content): return content + "\n"
+    case .inline(let content): return content
+    }
+  }
 
-	// MARK: - CommonMarkRenderable
+  // MARK: - CommonMarkRenderable
 
-	var commonMark: String {
-		switch self {
-		case .block(let content): return content + "\n\n"
-		case .inline(let content): return content
-		}
-	}
+  var commonMark: String {
+    switch self {
+    case .block(let content): return content + "\n\n"
+    case .inline(let content): return content
+    }
+  }
 }
