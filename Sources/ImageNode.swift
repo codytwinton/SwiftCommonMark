@@ -12,46 +12,46 @@ import Foundation
 
 // MARK: -
 
-struct ImageNode: CommonMarkNode {
-    // MARK: Constants
+internal struct ImageNode: CommonMarkNode {
+  // MARK: Constants
 
-    let type: NodeType = .image
+  let type: NodeType = .image
 
-    // MARK: Variables
+  // MARK: Variables
 
-    private(set) var source: String
-    private(set) var title: String?
-    private(set) var alternate: String
+  private(set) var source: String
+  private(set) var title: String?
+  private(set) var alternate: String
 
-    // MARK: - HTMLRenderable
+  // MARK: - HTMLRenderable
 
-    var html: String {
-        var image = "<img src=\"\(source)\" alt=\"\(alternate)\" "
+  var html: String {
+    var image = "<img src=\"\(source)\" alt=\"\(alternate)\" "
 
-        if let title = title, !title.isEmpty {
-            image += "title=\"\(title)\" "
-        }
-
-        return image + "/>"
+    if let title = title, !title.isEmpty {
+      image += "title=\"\(title)\" "
     }
 
-    // MARK: - CommonMarkRenderable
+    return image + "/>"
+  }
 
-    var commonMark: String {
-        var srcTitle = ""
+  // MARK: - CommonMarkRenderable
 
-        if let title = title {
-            srcTitle += " \"" + title + "\""
-        }
+  var commonMark: String {
+    var srcTitle = ""
 
-        return "![\(alternate)](\(source)\(srcTitle))"
+    if let title = title {
+      srcTitle += " \"" + title + "\""
     }
 
-    // MARK: - Inits
+    return "![\(alternate)](\(source)\(srcTitle))"
+  }
 
-    init(source: String, title: String? = nil, alternate: String = "") {
-        self.source = source
-        self.title = title
-        self.alternate = alternate
-    }
+  // MARK: - Inits
+
+  init(source: String, title: String? = nil, alternate: String = "") {
+    self.source = source
+    self.title = title
+    self.alternate = alternate
+  }
 }

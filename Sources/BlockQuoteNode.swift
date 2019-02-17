@@ -12,31 +12,30 @@ import Foundation
 
 // MARK: -
 
-struct BlockQuoteNode: CommonMarkNode {
-    // MARK: Constants
+internal struct BlockQuoteNode: CommonMarkNode {
+  // MARK: Constants
 
-    let type: NodeType = .blockQuote
+  let type: NodeType = .blockQuote
 
-    // MARK: Variables
+  // MARK: Variables
 
-    private(set) var nodes: [CommonMarkNode]
+  private(set) var nodes: [CommonMarkNode]
 
-    // MARK: - HTMLRenderable
+  // MARK: - HTMLRenderable
 
-    var html: String {
-        return "<blockquote>\n" + nodes.html + "</blockquote>\n"
-    }
+  var html: String {
+    return "<blockquote>\n" + nodes.html + "</blockquote>\n"
+  }
 
-    // MARK: - CommonMarkRenderable
+  // MARK: - CommonMarkRenderable
 
-    var commonMark: String {
-        return nodes.map { "> " + $0.commonMark }.joined()
-            .replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
-    }
+  var commonMark: String {
+    return nodes.map { "> " + $0.commonMark }.joined().replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
+  }
 
-    // MARK: - Inits
+  // MARK: - Inits
 
-    init(nodes: [CommonMarkNode]) {
-        self.nodes = nodes
-    }
+  init(nodes: [CommonMarkNode]) {
+    self.nodes = nodes
+  }
 }

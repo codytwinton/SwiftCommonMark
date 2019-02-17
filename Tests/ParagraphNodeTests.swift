@@ -13,43 +13,51 @@ import XCTest
 
 // MARK: -
 
-class ParagraphNodeTests: XCTestCase {
-    // MARK: Constants
+internal class ParagraphNodeTests: XCTestCase {
+  // MARK: Constants
 
-    let node = ParagraphNode(nodes: [TextNode("Testing Paragraph")])
+  let node = ParagraphNode(nodes: [TextNode("Testing Paragraph")])
 
-    // MARK: HeadingNode Tests
+  // MARK: HeadingNode Tests
 
-    func testTypes() {
-        XCTAssertEqual(node.type, .paragraph)
-    }
+  func testTypes() {
+    XCTAssertEqual(node.type, .paragraph)
+  }
 
-    func testHTML() {
-        let actual = node.html
-        let expected = """
+  func testHTML() {
+    let actual = node.html
+    let expected = """
 			<p>Testing Paragraph</p>
 
 			"""
 
-        XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-            "Failed HTML:" +
-            "\n\nExpected: |\(expected)|" +
-            "\n\nActual: |\(actual)|" +
-            "\n********\n\n\n\n\n\n")
-    }
+    XCTAssertEqual(
+      expected,
+      actual,
+      "\n\n\n\n********\n\n" +
+        "Failed HTML:" +
+        "\n\nExpected: |\(expected)|" +
+        "\n\nActual: |\(actual)|" +
+      "\n********\n\n\n\n\n\n"
+    )
+  }
 
-    func testCommonMark() {
-        let actual = node.commonMark
-        let expected = """
+  func testCommonMark() {
+    let actual = node.commonMark
+    let expected = """
 			Testing Paragraph
 
 
 			"""
 
-        XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-            "Failed CommonMark:" +
-            "\n\nExpected: |\(expected)|" +
-            "\n\nActual: |\(actual)|" +
-            "\n********\n\n\n\n\n\n")
-    }
+    XCTAssertEqual(
+      expected,
+      actual,
+      "\n\n\n\n********\n\n" +
+        "Failed CommonMark:" +
+        "\n\nExpected: |\(expected)|" +
+        "\n\nActual: |\(actual)|" +
+      "\n********\n\n\n\n\n\n"
+    )
+  }
 }

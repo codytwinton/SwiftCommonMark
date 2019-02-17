@@ -12,38 +12,38 @@ import Foundation
 
 // MARK: -
 
-struct StrongNode: CommonMarkNode {
-    // MARK: Constants
+internal struct StrongNode: CommonMarkNode {
+  // MARK: Constants
 
-    let type: NodeType = .strong
+  let type: NodeType = .strong
 
-    // MARK: Variables
+  // MARK: Variables
 
-    private(set) var nodes: [CommonMarkNode]
+  private(set) var nodes: [CommonMarkNode]
 
-    private var regexPattern: String {
-        return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
-    }
+  private var regexPattern: String {
+    return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
+  }
 
-    private var regexTemplates: [String] {
-        return ["$2"]
-    }
+  private var regexTemplates: [String] {
+    return ["$2"]
+  }
 
-    // MARK: - HTMLRenderable
+  // MARK: - HTMLRenderable
 
-    var html: String {
-        return "<strong>" + nodes.html + "</strong>"
-    }
+  var html: String {
+    return "<strong>" + nodes.html + "</strong>"
+  }
 
-    // MARK: - CommonMarkRenderable
+  // MARK: - CommonMarkRenderable
 
-    var commonMark: String {
-        return "**" + nodes.commonMark + "**"
-    }
+  var commonMark: String {
+    return "**" + nodes.commonMark + "**"
+  }
 
-    // MARK: - Inits
+  // MARK: - Inits
 
-    init(nodes: [CommonMarkNode]) {
-        self.nodes = nodes
-    }
+  init(nodes: [CommonMarkNode]) {
+    self.nodes = nodes
+  }
 }

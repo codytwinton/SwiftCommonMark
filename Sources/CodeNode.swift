@@ -12,46 +12,46 @@ import Foundation
 
 // MARK: -
 
-enum CodeNode: CommonMarkNode {
-    case inline(String)
-    case block(info: String?, code: String)
+internal enum CodeNode: CommonMarkNode {
+  case inline(String)
+  case block(info: String?, code: String)
 
-    var type: NodeType {
-        switch self {
-        case .inline: return .code
-        case .block: return .codeBlock
-        }
+  var type: NodeType {
+    switch self {
+    case .inline: return .code
+    case .block: return .codeBlock
     }
+  }
 
-    private var regexPattern: String {
-        return "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?[^\\`]*)\\1"
+  private var regexPattern: String {
+    return "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?[^\\`]*)\\1"
+  }
+
+  // MARK: - HTMLRenderable
+
+  var html: String {
+    switch self {
+    case let .inline(code):
+      return "<code>" + code + "</code>"
+    case let .block(info, code):
+      switch info {
+      case let info?:
+        return "<pre><code class=\"language-\(info)\">\(code)</code></pre>\n"
+      case nil:
+        return "<pre><code>\(code)</code></pre>\n"
+      }
     }
+  }
 
-    // MARK: - HTMLRenderable
+  // MARK: - CommonMarkRenderable
 
-    var html: String {
-        switch self {
-        case let .inline(code):
-            return "<code>" + code + "</code>"
-        case let .block(info, code):
-            switch info {
-            case let info?:
-                return "<pre><code class=\"language-\(info)\">\(code)</code></pre>\n"
-            case nil:
-                return "<pre><code>\(code)</code></pre>\n"
-            }
-        }
+  var commonMark: String {
+    switch self {
+    case let .inline(code):
+      return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
+    case let .block(info, code):
+      let info = info ?? ""
+      return "```\(info)\n" + code + "```\n\n"
     }
-
-    // MARK: - CommonMarkRenderable
-
-    var commonMark: String {
-        switch self {
-        case let .inline(code):
-            return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
-        case let .block(info, code):
-            let info = info ?? ""
-            return "```\(info)\n" + code + "```\n\n"
-        }
-    }
+  }
 }

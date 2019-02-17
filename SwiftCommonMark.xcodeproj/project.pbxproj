@@ -28,7 +28,6 @@
 		527FB76B205440A1000ADD7D /* DocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* DocumentTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
 		52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMark.swift */; };
-		52A32A08204DD882006EEF3F /* General+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A07204DD882006EEF3F /* General+Extensions.swift */; };
 		52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2674D20655BC000888E6A /* BlockQuoteNode.swift */; };
 		52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A893205A252A00F18CCA /* NodeTypeTests.swift */; };
 		52CAEE842066EDCB007024B3 /* BreakNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE832066EDCB007024B3 /* BreakNodeTests.swift */; };
@@ -82,7 +81,6 @@
 		527FB76A205440A1000ADD7D /* DocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
-		52A32A07204DD882006EEF3F /* General+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "General+Extensions.swift"; sourceTree = "<group>"; };
 		52B2674D20655BC000888E6A /* BlockQuoteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNode.swift; sourceTree = "<group>"; };
 		52C5A893205A252A00F18CCA /* NodeTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
 		52CAEE832066EDCB007024B3 /* BreakNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakNodeTests.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				52A32A05204DD850006EEF3F /* CommonMark.swift */,
-				52A32A07204DD882006EEF3F /* General+Extensions.swift */,
 				5238914A205C393000EAD1F3 /* OldParser.swift */,
 				52B2674C20655B2800888E6A /* Nodes */,
 				529E4D922051F4FC007B8143 /* Supporting Files */,
@@ -285,11 +282,12 @@
 				TargetAttributes = {
 					5232875C204CA6100093C905 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					52328765204CA6100093C905 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -366,7 +364,6 @@
 				525CA53D2065CC9400E2B9D1 /* ListNode.swift in Sources */,
 				525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */,
 				525CA52D206571BA00E2B9D1 /* HTMLNode.swift in Sources */,
-				52A32A08204DD882006EEF3F /* General+Extensions.swift in Sources */,
 				525CA5372065A59200E2B9D1 /* ParagraphNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +540,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -566,7 +563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMark;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -581,7 +578,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -596,7 +593,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.codytwinton.SwiftCommonMarkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
