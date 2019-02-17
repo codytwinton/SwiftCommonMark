@@ -14,36 +14,35 @@ import XCTest
 // MARK: -
 
 class ListItemNodeTests: XCTestCase {
+    // MARK: Constants
 
-	// MARK: Constants
+    let node = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
 
-	let node: ListItemNode = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
+    // MARK: HeadingNode Tests
 
-	// MARK: HeadingNode Tests
+    func testTypes() {
+        XCTAssertEqual(node.type, .listItem)
+    }
 
-	func testTypes() {
-		XCTAssertEqual(node.type, .listItem)
-	}
+    func testHTML() {
+        let actual = node.html
+        let expected = "<li><p>List</p>\n</li>\n"
 
-	func testHTML() {
-		let actual = node.html
-		let expected = "<li><p>List</p>\n</li>\n"
+        XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+            "Failed HTML:" +
+            "\n\nExpected: |\(expected)|" +
+            "\n\nActual: |\(actual)|" +
+            "\n********\n\n\n\n\n\n")
+    }
 
-		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-			"Failed HTML:" +
-			"\n\nExpected: |\(expected)|" +
-			"\n\nActual: |\(actual)|" +
-			"\n********\n\n\n\n\n\n")
-	}
+    func testCommonMark() {
+        let actual = node.commonMark
+        let expected = "List\n\n\n"
 
-	func testCommonMark() {
-		let actual = node.commonMark
-		let expected = "List\n\n\n"
-
-		XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-			"Failed CommonMark:" +
-			"\n\nExpected: |\(expected)|" +
-			"\n\nActual: |\(actual)|" +
-			"\n********\n\n\n\n\n\n")
-	}
+        XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+            "Failed CommonMark:" +
+            "\n\nExpected: |\(expected)|" +
+            "\n\nActual: |\(actual)|" +
+            "\n********\n\n\n\n\n\n")
+    }
 }

@@ -13,51 +13,48 @@ import Foundation
 // MARK: -
 
 struct TextNode: CommonMarkNode {
+    // MARK: Constants
 
-	// MARK: Constants
+    let type: NodeType = .text
 
-	let type: NodeType = .text
+    // MARK: Variables
 
-	// MARK: Variables
+    private(set) var text: String
 
-	private(set) var text: String
+    // MARK: - HTMLRenderable
 
-	// MARK: - HTMLRenderable
+    var html: String {
+        return text.sanatizeHTML()
+    }
 
-	var html: String {
-		return text.sanatizeHTML()
-	}
+    // MARK: - CommonMarkRenderable
 
-	// MARK: - CommonMarkRenderable
+    var commonMark: String {
+        return text
+    }
 
-	var commonMark: String {
-		return text
-	}
+    // MARK: - Inits
 
-	// MARK: - Inits
-
-	init(_ text: String) {
-		self.text = text
-	}
+    init(_ text: String) {
+        self.text = text
+    }
 }
 
 // MARK: - Extensions
 
 private extension String {
-
-	func sanatizeHTML() -> String {
-		return map { $0.sanatizeHTML() }.joined()
-	}
+    func sanatizeHTML() -> String {
+        return map { $0.sanatizeHTML() }.joined()
+    }
 }
 
 private extension Character {
-
-	func sanatizeHTML() -> String {
-		switch self {
-		case "<": return "&lt;"
-		case ">": return "&gt;"
-		case "\"": return "&quot;"
-		default: return String(self)
-		}
-	}
+    func sanatizeHTML() -> String {
+        switch self {
+        case "<": return "&lt;"
+        case ">": return "&gt;"
+        case "\"": return "&quot;"
+        default: return String(self)
+        }
+    }
 }

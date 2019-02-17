@@ -13,38 +13,37 @@ import Foundation
 // MARK: -
 
 struct EmphasisNode: CommonMarkNode {
+    // MARK: Constants
 
-	// MARK: Constants
+    let type: NodeType = .emphasis
 
-	let type: NodeType = .emphasis
+    // MARK: Variables
 
-	// MARK: Variables
+    private(set) var nodes: [CommonMarkNode]
 
-	private(set) var nodes: [CommonMarkNode]
+    private var regexPattern: String {
+        return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
+    }
 
-	private var regexPattern: String {
-		return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
-	}
+    private var regexTemplates: [String] {
+        return ["$2"]
+    }
 
-	private var regexTemplates: [String] {
-		return ["$2"]
-	}
+    // MARK: - HTMLRenderable
 
-	// MARK: - HTMLRenderable
+    var html: String {
+        return "<em>" + nodes.html + "</em>"
+    }
 
-	var html: String {
-		return "<em>" + nodes.html + "</em>"
-	}
+    // MARK: - CommonMarkRenderable
 
-	// MARK: - CommonMarkRenderable
+    var commonMark: String {
+        return "*" + nodes.commonMark + "*"
+    }
 
-	var commonMark: String {
-		return "*" + nodes.commonMark + "*"
-	}
+    // MARK: - Inits
 
-	// MARK: - Inits
-
-	init(nodes: [CommonMarkNode]) {
-		self.nodes = nodes
-	}
+    init(nodes: [CommonMarkNode]) {
+        self.nodes = nodes
+    }
 }

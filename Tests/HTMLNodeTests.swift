@@ -14,9 +14,8 @@ import XCTest
 // MARK: -
 
 class HTMLNodeTests: XCTestCase {
-
-	let inline: HTMLNode = .inline("<bab>")
-	let block: HTMLNode = .block("""
+    let inline: HTMLNode = .inline("<bab>")
+    let block: HTMLNode = .block("""
 	<table>
 	<tr>
 	<td>hi</td>
@@ -24,14 +23,14 @@ class HTMLNodeTests: XCTestCase {
 	</table>
 	""")
 
-	func testTypes() {
-		XCTAssertEqual(inline.type, .htmlInline)
-		XCTAssertEqual(block.type, .htmlBlock)
-	}
+    func testTypes() {
+        XCTAssertEqual(inline.type, .htmlInline)
+        XCTAssertEqual(block.type, .htmlBlock)
+    }
 
-	func testHTML() {
-		let expecteds = ["<bab>",
-						 """
+    func testHTML() {
+        let expecteds = ["<bab>",
+                         """
 						<table>
 						<tr>
 						<td>hi</td>
@@ -40,21 +39,21 @@ class HTMLNodeTests: XCTestCase {
 
 						"""]
 
-		for (index, node) in [inline, block].enumerated() {
-			let actual = node.html
-			let expected = expecteds[index]
+        for (index, node) in [inline, block].enumerated() {
+            let actual = node.html
+            let expected = expecteds[index]
 
-			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-				"Failed HTML:" +
-				"\n\nExpected: |\(expected)|" +
-				"\n\nActual: |\(actual)|" +
-				"\n********\n\n\n\n\n\n")
-		}
-	}
+            XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+                "Failed HTML:" +
+                "\n\nExpected: |\(expected)|" +
+                "\n\nActual: |\(actual)|" +
+                "\n********\n\n\n\n\n\n")
+        }
+    }
 
-	func testCommonMark() {
-		let expecteds = ["<bab>",
-						 """
+    func testCommonMark() {
+        let expecteds = ["<bab>",
+                         """
 						<table>
 						<tr>
 						<td>hi</td>
@@ -64,15 +63,15 @@ class HTMLNodeTests: XCTestCase {
 
 						"""]
 
-		for (index, node) in [inline, block].enumerated() {
-			let actual = node.commonMark
-			let expected = expecteds[index]
+        for (index, node) in [inline, block].enumerated() {
+            let actual = node.commonMark
+            let expected = expecteds[index]
 
-			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-				"Failed CommonMark:" +
-				"\n\nExpected: |\(expected)|" +
-				"\n\nActual: |\(actual)|" +
-				"\n********\n\n\n\n\n\n")
-		}
-	}
+            XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+                "Failed CommonMark:" +
+                "\n\nExpected: |\(expected)|" +
+                "\n\nActual: |\(actual)|" +
+                "\n********\n\n\n\n\n\n")
+        }
+    }
 }

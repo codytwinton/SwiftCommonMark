@@ -14,49 +14,47 @@ import XCTest
 // MARK: -
 
 class CodeNodeTests: XCTestCase {
+    let inline: CodeNode = .inline("Testing Code")
+    let blockNoInfo: CodeNode = .block(info: nil, code: "Testing Code\n")
+    let blockInfo: CodeNode = .block(info: "info", code: "Testing Code\n")
 
-	let inline: CodeNode = .inline("Testing Code")
-	let blockNoInfo: CodeNode = .block(info: nil, code: "Testing Code\n")
-	let blockInfo: CodeNode = .block(info: "info", code: "Testing Code\n")
+    func testTypes() {
+        XCTAssertEqual(inline.type, .code)
+        XCTAssertEqual(blockNoInfo.type, .codeBlock)
+        XCTAssertEqual(blockInfo.type, .codeBlock)
+    }
 
-	func testTypes() {
-		XCTAssertEqual(inline.type, .code)
-		XCTAssertEqual(blockNoInfo.type, .codeBlock)
-		XCTAssertEqual(blockInfo.type, .codeBlock)
-	}
+    func testHTML() {
+        let expecteds = ["<code>Testing Code</code>",
+                         "<pre><code>Testing Code\n</code></pre>\n",
+                         "<pre><code class=\"language-info\">Testing Code\n</code></pre>\n"]
 
-	func testHTML() {
-		let expecteds = ["<code>Testing Code</code>",
-						 "<pre><code>Testing Code\n</code></pre>\n",
-						 "<pre><code class=\"language-info\">Testing Code\n</code></pre>\n"]
+        for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
+            let actual = node.html
+            let expected = expecteds[index]
 
-		for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
-			let actual = node.html
-			let expected = expecteds[index]
+            XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+                "Failed HTML:" +
+                "\n\nExpected: |\(expected)|" +
+                "\n\nActual: |\(actual)|" +
+                "\n********\n\n\n\n\n\n")
+        }
+    }
 
-			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-				"Failed HTML:" +
-				"\n\nExpected: |\(expected)|" +
-				"\n\nActual: |\(actual)|" +
-				"\n********\n\n\n\n\n\n")
-		}
-	}
+    func testCommonMark() {
+        let expecteds = ["`Testing Code`",
+                         "```\nTesting Code\n```\n\n",
+                         "```info\nTesting Code\n```\n\n"]
 
-	func testCommonMark() {
+        for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
+            let actual = node.commonMark
+            let expected = expecteds[index]
 
-		let expecteds = ["`Testing Code`",
-						 "```\nTesting Code\n```\n\n",
-						 "```info\nTesting Code\n```\n\n"]
-
-		for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
-			let actual = node.commonMark
-			let expected = expecteds[index]
-
-			XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
-				"Failed CommonMark:" +
-				"\n\nExpected: |\(expected)|" +
-				"\n\nActual: |\(actual)|" +
-				"\n********\n\n\n\n\n\n")
-		}
-	}
+            XCTAssertEqual(expected, actual, "\n\n\n\n********\n\n" +
+                "Failed CommonMark:" +
+                "\n\nExpected: |\(expected)|" +
+                "\n\nActual: |\(actual)|" +
+                "\n********\n\n\n\n\n\n")
+        }
+    }
 }

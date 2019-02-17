@@ -13,30 +13,29 @@ import Foundation
 // MARK: -
 
 struct DocumentNode: CommonMarkNode {
+    // MARK: Constants
 
-	// MARK: Constants
+    let type: NodeType = .document
 
-	let type: NodeType = .document
+    // MARK: Variables
 
-	// MARK: Variables
+    private(set) var nodes: [CommonMarkNode]
 
-	private(set) var nodes: [CommonMarkNode]
+    // MARK: - HTMLRenderable
 
-	// MARK: - HTMLRenderable
+    var html: String {
+        return nodes.html
+    }
 
-	var html: String {
-		return nodes.html
-	}
+    // MARK: - CommonMarkRenderable
 
-	// MARK: - CommonMarkRenderable
+    var commonMark: String {
+        return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
+    }
 
-	var commonMark: String {
-		return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
-	}
+    // MARK: - Inits
 
-	// MARK: - Inits
-
-	init(nodes: [CommonMarkNode]) {
-		self.nodes = nodes
-	}
+    init(nodes: [CommonMarkNode]) {
+        self.nodes = nodes
+    }
 }
