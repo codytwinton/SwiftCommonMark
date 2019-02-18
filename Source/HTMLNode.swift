@@ -18,8 +18,10 @@ internal enum HTMLNode: CommonMarkNode {
 
   var type: NodeType {
     switch self {
-    case .block: return .htmlBlock
-    case .inline: return .htmlInline
+    case .block:
+      return .htmlBlock
+    case .inline:
+      return .htmlInline
     }
   }
 
@@ -27,8 +29,10 @@ internal enum HTMLNode: CommonMarkNode {
 
   var html: String {
     switch self {
-    case .block(let content): return content + "\n"
-    case .inline(let content): return content
+    case .block(let content):
+      return content + "\n"
+    case .inline(let content):
+      return content
     }
   }
 
@@ -36,8 +40,10 @@ internal enum HTMLNode: CommonMarkNode {
 
   var commonMark: String {
     switch self {
-    case .block(let content): return content + "\n\n"
-    case .inline(let content): return content
+    case .block(let content):
+      return content + "\n\n"
+    case .inline(let content):
+      return content
     }
   }
 }

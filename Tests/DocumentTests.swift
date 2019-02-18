@@ -261,8 +261,10 @@ internal class DocumentTests: XCTestCase {
       let actual: String?
 
       switch index < actualLines.count {
-      case true: actual = actualLines[index]
-      case false: actual = nil
+      case true:
+        actual = actualLines[index]
+      case false:
+        actual = nil
       }
 
       guard expected != actual else { continue }

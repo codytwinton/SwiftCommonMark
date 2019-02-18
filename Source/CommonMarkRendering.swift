@@ -43,10 +43,14 @@ internal extension String {
 internal extension Character {
   func sanatizeHTML() -> String {
     switch self {
-    case "<": return "&lt;"
-    case ">": return "&gt;"
-    case "\"": return "&quot;"
-    default: return String(self)
+    case "<":
+      return "&lt;"
+    case ">":
+      return "&gt;"
+    case "\"":
+      return "&quot;"
+    default:
+      return String(self)
     }
   }
 }

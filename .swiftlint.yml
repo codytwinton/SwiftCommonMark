@@ -43,7 +43,7 @@ private_outlet:
   allow_private_set: true
 
 type_body_length:
-  - 220
+  - 250
   - 350
 
 disabled_rules:
@@ -54,7 +54,7 @@ disabled_rules:
   - no_extension_access_modifier # Prefer extension_access_modifier
   - number_separator # 1_000_000
   - prefixed_toplevel_constant # Requires k Prefix
-  - switch_case_on_newline # Require newline on Switch Case
+  - vertical_whitespace_between_cases # Vertical whitespace between cases
 
 opt_in_rules:
   - array_init
@@ -180,6 +180,7 @@ opt_in_rules:
   - strong_iboutlet
   - superfluous_disable_command
   - switch_case_alignment
+  - switch_case_on_newline
   - syntactic_sugar
   - todo
   - toggle_bool
@@ -205,7 +206,6 @@ opt_in_rules:
   - vertical_parameter_alignment
   - vertical_parameter_alignment_on_call
   - vertical_whitespace
-  - vertical_whitespace_between_cases
   - vertical_whitespace_closing_braces
   - vertical_whitespace_opening_braces
   - void_return

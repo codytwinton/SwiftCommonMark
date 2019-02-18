@@ -18,8 +18,10 @@ internal enum CodeNode: CommonMarkNode {
 
   var type: NodeType {
     switch self {
-    case .inline: return .code
-    case .block: return .codeBlock
+    case .inline:
+      return .code
+    case .block:
+      return .codeBlock
     }
   }
 

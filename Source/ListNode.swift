@@ -33,18 +33,25 @@ internal enum ListType {
 
   var htmlPostfix: String {
     switch self {
-    case .dash, .asterisk, .plus: return "</ul>"
-    case .period, .paren: return "</ol>"
+    case .dash, .asterisk, .plus:
+      return "</ul>"
+    case .period, .paren:
+      return "</ol>"
     }
   }
 
   var commonMarkDelimiter: String {
     switch self {
-    case .dash: return "-"
-    case .asterisk: return "*"
-    case .plus: return "+"
-    case .period: return "."
-    case .paren: return ")"
+    case .dash:
+      return "-"
+    case .asterisk:
+      return "*"
+    case .plus:
+      return "+"
+    case .period:
+      return "."
+    case .paren:
+      return ")"
     }
   }
 }
@@ -68,9 +75,13 @@ internal struct ListNode: CommonMarkNode {
     var list = listType.htmlPrefix + "\n"
 
     switch isTight {
-    case true: list += nodes.html.replacingOccurrences(of: "<li><p>", with: "<li>")
-      .replacingOccurrences(of: "</p>\n</li>", with: "</li>")
-    case false: list += nodes.html.replacingOccurrences(of: "<li><p>", with: "<li>\n<p>")
+    case true:
+      list += nodes.html
+        .replacingOccurrences(of: "<li><p>", with: "<li>")
+        .replacingOccurrences(of: "</p>\n</li>", with: "</li>")
+    case false:
+      list += nodes.html
+        .replacingOccurrences(of: "<li><p>", with: "<li>\n<p>")
     }
 
     return list + listType.htmlPostfix + "\n"

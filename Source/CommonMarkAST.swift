@@ -22,11 +22,16 @@ internal enum CommonMarkAST: Equatable {
   // MARK: Node Type
   var type: NodeType {
     switch self {
-    case .heading: return .heading
-    case .lineBreak: return .lineBreak
-    case .softBreak: return .softBreak
-    case .text: return .text
-    case .thematicBreak: return .thematicBreak
+    case .heading:
+      return .heading
+    case .lineBreak:
+      return .lineBreak
+    case .softBreak:
+      return .softBreak
+    case .text:
+      return .text
+    case .thematicBreak:
+      return .thematicBreak
     }
   }
 }
