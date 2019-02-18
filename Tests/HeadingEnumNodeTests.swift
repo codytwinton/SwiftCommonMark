@@ -62,7 +62,7 @@ internal class HeadingEnumNodeTests: XCTestCase {
     ]
 
     for line in shouldNotParse {
-      testBlockParse(for: line, expected: nil)
+      XCTAssertEqual(nil, CommonMarkAST(blockLine: line))
     }
 
     let shouldParse: [String: CommonMarkAST] = [
@@ -93,13 +93,8 @@ internal class HeadingEnumNodeTests: XCTestCase {
     ]
 
     for (line, node) in shouldParse {
-      testBlockParse(for: line, expected: node)
+      XCTAssertEqual(node, CommonMarkAST(blockLine: line))
     }
-  }
-
-  func testBlockParse(for line: String, expected: CommonMarkAST?) {
-    let actual = CommonMarkAST(blockLine: line)
-    XCTAssertEqual(expected, actual)
   }
 
   // MARK: HeadingLevel Tests
