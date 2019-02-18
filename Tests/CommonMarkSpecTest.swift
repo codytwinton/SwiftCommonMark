@@ -48,20 +48,24 @@ internal enum CommonMarkTestSection: String, CaseIterable {
 
 // MARK: - Structs
 
+internal struct CommonMarkSpec {
+  let tests: [CommonMarkSpecTest]
+
+  init(path: String) throws {
+    do {
+      guard let jsonData = try String(contentsOfFile: path, encoding: .utf8).data(using: .utf8) else {
+        throw CommonMarkTestError.noJSONData
+      }
+      tests = try JSONDecoder().decode([CommonMarkSpecTest].self, from: jsonData)
+    } catch {
+      throw error
+    }
+  }
+}
+
 internal struct CommonMarkSpecTest: Codable {
   let section: String
   let html: String
   let markdown: String
   let example: Int
-
-  static func commonMarkTests(from path: String) throws -> [CommonMarkSpecTest] {
-    do {
-      guard let jsonData = try String(contentsOfFile: path, encoding: .utf8).data(using: .utf8) else {
-        throw CommonMarkTestError.noJSONData
-      }
-      return try JSONDecoder().decode([CommonMarkSpecTest].self, from: jsonData)
-    } catch {
-      throw error
-    }
-  }
 }

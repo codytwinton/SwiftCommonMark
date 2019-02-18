@@ -22,9 +22,9 @@ internal class CommonMarkParseTests: XCTestCase {
       return []
     }
     do {
-      let tests = try CommonMarkSpecTest.commonMarkTests(from: path)
-      XCTAssertFalse(tests.isEmpty)
-      return tests
+      let spec = try CommonMarkSpec(path: path)
+      XCTAssertFalse(spec.tests.isEmpty)
+      return spec.tests
     } catch {
       XCTAssertNil(error, "CommonMark test error: \(error)")
       return []
@@ -59,7 +59,7 @@ internal class CommonMarkParseTests: XCTestCase {
    }
    */
 
-  // MARK: - Tests
+   // MARK: - Tests
 
   /*
    func testAllSectionViolations() {

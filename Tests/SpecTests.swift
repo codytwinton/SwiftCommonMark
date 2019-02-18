@@ -21,9 +21,9 @@ internal class SpecTests: XCTestCase {
       return []
     }
     do {
-      let tests = try CommonMarkSpecTest.commonMarkTests(from: path)
-      XCTAssertFalse(tests.isEmpty)
-      return tests
+      let spec = try CommonMarkSpec(path: path)
+      XCTAssertFalse(spec.tests.isEmpty)
+      return spec.tests
     } catch {
       XCTAssertNil(error, "CommonMark test error: \(error)")
       return []
