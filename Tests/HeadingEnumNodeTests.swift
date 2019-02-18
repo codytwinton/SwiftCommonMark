@@ -98,7 +98,7 @@ internal class HeadingEnumNodeTests: XCTestCase {
   }
 
   func testBlockParse(for line: String, expected: CommonMarkAST?) {
-    let actual = CommonMarkAST(heading: line)
+    let actual = CommonMarkAST(blockLine: line)
     XCTAssertEqual(expected, actual)
   }
 

@@ -27,6 +27,7 @@
 		525CA53D2065CC9400E2B9D1 /* ListNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525CA53C2065CC9400E2B9D1 /* ListNode.swift */; };
 		527FB76B205440A1000ADD7D /* DocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76A205440A1000ADD7D /* DocumentTests.swift */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
+		5296B42F221AA1DD00C9AB60 /* ASTParsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B42E221AA1DD00C9AB60 /* ASTParsing.swift */; };
 		52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMark.swift */; };
 		52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2674D20655BC000888E6A /* BlockQuoteNode.swift */; };
 		52B773A3221A897F003327AC /* CommonMarkAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A2221A897F003327AC /* CommonMarkAST.swift */; };
@@ -84,6 +85,7 @@
 		525CA53C2065CC9400E2B9D1 /* ListNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNode.swift; sourceTree = "<group>"; };
 		527FB76A205440A1000ADD7D /* DocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTests.swift; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
+		5296B42E221AA1DD00C9AB60 /* ASTParsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTParsing.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
 		52B2674D20655BC000888E6A /* BlockQuoteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNode.swift; sourceTree = "<group>"; };
 		52B773A2221A897F003327AC /* CommonMarkAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkAST.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		52B7739F221A8931003327AC /* Enum Nodes */ = {
 			isa = PBXGroup;
 			children = (
+				5296B42E221AA1DD00C9AB60 /* ASTParsing.swift */,
 				52B773A2221A897F003327AC /* CommonMarkAST.swift */,
 				52B773A7221A94FB003327AC /* CommonMarkRendering.swift */,
 				52B773A9221A95AC003327AC /* HTMLRendering.swift */,
@@ -379,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				525CA5352065A25000E2B9D1 /* TextNode.swift in Sources */,
+				5296B42F221AA1DD00C9AB60 /* ASTParsing.swift in Sources */,
 				52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */,
 				525CA52720656B0400E2B9D1 /* EmphasisNode.swift in Sources */,
 				525CA53120659B5F00E2B9D1 /* BreakNode.swift in Sources */,
