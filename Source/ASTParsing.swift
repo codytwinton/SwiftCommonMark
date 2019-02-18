@@ -50,8 +50,8 @@ extension CommonMarkAST {
       .trimmingCharacters(in: .whitespaces)
 
     self = .heading(
-      level: HeadingLevel(rawValue: captures.first?.count ?? 0) ?? .h1,
-      nodes: markdown.isEmpty ? [] : [.text(markdown)]
+      HeadingLevel(rawValue: captures.first?.count ?? 0) ?? .h1,
+      markdown.isEmpty ? [] : [.text(markdown)]
     )
   }
 }

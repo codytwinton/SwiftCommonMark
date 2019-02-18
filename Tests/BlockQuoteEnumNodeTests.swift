@@ -13,7 +13,7 @@ internal class BlockQuoteEnumNodeTests: XCTestCase {
   let node: CommonMarkAST = {
     let text1: CommonMarkAST = .text("Test Blockquote")
     let text2: CommonMarkAST = .text("Testing Blockquote")
-    return CommonMarkAST.blockQuote(nodes: [.paragraph(nodes: [text1]), .paragraph(nodes: [text2])])
+    return CommonMarkAST.blockQuote([.paragraph([text1]), .paragraph([text2])])
   }()
 
   func testTypes() {

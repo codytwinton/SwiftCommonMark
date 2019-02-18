@@ -18,7 +18,7 @@ internal class HeadingEnumNodeTests: XCTestCase {
 
   let node: CommonMarkAST = {
     let text1: CommonMarkAST = .text("Hello World")
-    return CommonMarkAST.heading(level: .h1, nodes: [text1])
+    return CommonMarkAST.heading(.h1, [text1])
   }()
 
   // MARK: Type Tests
@@ -66,30 +66,30 @@ internal class HeadingEnumNodeTests: XCTestCase {
     }
 
     let shouldParse: [String: CommonMarkAST] = [
-      "# foo": .heading(level: .h1, nodes: [.text("foo")]),
-      "## foo": .heading(level: .h2, nodes: [.text("foo")]),
-      "### foo": .heading(level: .h3, nodes: [.text("foo")]),
-      "#### foo": .heading(level: .h4, nodes: [.text("foo")]),
-      "##### foo": .heading(level: .h5, nodes: [.text("foo")]),
-      "###### foo": .heading(level: .h6, nodes: [.text("foo")]),
-      "# foo *bar* \\*baz\\*": .heading(level: .h1, nodes: [.text("foo *bar* \\*baz\\*")]),
-      "#                  foo             ": .heading(level: .h1, nodes: [.text("foo")]),
-      " ### foo": .heading(level: .h3, nodes: [.text("foo")]),
-      "  ## foo": .heading(level: .h2, nodes: [.text("foo")]),
-      "   # foo": .heading(level: .h1, nodes: [.text("foo")]),
-      "## foo ##": .heading(level: .h2, nodes: [.text("foo")]),
-      "  ###   bar    ###": .heading(level: .h3, nodes: [.text("bar")]),
-      "# foo ##################": .heading(level: .h1, nodes: [.text("foo")]),
-      "##### foo ##": .heading(level: .h5, nodes: [.text("foo")]),
-      "### foo ###     ": .heading(level: .h3, nodes: [.text("foo")]),
-      "### foo ### b": .heading(level: .h3, nodes: [.text("foo ### b")]),
-      "# foo#": .heading(level: .h1, nodes: [.text("foo#")]),
-      "### foo \\###": .heading(level: .h3, nodes: [.text("foo ###")]),
-      "## foo #\\##": .heading(level: .h2, nodes: [.text("foo ###")]),
-      "# foo \\#": .heading(level: .h1, nodes: [.text("foo #")]),
-      "## ": .heading(level: .h2, nodes: []),
-      "#": .heading(level: .h1, nodes: []),
-      "### ###": .heading(level: .h3, nodes: [])
+      "# foo": .heading(.h1, [.text("foo")]),
+      "## foo": .heading(.h2, [.text("foo")]),
+      "### foo": .heading(.h3, [.text("foo")]),
+      "#### foo": .heading(.h4, [.text("foo")]),
+      "##### foo": .heading(.h5, [.text("foo")]),
+      "###### foo": .heading(.h6, [.text("foo")]),
+      "# foo *bar* \\*baz\\*": .heading(.h1, [.text("foo *bar* \\*baz\\*")]),
+      "#                  foo             ": .heading(.h1, [.text("foo")]),
+      " ### foo": .heading(.h3, [.text("foo")]),
+      "  ## foo": .heading(.h2, [.text("foo")]),
+      "   # foo": .heading(.h1, [.text("foo")]),
+      "## foo ##": .heading(.h2, [.text("foo")]),
+      "  ###   bar    ###": .heading(.h3, [.text("bar")]),
+      "# foo ##################": .heading(.h1, [.text("foo")]),
+      "##### foo ##": .heading(.h5, [.text("foo")]),
+      "### foo ###     ": .heading(.h3, [.text("foo")]),
+      "### foo ### b": .heading(.h3, [.text("foo ### b")]),
+      "# foo#": .heading(.h1, [.text("foo#")]),
+      "### foo \\###": .heading(.h3, [.text("foo ###")]),
+      "## foo #\\##": .heading(.h2, [.text("foo ###")]),
+      "# foo \\#": .heading(.h1, [.text("foo #")]),
+      "## ": .heading(.h2, []),
+      "#": .heading(.h1, []),
+      "### ###": .heading(.h3, [])
     ]
 
     for (line, node) in shouldParse {
