@@ -12,14 +12,6 @@ import Foundation
 
 // MARK: Protocols
 
-internal protocol CommonMarkRenderable {
-  var commonMark: String { get }
-}
-
-internal protocol HTMLRenderable {
-  var html: String { get }
-}
-
 internal protocol CommonMarkNode: CommonMarkRenderable, HTMLRenderable {
   var type: NodeType { get }
   var structure: NodeStructure { get }

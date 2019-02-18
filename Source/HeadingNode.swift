@@ -10,12 +10,6 @@
 
 import Foundation
 
-// MARK: Enums
-
-internal enum HeadingLevel: Int, CaseIterable {
-  case h1 = 1, h2, h3, h4, h5, h6
-}
-
 // MARK: -
 
 internal struct HeadingNode: CommonMarkBlockNode, Equatable {
