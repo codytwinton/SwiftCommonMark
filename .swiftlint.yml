@@ -3,7 +3,7 @@ indentation: 2
 line_length: 120
 
 included:
-  - Sources
+  - Source
   - Tests
 
 conditional_returns_on_newline:

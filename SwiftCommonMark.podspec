@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     :git => 'https://github.com/codytwinton/SwiftCommonMark.git',
     :tag => "v#{s.version}"
   }
-  s.source_files = 'Sources/*.swift'
+  s.source_files = 'Source/*.swift'
   s.ios.deployment_target = '11.0'
   s.tvos.deployment_target = '11.0'
   s.requires_arc = true
