@@ -31,6 +31,8 @@
 		52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2674D20655BC000888E6A /* BlockQuoteNode.swift */; };
 		52B773A3221A897F003327AC /* CommonMarkAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A2221A897F003327AC /* CommonMarkAST.swift */; };
 		52B773A6221A8EDF003327AC /* HeadingEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A5221A8EDF003327AC /* HeadingEnumNodeTests.swift */; };
+		52B773A8221A94FB003327AC /* CommonMarkRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A7221A94FB003327AC /* CommonMarkRendering.swift */; };
+		52B773AA221A95AC003327AC /* HTMLRendering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A9221A95AC003327AC /* HTMLRendering.swift */; };
 		52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A893205A252A00F18CCA /* NodeTypeTests.swift */; };
 		52CAEE842066EDCB007024B3 /* BreakNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE832066EDCB007024B3 /* BreakNodeTests.swift */; };
 		52CAEE862066EF94007024B3 /* BlockQuoteNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CAEE852066EF94007024B3 /* BlockQuoteNodeTests.swift */; };
@@ -86,6 +88,8 @@
 		52B2674D20655BC000888E6A /* BlockQuoteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNode.swift; sourceTree = "<group>"; };
 		52B773A2221A897F003327AC /* CommonMarkAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkAST.swift; sourceTree = "<group>"; };
 		52B773A5221A8EDF003327AC /* HeadingEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingEnumNodeTests.swift; sourceTree = "<group>"; };
+		52B773A7221A94FB003327AC /* CommonMarkRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkRendering.swift; sourceTree = "<group>"; };
+		52B773A9221A95AC003327AC /* HTMLRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLRendering.swift; sourceTree = "<group>"; };
 		52C5A893205A252A00F18CCA /* NodeTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
 		52CAEE832066EDCB007024B3 /* BreakNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakNodeTests.swift; sourceTree = "<group>"; };
 		52CAEE852066EF94007024B3 /* BlockQuoteNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNodeTests.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				52B773A2221A897F003327AC /* CommonMarkAST.swift */,
+				52B773A7221A94FB003327AC /* CommonMarkRendering.swift */,
+				52B773A9221A95AC003327AC /* HTMLRendering.swift */,
 			);
 			name = "Enum Nodes";
 			sourceTree = "<group>";
@@ -383,8 +389,10 @@
 				525CA5392065C6C000E2B9D1 /* ListItemNode.swift in Sources */,
 				525CA52B20656E6400E2B9D1 /* HeadingNode.swift in Sources */,
 				52B773A3221A897F003327AC /* CommonMarkAST.swift in Sources */,
+				52B773AA221A95AC003327AC /* HTMLRendering.swift in Sources */,
 				525CA53B2065C7A900E2B9D1 /* LinkNode.swift in Sources */,
 				525CA53D2065CC9400E2B9D1 /* ListNode.swift in Sources */,
+				52B773A8221A94FB003327AC /* CommonMarkRendering.swift in Sources */,
 				525CA52920656C6D00E2B9D1 /* StrongNode.swift in Sources */,
 				525CA52D206571BA00E2B9D1 /* HTMLNode.swift in Sources */,
 				525CA5372065A59200E2B9D1 /* ParagraphNode.swift in Sources */,

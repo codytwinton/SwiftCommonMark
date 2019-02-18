@@ -39,22 +39,3 @@ internal struct TextNode: CommonMarkNode {
     self.text = text
   }
 }
-
-// MARK: - Extensions
-
-private extension String {
-  func sanatizeHTML() -> String {
-    return map { $0.sanatizeHTML() }.joined()
-  }
-}
-
-private extension Character {
-  func sanatizeHTML() -> String {
-    switch self {
-    case "<": return "&lt;"
-    case ">": return "&gt;"
-    case "\"": return "&quot;"
-    default: return String(self)
-    }
-  }
-}
