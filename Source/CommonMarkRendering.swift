@@ -20,10 +20,14 @@ extension CommonMarkAST: CommonMarkRenderable {
   // MARK: CommonMarkRenderable
   var commonMark: String {
     switch self {
+    case let .blockQuote(nodes):
+      return nodes.map { "> " + $0.commonMark }.joined().replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
     case let .heading(level, nodes):
       return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
     case .lineBreak:
       return "\\\n"
+    case let .paragraph(nodes):
+      return nodes.commonMark + "\n\n"
     case .softBreak:
       return "\n"
     case .thematicBreak:

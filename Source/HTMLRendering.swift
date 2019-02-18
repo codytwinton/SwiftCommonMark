@@ -20,10 +20,14 @@ extension CommonMarkAST: HTMLRenderable {
   // MARK: HTMLRenderable
   var html: String {
     switch self {
+    case let .blockQuote(nodes):
+      return "<blockquote>\n" + nodes.html + "</blockquote>\n"
     case let .heading(level, nodes):
       return "<\(level)>" + nodes.html + "</\(level)>\n"
     case .lineBreak:
       return "<br />\n"
+    case let .paragraph(nodes):
+      return "<p>" + nodes.html + "</p>\n"
     case .softBreak:
       return "\n"
     case .thematicBreak:

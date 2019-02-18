@@ -11,19 +11,25 @@ import Foundation
 // MARK: Enums
 
 internal enum CommonMarkAST: Equatable {
+  case blockQuote(nodes: [CommonMarkAST])
   case heading(level: HeadingLevel, nodes: [CommonMarkAST])
   case lineBreak
+  case paragraph(nodes: [CommonMarkAST])
   case softBreak
-  case thematicBreak
   case text(_ text: String)
+  case thematicBreak
 
   // MARK: Node Type
   var type: NodeType {
     switch self {
+    case .blockQuote:
+      return .blockQuote
     case .heading:
       return .heading
     case .lineBreak:
       return .lineBreak
+    case .paragraph:
+      return .paragraph
     case .softBreak:
       return .softBreak
     case .text:
