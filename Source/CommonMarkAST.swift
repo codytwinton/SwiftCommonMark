@@ -20,6 +20,7 @@ internal enum CommonMarkAST: Equatable {
   case htmlInline(_ rawHTML: String)
   case image(source: String, title: String?, alternate: String)
   case lineBreak
+  case link(_ url: String, title: String?, _ nodes: [CommonMarkAST])
   case paragraph(_ nodes: [CommonMarkAST])
   case softBreak
   case strong(_ nodes: [CommonMarkAST])
@@ -39,14 +40,16 @@ internal enum CommonMarkAST: Equatable {
       return .emphasis
     case .heading:
       return .heading
-    case .lineBreak:
-      return .lineBreak
     case .htmlBlock:
       return .htmlBlock
     case .htmlInline:
       return .htmlInline
     case .image:
       return .image
+    case .lineBreak:
+      return .lineBreak
+    case .link:
+      return .link
     case .paragraph:
       return .paragraph
     case .softBreak:

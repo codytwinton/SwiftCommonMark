@@ -44,6 +44,14 @@ extension CommonMarkAST: CommonMarkRenderable {
       return "![\(alternate)](\(source)\(srcTitle))"
     case .lineBreak:
       return "\\\n"
+    case let .link(url, title, nodes):
+      var srcTitle = ""
+
+      if let title = title {
+        srcTitle += " \"" + title + "\""
+      }
+
+      return "[\(nodes.commonMark)](\(url)\(srcTitle))"
     case let .paragraph(nodes):
       return nodes.commonMark + "\n\n"
     case .softBreak:

@@ -49,6 +49,14 @@ extension CommonMarkAST: HTMLRenderable {
       return image + "/>"
     case .lineBreak:
       return "<br />\n"
+    case let .link(url, title, nodes):
+      var link = "<a href=\"\(url)\""
+
+      if let title = title, !title.isEmpty {
+        link += " title=\"\(title)\""
+      }
+
+      return link + ">" + nodes.html + "</a>"
     case let .paragraph(nodes):
       return "<p>" + nodes.html + "</p>\n"
     case .softBreak:
