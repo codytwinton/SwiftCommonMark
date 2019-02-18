@@ -16,7 +16,8 @@ internal enum ListType {
   case dash
   case asterisk
   case plus
-  case period(start: Int), paren(start: Int)
+  case period(start: Int)
+  case paren(start: Int)
 
   var htmlPrefix: String {
     switch self {
