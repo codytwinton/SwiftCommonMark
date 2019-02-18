@@ -16,7 +16,9 @@ internal enum HeadingLevel: Int, CaseIterable {
 
 internal enum CommonMarkAST: Equatable {
   case heading(level: HeadingLevel, nodes: [CommonMarkAST])
-  case lineBreak, softBreak, thematicBreak
+  case lineBreak
+  case softBreak
+  case thematicBreak
   case text(_ text: String)
 
   // MARK: Node Type

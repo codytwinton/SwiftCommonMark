@@ -35,8 +35,24 @@ extension Array where Element == CommonMarkNode {
 // MARK: -
 
 internal enum NodeType: String, CaseIterable {
-  case blockQuote, code, codeBlock, document, emphasis, heading, htmlBlock, htmlInline, image
-  case lineBreak, link, list, listItem, paragraph, softBreak, strong, text, thematicBreak
+  case blockQuote
+  case code
+  case codeBlock
+  case document
+  case emphasis
+  case heading
+  case htmlBlock
+  case htmlInline
+  case image
+  case lineBreak
+  case link
+  case list
+  case listItem
+  case paragraph
+  case softBreak
+  case strong
+  case text
+  case thematicBreak
 
   var structure: NodeStructure {
     switch self {
@@ -65,5 +81,6 @@ internal enum NodeType: String, CaseIterable {
 // MARK: -
 
 internal enum NodeStructure: String, CaseIterable {
-  case block, inline
+  case block
+  case inline
 }

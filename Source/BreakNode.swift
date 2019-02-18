@@ -13,7 +13,9 @@ import Foundation
 // MARK: -
 
 internal enum BreakNode: CommonMarkBlockNode {
-  case lineBreak, softBreak, thematicBreak
+  case lineBreak
+  case softBreak
+  case thematicBreak
 
   var type: NodeType {
     switch self {

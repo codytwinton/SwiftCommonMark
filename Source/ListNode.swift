@@ -13,7 +13,9 @@ import Foundation
 // MARK: Enums
 
 internal enum ListType {
-  case dash, asterisk, plus
+  case dash
+  case asterisk
+  case plus
   case period(start: Int), paren(start: Int)
 
   var htmlPrefix: String {
