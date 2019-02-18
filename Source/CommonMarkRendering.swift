@@ -51,7 +51,7 @@ extension CommonMarkAST: CommonMarkRenderable {
     case .thematicBreak:
       return "***\n\n"
     case let .text(text):
-      return text.sanatizeHTML()
+      return text
     }
   }
 }

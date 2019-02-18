@@ -56,7 +56,7 @@ extension CommonMarkAST: HTMLRenderable {
     case .thematicBreak:
       return "<hr />\n"
     case let .text(text):
-      return text
+      return text.sanatizeHTML()
     }
   }
 }
