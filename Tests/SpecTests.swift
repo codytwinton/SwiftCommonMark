@@ -16,7 +16,8 @@ internal class SpecTests: XCTestCase {
   // MARK: Variables
 
   lazy var commonMarkTests: [CommonMarkSpecTest] = {
-    guard let path = Bundle(for: type(of: self)).path(forResource: "commonmark-tests-spec-0.28", ofType: "json") else {
+    guard let path = Bundle(for: type(of: self))
+      .path(forResource: CommonMarkSpec.specName, ofType: CommonMarkSpec.specType) else {
       XCTAssert(false, "CommonMark tests are nil")
       return []
     }

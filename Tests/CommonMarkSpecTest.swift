@@ -49,6 +49,11 @@ internal enum CommonMarkTestSection: String, CaseIterable {
 // MARK: - Structs
 
 internal struct CommonMarkSpec {
+  // MARK: Constants
+  static let specName: String = { "commonmark-tests-spec-\(currentVersion)" }()
+  static let specType: String = "json"
+  static let currentVersion: String = "0.28"
+
   let tests: [CommonMarkSpecTest]
 
   init(path: String) throws {
