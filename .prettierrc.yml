@@ -3,7 +3,7 @@ printWidth: 120
 tabWidth: 2
 useTabs: false
 semi: false
-singleQuote: true
+singleQuote: false
 jsxSingleQuote: true
 proseWrap: always
 endOfLine: lf
