@@ -62,7 +62,7 @@ internal class HeadingEnumNodeTests: XCTestCase {
     ]
 
     for line in shouldNotParse {
-      XCTAssertEqual(nil, CommonMarkAST(blockLine: line))
+      XCTAssertNil(CommonMarkAST(blockLine: line))
     }
 
     let shouldParse: [String: CommonMarkAST] = [
