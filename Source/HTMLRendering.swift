@@ -31,11 +31,13 @@ extension CommonMarkAST: HTMLRenderable {
       }
     case let .codeInline(code):
       return "<code>" + code + "</code>"
+    case let .emphasis(nodes):
+      return "<em>" + nodes.html + "</em>"
     case let .heading(level, nodes):
       return "<\(level)>" + nodes.html + "</\(level)>\n"
-    case .htmlBlock(let rawHTML):
+    case let .htmlBlock(rawHTML):
       return rawHTML + "\n"
-    case .htmlInline(let rawHTML):
+    case let .htmlInline(rawHTML):
       return rawHTML
     case .lineBreak:
       return "<br />\n"

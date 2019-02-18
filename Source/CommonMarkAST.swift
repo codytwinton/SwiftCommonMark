@@ -14,6 +14,7 @@ internal enum CommonMarkAST: Equatable {
   case blockQuote(_ nodes: [CommonMarkAST])
   case codeInline(String)
   case codeBlock(info: String?, _ code: String)
+  case emphasis(_ nodes: [CommonMarkAST])
   case heading(_ level: HeadingLevel, _ nodes: [CommonMarkAST])
   case htmlBlock(_ rawHTML: String)
   case htmlInline(_ rawHTML: String)
@@ -32,6 +33,8 @@ internal enum CommonMarkAST: Equatable {
       return .codeInline
     case .codeBlock:
       return .codeBlock
+    case .emphasis:
+      return .emphasis
     case .heading:
       return .heading
     case .lineBreak:

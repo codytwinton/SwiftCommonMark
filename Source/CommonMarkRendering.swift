@@ -26,11 +26,13 @@ extension CommonMarkAST: CommonMarkRenderable {
       return "```\(info ?? "")\n" + code + "```\n\n"
     case let .codeInline(code):
       return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
+    case let .emphasis(nodes):
+      return "*" + nodes.commonMark + "*"
     case let .heading(level, nodes):
       return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
-    case .htmlBlock(let rawHTML):
+    case let .htmlBlock(rawHTML):
       return rawHTML + "\n\n"
-    case .htmlInline(let rawHTML):
+    case let .htmlInline(rawHTML):
       return rawHTML
     case .lineBreak:
       return "\\\n"
