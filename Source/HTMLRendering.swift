@@ -53,6 +53,8 @@ extension CommonMarkAST: HTMLRenderable {
       return "<p>" + nodes.html + "</p>\n"
     case .softBreak:
       return "\n"
+    case let .strong(nodes):
+      return "<strong>" + nodes.html + "</strong>"
     case .thematicBreak:
       return "<hr />\n"
     case let .text(text):

@@ -22,6 +22,7 @@ internal enum CommonMarkAST: Equatable {
   case lineBreak
   case paragraph(_ nodes: [CommonMarkAST])
   case softBreak
+  case strong(_ nodes: [CommonMarkAST])
   case text(String)
   case thematicBreak
 
@@ -50,6 +51,8 @@ internal enum CommonMarkAST: Equatable {
       return .paragraph
     case .softBreak:
       return .softBreak
+    case .strong:
+      return .strong
     case .text:
       return .text
     case .thematicBreak:

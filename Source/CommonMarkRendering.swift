@@ -48,6 +48,8 @@ extension CommonMarkAST: CommonMarkRenderable {
       return nodes.commonMark + "\n\n"
     case .softBreak:
       return "\n"
+    case let .strong(nodes):
+      return "**" + nodes.commonMark + "**"
     case .thematicBreak:
       return "***\n\n"
     case let .text(text):
