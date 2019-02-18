@@ -39,6 +39,14 @@ extension CommonMarkAST: HTMLRenderable {
       return rawHTML + "\n"
     case let .htmlInline(rawHTML):
       return rawHTML
+    case let .image(source, title, alternate):
+      var image = "<img src=\"\(source)\" alt=\"\(alternate)\" "
+
+      if let title = title, !title.isEmpty {
+        image += "title=\"\(title)\" "
+      }
+
+      return image + "/>"
     case .lineBreak:
       return "<br />\n"
     case let .paragraph(nodes):

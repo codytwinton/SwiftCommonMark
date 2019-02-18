@@ -34,6 +34,14 @@ extension CommonMarkAST: CommonMarkRenderable {
       return rawHTML + "\n\n"
     case let .htmlInline(rawHTML):
       return rawHTML
+    case let .image(source, title, alternate):
+      var srcTitle = ""
+
+      if let title = title {
+        srcTitle += " \"" + title + "\""
+      }
+
+      return "![\(alternate)](\(source)\(srcTitle))"
     case .lineBreak:
       return "\\\n"
     case let .paragraph(nodes):

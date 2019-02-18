@@ -18,6 +18,7 @@ internal enum CommonMarkAST: Equatable {
   case heading(_ level: HeadingLevel, _ nodes: [CommonMarkAST])
   case htmlBlock(_ rawHTML: String)
   case htmlInline(_ rawHTML: String)
+  case image(source: String, title: String?, alternate: String)
   case lineBreak
   case paragraph(_ nodes: [CommonMarkAST])
   case softBreak
@@ -43,6 +44,8 @@ internal enum CommonMarkAST: Equatable {
       return .htmlBlock
     case .htmlInline:
       return .htmlInline
+    case .image:
+      return .image
     case .paragraph:
       return .paragraph
     case .softBreak:
