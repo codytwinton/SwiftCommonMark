@@ -22,11 +22,11 @@ internal struct StrongNode: CommonMarkNode {
   private(set) var nodes: [CommonMarkNode]
 
   private var regexPattern: String {
-    return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
+    return type.regex
   }
 
   private var regexTemplates: [String] {
-    return ["$2"]
+    return type.regexTemplates
   }
 
   // MARK: - HTMLRenderable

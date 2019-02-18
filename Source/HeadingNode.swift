@@ -50,8 +50,8 @@ internal struct HeadingNode: CommonMarkBlockNode, Equatable {
   init?(blockLine line: String) {
     guard !line.isEmpty else { return nil }
 
-    let pattern = "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
-    guard let regex = try? NSRegularExpression(pattern: pattern, options: .anchorsMatchLines) else { return nil }
+    let nodeType: NodeType = .heading
+    guard let regex = try? NSRegularExpression(pattern: nodeType.regex, options: .anchorsMatchLines) else { return nil }
 
     let range = NSRange(location: 0, length: line.count)
     let options: NSRegularExpression.MatchingOptions = .anchored
@@ -64,7 +64,7 @@ internal struct HeadingNode: CommonMarkBlockNode, Equatable {
     let matchString = NSString(string: line).substring(with: match.range)
     var captures: [String] = []
 
-    for template in ["$1", "$2"] {
+    for template in nodeType.regexTemplates {
       let text: String = regex.replacementString(for: match, in: matchString, offset: 0, template: template)
       captures.append(text)
     }

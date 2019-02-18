@@ -26,7 +26,7 @@ internal enum CodeNode: CommonMarkNode {
   }
 
   private var regexPattern: String {
-    return "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?[^\\`]*)\\1"
+    return type.regex
   }
 
   // MARK: - HTMLRenderable

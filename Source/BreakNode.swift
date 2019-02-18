@@ -59,7 +59,7 @@ internal enum BreakNode: CommonMarkBlockNode {
   init?(blockLine line: String) {
     guard !line.isEmpty else { return nil }
 
-    let pattern: String = "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
+    let pattern: String = NodeType.thematicBreak.regex
     guard let regex = try? NSRegularExpression(pattern: pattern, options: .anchorsMatchLines) else { return nil }
 
     let range = NSRange(location: 0, length: line.count)

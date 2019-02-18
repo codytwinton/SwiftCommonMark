@@ -100,4 +100,85 @@ internal enum NodeType: String, CaseIterable {
       return []
     }
   }
+
+  var regex: String {
+    switch self {
+    case .blockQuote:
+      return ""
+    case .codeBlock:
+      return ""
+    case .codeInline:
+      return "(\\`+)([^\\`]{1}[\\s\\S\\\\]*?[^\\`]*)\\1"
+    case .document:
+      return ""
+    case .emphasis:
+      return "([*_]{1})([\\w(]+.*[\\w)]+)(\\1)"
+    case .heading:
+      return "^ {0,3}(#{1,6})(?:[ \t]+|$)(.*)"
+    case .htmlBlock:
+      return ""
+    case .htmlInline:
+      return ""
+    case .image:
+      return ""
+    case .lineBreak:
+      return ""
+    case .link:
+      return ""
+    case .list:
+      return ""
+    case .listItem:
+      return ""
+    case .paragraph:
+      return ""
+    case .softBreak:
+      return ""
+    case .strong:
+      return "([*_]{2})([\\w(]+.*[\\w)]+)(\\1)"
+    case .text:
+      return ""
+    case .thematicBreak:
+      return "^(?:(?:[ ]{0,3}\\*[ \t]*){3,}|(?:[ ]{0,3}_[ \t]*){3,}|(?:[ ]{0,3}-[ \t]*){3,})[ \t]*$"
+    }
+  }
+
+  var regexTemplates: [String] {
+    switch self {
+    case .blockQuote:
+      return []
+    case .codeBlock:
+      return []
+    case .codeInline:
+      return []
+    case .document:
+      return []
+    case .emphasis,
+         .strong:
+      return ["$2"]
+    case .heading:
+      return ["$1", "$2"]
+    case .htmlBlock:
+      return []
+    case .htmlInline:
+      return []
+    case .image:
+      return []
+    case .lineBreak:
+      return []
+    case .link:
+      return []
+    case .list:
+      return []
+    case .listItem:
+      return []
+    case .paragraph:
+      return []
+    case .softBreak:
+      return []
+    case .text:
+      return []
+    case .thematicBreak:
+      return []
+    }
+  }
 }
