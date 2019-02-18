@@ -16,13 +16,17 @@ internal enum HeadingLevel: Int, CaseIterable {
 
 internal enum CommonMarkAST: Equatable {
   case heading(level: HeadingLevel, nodes: [CommonMarkAST])
+  case lineBreak, softBreak, thematicBreak
   case text(_ text: String)
 
   // MARK: Node Type
   var type: NodeType {
     switch self {
     case .heading: return .heading
+    case .lineBreak: return .lineBreak
+    case .softBreak: return .softBreak
     case .text: return .text
+    case .thematicBreak: return .thematicBreak
     }
   }
 }

@@ -22,6 +22,12 @@ extension CommonMarkAST: HTMLRenderable {
     switch self {
     case let .heading(level, nodes):
       return "<\(level)>" + nodes.html + "</\(level)>\n"
+    case .lineBreak:
+      return "<br />\n"
+    case .softBreak:
+      return "\n"
+    case .thematicBreak:
+      return "<hr />\n"
     case let .text(text):
       return text
     }

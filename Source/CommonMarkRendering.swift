@@ -22,6 +22,12 @@ extension CommonMarkAST: CommonMarkRenderable {
     switch self {
     case let .heading(level, nodes):
       return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
+    case .lineBreak:
+      return "\\\n"
+    case .softBreak:
+      return "\n"
+    case .thematicBreak:
+      return "***\n\n"
     case let .text(text):
       return text.sanatizeHTML()
     }

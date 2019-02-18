@@ -55,8 +55,6 @@ disabled_rules:
   - number_separator # 1_000_000
   - prefixed_toplevel_constant # Requires k Prefix
   - switch_case_on_newline # Require newline on Switch Case
-  # Enable occasionally
-  - multiline_parameters_brackets
 
 opt_in_rules:
   - array_init
@@ -137,6 +135,7 @@ opt_in_rules:
   - multiline_function_chains
   - multiline_literal_brackets
   - multiline_parameters
+  - multiline_parameters_brackets
   - multiple_closures_with_trailing_closure
   - nesting
   - nimble_operator
