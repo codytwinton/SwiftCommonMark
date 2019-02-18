@@ -22,8 +22,16 @@ extension CommonMarkAST: CommonMarkRenderable {
     switch self {
     case let .blockQuote(nodes):
       return nodes.map { "> " + $0.commonMark }.joined().replacingOccurrences(of: "\n\n> ", with: "\n>\n> ")
+    case let .codeBlock(info, code):
+      return "```\(info ?? "")\n" + code + "```\n\n"
+    case let .codeInline(code):
+      return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
     case let .heading(level, nodes):
       return String(repeating: "#", count: level.rawValue) + " " + nodes.commonMark + "\n\n"
+    case .htmlBlock(let rawHTML):
+      return rawHTML + "\n\n"
+    case .htmlInline(let rawHTML):
+      return rawHTML
     case .lineBreak:
       return "\\\n"
     case let .paragraph(nodes):

@@ -135,7 +135,7 @@ internal class DocumentTests: XCTestCase {
     let paragraph1: ParagraphNode = {
       let text1 = TextNode("Testing <>\"")
       let text2 = TextNode("Testing now: ")
-      let code1 = CodeNode.inline("Testing Code")
+      let code1 = CodeNode.inlineCode("Testing Code")
       return ParagraphNode(nodes: [text1, BreakNode.softBreak, text2, code1])
     }()
 
@@ -150,8 +150,8 @@ internal class DocumentTests: XCTestCase {
       return ParagraphNode(nodes: [text1, strong1, text2, emphasis1, text3, BreakNode.lineBreak, text4])
     }()
 
-    let code1 = CodeNode.block(info: nil, code: "Testing\n")
-    let code2 = CodeNode.block(info: "swift", code: "Testing 123\n")
+    let code1 = CodeNode.blockCode(info: nil, code: "Testing\n")
+    let code2 = CodeNode.blockCode(info: "swift", code: "Testing 123\n")
 
     let blockQuote: BlockQuoteNode = {
       let text1 = TextNode("Test Blockquote")

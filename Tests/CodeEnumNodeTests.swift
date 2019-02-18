@@ -1,5 +1,5 @@
 //
-//  CodeNodeTests.swift
+//  CodeEnumNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,10 +13,10 @@ import XCTest
 
 // MARK: -
 
-internal class CodeNodeTests: XCTestCase {
-  let inline: CodeNode = .inlineCode("Testing Code")
-  let blockNoInfo: CodeNode = .blockCode(info: nil, code: "Testing Code\n")
-  let blockInfo: CodeNode = .blockCode(info: "info", code: "Testing Code\n")
+internal class CodeEnumNodeTests: XCTestCase {
+  let inline: CommonMarkAST = .codeInline("Testing Code")
+  let blockNoInfo: CommonMarkAST = .codeBlock(info: nil, "Testing Code\n")
+  let blockInfo: CommonMarkAST = .codeBlock(info: "info", "Testing Code\n")
 
   func testTypes() {
     XCTAssertEqual(inline.type, .codeInline)

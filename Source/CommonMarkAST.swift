@@ -12,7 +12,11 @@ import Foundation
 
 internal enum CommonMarkAST: Equatable {
   case blockQuote(_ nodes: [CommonMarkAST])
+  case codeInline(String)
+  case codeBlock(info: String?, _ code: String)
   case heading(_ level: HeadingLevel, _ nodes: [CommonMarkAST])
+  case htmlBlock(_ rawHTML: String)
+  case htmlInline(_ rawHTML: String)
   case lineBreak
   case paragraph(_ nodes: [CommonMarkAST])
   case softBreak
@@ -24,10 +28,18 @@ internal enum CommonMarkAST: Equatable {
     switch self {
     case .blockQuote:
       return .blockQuote
+    case .codeInline:
+      return .codeInline
+    case .codeBlock:
+      return .codeBlock
     case .heading:
       return .heading
     case .lineBreak:
       return .lineBreak
+    case .htmlBlock:
+      return .htmlBlock
+    case .htmlInline:
+      return .htmlInline
     case .paragraph:
       return .paragraph
     case .softBreak:
@@ -51,8 +63,8 @@ internal enum NodeStructure: String, CaseIterable {
 
 internal enum NodeType: String, CaseIterable {
   case blockQuote
-  case code
   case codeBlock
+  case codeInline
   case document
   case emphasis
   case heading
@@ -71,7 +83,7 @@ internal enum NodeType: String, CaseIterable {
 
   var structure: NodeStructure {
     switch self {
-    case .code, .emphasis, .htmlInline, .image, .lineBreak, .link, .softBreak, .strong, .text:
+    case .codeInline, .emphasis, .htmlInline, .image, .lineBreak, .link, .softBreak, .strong, .text:
       return .inline
     case .blockQuote, .codeBlock, .document, .heading, .htmlBlock, .list, .listItem, .paragraph, .thematicBreak:
       return .block
@@ -82,7 +94,7 @@ internal enum NodeType: String, CaseIterable {
     switch self {
     case .document, .blockQuote:
       return [.blockQuote, .codeBlock, .heading, .thematicBreak, .list, .htmlBlock, .paragraph]
-    case .code, .codeBlock, .htmlBlock, .htmlInline, .image, .lineBreak, .softBreak, .text, .thematicBreak:
+    case .codeInline, .codeBlock, .htmlBlock, .htmlInline, .image, .lineBreak, .softBreak, .text, .thematicBreak:
       return []
     case .emphasis, .heading, .link, .list, .listItem, .paragraph, .strong:
       return []

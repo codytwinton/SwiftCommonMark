@@ -22,8 +22,21 @@ extension CommonMarkAST: HTMLRenderable {
     switch self {
     case let .blockQuote(nodes):
       return "<blockquote>\n" + nodes.html + "</blockquote>\n"
+    case let .codeBlock(info, code):
+      switch info {
+      case let info?:
+        return "<pre><code class=\"language-\(info)\">\(code)</code></pre>\n"
+      case nil:
+        return "<pre><code>\(code)</code></pre>\n"
+      }
+    case let .codeInline(code):
+      return "<code>" + code + "</code>"
     case let .heading(level, nodes):
       return "<\(level)>" + nodes.html + "</\(level)>\n"
+    case .htmlBlock(let rawHTML):
+      return rawHTML + "\n"
+    case .htmlInline(let rawHTML):
+      return rawHTML
     case .lineBreak:
       return "<br />\n"
     case let .paragraph(nodes):

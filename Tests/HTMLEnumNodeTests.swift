@@ -1,5 +1,5 @@
 //
-//  CodeNodeTests.swift
+//  HTMLEnumNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,25 +13,35 @@ import XCTest
 
 // MARK: -
 
-internal class CodeNodeTests: XCTestCase {
-  let inline: CodeNode = .inlineCode("Testing Code")
-  let blockNoInfo: CodeNode = .blockCode(info: nil, code: "Testing Code\n")
-  let blockInfo: CodeNode = .blockCode(info: "info", code: "Testing Code\n")
+internal class HTMLEnumNodeTests: XCTestCase {
+  let inline: CommonMarkAST = .htmlInline("<bab>")
+  let block: CommonMarkAST = .htmlBlock("""
+  <table>
+  <tr>
+  <td>hi</td>
+  </tr>
+  </table>
+  """)
 
   func testTypes() {
-    XCTAssertEqual(inline.type, .codeInline)
-    XCTAssertEqual(blockNoInfo.type, .codeBlock)
-    XCTAssertEqual(blockInfo.type, .codeBlock)
+    XCTAssertEqual(inline.type, .htmlInline)
+    XCTAssertEqual(block.type, .htmlBlock)
   }
 
   func testHTML() {
     let expecteds = [
-      "<code>Testing Code</code>",
-      "<pre><code>Testing Code\n</code></pre>\n",
-      "<pre><code class=\"language-info\">Testing Code\n</code></pre>\n"
+      "<bab>",
+      """
+      <table>
+      <tr>
+      <td>hi</td>
+      </tr>
+      </table>
+
+      """
     ]
 
-    for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
+    for (index, node) in [inline, block].enumerated() {
       let actual = node.html
       let expected = expecteds[index]
 
@@ -49,12 +59,19 @@ internal class CodeNodeTests: XCTestCase {
 
   func testCommonMark() {
     let expecteds = [
-      "`Testing Code`",
-      "```\nTesting Code\n```\n\n",
-      "```info\nTesting Code\n```\n\n"
+      "<bab>",
+      """
+      <table>
+      <tr>
+      <td>hi</td>
+      </tr>
+      </table>
+
+
+      """
     ]
 
-    for (index, node) in [inline, blockNoInfo, blockInfo].enumerated() {
+    for (index, node) in [inline, block].enumerated() {
       let actual = node.commonMark
       let expected = expecteds[index]
 

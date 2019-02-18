@@ -15,8 +15,8 @@ internal class NodeTypeTests: XCTestCase {
       NodeType.allCases,
       [
         .blockQuote,
-        .code,
         .codeBlock,
+        .codeInline,
         .document,
         .emphasis,
         .heading,
