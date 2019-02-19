@@ -1,5 +1,5 @@
 //
-//  HTMLEnumNodeTests.swift
+//  LinkNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,35 +13,22 @@ import XCTest
 
 // MARK: -
 
-internal class HTMLEnumNodeTests: XCTestCase {
-  let inline: CommonMarkAST = .htmlInline("<bab>")
-  let block: CommonMarkAST = .htmlBlock("""
-  <table>
-  <tr>
-  <td>hi</td>
-  </tr>
-  </table>
-  """)
+internal class LinkNodeTests: XCTestCase {
+  let node1: CommonMarkAST = .link("/uri", title: "title", [.text("link")])
+  let node2: CommonMarkAST = .link("/uri", title: nil, [])
 
   func testTypes() {
-    XCTAssertEqual(inline.type, .htmlInline)
-    XCTAssertEqual(block.type, .htmlBlock)
+    XCTAssertEqual(node1.type, .link)
+    XCTAssertEqual(node2.type, .link)
   }
 
   func testHTML() {
     let expecteds = [
-      "<bab>",
-      """
-      <table>
-      <tr>
-      <td>hi</td>
-      </tr>
-      </table>
-
-      """
+      "<a href=\"/uri\" title=\"title\">link</a>",
+      "<a href=\"/uri\"></a>"
     ]
 
-    for (index, node) in [inline, block].enumerated() {
+    for (index, node) in [node1, node2].enumerated() {
       let actual = node.html
       let expected = expecteds[index]
 
@@ -58,20 +45,9 @@ internal class HTMLEnumNodeTests: XCTestCase {
   }
 
   func testCommonMark() {
-    let expecteds = [
-      "<bab>",
-      """
-      <table>
-      <tr>
-      <td>hi</td>
-      </tr>
-      </table>
+    let expecteds = ["[link](/uri \"title\")", "[](/uri)"]
 
-
-      """
-    ]
-
-    for (index, node) in [inline, block].enumerated() {
+    for (index, node) in [node1, node2].enumerated() {
       let actual = node.commonMark
       let expected = expecteds[index]
 

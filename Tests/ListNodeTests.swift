@@ -1,5 +1,5 @@
 //
-//  ListEnumNodeTests.swift
+//  ListNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-internal class ListEnumNodeTests: XCTestCase {
+internal class ListNodeTests: XCTestCase {
   // MARK: Constants
 
   let uList1: CommonMarkAST = {

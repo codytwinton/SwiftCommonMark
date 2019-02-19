@@ -14,21 +14,21 @@
 		5232877C204CA96B0093C905 /* commonmark-tests-spec-0.28.json in Resources */ = {isa = PBXBuildFile; fileRef = 5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */; };
 		527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527FB76C205441FB000ADD7D /* SpecTests.swift */; };
 		5296B42F221AA1DD00C9AB60 /* CommonMarkAST+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B42E221AA1DD00C9AB60 /* CommonMarkAST+Parsing.swift */; };
-		5296B432221AA97D00C9AB60 /* BreakEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B430221AA8CE00C9AB60 /* BreakEnumNodeTests.swift */; };
-		5296B435221AB10000C9AB60 /* BlockQuoteEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B433221AB0EA00C9AB60 /* BlockQuoteEnumNodeTests.swift */; };
-		5296B437221AB2C200C9AB60 /* ParagraphEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B436221AB2C200C9AB60 /* ParagraphEnumNodeTests.swift */; };
-		5296B439221ABC9800C9AB60 /* HTMLEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B438221ABC9800C9AB60 /* HTMLEnumNodeTests.swift */; };
-		5296B43B221AC03100C9AB60 /* CodeEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B43A221AC03100C9AB60 /* CodeEnumNodeTests.swift */; };
-		5296B43D221B6CFD00C9AB60 /* EmphasisEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B43C221B6CFD00C9AB60 /* EmphasisEnumNodeTests.swift */; };
-		5296B43F221B6F9800C9AB60 /* ImageEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B43E221B6F9800C9AB60 /* ImageEnumNodeTests.swift */; };
-		5296B441221B70E200C9AB60 /* TextEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B440221B70E200C9AB60 /* TextEnumNodeTests.swift */; };
-		5296B443221B724500C9AB60 /* StrongEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B442221B724500C9AB60 /* StrongEnumNodeTests.swift */; };
-		5296B445221B75C500C9AB60 /* LinkEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B444221B75C500C9AB60 /* LinkEnumNodeTests.swift */; };
-		5296B447221B881C00C9AB60 /* ListItemEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B446221B881C00C9AB60 /* ListItemEnumNodeTests.swift */; };
-		5296B449221B8AAB00C9AB60 /* ListEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B448221B8AAB00C9AB60 /* ListEnumNodeTests.swift */; };
-		5296B44B221B8D8400C9AB60 /* DocumentEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B44A221B8D8400C9AB60 /* DocumentEnumNodeTests.swift */; };
+		5296B432221AA97D00C9AB60 /* BreakNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B430221AA8CE00C9AB60 /* BreakNodeTests.swift */; };
+		5296B435221AB10000C9AB60 /* BlockQuoteNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B433221AB0EA00C9AB60 /* BlockQuoteNodeTests.swift */; };
+		5296B437221AB2C200C9AB60 /* ParagraphNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B436221AB2C200C9AB60 /* ParagraphNodeTests.swift */; };
+		5296B439221ABC9800C9AB60 /* HTMLNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B438221ABC9800C9AB60 /* HTMLNodeTests.swift */; };
+		5296B43B221AC03100C9AB60 /* CodeNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B43A221AC03100C9AB60 /* CodeNodeTests.swift */; };
+		5296B43D221B6CFD00C9AB60 /* EmphasisNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B43C221B6CFD00C9AB60 /* EmphasisNodeTests.swift */; };
+		5296B43F221B6F9800C9AB60 /* ImageNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B43E221B6F9800C9AB60 /* ImageNodeTests.swift */; };
+		5296B441221B70E200C9AB60 /* TextNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B440221B70E200C9AB60 /* TextNodeTests.swift */; };
+		5296B443221B724500C9AB60 /* StrongNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B442221B724500C9AB60 /* StrongNodeTests.swift */; };
+		5296B445221B75C500C9AB60 /* LinkNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B444221B75C500C9AB60 /* LinkNodeTests.swift */; };
+		5296B447221B881C00C9AB60 /* ListItemNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B446221B881C00C9AB60 /* ListItemNodeTests.swift */; };
+		5296B449221B8AAB00C9AB60 /* ListNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B448221B8AAB00C9AB60 /* ListNodeTests.swift */; };
+		5296B44B221B8D8400C9AB60 /* DocumentNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B44A221B8D8400C9AB60 /* DocumentNodeTests.swift */; };
 		52B773A3221A897F003327AC /* CommonMarkAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A2221A897F003327AC /* CommonMarkAST.swift */; };
-		52B773A6221A8EDF003327AC /* HeadingEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A5221A8EDF003327AC /* HeadingEnumNodeTests.swift */; };
+		52B773A6221A8EDF003327AC /* HeadingNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A5221A8EDF003327AC /* HeadingNodeTests.swift */; };
 		52B773A8221A94FB003327AC /* CommonMarkRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A7221A94FB003327AC /* CommonMarkRenderable.swift */; };
 		52B773AA221A95AC003327AC /* HTMLRenderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A9221A95AC003327AC /* HTMLRenderable.swift */; };
 		52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C5A893205A252A00F18CCA /* NodeTypeTests.swift */; };
@@ -55,21 +55,21 @@
 		5232877A204CA96B0093C905 /* commonmark-tests-spec-0.28.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "commonmark-tests-spec-0.28.json"; sourceTree = "<group>"; };
 		527FB76C205441FB000ADD7D /* SpecTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecTests.swift; sourceTree = "<group>"; };
 		5296B42E221AA1DD00C9AB60 /* CommonMarkAST+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CommonMarkAST+Parsing.swift"; sourceTree = "<group>"; };
-		5296B430221AA8CE00C9AB60 /* BreakEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B433221AB0EA00C9AB60 /* BlockQuoteEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B436221AB2C200C9AB60 /* ParagraphEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B438221ABC9800C9AB60 /* HTMLEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B43A221AC03100C9AB60 /* CodeEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B43C221B6CFD00C9AB60 /* EmphasisEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmphasisEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B43E221B6F9800C9AB60 /* ImageEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B440221B70E200C9AB60 /* TextEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B442221B724500C9AB60 /* StrongEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B444221B75C500C9AB60 /* LinkEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B446221B881C00C9AB60 /* ListItemEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B448221B8AAB00C9AB60 /* ListEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEnumNodeTests.swift; sourceTree = "<group>"; };
-		5296B44A221B8D8400C9AB60 /* DocumentEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentEnumNodeTests.swift; sourceTree = "<group>"; };
+		5296B430221AA8CE00C9AB60 /* BreakNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakNodeTests.swift; sourceTree = "<group>"; };
+		5296B433221AB0EA00C9AB60 /* BlockQuoteNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNodeTests.swift; sourceTree = "<group>"; };
+		5296B436221AB2C200C9AB60 /* ParagraphNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphNodeTests.swift; sourceTree = "<group>"; };
+		5296B438221ABC9800C9AB60 /* HTMLNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLNodeTests.swift; sourceTree = "<group>"; };
+		5296B43A221AC03100C9AB60 /* CodeNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeNodeTests.swift; sourceTree = "<group>"; };
+		5296B43C221B6CFD00C9AB60 /* EmphasisNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmphasisNodeTests.swift; sourceTree = "<group>"; };
+		5296B43E221B6F9800C9AB60 /* ImageNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNodeTests.swift; sourceTree = "<group>"; };
+		5296B440221B70E200C9AB60 /* TextNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNodeTests.swift; sourceTree = "<group>"; };
+		5296B442221B724500C9AB60 /* StrongNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongNodeTests.swift; sourceTree = "<group>"; };
+		5296B444221B75C500C9AB60 /* LinkNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkNodeTests.swift; sourceTree = "<group>"; };
+		5296B446221B881C00C9AB60 /* ListItemNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemNodeTests.swift; sourceTree = "<group>"; };
+		5296B448221B8AAB00C9AB60 /* ListNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListNodeTests.swift; sourceTree = "<group>"; };
+		5296B44A221B8D8400C9AB60 /* DocumentNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentNodeTests.swift; sourceTree = "<group>"; };
 		52B773A2221A897F003327AC /* CommonMarkAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkAST.swift; sourceTree = "<group>"; };
-		52B773A5221A8EDF003327AC /* HeadingEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingEnumNodeTests.swift; sourceTree = "<group>"; };
+		52B773A5221A8EDF003327AC /* HeadingNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingNodeTests.swift; sourceTree = "<group>"; };
 		52B773A7221A94FB003327AC /* CommonMarkRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkRenderable.swift; sourceTree = "<group>"; };
 		52B773A9221A95AC003327AC /* HTMLRenderable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLRenderable.swift; sourceTree = "<group>"; };
 		52C5A893205A252A00F18CCA /* NodeTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTypeTests.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		5232876A204CA6100093C905 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				52B773A4221A8EB2003327AC /* Enum Nodes */,
+				52B773A4221A8EB2003327AC /* Nodes */,
 				527FB76E20544664000ADD7D /* CommonMark Spec */,
 				5232876B204CA6100093C905 /* CommonMarkParseTests.swift */,
 				52C5A893205A252A00F18CCA /* NodeTypeTests.swift */,
@@ -163,25 +163,25 @@
 			name = "Enum Nodes";
 			sourceTree = "<group>";
 		};
-		52B773A4221A8EB2003327AC /* Enum Nodes */ = {
+		52B773A4221A8EB2003327AC /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				5296B430221AA8CE00C9AB60 /* BreakEnumNodeTests.swift */,
-				5296B433221AB0EA00C9AB60 /* BlockQuoteEnumNodeTests.swift */,
-				5296B43A221AC03100C9AB60 /* CodeEnumNodeTests.swift */,
-				5296B44A221B8D8400C9AB60 /* DocumentEnumNodeTests.swift */,
-				5296B43C221B6CFD00C9AB60 /* EmphasisEnumNodeTests.swift */,
-				52B773A5221A8EDF003327AC /* HeadingEnumNodeTests.swift */,
-				5296B438221ABC9800C9AB60 /* HTMLEnumNodeTests.swift */,
-				5296B43E221B6F9800C9AB60 /* ImageEnumNodeTests.swift */,
-				5296B444221B75C500C9AB60 /* LinkEnumNodeTests.swift */,
-				5296B448221B8AAB00C9AB60 /* ListEnumNodeTests.swift */,
-				5296B446221B881C00C9AB60 /* ListItemEnumNodeTests.swift */,
-				5296B436221AB2C200C9AB60 /* ParagraphEnumNodeTests.swift */,
-				5296B442221B724500C9AB60 /* StrongEnumNodeTests.swift */,
-				5296B440221B70E200C9AB60 /* TextEnumNodeTests.swift */,
+				5296B430221AA8CE00C9AB60 /* BreakNodeTests.swift */,
+				5296B433221AB0EA00C9AB60 /* BlockQuoteNodeTests.swift */,
+				5296B43A221AC03100C9AB60 /* CodeNodeTests.swift */,
+				5296B44A221B8D8400C9AB60 /* DocumentNodeTests.swift */,
+				5296B43C221B6CFD00C9AB60 /* EmphasisNodeTests.swift */,
+				52B773A5221A8EDF003327AC /* HeadingNodeTests.swift */,
+				5296B438221ABC9800C9AB60 /* HTMLNodeTests.swift */,
+				5296B43E221B6F9800C9AB60 /* ImageNodeTests.swift */,
+				5296B444221B75C500C9AB60 /* LinkNodeTests.swift */,
+				5296B448221B8AAB00C9AB60 /* ListNodeTests.swift */,
+				5296B446221B881C00C9AB60 /* ListItemNodeTests.swift */,
+				5296B436221AB2C200C9AB60 /* ParagraphNodeTests.swift */,
+				5296B442221B724500C9AB60 /* StrongNodeTests.swift */,
+				5296B440221B70E200C9AB60 /* TextNodeTests.swift */,
 			);
-			name = "Enum Nodes";
+			name = Nodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,23 +326,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5296B449221B8AAB00C9AB60 /* ListEnumNodeTests.swift in Sources */,
-				52B773A6221A8EDF003327AC /* HeadingEnumNodeTests.swift in Sources */,
-				5296B44B221B8D8400C9AB60 /* DocumentEnumNodeTests.swift in Sources */,
+				5296B449221B8AAB00C9AB60 /* ListNodeTests.swift in Sources */,
+				52B773A6221A8EDF003327AC /* HeadingNodeTests.swift in Sources */,
+				5296B44B221B8D8400C9AB60 /* DocumentNodeTests.swift in Sources */,
 				5232876C204CA6100093C905 /* CommonMarkParseTests.swift in Sources */,
-				5296B443221B724500C9AB60 /* StrongEnumNodeTests.swift in Sources */,
-				5296B437221AB2C200C9AB60 /* ParagraphEnumNodeTests.swift in Sources */,
-				5296B43D221B6CFD00C9AB60 /* EmphasisEnumNodeTests.swift in Sources */,
-				5296B439221ABC9800C9AB60 /* HTMLEnumNodeTests.swift in Sources */,
+				5296B443221B724500C9AB60 /* StrongNodeTests.swift in Sources */,
+				5296B437221AB2C200C9AB60 /* ParagraphNodeTests.swift in Sources */,
+				5296B43D221B6CFD00C9AB60 /* EmphasisNodeTests.swift in Sources */,
+				5296B439221ABC9800C9AB60 /* HTMLNodeTests.swift in Sources */,
 				52C5A894205A252A00F18CCA /* NodeTypeTests.swift in Sources */,
-				5296B43F221B6F9800C9AB60 /* ImageEnumNodeTests.swift in Sources */,
-				5296B435221AB10000C9AB60 /* BlockQuoteEnumNodeTests.swift in Sources */,
-				5296B43B221AC03100C9AB60 /* CodeEnumNodeTests.swift in Sources */,
-				5296B447221B881C00C9AB60 /* ListItemEnumNodeTests.swift in Sources */,
-				5296B441221B70E200C9AB60 /* TextEnumNodeTests.swift in Sources */,
-				5296B432221AA97D00C9AB60 /* BreakEnumNodeTests.swift in Sources */,
+				5296B43F221B6F9800C9AB60 /* ImageNodeTests.swift in Sources */,
+				5296B435221AB10000C9AB60 /* BlockQuoteNodeTests.swift in Sources */,
+				5296B43B221AC03100C9AB60 /* CodeNodeTests.swift in Sources */,
+				5296B447221B881C00C9AB60 /* ListItemNodeTests.swift in Sources */,
+				5296B441221B70E200C9AB60 /* TextNodeTests.swift in Sources */,
+				5296B432221AA97D00C9AB60 /* BreakNodeTests.swift in Sources */,
 				527FB76D205441FB000ADD7D /* SpecTests.swift in Sources */,
-				5296B445221B75C500C9AB60 /* LinkEnumNodeTests.swift in Sources */,
+				5296B445221B75C500C9AB60 /* LinkNodeTests.swift in Sources */,
 				5232877B204CA96B0093C905 /* CommonMarkSpecTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  ImageEnumNodeTests.swift
+//  ImageNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-internal class ImageEnumNodeTests: XCTestCase {
+internal class ImageNodeTests: XCTestCase {
   let node1: CommonMarkAST = .image(source: "/url", title: "title", alternate: "foo")
   let node2: CommonMarkAST = .image(source: "/url", title: nil, alternate: "")
 

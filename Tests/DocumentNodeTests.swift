@@ -1,5 +1,5 @@
 //
-//  DocumentEnumNodeTests.swift
+//  DocumentNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/10/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-internal class DocumentEnumNodeTests: XCTestCase {
+internal class DocumentNodeTests: XCTestCase {
   // MARK: Variables
 
   let expectedHTML: String = """

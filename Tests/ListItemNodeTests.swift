@@ -1,5 +1,5 @@
 //
-//  TextEnumNodeTests.swift
+//  ListItemNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,16 +13,20 @@ import XCTest
 
 // MARK: -
 
-internal class TextEnumNodeTests: XCTestCase {
-  let node: CommonMarkAST = .text("Testing <>\"")
+internal class ListItemNodeTests: XCTestCase {
+  // MARK: Constants
+
+  let node: CommonMarkAST = .listItem([.paragraph([.text("List")])])
+
+  // MARK: HeadingNode Tests
 
   func testTypes() {
-    XCTAssertEqual(node.type, .text)
+    XCTAssertEqual(node.type, .listItem)
   }
 
   func testHTML() {
     let actual = node.html
-    let expected = "Testing &lt;&gt;&quot;"
+    let expected = "<li><p>List</p>\n</li>\n"
 
     XCTAssertEqual(
       expected,
@@ -37,7 +41,7 @@ internal class TextEnumNodeTests: XCTestCase {
 
   func testCommonMark() {
     let actual = node.commonMark
-    let expected = "Testing <>\""
+    let expected = "List\n\n\n"
 
     XCTAssertEqual(
       expected,

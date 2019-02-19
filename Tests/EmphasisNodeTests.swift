@@ -1,34 +1,35 @@
 //
-//  BlockQuoteEnumNodeTests.swift
+//  EmphasisNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
 //  Copyright © 2018 Cody Winton. All rights reserved.
 //
 
+// MARK: Imports
+
 @testable import SwiftCommonMark
 import XCTest
 
-internal class BlockQuoteEnumNodeTests: XCTestCase {
+// MARK: -
+
+internal class EmphasisNodeTests: XCTestCase {
+  // MARK: Constants
+
   let node: CommonMarkAST = {
-    let text1: CommonMarkAST = .text("Test Blockquote")
-    let text2: CommonMarkAST = .text("Testing Blockquote")
-    return CommonMarkAST.blockQuote([.paragraph([text1]), .paragraph([text2])])
+    let text1: CommonMarkAST = .text("Testing Emphasis")
+    return CommonMarkAST.emphasis([text1])
   }()
 
+  // MARK: HeadingNode Tests
+
   func testTypes() {
-    XCTAssertEqual(node.type, .blockQuote)
+    XCTAssertEqual(node.type, .emphasis)
   }
 
   func testHTML() {
     let actual = node.html
-    let expected = """
-      <blockquote>
-      <p>Test Blockquote</p>
-      <p>Testing Blockquote</p>
-      </blockquote>
-
-      """
+    let expected = "<em>Testing Emphasis</em>"
 
     XCTAssertEqual(
       expected,
@@ -43,13 +44,7 @@ internal class BlockQuoteEnumNodeTests: XCTestCase {
 
   func testCommonMark() {
     let actual = node.commonMark
-    let expected = """
-      > Test Blockquote
-      >
-      > Testing Blockquote
-
-
-      """
+    let expected = "*Testing Emphasis*"
 
     XCTAssertEqual(
       expected,

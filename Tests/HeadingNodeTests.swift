@@ -1,5 +1,5 @@
 //
-//  HeadingEnumNodeTests.swift
+//  HeadingNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,7 +13,7 @@ import XCTest
 
 // MARK: -
 
-internal class HeadingEnumNodeTests: XCTestCase {
+internal class HeadingNodeTests: XCTestCase {
   // MARK: Constants
 
   let node: CommonMarkAST = {

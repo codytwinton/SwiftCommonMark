@@ -1,5 +1,5 @@
 //
-//  StrongEnumNodeTests.swift
+//  ParagraphNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,23 +13,23 @@ import XCTest
 
 // MARK: -
 
-internal class StrongEnumNodeTests: XCTestCase {
+internal class ParagraphNodeTests: XCTestCase {
   // MARK: Constants
 
-  let node: CommonMarkAST = {
-    let text1: CommonMarkAST = .text("Testing Strong")
-    return CommonMarkAST.strong([text1])
-  }()
+  let node: CommonMarkAST = .paragraph([.text("Testing Paragraph")])
 
   // MARK: HeadingNode Tests
 
   func testTypes() {
-    XCTAssertEqual(node.type, .strong)
+    XCTAssertEqual(node.type, .paragraph)
   }
 
   func testHTML() {
     let actual = node.html
-    let expected = "<strong>Testing Strong</strong>"
+    let expected = """
+      <p>Testing Paragraph</p>
+
+      """
 
     XCTAssertEqual(
       expected,
@@ -44,7 +44,11 @@ internal class StrongEnumNodeTests: XCTestCase {
 
   func testCommonMark() {
     let actual = node.commonMark
-    let expected = "**Testing Strong**"
+    let expected = """
+      Testing Paragraph
+
+
+      """
 
     XCTAssertEqual(
       expected,

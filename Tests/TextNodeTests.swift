@@ -1,5 +1,5 @@
 //
-//  ParagraphEnumNodeTests.swift
+//  TextNodeTests.swift
 //  SwiftCommonMarkTests
 //
 //  Created by Cody Winton on 3/24/18.
@@ -13,23 +13,16 @@ import XCTest
 
 // MARK: -
 
-internal class ParagraphEnumNodeTests: XCTestCase {
-  // MARK: Constants
-
-  let node: CommonMarkAST = .paragraph([.text("Testing Paragraph")])
-
-  // MARK: HeadingNode Tests
+internal class TextNodeTests: XCTestCase {
+  let node: CommonMarkAST = .text("Testing <>\"")
 
   func testTypes() {
-    XCTAssertEqual(node.type, .paragraph)
+    XCTAssertEqual(node.type, .text)
   }
 
   func testHTML() {
     let actual = node.html
-    let expected = """
-      <p>Testing Paragraph</p>
-
-      """
+    let expected = "Testing &lt;&gt;&quot;"
 
     XCTAssertEqual(
       expected,
@@ -44,11 +37,7 @@ internal class ParagraphEnumNodeTests: XCTestCase {
 
   func testCommonMark() {
     let actual = node.commonMark
-    let expected = """
-      Testing Paragraph
-
-
-      """
+    let expected = "Testing <>\""
 
     XCTAssertEqual(
       expected,
