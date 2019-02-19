@@ -14,8 +14,8 @@ import XCTest
 // MARK: -
 
 internal class ImageNodeTests: XCTestCase {
-  let node1 = ImageNode(source: "/url", title: "title", alternate: "foo")
-  let node2 = ImageNode(source: "/url")
+  let node1: Node = .image(source: "/url", title: "title", alternate: "foo")
+  let node2: Node = .image(source: "/url", title: nil, alternate: "")
 
   func testTypes() {
     XCTAssertEqual(node1.type, .image)

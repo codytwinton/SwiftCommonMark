@@ -16,7 +16,7 @@ import XCTest
 internal class ParagraphNodeTests: XCTestCase {
   // MARK: Constants
 
-  let node = ParagraphNode(nodes: [TextNode("Testing Paragraph")])
+  let node: Node = .paragraph([.text("Testing Paragraph")])
 
   // MARK: HeadingNode Tests
 
@@ -27,9 +27,9 @@ internal class ParagraphNodeTests: XCTestCase {
   func testHTML() {
     let actual = node.html
     let expected = """
-			<p>Testing Paragraph</p>
+      <p>Testing Paragraph</p>
 
-			"""
+      """
 
     XCTAssertEqual(
       expected,
@@ -45,10 +45,10 @@ internal class ParagraphNodeTests: XCTestCase {
   func testCommonMark() {
     let actual = node.commonMark
     let expected = """
-			Testing Paragraph
+      Testing Paragraph
 
 
-			"""
+      """
 
     XCTAssertEqual(
       expected,

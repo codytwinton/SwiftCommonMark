@@ -14,14 +14,14 @@ import XCTest
 // MARK: -
 
 internal class HTMLNodeTests: XCTestCase {
-  let inline: HTMLNode = .inline("<bab>")
-  let block: HTMLNode = .block("""
-	<table>
-	<tr>
-	<td>hi</td>
-	</tr>
-	</table>
-	""")
+  let inline: Node = .htmlInline("<bab>")
+  let block: Node = .htmlBlock("""
+  <table>
+  <tr>
+  <td>hi</td>
+  </tr>
+  </table>
+  """)
 
   func testTypes() {
     XCTAssertEqual(inline.type, .htmlInline)

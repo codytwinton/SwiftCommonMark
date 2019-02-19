@@ -16,9 +16,9 @@ import XCTest
 internal class EmphasisNodeTests: XCTestCase {
   // MARK: Constants
 
-  let node: EmphasisNode = {
-    let text1 = TextNode("Testing Emphasis")
-    return EmphasisNode(nodes: [text1])
+  let node: Node = {
+    let text1: Node = .text("Testing Emphasis")
+    return .emphasis([text1])
   }()
 
   // MARK: HeadingNode Tests

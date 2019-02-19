@@ -18,8 +18,8 @@ internal class SpecTests: XCTestCase {
   lazy var commonMarkTests: [CommonMarkSpecTest] = {
     guard let path = Bundle(for: type(of: self))
       .path(forResource: CommonMarkSpec.specName, ofType: CommonMarkSpec.specType) else {
-      XCTAssert(false, "CommonMark tests are nil")
-      return []
+        XCTAssert(false, "CommonMark tests are nil")
+        return []
     }
     do {
       let spec = try CommonMarkSpec(path: path)

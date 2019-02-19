@@ -14,12 +14,12 @@ import XCTest
 // MARK: -
 
 internal class CodeNodeTests: XCTestCase {
-  let inline: CodeNode = .inline("Testing Code")
-  let blockNoInfo: CodeNode = .block(info: nil, code: "Testing Code\n")
-  let blockInfo: CodeNode = .block(info: "info", code: "Testing Code\n")
+  let inline: Node = .codeInline("Testing Code")
+  let blockNoInfo: Node = .codeBlock(info: nil, "Testing Code\n")
+  let blockInfo: Node = .codeBlock(info: "info", "Testing Code\n")
 
   func testTypes() {
-    XCTAssertEqual(inline.type, .code)
+    XCTAssertEqual(inline.type, .codeInline)
     XCTAssertEqual(blockNoInfo.type, .codeBlock)
     XCTAssertEqual(blockInfo.type, .codeBlock)
   }

@@ -10,10 +10,10 @@
 import XCTest
 
 internal class BlockQuoteNodeTests: XCTestCase {
-  let node: BlockQuoteNode = {
-    let text1 = TextNode("Test Blockquote")
-    let text2 = TextNode("Testing Blockquote")
-    return BlockQuoteNode(nodes: [ParagraphNode(nodes: [text1]), ParagraphNode(nodes: [text2])])
+  let node: Node = {
+    let text1: Node = .text("Test Blockquote")
+    let text2: Node = .text("Testing Blockquote")
+    return .blockQuote([.paragraph([text1]), .paragraph([text2])])
   }()
 
   func testTypes() {
@@ -23,12 +23,12 @@ internal class BlockQuoteNodeTests: XCTestCase {
   func testHTML() {
     let actual = node.html
     let expected = """
-			<blockquote>
-			<p>Test Blockquote</p>
-			<p>Testing Blockquote</p>
-			</blockquote>
+      <blockquote>
+      <p>Test Blockquote</p>
+      <p>Testing Blockquote</p>
+      </blockquote>
 
-			"""
+      """
 
     XCTAssertEqual(
       expected,
@@ -44,12 +44,12 @@ internal class BlockQuoteNodeTests: XCTestCase {
   func testCommonMark() {
     let actual = node.commonMark
     let expected = """
-			> Test Blockquote
-			>
-			> Testing Blockquote
+      > Test Blockquote
+      >
+      > Testing Blockquote
 
 
-			"""
+      """
 
     XCTAssertEqual(
       expected,

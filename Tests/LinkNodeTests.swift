@@ -14,8 +14,8 @@ import XCTest
 // MARK: -
 
 internal class LinkNodeTests: XCTestCase {
-  let node1 = LinkNode(url: "/uri", title: "title", nodes: [TextNode("link")])
-  let node2 = LinkNode(url: "/uri")
+  let node1: Node = .link("/uri", title: "title", [.text("link")])
+  let node2: Node = .link("/uri", title: nil, [])
 
   func testTypes() {
     XCTAssertEqual(node1.type, .link)

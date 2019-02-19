@@ -1,1 +1,1 @@
-brew 'jazzy'
+brew 'carthage'

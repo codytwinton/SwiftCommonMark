@@ -16,9 +16,9 @@ import XCTest
 internal class BreakNodeTests: XCTestCase {
   // MARK: Constants
 
-  let lineBreak: BreakNode = .lineBreak
-  let softBreak: BreakNode = .softBreak
-  let thematicBreak: BreakNode = .thematicBreak
+  let lineBreak: Node = .lineBreak
+  let softBreak: Node = .softBreak
+  let thematicBreak: Node = .thematicBreak
 
   // MARK: - Type Tests
 
@@ -45,6 +45,25 @@ internal class BreakNodeTests: XCTestCase {
   // MARK: - Parsing Tests
 
   func testBlockParse() {
+    let shouldNotParse = [
+      "+++",
+      "===",
+      "--",
+      "**",
+      "__",
+      "    ***",
+      "_ _ _ _ a",
+      "a------",
+      "---a---",
+      " *-*"
+    ]
+
+    for line in shouldNotParse {
+      XCTAssertNil(NodeType.parse(breakBlockLine: line))
+    }
+  }
+
+  func testThematicBreakParse() {
     let shouldParse = [
       "***",
       "---",
@@ -60,37 +79,7 @@ internal class BreakNodeTests: XCTestCase {
     ]
 
     for line in shouldParse {
-      testBlockParse(for: line, expected: .thematicBreak)
+      XCTAssertEqual(.thematicBreak, NodeType.parse(breakBlockLine: line))
     }
-
-    let shouldNotParse = [
-      "+++",
-      "===",
-      "--",
-      "**",
-      "__",
-      "    ***",
-      "_ _ _ _ a",
-      "a------",
-      "---a---",
-      " *-*"
-    ]
-
-    for line in shouldNotParse {
-      testBlockParse(for: line, expected: nil)
-    }
-  }
-
-  func testBlockParse(for line: String, expected: BreakNode?) {
-    let actual = BreakNode(blockLine: line)
-    XCTAssertEqual(
-      expected,
-      actual,
-      "\n\n\n\n********\n\n" +
-        "Failed Thematic Break Parse for |\(line)|:" +
-        "\n\nExpected: |\(String(describing: expected))|" +
-        "\n\nActual: |\(String(describing: actual))|" +
-      "\n********\n\n\n\n\n\n"
-    )
   }
 }

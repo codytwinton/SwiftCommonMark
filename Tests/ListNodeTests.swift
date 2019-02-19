@@ -16,33 +16,33 @@ import XCTest
 internal class ListNodeTests: XCTestCase {
   // MARK: Constants
 
-  let uList1: ListNode = {
-    let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Unordered")])])
-    let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
-    return ListNode(listType: .asterisk, nodes: [item1, item2])
+  let uList1: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Unordered")])])
+    let item2: Node = .listItem([.paragraph([.text("List")])])
+    return .list(type: .asterisk, isTight: true, [item1, item2])
   }()
 
-  let uList2: ListNode = {
-    let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Second")])])
-    return ListNode(listType: .plus, nodes: [item1])
+  let uList2: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Second")])])
+    return .list(type: .plus, isTight: true, [item1])
   }()
 
-  let uList3: ListNode = {
-    let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Unordered")])])
-    let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Loose")])])
-    return ListNode(listType: .dash, isTight: false, nodes: [item1, item2])
+  let uList3: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Unordered")])])
+    let item2: Node = .listItem([.paragraph([.text("Loose")])])
+    return .list(type: .dash, isTight: false, [item1, item2])
   }()
 
-  let oList1: ListNode = {
-    let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Ordered")])])
-    let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("List")])])
-    return ListNode(listType: .period(start: 2), nodes: [item1, item2])
+  let oList1: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Ordered")])])
+    let item2: Node = .listItem([.paragraph([.text("List")])])
+    return .list(type: .period(start: 2), isTight: true, [item1, item2])
   }()
 
-  let oList2: ListNode = {
-    let item1 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Ordered")])])
-    let item2 = ListItemNode(nodes: [ParagraphNode(nodes: [TextNode("Loose")])])
-    return ListNode(listType: .paren(start: 1), isTight: false, nodes: [item1, item2])
+  let oList2: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Ordered")])])
+    let item2: Node = .listItem([.paragraph([.text("Loose")])])
+    return .list(type: .paren(start: 1), isTight: false, [item1, item2])
   }()
 
   // MARK: LinkNode Tests
