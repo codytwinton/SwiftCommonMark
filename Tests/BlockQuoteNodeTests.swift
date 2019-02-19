@@ -13,7 +13,7 @@ internal class BlockQuoteNodeTests: XCTestCase {
   let node: Node = {
     let text1: Node = .text("Test Blockquote")
     let text2: Node = .text("Testing Blockquote")
-    return Node.blockQuote([.paragraph([text1]), .paragraph([text2])])
+    return .blockQuote([.paragraph([text1]), .paragraph([text2])])
   }()
 
   func testTypes() {

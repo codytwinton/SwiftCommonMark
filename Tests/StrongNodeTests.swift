@@ -18,7 +18,7 @@ internal class StrongNodeTests: XCTestCase {
 
   let node: Node = {
     let text1: Node = .text("Testing Strong")
-    return Node.strong([text1])
+    return .strong([text1])
   }()
 
   // MARK: HeadingNode Tests

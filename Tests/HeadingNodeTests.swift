@@ -18,7 +18,7 @@ internal class HeadingNodeTests: XCTestCase {
 
   let node: Node = {
     let text1: Node = .text("Hello World")
-    return Node.heading(.h1, [text1])
+    return .heading(.h1, [text1])
   }()
 
   // MARK: Type Tests

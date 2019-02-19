@@ -46,11 +46,13 @@ internal class CommonMarkParseTests: XCTestCase {
    let nodes = NodeType.document.parse(markdown: test.markdown)
    let actual: String = Node.document(nodes: nodes).html
    guard test.html != actual else { continue }
-   print("Failed \(test.section) example: \(test.example):" +
+   print(
+   "Failed \(test.section) example: \(test.example):" +
    "\nMarkdown: |\(test.markdown)|" +
    "\nExpected: \(test.html)" +
    "\nActual: \(actual)" +
-   "\n********\n\n")
+   "\n********\n\n"
+   )
    violations += 1
    }
 
@@ -58,11 +60,9 @@ internal class CommonMarkParseTests: XCTestCase {
    XCTAssertEqual(passes, tests.count, "\(section.rawValue) passes: \(passes) of \(tests.count)")
    return passes
    }
-   */
 
-  // MARK: - Tests
+   // MARK: - Tests
 
-  /*
    func testAllSectionViolations() {
    var passes = 0
    for section in CommonMarkTestSection.allCases {
@@ -71,11 +71,8 @@ internal class CommonMarkParseTests: XCTestCase {
 
    XCTAssertEqual(passes, commonMarkTests.count, "CommonMark Tests passes: \(passes) of \(commonMarkTests.count)")
    }
-   */
 
-  /*
    func testParsing() {
-
    let html = """
    <h1>Testing</h1>
    <hr />
