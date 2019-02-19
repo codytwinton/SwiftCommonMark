@@ -26,6 +26,8 @@ extension CommonMarkAST: CommonMarkRenderable {
       return "```\(info ?? "")\n" + code + "```\n\n"
     case let .codeInline(code):
       return "`" + code.trimmingCharacters(in: .whitespacesAndNewlines) + "`"
+    case let .document(nodes):
+      return nodes.commonMark.trimmingCharacters(in: .newlines) + "\n"
     case let .emphasis(nodes):
       return "*" + nodes.commonMark + "*"
     case let .heading(level, nodes):

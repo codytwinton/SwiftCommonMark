@@ -31,6 +31,8 @@ extension CommonMarkAST: HTMLRenderable {
       }
     case let .codeInline(code):
       return "<code>" + code + "</code>"
+    case let .document(nodes):
+      return nodes.html
     case let .emphasis(nodes):
       return "<em>" + nodes.html + "</em>"
     case let .heading(level, nodes):
