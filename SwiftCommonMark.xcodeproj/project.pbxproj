@@ -38,6 +38,8 @@
 		5296B441221B70E200C9AB60 /* TextEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B440221B70E200C9AB60 /* TextEnumNodeTests.swift */; };
 		5296B443221B724500C9AB60 /* StrongEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B442221B724500C9AB60 /* StrongEnumNodeTests.swift */; };
 		5296B445221B75C500C9AB60 /* LinkEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B444221B75C500C9AB60 /* LinkEnumNodeTests.swift */; };
+		5296B447221B881C00C9AB60 /* ListItemEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B446221B881C00C9AB60 /* ListItemEnumNodeTests.swift */; };
+		5296B449221B8AAB00C9AB60 /* ListEnumNodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5296B448221B8AAB00C9AB60 /* ListEnumNodeTests.swift */; };
 		52A32A06204DD850006EEF3F /* CommonMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A32A05204DD850006EEF3F /* CommonMark.swift */; };
 		52B2674E20655BC000888E6A /* BlockQuoteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2674D20655BC000888E6A /* BlockQuoteNode.swift */; };
 		52B773A3221A897F003327AC /* CommonMarkAST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B773A2221A897F003327AC /* CommonMarkAST.swift */; };
@@ -106,6 +108,8 @@
 		5296B440221B70E200C9AB60 /* TextEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEnumNodeTests.swift; sourceTree = "<group>"; };
 		5296B442221B724500C9AB60 /* StrongEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrongEnumNodeTests.swift; sourceTree = "<group>"; };
 		5296B444221B75C500C9AB60 /* LinkEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEnumNodeTests.swift; sourceTree = "<group>"; };
+		5296B446221B881C00C9AB60 /* ListItemEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemEnumNodeTests.swift; sourceTree = "<group>"; };
+		5296B448221B8AAB00C9AB60 /* ListEnumNodeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListEnumNodeTests.swift; sourceTree = "<group>"; };
 		52A32A05204DD850006EEF3F /* CommonMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMark.swift; sourceTree = "<group>"; };
 		52B2674D20655BC000888E6A /* BlockQuoteNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockQuoteNode.swift; sourceTree = "<group>"; };
 		52B773A2221A897F003327AC /* CommonMarkAST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMarkAST.swift; sourceTree = "<group>"; };
@@ -252,6 +256,8 @@
 				5296B438221ABC9800C9AB60 /* HTMLEnumNodeTests.swift */,
 				5296B43E221B6F9800C9AB60 /* ImageEnumNodeTests.swift */,
 				5296B444221B75C500C9AB60 /* LinkEnumNodeTests.swift */,
+				5296B448221B8AAB00C9AB60 /* ListEnumNodeTests.swift */,
+				5296B446221B881C00C9AB60 /* ListItemEnumNodeTests.swift */,
 				5296B436221AB2C200C9AB60 /* ParagraphEnumNodeTests.swift */,
 				5296B440221B70E200C9AB60 /* TextEnumNodeTests.swift */,
 				5296B442221B724500C9AB60 /* StrongEnumNodeTests.swift */,
@@ -271,8 +277,8 @@
 				52CAEE8D2066FC40007024B3 /* HTMLNodeTests.swift */,
 				52CAEE8F2066FD8E007024B3 /* ImageNodeTests.swift */,
 				52CAEE912066FF80007024B3 /* LinkNodeTests.swift */,
-				52CAEE932067003E007024B3 /* ListItemNodeTests.swift */,
 				52CAEE95206701B4007024B3 /* ListNodeTests.swift */,
+				52CAEE932067003E007024B3 /* ListItemNodeTests.swift */,
 				52CAEE9B206708AC007024B3 /* ParagraphNodeTests.swift */,
 				52CAEE9D20670989007024B3 /* StrongNodeTests.swift */,
 				52CAEE9920670806007024B3 /* TextNodeTests.swift */,
@@ -437,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5296B449221B8AAB00C9AB60 /* ListEnumNodeTests.swift in Sources */,
 				52CAEE96206701B4007024B3 /* ListNodeTests.swift in Sources */,
 				52B773A6221A8EDF003327AC /* HeadingEnumNodeTests.swift in Sources */,
 				5232876C204CA6100093C905 /* CommonMarkParseTests.swift in Sources */,
@@ -452,6 +459,7 @@
 				5296B435221AB10000C9AB60 /* BlockQuoteEnumNodeTests.swift in Sources */,
 				52CAEE8A2066F7A2007024B3 /* HeadingNodeTests.swift in Sources */,
 				5296B43B221AC03100C9AB60 /* CodeEnumNodeTests.swift in Sources */,
+				5296B447221B881C00C9AB60 /* ListItemEnumNodeTests.swift in Sources */,
 				52CAEE8E2066FC40007024B3 /* HTMLNodeTests.swift in Sources */,
 				52CAEE9E20670989007024B3 /* StrongNodeTests.swift in Sources */,
 				5296B441221B70E200C9AB60 /* TextEnumNodeTests.swift in Sources */,

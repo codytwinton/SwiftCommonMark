@@ -10,55 +10,6 @@
 
 import Foundation
 
-// MARK: Enums
-
-internal enum ListType {
-  case dash
-  case asterisk
-  case plus
-  case period(start: Int)
-  case paren(start: Int)
-
-  var htmlPrefix: String {
-    switch self {
-    case .dash, .asterisk, .plus:
-      return "<ul>"
-    case .period(let start), .paren(let start):
-      var prefix = "<ol"
-
-      if start != 1 {
-        prefix += " start=\"\(start)\""
-      }
-
-      return prefix + ">"
-    }
-  }
-
-  var htmlPostfix: String {
-    switch self {
-    case .dash, .asterisk, .plus:
-      return "</ul>"
-    case .period, .paren:
-      return "</ol>"
-    }
-  }
-
-  var commonMarkDelimiter: String {
-    switch self {
-    case .dash:
-      return "-"
-    case .asterisk:
-      return "*"
-    case .plus:
-      return "+"
-    case .period:
-      return "."
-    case .paren:
-      return ")"
-    }
-  }
-}
-
 // MARK: -
 
 internal struct ListNode: CommonMarkNode {

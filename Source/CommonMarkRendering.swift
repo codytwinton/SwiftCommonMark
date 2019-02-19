@@ -52,6 +52,20 @@ extension CommonMarkAST: CommonMarkRenderable {
       }
 
       return "[\(nodes.commonMark)](\(url)\(srcTitle))"
+    case let .list(type, isTight, nodes):
+      let delimiter = type.commonMarkDelimiter + " "
+      var items = nodes.map { $0.commonMark.trimmingCharacters(in: .newlines) }
+
+      switch type {
+      case .dash, .asterisk, .plus:
+        items = items.map { delimiter + $0 }
+      case .period(let start), .paren(let start):
+        items = items.enumerated().map { "\(start + $0.offset)" + delimiter + $0.element }
+      }
+
+      return items.map { $0 + (isTight ? "\n" : "\n\n") }.joined() + (isTight ? "\n" : "")
+    case let .listItem(nodes):
+      return nodes.commonMark + "\n"
     case let .paragraph(nodes):
       return nodes.commonMark + "\n\n"
     case .softBreak:

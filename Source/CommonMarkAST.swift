@@ -12,8 +12,8 @@ import Foundation
 
 internal enum CommonMarkAST: Equatable {
   case blockQuote(_ nodes: [CommonMarkAST])
-  case codeInline(String)
   case codeBlock(info: String?, _ code: String)
+  case codeInline(String)
   case emphasis(_ nodes: [CommonMarkAST])
   case heading(_ level: HeadingLevel, _ nodes: [CommonMarkAST])
   case htmlBlock(_ rawHTML: String)
@@ -21,6 +21,8 @@ internal enum CommonMarkAST: Equatable {
   case image(source: String, title: String?, alternate: String)
   case lineBreak
   case link(_ url: String, title: String?, _ nodes: [CommonMarkAST])
+  case list(type: ListType, isTight: Bool, _ nodes: [CommonMarkAST])
+  case listItem(_ nodes: [CommonMarkAST])
   case paragraph(_ nodes: [CommonMarkAST])
   case softBreak
   case strong(_ nodes: [CommonMarkAST])
@@ -32,10 +34,10 @@ internal enum CommonMarkAST: Equatable {
     switch self {
     case .blockQuote:
       return .blockQuote
-    case .codeInline:
-      return .codeInline
     case .codeBlock:
       return .codeBlock
+    case .codeInline:
+      return .codeInline
     case .emphasis:
       return .emphasis
     case .heading:
@@ -50,6 +52,10 @@ internal enum CommonMarkAST: Equatable {
       return .lineBreak
     case .link:
       return .link
+    case .list:
+      return .list
+    case .listItem:
+      return .listItem
     case .paragraph:
       return .paragraph
     case .softBreak:
@@ -66,6 +72,53 @@ internal enum CommonMarkAST: Equatable {
 
 internal enum HeadingLevel: Int, CaseIterable {
   case h1 = 1, h2, h3, h4, h5, h6
+}
+
+internal enum ListType: Equatable {
+  case dash
+  case asterisk
+  case plus
+  case period(start: Int)
+  case paren(start: Int)
+
+  var htmlPrefix: String {
+    switch self {
+    case .dash, .asterisk, .plus:
+      return "<ul>"
+    case .period(let start), .paren(let start):
+      var prefix = "<ol"
+
+      if start != 1 {
+        prefix += " start=\"\(start)\""
+      }
+
+      return prefix + ">"
+    }
+  }
+
+  var htmlPostfix: String {
+    switch self {
+    case .dash, .asterisk, .plus:
+      return "</ul>"
+    case .period, .paren:
+      return "</ol>"
+    }
+  }
+
+  var commonMarkDelimiter: String {
+    switch self {
+    case .dash:
+      return "-"
+    case .asterisk:
+      return "*"
+    case .plus:
+      return "+"
+    case .period:
+      return "."
+    case .paren:
+      return ")"
+    }
+  }
 }
 
 internal enum NodeStructure: String, CaseIterable {

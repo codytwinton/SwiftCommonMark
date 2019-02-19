@@ -57,6 +57,22 @@ extension CommonMarkAST: HTMLRenderable {
       }
 
       return link + ">" + nodes.html + "</a>"
+    case let .list(type, isTight, nodes):
+      var list = type.htmlPrefix + "\n"
+
+      switch isTight {
+      case true:
+        list += nodes.html
+          .replacingOccurrences(of: "<li><p>", with: "<li>")
+          .replacingOccurrences(of: "</p>\n</li>", with: "</li>")
+      case false:
+        list += nodes.html
+          .replacingOccurrences(of: "<li><p>", with: "<li>\n<p>")
+      }
+
+      return list + type.htmlPostfix + "\n"
+    case let .listItem(nodes):
+      return "<li>" + nodes.html + "</li>\n"
     case let .paragraph(nodes):
       return "<p>" + nodes.html + "</p>\n"
     case .softBreak:
