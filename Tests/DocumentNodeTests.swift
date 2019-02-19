@@ -126,81 +126,81 @@ internal class DocumentNodeTests: XCTestCase {
 
     """
 
-  let node: CommonMarkAST = {
-    let heading: CommonMarkAST = {
-      let text1: CommonMarkAST = .text("Hello World")
+  let node: Node = {
+    let heading: Node = {
+      let text1: Node = .text("Hello World")
       return .heading(.h1, [text1])
     }()
 
-    let paragraph1: CommonMarkAST = {
-      let text1: CommonMarkAST = .text("Testing <>\"")
-      let text2: CommonMarkAST = .text("Testing now: ")
-      let code1: CommonMarkAST = .codeInline("Testing Code")
+    let paragraph1: Node = {
+      let text1: Node = .text("Testing <>\"")
+      let text2: Node = .text("Testing now: ")
+      let code1: Node = .codeInline("Testing Code")
       return .paragraph([text1, .softBreak, text2, code1])
     }()
 
-    let paragraph2: CommonMarkAST = {
-      let text1: CommonMarkAST = .text("What ")
-      let strong1: CommonMarkAST = .strong([.text("is")])
-      let text2: CommonMarkAST = .text(" ")
-      let emphasis1: CommonMarkAST = .emphasis([.text("up")])
-      let text3: CommonMarkAST = .text("?")
-      let text4: CommonMarkAST = .text("Testing")
+    let paragraph2: Node = {
+      let text1: Node = .text("What ")
+      let strong1: Node = .strong([.text("is")])
+      let text2: Node = .text(" ")
+      let emphasis1: Node = .emphasis([.text("up")])
+      let text3: Node = .text("?")
+      let text4: Node = .text("Testing")
 
       return .paragraph([text1, strong1, text2, emphasis1, text3, .lineBreak, text4])
     }()
 
-    let code1: CommonMarkAST = .codeBlock(info: nil, "Testing\n")
-    let code2: CommonMarkAST = .codeBlock(info: "swift", "Testing 123\n")
+    let code1: Node = .codeBlock(info: nil, "Testing\n")
+    let code2: Node = .codeBlock(info: "swift", "Testing 123\n")
 
-    let blockQuote: CommonMarkAST = {
-      let text1: CommonMarkAST = .text("Test Blockquote")
-      let text2: CommonMarkAST = .text("Testing Blockquote")
+    let blockQuote: Node = {
+      let text1: Node = .text("Test Blockquote")
+      let text2: Node = .text("Testing Blockquote")
       return .blockQuote([.paragraph([text1]), .paragraph([text2])])
     }()
 
-    let paragraph3: CommonMarkAST = {
-      let image1: CommonMarkAST = .image(source: "/url", title: "title", alternate: "foo")
-      let image2: CommonMarkAST = .image(source: "/url", title: nil, alternate: "")
+    let paragraph3: Node = {
+      let image1: Node = .image(source: "/url", title: "title", alternate: "foo")
+      let image2: Node = .image(source: "/url", title: nil, alternate: "")
       return .paragraph([image1, .softBreak, image2])
     }()
 
-    let uList1: CommonMarkAST = {
-      let item1: CommonMarkAST = .listItem([.paragraph([.text("Unordered")])])
-      let item2: CommonMarkAST = .listItem([.paragraph([.text("List")])])
+    let uList1: Node = {
+      let item1: Node = .listItem([.paragraph([.text("Unordered")])])
+      let item2: Node = .listItem([.paragraph([.text("List")])])
       return .list(type: .asterisk, isTight: true, [item1, item2])
     }()
 
-    let uList2: CommonMarkAST = {
-      let item1: CommonMarkAST = .listItem([.paragraph([.text("Second")])])
+    let uList2: Node = {
+      let item1: Node = .listItem([.paragraph([.text("Second")])])
       return .list(type: .plus, isTight: true, [item1])
     }()
 
-    let uList3: CommonMarkAST = {
-      let item1: CommonMarkAST = .listItem([.paragraph([.text("Unordered")])])
-      let item2: CommonMarkAST = .listItem([.paragraph([.text("Loose")])])
+    let uList3: Node = {
+      let item1: Node = .listItem([.paragraph([.text("Unordered")])])
+      let item2: Node = .listItem([.paragraph([.text("Loose")])])
       return .list(type: .dash, isTight: false, [item1, item2])
     }()
 
-    let oList1: CommonMarkAST = {
-      let item1: CommonMarkAST = .listItem([.paragraph([.text("Ordered")])])
-      let item2: CommonMarkAST = .listItem([.paragraph([.text("List")])])
+    let oList1: Node = {
+      let item1: Node = .listItem([.paragraph([.text("Ordered")])])
+      let item2: Node = .listItem([.paragraph([.text("List")])])
       return .list(type: .period(start: 2), isTight: true, [item1, item2])
     }()
 
-    let oList2: CommonMarkAST = {
-      let item1: CommonMarkAST = .listItem([.paragraph([.text("Ordered")])])
-      let item2: CommonMarkAST = .listItem([.paragraph([.text("Loose")])])
+    let oList2: Node = {
+      let item1: Node = .listItem([.paragraph([.text("Ordered")])])
+      let item2: Node = .listItem([.paragraph([.text("Loose")])])
       return .list(type: .paren(start: 1), isTight: false, [item1, item2])
     }()
 
-    let paragraph4: CommonMarkAST = {
-      let link1: CommonMarkAST = .link("/uri", title: "title", [.text("link")])
-      let link2: CommonMarkAST = .link("/uri", title: nil, [])
+    let paragraph4: Node = {
+      let link1: Node = .link("/uri", title: "title", [.text("link")])
+      let link2: Node = .link("/uri", title: nil, [])
       return .paragraph([link1, .softBreak, link2])
     }()
 
-    let html1: CommonMarkAST = .htmlBlock(
+    let html1: Node = .htmlBlock(
       """
       <table>
       <tr>
@@ -210,7 +210,7 @@ internal class DocumentNodeTests: XCTestCase {
       """
     )
 
-    let paragraph5: CommonMarkAST = .paragraph([.htmlInline("<a>"), .htmlInline("<bab>"), .htmlInline("<c2c>")])
+    let paragraph5: Node = .paragraph([.htmlInline("<a>"), .htmlInline("<bab>"), .htmlInline("<c2c>")])
 
     return .document(
       [

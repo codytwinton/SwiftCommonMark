@@ -10,10 +10,10 @@
 import XCTest
 
 internal class BlockQuoteNodeTests: XCTestCase {
-  let node: CommonMarkAST = {
-    let text1: CommonMarkAST = .text("Test Blockquote")
-    let text2: CommonMarkAST = .text("Testing Blockquote")
-    return CommonMarkAST.blockQuote([.paragraph([text1]), .paragraph([text2])])
+  let node: Node = {
+    let text1: Node = .text("Test Blockquote")
+    let text2: Node = .text("Testing Blockquote")
+    return Node.blockQuote([.paragraph([text1]), .paragraph([text2])])
   }()
 
   func testTypes() {

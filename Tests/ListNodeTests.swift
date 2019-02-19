@@ -16,32 +16,32 @@ import XCTest
 internal class ListNodeTests: XCTestCase {
   // MARK: Constants
 
-  let uList1: CommonMarkAST = {
-    let item1: CommonMarkAST = .listItem([.paragraph([.text("Unordered")])])
-    let item2: CommonMarkAST = .listItem([.paragraph([.text("List")])])
+  let uList1: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Unordered")])])
+    let item2: Node = .listItem([.paragraph([.text("List")])])
     return .list(type: .asterisk, isTight: true, [item1, item2])
   }()
 
-  let uList2: CommonMarkAST = {
-    let item1: CommonMarkAST = .listItem([.paragraph([.text("Second")])])
+  let uList2: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Second")])])
     return .list(type: .plus, isTight: true, [item1])
   }()
 
-  let uList3: CommonMarkAST = {
-    let item1: CommonMarkAST = .listItem([.paragraph([.text("Unordered")])])
-    let item2: CommonMarkAST = .listItem([.paragraph([.text("Loose")])])
+  let uList3: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Unordered")])])
+    let item2: Node = .listItem([.paragraph([.text("Loose")])])
     return .list(type: .dash, isTight: false, [item1, item2])
   }()
 
-  let oList1: CommonMarkAST = {
-    let item1: CommonMarkAST = .listItem([.paragraph([.text("Ordered")])])
-    let item2: CommonMarkAST = .listItem([.paragraph([.text("List")])])
+  let oList1: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Ordered")])])
+    let item2: Node = .listItem([.paragraph([.text("List")])])
     return .list(type: .period(start: 2), isTight: true, [item1, item2])
   }()
 
-  let oList2: CommonMarkAST = {
-    let item1: CommonMarkAST = .listItem([.paragraph([.text("Ordered")])])
-    let item2: CommonMarkAST = .listItem([.paragraph([.text("Loose")])])
+  let oList2: Node = {
+    let item1: Node = .listItem([.paragraph([.text("Ordered")])])
+    let item2: Node = .listItem([.paragraph([.text("Loose")])])
     return .list(type: .paren(start: 1), isTight: false, [item1, item2])
   }()
 

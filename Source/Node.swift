@@ -1,5 +1,5 @@
 //
-//  CommonMarkAST.swift
+//  Node.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 2/17/19.
@@ -10,23 +10,23 @@ import Foundation
 
 // MARK: Enums
 
-internal enum CommonMarkAST: Equatable {
-  case blockQuote(_ nodes: [CommonMarkAST])
+internal enum Node: Equatable {
+  case blockQuote(_ nodes: [Node])
   case codeBlock(info: String?, _ code: String)
   case codeInline(String)
-  case document(_ nodes: [CommonMarkAST])
-  case emphasis(_ nodes: [CommonMarkAST])
-  case heading(_ level: HeadingLevel, _ nodes: [CommonMarkAST])
+  case document(_ nodes: [Node])
+  case emphasis(_ nodes: [Node])
+  case heading(_ level: HeadingLevel, _ nodes: [Node])
   case htmlBlock(_ rawHTML: String)
   case htmlInline(_ rawHTML: String)
   case image(source: String, title: String?, alternate: String)
   case lineBreak
-  case link(_ url: String, title: String?, _ nodes: [CommonMarkAST])
-  case list(type: ListType, isTight: Bool, _ nodes: [CommonMarkAST])
-  case listItem(_ nodes: [CommonMarkAST])
-  case paragraph(_ nodes: [CommonMarkAST])
+  case link(_ url: String, title: String?, _ nodes: [Node])
+  case list(type: ListType, isTight: Bool, _ nodes: [Node])
+  case listItem(_ nodes: [Node])
+  case paragraph(_ nodes: [Node])
   case softBreak
-  case strong(_ nodes: [CommonMarkAST])
+  case strong(_ nodes: [Node])
   case text(String)
   case thematicBreak
 

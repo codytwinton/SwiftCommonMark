@@ -14,7 +14,7 @@ import XCTest
 // MARK: -
 
 internal class TextNodeTests: XCTestCase {
-  let node: CommonMarkAST = .text("Testing <>\"")
+  let node: Node = .text("Testing <>\"")
 
   func testTypes() {
     XCTAssertEqual(node.type, .text)

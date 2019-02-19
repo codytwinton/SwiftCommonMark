@@ -14,8 +14,8 @@ import XCTest
 // MARK: -
 
 internal class HTMLNodeTests: XCTestCase {
-  let inline: CommonMarkAST = .htmlInline("<bab>")
-  let block: CommonMarkAST = .htmlBlock("""
+  let inline: Node = .htmlInline("<bab>")
+  let block: Node = .htmlBlock("""
   <table>
   <tr>
   <td>hi</td>

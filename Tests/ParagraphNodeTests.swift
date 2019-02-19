@@ -16,7 +16,7 @@ import XCTest
 internal class ParagraphNodeTests: XCTestCase {
   // MARK: Constants
 
-  let node: CommonMarkAST = .paragraph([.text("Testing Paragraph")])
+  let node: Node = .paragraph([.text("Testing Paragraph")])
 
   // MARK: HeadingNode Tests
 

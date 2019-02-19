@@ -16,9 +16,9 @@ import XCTest
 internal class HeadingNodeTests: XCTestCase {
   // MARK: Constants
 
-  let node: CommonMarkAST = {
-    let text1: CommonMarkAST = .text("Hello World")
-    return CommonMarkAST.heading(.h1, [text1])
+  let node: Node = {
+    let text1: Node = .text("Hello World")
+    return Node.heading(.h1, [text1])
   }()
 
   // MARK: Type Tests
@@ -62,10 +62,10 @@ internal class HeadingNodeTests: XCTestCase {
     ]
 
     for line in shouldNotParse {
-      XCTAssertNil(CommonMarkAST(headingBlockLine: line))
+      XCTAssertNil(Node(headingBlockLine: line))
     }
 
-    let shouldParse: [String: CommonMarkAST] = [
+    let shouldParse: [String: Node] = [
       "# foo": .heading(.h1, [.text("foo")]),
       "## foo": .heading(.h2, [.text("foo")]),
       "### foo": .heading(.h3, [.text("foo")]),
@@ -93,7 +93,7 @@ internal class HeadingNodeTests: XCTestCase {
     ]
 
     for (line, node) in shouldParse {
-      XCTAssertEqual(node, CommonMarkAST(headingBlockLine: line))
+      XCTAssertEqual(node, Node(headingBlockLine: line))
     }
   }
 

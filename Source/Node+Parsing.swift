@@ -1,5 +1,5 @@
 //
-//  ASTParsing.swift
+//  Node+Parsing.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 2/18/19.
@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: - Heading Parsing
 
-extension CommonMarkAST {
+extension Node {
   init?(headingBlockLine line: String) {
     guard !line.isEmpty else { return nil }
 
@@ -58,7 +58,7 @@ extension CommonMarkAST {
 
 // MARK: - Break Parsing
 
-extension CommonMarkAST {
+extension Node {
   init?(breakBlockLine line: String) {
     guard !line.isEmpty else { return nil }
 

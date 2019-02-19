@@ -16,7 +16,7 @@ internal protocol CommonMarkRenderable {
 
 // MARK: Extensions
 
-extension CommonMarkAST: CommonMarkRenderable {
+extension Node: CommonMarkRenderable {
   // MARK: CommonMarkRenderable
   var commonMark: String {
     switch self {
@@ -103,6 +103,6 @@ internal extension Character {
   }
 }
 
-extension Array where Element == CommonMarkAST {
+extension Array where Element == Node {
   var commonMark: String { return map { $0.commonMark }.joined() }
 }

@@ -14,9 +14,9 @@ import XCTest
 // MARK: -
 
 internal class CodeNodeTests: XCTestCase {
-  let inline: CommonMarkAST = .codeInline("Testing Code")
-  let blockNoInfo: CommonMarkAST = .codeBlock(info: nil, "Testing Code\n")
-  let blockInfo: CommonMarkAST = .codeBlock(info: "info", "Testing Code\n")
+  let inline: Node = .codeInline("Testing Code")
+  let blockNoInfo: Node = .codeBlock(info: nil, "Testing Code\n")
+  let blockInfo: Node = .codeBlock(info: "info", "Testing Code\n")
 
   func testTypes() {
     XCTAssertEqual(inline.type, .codeInline)

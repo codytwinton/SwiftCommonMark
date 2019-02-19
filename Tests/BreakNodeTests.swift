@@ -16,9 +16,9 @@ import XCTest
 internal class BreakNodeTests: XCTestCase {
   // MARK: Constants
 
-  let lineBreak: CommonMarkAST = .lineBreak
-  let softBreak: CommonMarkAST = .softBreak
-  let thematicBreak: CommonMarkAST = .thematicBreak
+  let lineBreak: Node = .lineBreak
+  let softBreak: Node = .softBreak
+  let thematicBreak: Node = .thematicBreak
 
   // MARK: - Type Tests
 
@@ -59,7 +59,7 @@ internal class BreakNodeTests: XCTestCase {
     ]
 
     for line in shouldNotParse {
-      XCTAssertNil(CommonMarkAST(breakBlockLine: line))
+      XCTAssertNil(Node(breakBlockLine: line))
     }
   }
 
@@ -79,7 +79,7 @@ internal class BreakNodeTests: XCTestCase {
     ]
 
     for line in shouldParse {
-      XCTAssertEqual(.thematicBreak, CommonMarkAST(breakBlockLine: line))
+      XCTAssertEqual(.thematicBreak, Node(breakBlockLine: line))
     }
   }
 }

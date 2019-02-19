@@ -16,9 +16,9 @@ import XCTest
 internal class StrongNodeTests: XCTestCase {
   // MARK: Constants
 
-  let node: CommonMarkAST = {
-    let text1: CommonMarkAST = .text("Testing Strong")
-    return CommonMarkAST.strong([text1])
+  let node: Node = {
+    let text1: Node = .text("Testing Strong")
+    return Node.strong([text1])
   }()
 
   // MARK: HeadingNode Tests

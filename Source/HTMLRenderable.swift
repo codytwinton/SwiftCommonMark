@@ -16,7 +16,7 @@ internal protocol HTMLRenderable {
 
 // MARK: Extensions
 
-extension CommonMarkAST: HTMLRenderable {
+extension Node: HTMLRenderable {
   // MARK: HTMLRenderable
   var html: String {
     switch self {
@@ -91,6 +91,6 @@ extension CommonMarkAST: HTMLRenderable {
 
 // MARK: Extensions
 
-extension Array where Element == CommonMarkAST {
+extension Array where Element == Node {
   var html: String { return map { $0.html }.joined() }
 }

@@ -16,7 +16,7 @@ import XCTest
 internal class ListItemNodeTests: XCTestCase {
   // MARK: Constants
 
-  let node: CommonMarkAST = .listItem([.paragraph([.text("List")])])
+  let node: Node = .listItem([.paragraph([.text("List")])])
 
   // MARK: HeadingNode Tests
 
