@@ -1,5 +1,5 @@
 //
-//  HTMLRendering.swift
+//  HTMLRenderable.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 2/17/19.
