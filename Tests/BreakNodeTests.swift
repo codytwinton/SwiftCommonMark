@@ -59,7 +59,7 @@ internal class BreakNodeTests: XCTestCase {
     ]
 
     for line in shouldNotParse {
-      XCTAssertNil(Node(breakBlockLine: line))
+      XCTAssertNil(NodeType.parse(breakBlockLine: line))
     }
   }
 
@@ -79,7 +79,7 @@ internal class BreakNodeTests: XCTestCase {
     ]
 
     for line in shouldParse {
-      XCTAssertEqual(.thematicBreak, Node(breakBlockLine: line))
+      XCTAssertEqual(.thematicBreak, NodeType.parse(breakBlockLine: line))
     }
   }
 }

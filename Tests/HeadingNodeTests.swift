@@ -62,7 +62,7 @@ internal class HeadingNodeTests: XCTestCase {
     ]
 
     for line in shouldNotParse {
-      XCTAssertNil(Node(headingBlockLine: line))
+      XCTAssertNil(NodeType.parse(headingBlockLine: line))
     }
 
     let shouldParse: [String: Node] = [
@@ -93,7 +93,7 @@ internal class HeadingNodeTests: XCTestCase {
     ]
 
     for (line, node) in shouldParse {
-      XCTAssertEqual(node, Node(headingBlockLine: line))
+      XCTAssertEqual(node, NodeType.parse(headingBlockLine: line))
     }
   }
 
