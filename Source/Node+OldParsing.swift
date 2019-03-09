@@ -1,5 +1,5 @@
 //
-//  Node+Parsing.swift
+//  Node+OldParsing.swift
 //  SwiftCommonMark
 //
 //  Created by Cody Winton on 2/18/19.
@@ -12,8 +12,8 @@ import Foundation
 
 // MARK: - Heading Parsing
 
-extension NodeType {
-  static func parse(markdown: String) -> Node {
+public extension NodeType {
+  static func oldParse(markdown: String) -> Node {
     var blocks: [Node] = []
     var openBlocks: [NodeType] = [.document]
 
@@ -52,7 +52,9 @@ extension NodeType {
     document.parseBlockInlines()
     return document
   }
+}
 
+public extension NodeType {
   static func parse(headingBlockLine line: String) -> Node? {
     guard !line.isEmpty else { return nil }
 

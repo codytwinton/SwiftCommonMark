@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Protocols
 
-public protocol CommonMarkRenderable {
+public protocol CommonMarkRenderable: Equatable {
   var commonMark: String { get }
 }
 

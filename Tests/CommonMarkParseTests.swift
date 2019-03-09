@@ -42,7 +42,7 @@ internal class CommonMarkParseTests: XCTestCase {
     print("\n********\n\n")
 
     for test in tests {
-      let actual: String = NodeType.parse(markdown: test.markdown).html
+      let actual: String = NodeType.oldParse(markdown: test.markdown).html
       guard test.html != actual else { continue }
       print(
         "Failed \(test.section) example: \(test.example):" +
@@ -92,7 +92,7 @@ internal class CommonMarkParseTests: XCTestCase {
 
     """
 
-    let document = NodeType.parse(markdown: markdown)
+    let document = NodeType.oldParse(markdown: markdown)
     // XCTAssertEqual(document.html, html)
   }
 }

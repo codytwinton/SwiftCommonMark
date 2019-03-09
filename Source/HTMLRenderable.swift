@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Protocols
 
-public protocol HTMLRenderable {
+public protocol HTMLRenderable: Equatable {
   var html: String { get }
 }
 
