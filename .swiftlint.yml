@@ -1,4 +1,4 @@
-swiftlint_version: 0.30.1
+swiftlint_version: 0.31.0
 indentation: 2
 line_length: 120
 
@@ -55,6 +55,8 @@ disabled_rules:
   - number_separator # 1_000_000
   - prefixed_toplevel_constant # Requires k Prefix
   - vertical_whitespace_between_cases # Vertical whitespace between cases
+  # To Enable Later
+  - missing_docs
 
 opt_in_rules:
   - array_init
@@ -129,7 +131,6 @@ opt_in_rules:
   - lower_acl_than_parent
   - mark
   - modifier_order
-  - missing_docs
   - multiline_arguments
   - multiline_arguments_brackets
   - multiline_function_chains
