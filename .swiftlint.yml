@@ -21,8 +21,8 @@ explicit_type_interface:
     - local
 
 closure_body_length:
-  - 80
-  - 100
+  warning: 80
+  error: 100
 
 file_header:
   required_pattern: |
@@ -46,8 +46,8 @@ private_outlet:
   allow_private_set: true
 
 type_body_length:
-  - 250
-  - 350
+  warning: 250
+  error: 350
 
 disabled_rules:
   - custom_rules
