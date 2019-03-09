@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: -
 
-internal enum Node: Equatable {
+public enum Node: Equatable, CommonMarkRenderable, HTMLRenderable {
   case blockQuote(_ nodes: [Node])
   case codeBlock(info: String?, _ code: String)
   case codeInline(String)
@@ -76,13 +76,13 @@ internal enum Node: Equatable {
 
 // MARK: -
 
-internal enum HeadingLevel: Int, CaseIterable {
+public enum HeadingLevel: Int, CaseIterable {
   case h1 = 1, h2, h3, h4, h5, h6
 }
 
 // MARK: -
 
-internal enum ListType: Equatable {
+public enum ListType: Equatable {
   case dash
   case asterisk
   case plus

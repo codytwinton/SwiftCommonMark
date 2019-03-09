@@ -10,14 +10,14 @@ import Foundation
 
 // MARK: Protocols
 
-internal protocol CommonMarkRenderable {
+public protocol CommonMarkRenderable {
   var commonMark: String { get }
 }
 
 // MARK: Extensions
 
-extension Node: CommonMarkRenderable {
-  // MARK: CommonMarkRenderable
+// MARK: CommonMarkRenderable
+public extension Node {
   var commonMark: String {
     switch self {
     case let .blockQuote(nodes):
@@ -103,6 +103,6 @@ internal extension Character {
   }
 }
 
-extension Array where Element == Node {
+internal extension Array where Element == Node {
   var commonMark: String { return map { $0.commonMark }.joined() }
 }

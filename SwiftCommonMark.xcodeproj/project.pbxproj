@@ -46,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		521B7A78223474D2009E62B3 /* SwiftCommonMark.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = SwiftCommonMark.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5232875D204CA6100093C905 /* SwiftCommonMark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftCommonMark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52328760204CA6100093C905 /* SwiftCommonMark.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftCommonMark.h; sourceTree = "<group>"; };
 		52328761204CA6100093C905 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		5232875F204CA6100093C905 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				521B7A78223474D2009E62B3 /* SwiftCommonMark.playground */,
 				52B773A2221A897F003327AC /* Node.swift */,
 				52E6E1D0221BB6B40078658D /* NodeType.swift */,
 				5296B42E221AA1DD00C9AB60 /* Node+Parsing.swift */,

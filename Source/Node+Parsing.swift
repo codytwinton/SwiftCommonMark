@@ -21,28 +21,28 @@ extension NodeType {
       var foundMatch = false
 
       /*
-      for type in NodeType.allCases.filter({ $0.structure == .block }) {
-        guard let regex = type.blockRegex else { continue }
+       for type in NodeType.allCases.filter({ $0.structure == .block }) {
+       guard let regex = type.blockRegex else { continue }
 
-        let options: NSRegularExpression.MatchingOptions = .anchored
-        guard let match = regex.firstMatch(in: line, options: options, range: NSRange(location: 0, length: line.count)),
-          match.range.location != NSNotFound else {
-            continue
-        }
+       let options: NSRegularExpression.MatchingOptions = .anchored
+       guard let match = regex.firstMatch(in: line, options: options, range: NSRange(location: 0, length: line.count)),
+       match.range.location != NSNotFound else {
+       continue
+       }
 
-        let matchString = NSString(string: line).substring(with: match.range)
-        var captures = Array(repeating: "", count: type.blockTemplates.count)
+       let matchString = NSString(string: line).substring(with: match.range)
+       var captures = Array(repeating: "", count: type.blockTemplates.count)
 
-        for (index, template) in type.blockTemplates.enumerated() {
-          let text: String = regex.replacementString(for: match, in: matchString, offset: 0, template: template)
-          captures[index] = text
-        }
+       for (index, template) in type.blockTemplates.enumerated() {
+       let text: String = regex.replacementString(for: match, in: matchString, offset: 0, template: template)
+       captures[index] = text
+       }
 
-        blocks.append(type.block(from: line, captures: captures))
-        foundMatch = true
-        break
-      }
-      */
+       blocks.append(type.block(from: line, captures: captures))
+       foundMatch = true
+       break
+       }
+       */
 
       guard !foundMatch else { continue }
       parseParagraph(line: line, &blocks, &openBlocks)

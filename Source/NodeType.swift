@@ -12,7 +12,7 @@ import Foundation
 
 // MARK: -
 
-internal enum NodeType: String, CaseIterable {
+public enum NodeType: String, CaseIterable {
   case blockQuote
   case codeBlock
   case codeInline
@@ -136,7 +136,7 @@ internal enum NodeType: String, CaseIterable {
 
 // MARK: -
 
-internal enum NodeStructure: String, CaseIterable {
+public enum NodeStructure: String, CaseIterable {
   case block
   case inline
 }

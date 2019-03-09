@@ -55,7 +55,7 @@ internal class CommonMarkParseTests: XCTestCase {
     }
 
     let passes = tests.count - violations
-//    XCTAssertEqual(passes, tests.count, "\(section.rawValue) passes: \(passes) of \(tests.count)")
+    //    XCTAssertEqual(passes, tests.count, "\(section.rawValue) passes: \(passes) of \(tests.count)")
     return passes
   }
 
@@ -67,7 +67,7 @@ internal class CommonMarkParseTests: XCTestCase {
       passes += testPasses(for: section)
     }
 
-//    XCTAssertEqual(passes, commonMarkTests.count, "CommonMark Tests passes: \(passes) of \(commonMarkTests.count)")
+    // XCTAssertEqual(passes, commonMarkTests.count, "CommonMark Tests passes: \(passes) of \(commonMarkTests.count)")
   }
 
   func testParsing() {
@@ -93,6 +93,6 @@ internal class CommonMarkParseTests: XCTestCase {
     """
 
     let document = NodeType.parse(markdown: markdown)
-//    XCTAssertEqual(document.html, html)
+    // XCTAssertEqual(document.html, html)
   }
 }

@@ -6,6 +6,9 @@ included:
   - Source
   - Tests
 
+excluded:
+  - Source/SwiftCommonMark.playground
+
 conditional_returns_on_newline:
   if_only: true
 

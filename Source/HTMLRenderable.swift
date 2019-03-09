@@ -10,13 +10,13 @@ import Foundation
 
 // MARK: Protocols
 
-internal protocol HTMLRenderable {
+public protocol HTMLRenderable {
   var html: String { get }
 }
 
 // MARK: Extensions
 
-extension Node: HTMLRenderable {
+public extension Node {
   // MARK: HTMLRenderable
   var html: String {
     switch self {
