@@ -42,7 +42,7 @@ internal class CommonMarkParseTests: XCTestCase {
     print("\n********\n\n")
 
     for test in tests {
-      let actual: String = NodeType.oldParse(markdown: test.markdown).html
+      let actual: String = NodeType.parseDocument(markdown: test.markdown).html
       guard test.html != actual else { continue }
       print(
         "Failed \(test.section) example: \(test.example):" +
@@ -55,7 +55,7 @@ internal class CommonMarkParseTests: XCTestCase {
     }
 
     let passes = tests.count - violations
-    //    XCTAssertEqual(passes, tests.count, "\(section.rawValue) passes: \(passes) of \(tests.count)")
+    // XCTAssertEqual(passes, tests.count, "\(section.rawValue) passes: \(passes) of \(tests.count)")
     return passes
   }
 
@@ -92,7 +92,7 @@ internal class CommonMarkParseTests: XCTestCase {
 
     """
 
-    let document = NodeType.oldParse(markdown: markdown)
+    let document = NodeType.parseDocument(markdown: markdown)
     // XCTAssertEqual(document.html, html)
   }
 }

@@ -22,7 +22,7 @@ let document = NodeType.parseDocument(markdown: markdown)
 print("*** markdown:\n\(markdown)\n\n")
 print("*** document.markdown:\n\(document.commonMark)\n\n")
 
-
+/*
 let html = """
 <h1>Testing</h1>
 <hr />
@@ -34,3 +34,4 @@ sit amet.</p>
 
 print("*** html:\n\(html)\n\n")
 print("*** document.html:\n\(document.html)\n\n")
+*/
